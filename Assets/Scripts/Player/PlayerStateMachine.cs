@@ -18,15 +18,16 @@ public class PlayerStateMachine : BaseStateMachine
     [SerializeField]
     private float _defaultSpeedOfMovementChanging = 3.0f; //How fast to change speed
 
-    /*
-    [Header("Potion Usage Speed Values")]
+    [Header("Potion Usage Speed Values")] //All values to be moved to an item usage
     [SerializeField]
     private float potionSpeed = 7.0f;
     [SerializeField]
     private float _itemDurationOfSpeedChanging = 4.0f; //Time window in order to change speed for when a speed boost potion is used
     [SerializeField]
     private float _itemSpeedOfMovementChanging = 3.0f; //How fast to change speed for when a speed boost potion is used
-    */
+    public float _maxLengthOfTimeForSpeedUp = 7.0f;
+    public float _currentTimeLengthForSpeedUp;
+    private bool _hasPlayerTakenSpeedPotion = false;
 
     [HideInInspector]
     public CharacterController _characterController;
@@ -46,6 +47,7 @@ public class PlayerStateMachine : BaseStateMachine
     private float maximumSpeed;
     private float _durationOfSpeedChanging; //Time window in order to change speed 
     private float _speedOfMovementChanging; //How fast to change speed
+
 
     public PlayerState currentState { get; set; }
     public PlayerState PreviousState { get; set; }
@@ -91,8 +93,52 @@ public class PlayerStateMachine : BaseStateMachine
 
     public override void Update()
     {
+        Mathf.Clamp(_currentTimeLengthForSpeedUp, 0.0f, _maxLengthOfTimeForSpeedUp);
+
+        CheckForItemUsage();
+
         if(currentState == IdleState && _playerDirection.magnitude >= _minimumMovementDistance)
             StateChange(WanderState);
+
+        if(_hasPlayerTakenSpeedPotion == true)
+            SpeedUpPlayer();
+    }
+
+    public void CheckForItemUsage()
+    {
+        if(Input.GetKeyDown(KeyCode.F) && _hasPlayerTakenSpeedPotion == false && _currentTimeLengthForSpeedUp == 0.0f) //Change key binding to something else
+        {
+            _currentTimeLengthForSpeedUp = _maxLengthOfTimeForSpeedUp;
+
+            //Changing values for speed up coroutine
+            _durationOfSpeedChanging = _itemDurationOfSpeedChanging;
+            _speedOfMovementChanging = _itemSpeedOfMovementChanging;
+            maximumSpeed = potionSpeed;
+
+            _hasPlayerTakenSpeedPotion = true;
+
+            if(currentState == WanderState)
+                StartSpeedChange();
+        }
+    }
+
+    public void SpeedUpPlayer()
+    {
+        if (_hasPlayerTakenSpeedPotion == true && _currentTimeLengthForSpeedUp > 0)
+            _currentTimeLengthForSpeedUp -= Time.deltaTime;
+
+        else 
+        {
+            //Reset to default values
+            _currentTimeLengthForSpeedUp = 0.0f;
+            _hasPlayerTakenSpeedPotion = false;
+            _durationOfSpeedChanging = _defaultDurationOfSpeedChanging;
+            _speedOfMovementChanging = _defaultSpeedOfMovementChanging;
+            maximumSpeed = walkingSpeed;
+
+            if(currentState == WanderState)
+                StartSpeedChange();
+        }
     }
 
     public void StateChange(PlayerState nextState)
@@ -101,13 +147,13 @@ public class PlayerStateMachine : BaseStateMachine
         currentState = nextState;
         ChangeState(nextState);
         //currentStateName = currentState?.ToString();
-
-        StopAllCoroutines();
         StartSpeedChange();
     }
 
     public void StartSpeedChange() 
     {
+        StopAllCoroutines();
+        
         if(PreviousState == IdleState && currentState == WanderState)
             StartCoroutine(SpeedChange(maximumSpeed));
 

@@ -1259,6 +1259,11 @@ MonoBehaviour:
   walkingSpeed: 3
   _defaultDurationOfSpeedChanging: 4
   _defaultSpeedOfMovementChanging: 3
+  potionSpeed: 7
+  _itemDurationOfSpeedChanging: 4
+  _itemSpeedOfMovementChanging: 4
+  _maxLengthOfTimeForSpeedUp: 7
+  _currentTimeLengthForSpeedUp: 0
   _characterController: {fileID: 0}
   _playerDirection: {x: 0, y: 0, z: 0}
   _movementDirection: {x: 0, y: 0, z: 0}
