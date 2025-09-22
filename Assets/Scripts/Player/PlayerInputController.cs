@@ -4,12 +4,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputController : MonoBehaviour
 {
-    private PlayerController _playerController;
+    private PlayerStateMachine _PlayerStateMachine;
     private PlayerInputs _playerInputs;
 
     void Awake()
     {
-        _playerController = GetComponent<PlayerController>();
+        _PlayerStateMachine = GetComponent<PlayerStateMachine>();
     }
 
     void OnEnable()
@@ -39,7 +39,7 @@ public class PlayerInputController : MonoBehaviour
 
     void OnMovementPerformed(InputAction.CallbackContext val)
     {
-        _playerController.Move(val.ReadValue<Vector2>());
+        _PlayerStateMachine.Move(val.ReadValue<Vector2>());
     }
 
     void OnLookAroundPerformed(InputAction.CallbackContext val)
