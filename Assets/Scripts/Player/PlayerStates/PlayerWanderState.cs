@@ -9,7 +9,7 @@ public class PlayerWanderState : PlayerState
 
     public override void Enter()
     {
-        Debug.Log("I'm in wander state"); 
+
     }
 
     public override void FixedUpdate()

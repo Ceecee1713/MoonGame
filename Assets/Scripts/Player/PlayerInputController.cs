@@ -20,6 +20,7 @@ public class PlayerInputController : MonoBehaviour
         _playerInputs.PlayerActions.Movement.performed += OnMovementPerformed;
         _playerInputs.PlayerActions.LookAround.performed += OnLookAroundPerformed;
         _playerInputs.PlayerActions.Interact.performed += OnInteractPerformed;
+        _playerInputs.PlayerActions.Use.performed += OnUsePerformed;
         _playerInputs.PlayerActions.Drop.performed += OnDropPerformed;
         _playerInputs.PlayerActions.Exit.performed += OnExitPerformed;
 
@@ -31,6 +32,7 @@ public class PlayerInputController : MonoBehaviour
         _playerInputs.PlayerActions.Movement.performed -= OnMovementPerformed;
         _playerInputs.PlayerActions.LookAround.performed -= OnLookAroundPerformed;
         _playerInputs.PlayerActions.Interact.performed -= OnInteractPerformed;
+        _playerInputs.PlayerActions.Use.performed -= OnUsePerformed;
         _playerInputs.PlayerActions.Drop.performed -= OnDropPerformed;
         _playerInputs.PlayerActions.Exit.performed -= OnExitPerformed;
 
@@ -48,6 +50,11 @@ public class PlayerInputController : MonoBehaviour
     }
 
     void OnInteractPerformed(InputAction.CallbackContext val)
+    {
+        EventBus.Instance.Publish(new Interact());
+    }
+
+    void OnUsePerformed(InputAction.CallbackContext val)
     {
 
     }

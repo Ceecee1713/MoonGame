@@ -33,18 +33,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Drop",
+                    "name": "Exit",
                     "type": "Button",
-                    "id": "9748c2fc-6264-4db5-8dba-ebc64e5c269c",
+                    "id": "6c769d1b-5b40-4323-b81f-983c12468e28",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Exit",
+                    "name": "Use",
                     "type": "Button",
-                    "id": "6c769d1b-5b40-4323-b81f-983c12468e28",
+                    "id": "85a5b1a1-64d0-4167-b503-2364803a50c1",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Drop",
+                    "type": "Button",
+                    "id": "4f00564a-742a-4cd4-81e8-effd6fb3f349",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -131,12 +140,23 @@
                 },
                 {
                     "name": "",
-                    "id": "25eeb40a-0822-4557-bcdf-ae9a5e6a36a4",
-                    "path": "<Keyboard>/q",
+                    "id": "94718f65-221d-444a-b8da-0a81ebc5594d",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Drop",
+                    "action": "Use",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0dc109a0-5ce0-4f6c-9082-c08580c2647d",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Use",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -148,6 +168,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "LookAround",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "15e64f89-9c11-4adc-bcea-a0ee452293c3",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Drop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
