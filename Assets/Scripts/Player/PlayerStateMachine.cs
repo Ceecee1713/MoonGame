@@ -177,3 +177,17 @@ public class PlayerStateMachine : BaseStateMachine
         }
     }
 }
+
+/*
+private void OnTriggerEnter(Collider collider)
+{
+	if (collider.gameObject.CompareTag("Whatever"))
+}
+__________________________________________
+
+private void OnTriggerEnter(Collider collider)
+{
+	if (collider.gameObject.CompareTag("Whatever"))
+            variableNameOfAnyVariableType = collider.GetComponent<scriptNameYouWannaReference>().NameOfVariableYouWantToAccess();
+}
+*/
