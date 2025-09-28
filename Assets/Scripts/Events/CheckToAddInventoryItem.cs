@@ -34,6 +34,16 @@ public class DropEquipedInventoryItem : IEvent
 
 }
 
+public class SpawnDroppedInventoryItem : IEvent
+{
+    public InventoryItem InventoryItem;
+
+    public SpawnDroppedInventoryItem(InventoryItem inventoryItem)
+    {
+        InventoryItem = inventoryItem;
+    }
+}
+
 
 
 /*

@@ -19,6 +19,7 @@ public struct ItemData
     public Sprite SlotImageSprite; //Changes the sprite of "SlotImage"
     public string NameOfItem; //Changes the text of "ItemNameText"
     public InventoryItemTypes ItemType; 
+    public GameObject itemObject; //Object to instantiate by the player
 }
 
 //Used by "InventoryUISlot" script

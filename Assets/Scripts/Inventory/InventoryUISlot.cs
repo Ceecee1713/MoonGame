@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 using UnityEngine;
 using TMPro;
 
+//Add some visuals for when the slot is selected (Will be turned on / off by "InventoryUI")
+
 public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
 {
     public InventoryItem InventoryItem;
@@ -24,16 +26,15 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
             //inventorySlotData.ItemNameText = newInventoryItem.NameOfItem;
             //inventorySlotData.typeOfItem = newInventoryItem.ItemType;
         }
-
-        else
-            Debug.Log("This slot is not empty");
     }
 
     public void DropItem()
     {
         if(InventoryItem != null)
         {
+            EventBus.Instance.Publish(new SpawnDroppedInventoryItem(InventoryItem));
             InventoryItem = null;
+
             Debug.Log("I've dropped an inventory item");
 
             //inventorySlotData.SlotImage.sprite = newInventoryItem.SlotImageSprite;

@@ -7,10 +7,10 @@ public class InventoryUI : MonoBehaviour
     [SerializeField]
     private InventoryUISlot [] inventorySlots = new InventoryUISlot [8];
 
-    [SerializeField]
+    [SerializeField] //Delete later
     private InventoryItem _equipedInventoryItem;
 
-    [SerializeField]
+    [SerializeField] //Delete later
     private InventoryUISlot _selectedInventoryUISlot;
 
     void Start()
@@ -18,6 +18,12 @@ public class InventoryUI : MonoBehaviour
         EventBus.Instance.Subscribe<CheckToAddInventoryItem>(CheckInventorySlot);
         EventBus.Instance.Subscribe<SelectInventoryItem>(EquipInventoryItem);
         EventBus.Instance.Subscribe<DropEquipedInventoryItem>(DropEquipedInventoryItem);
+    }
+
+    void Update()
+    {
+        if(_selectedInventoryUISlot != null) //Update inventory item from "_selectedInventoryUISlot"
+            _equipedInventoryItem = _selectedInventoryUISlot.InventoryItem;
     }
 
     private void CheckInventorySlot(CheckToAddInventoryItem checkToAddInventoryItem)
@@ -40,6 +46,9 @@ public class InventoryUI : MonoBehaviour
             {
                 _selectedInventoryUISlot = selectInventoryItem.InventoryUISlot;
                 _equipedInventoryItem = selectInventoryItem.InventoryUISlot.InventoryItem;
+
+                //Add some visuals for the selected inventory UI Slot and take away visuals from previous selected inventory UI slot
+
                 break;
             }
         }
