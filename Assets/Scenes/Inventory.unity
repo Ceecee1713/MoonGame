@@ -1143,6 +1143,8 @@ MonoBehaviour:
   - {fileID: 861956658}
   - {fileID: 2110974961}
   - {fileID: 475584533}
+  _equipedInventoryItem: {fileID: 0}
+  _selectedInventoryUISlot: {fileID: 0}
 --- !u!1 &617190586
 GameObject:
   m_ObjectHideFlags: 0

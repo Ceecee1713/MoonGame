@@ -29,8 +29,22 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
             Debug.Log("This slot is not empty");
     }
 
+    public void DropItem()
+    {
+        if(InventoryItem != null)
+        {
+            InventoryItem = null;
+            Debug.Log("I've dropped an inventory item");
+
+            //inventorySlotData.SlotImage.sprite = newInventoryItem.SlotImageSprite;
+            //inventorySlotData.ItemNameText = newInventoryItem.NameOfItem;
+            //inventorySlotData.typeOfItem = newInventoryItem.ItemType;
+        }
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
-
+        EventBus.Instance.Publish(new SelectInventoryItem(InventoryItem, this));
+        Debug.Log("I clicked on the slot");
     }
 }

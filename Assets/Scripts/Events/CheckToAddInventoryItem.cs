@@ -2,7 +2,7 @@ using UnityEngine;
 
 //This contains all the events (data types) that the game uses
 
-public class CheckToAddInventoryItem : IEvent //Prevent player input to scripts that are subscribed to this event
+public class CheckToAddInventoryItem : IEvent 
 {
     public InventoryItem InventoryItem;
 
@@ -12,7 +12,24 @@ public class CheckToAddInventoryItem : IEvent //Prevent player input to scripts 
     }
 }
 
+public class SelectInventoryItem : IEvent 
+{
+    public InventoryItem InventoryItem;
+    public InventoryUISlot InventoryUISlot;
+
+    public SelectInventoryItem(InventoryItem inventoryItem, InventoryUISlot inventoryUISlot)
+    {
+        InventoryItem = inventoryItem;
+        InventoryUISlot = inventoryUISlot;
+    }
+}
+
 public class Interact : IEvent
+{
+
+}
+
+public class DropEquipedInventoryItem : IEvent
 {
 
 }

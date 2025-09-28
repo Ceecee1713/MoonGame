@@ -61,8 +61,8 @@ public class PlayerStateMachine : BaseStateMachine
     void Awake()
     {
         //Disabling mouse cursor and locking it in one place
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
 
         //Instantiating all specific state scripts
         IdleState = new PlayerIdleState(this);

@@ -61,7 +61,7 @@ public class PlayerInputController : MonoBehaviour
 
     void OnDropPerformed(InputAction.CallbackContext val)
     {
-
+        EventBus.Instance.Publish(new DropEquipedInventoryItem());
     }
 
     void OnExitPerformed(InputAction.CallbackContext val)
