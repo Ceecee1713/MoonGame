@@ -5,6 +5,9 @@ using UnityEngine;
 public class InventoryUI : MonoBehaviour
 {
     [SerializeField]
+    private InventoryData inventoryData;
+
+    [SerializeField]
     private InventoryUISlot [] inventorySlots = new InventoryUISlot [8];
 
     [SerializeField] //Delete later
@@ -33,6 +36,7 @@ public class InventoryUI : MonoBehaviour
             if(inventorySlots[i].InventoryItem == null)
             {
                 inventorySlots[i].AddItemToSlot(checkToAddInventoryItem.InventoryItem);
+                inventoryData.Inventory.Add(checkToAddInventoryItem.InventoryItem);
                 break;
             }
         }
@@ -60,6 +64,7 @@ public class InventoryUI : MonoBehaviour
         {
             if(inventorySlots[i] == _selectedInventoryUISlot && _selectedInventoryUISlot.InventoryItem != null && _equipedInventoryItem != null)
             {
+                inventoryData.Inventory.Remove(_equipedInventoryItem);
                 inventorySlots[i].DropItem();
                 _equipedInventoryItem = null;
                 break;
