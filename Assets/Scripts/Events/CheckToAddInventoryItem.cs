@@ -43,19 +43,3 @@ public class SpawnDroppedInventoryItem : IEvent
         InventoryItem = inventoryItem;
     }
 }
-
-
-
-/*
-public class ChangeToNewCanvas : IEvent //Change current UI canvas to a new one (newCanvas) and if it's a dialogue canvas, determined by (isNewCanvasADialogueCanvas)
-{
-    public bool IsNewCanvasADialogueCanvas;
-    public GameObject NewCanvas;
-
-    public ChangeToNewCanvas(GameObject newCanvas, bool isNewCanvasADialogueCanvas)
-    {
-        NewCanvas = newCanvas;
-        IsNewCanvasADialogueCanvas = isNewCanvasADialogueCanvas;
-    }
-}
-*/

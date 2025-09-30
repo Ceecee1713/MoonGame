@@ -16,4 +16,6 @@ MonoBehaviour:
     SlotImageSprite: {fileID: 0}
     NameOfItem: 
     ItemType: 0
-    itemObject: {fileID: 8118162022096007086, guid: c327a025010c2fb44a4c0c9b9a21d25b, type: 3}
+    ItemObject: {fileID: 0}
+    Quantity: 0
+    IsThisAStackableItem: 1

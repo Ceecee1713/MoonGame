@@ -5,11 +5,10 @@ using UnityEngine.EventSystems;
 using UnityEngine;
 using TMPro;
 
-//Add some visuals for when the slot is selected (Will be turned on / off by "InventoryUI")
-
 public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
 {
     public InventoryItem InventoryItem;
+    public GameObject OutlineImage; //Visuals
 
     [SerializeField]
     private InventorySlot inventorySlotData;
@@ -19,7 +18,7 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
         if(InventoryItem == null)
         {
             InventoryItem = newInventoryItem;
-
+            
             Debug.Log("I've added a new inventory item");
 
             //inventorySlotData.SlotImage.sprite = newInventoryItem.SlotImageSprite;

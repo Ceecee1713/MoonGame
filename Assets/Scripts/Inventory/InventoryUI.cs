@@ -16,6 +16,12 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] //Delete later
     private InventoryUISlot _selectedInventoryUISlot;
 
+    [SerializeField] //Delete later
+    private InventoryUISlot _previousInventoryUISlot;
+
+    private int _maxAmountOfStackableItems = 64;
+    private bool _sortedInventoryItem = false;
+
     void Start()
     {
         EventBus.Instance.Subscribe<CheckToAddInventoryItem>(CheckInventorySlot);
@@ -31,15 +37,41 @@ public class InventoryUI : MonoBehaviour
 
     private void CheckInventorySlot(CheckToAddInventoryItem checkToAddInventoryItem)
     {
-        for(int i = 0; i < inventorySlots.Length; i++)
+        for(int i = 0; i < inventorySlots.Length; i++) //Check if new inventory item's stackable and if any inventory slot has the same inventory item
+        {
+            //If both are labelled as stackable items
+            if(inventorySlots[i].InventoryItem != null && inventorySlots[i].InventoryItem.ItemData.IsThisAStackableItem == true && checkToAddInventoryItem.InventoryItem.ItemData.IsThisAStackableItem == true)
+            {
+                //If both are the same item type and the inventory slot's quantity of that item isn't above the "_maxAmountOfStackableItems"
+                if(inventorySlots[i].InventoryItem.ItemData.ItemType == checkToAddInventoryItem.InventoryItem.ItemData.ItemType && 
+                    inventorySlots[i].InventoryItem.ItemData.Quantity <= _maxAmountOfStackableItems)
+                {
+                    inventorySlots[i].InventoryItem.ItemData.Quantity++;
+                    _sortedInventoryItem = true;
+                    break;
+                }
+            }
+        }
+
+        if(_sortedInventoryItem == true)
+        {
+            _sortedInventoryItem = false;
+            return; 
+        }
+
+        for(int i = 0; i < inventorySlots.Length; i++) //Add new inventory item in any empty inventory slot
         {
             if(inventorySlots[i].InventoryItem == null)
             {
                 inventorySlots[i].AddItemToSlot(checkToAddInventoryItem.InventoryItem);
                 inventoryData.Inventory.Add(checkToAddInventoryItem.InventoryItem);
+                _sortedInventoryItem = true;
                 break;
             }
         }
+
+        if(_sortedInventoryItem == false)
+            Debug.Log("Couldn't sort the inventory item");
     }
 
     private void EquipInventoryItem(SelectInventoryItem selectInventoryItem)
@@ -48,11 +80,15 @@ public class InventoryUI : MonoBehaviour
         {
             if(inventorySlots[i] == selectInventoryItem.InventoryUISlot)
             {
+                if(_selectedInventoryUISlot != null) //Disable visuals of the previously selected inventory slot
+                {
+                    _previousInventoryUISlot = _selectedInventoryUISlot;
+                    _previousInventoryUISlot.OutlineImage.SetActive(false);
+                }
+
                 _selectedInventoryUISlot = selectInventoryItem.InventoryUISlot;
+                _selectedInventoryUISlot.OutlineImage.SetActive(true); //Enable visuals
                 _equipedInventoryItem = selectInventoryItem.InventoryUISlot.InventoryItem;
-
-                //Add some visuals for the selected inventory UI Slot and take away visuals from previous selected inventory UI slot
-
                 break;
             }
         }
