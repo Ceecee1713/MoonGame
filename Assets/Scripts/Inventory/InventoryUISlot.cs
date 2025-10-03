@@ -19,7 +19,7 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
         {
             InventoryItem = newInventoryItem;
             
-            Debug.Log("I've added a new inventory item");
+            //Debug.Log("I've added a new inventory item");
 
             //inventorySlotData.SlotImage.sprite = newInventoryItem.SlotImageSprite;
             //inventorySlotData.ItemNameText = newInventoryItem.NameOfItem;
@@ -34,7 +34,7 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
             EventBus.Instance.Publish(new SpawnDroppedInventoryItem(InventoryItem));
             InventoryItem = null;
 
-            Debug.Log("I've dropped an inventory item");
+            //Debug.Log("I've dropped an inventory item");
 
             //inventorySlotData.SlotImage.sprite = newInventoryItem.SlotImageSprite;
             //inventorySlotData.ItemNameText = newInventoryItem.NameOfItem;
@@ -45,6 +45,6 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         EventBus.Instance.Publish(new SelectInventoryItem(InventoryItem, this));
-        Debug.Log("I clicked on the slot");
+        //Debug.Log("I clicked on the slot");
     }
 }

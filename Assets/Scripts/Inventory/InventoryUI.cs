@@ -20,7 +20,6 @@ public class InventoryUI : MonoBehaviour
     private InventoryUISlot _previousInventoryUISlot;
 
     private int _maxAmountOfStackableItems = 64;
-    private bool _sortedInventoryItem = false;
 
     void Start()
     {
@@ -47,16 +46,9 @@ public class InventoryUI : MonoBehaviour
                     inventorySlots[i].InventoryItem.ItemData.Quantity <= _maxAmountOfStackableItems)
                 {
                     inventorySlots[i].InventoryItem.ItemData.Quantity++;
-                    _sortedInventoryItem = true;
-                    break;
+                    return;
                 }
             }
-        }
-
-        if(_sortedInventoryItem == true)
-        {
-            _sortedInventoryItem = false;
-            return; 
         }
 
         for(int i = 0; i < inventorySlots.Length; i++) //Add new inventory item in any empty inventory slot
@@ -65,13 +57,9 @@ public class InventoryUI : MonoBehaviour
             {
                 inventorySlots[i].AddItemToSlot(checkToAddInventoryItem.InventoryItem);
                 inventoryData.Inventory.Add(checkToAddInventoryItem.InventoryItem);
-                _sortedInventoryItem = true;
                 break;
             }
         }
-
-        if(_sortedInventoryItem == false)
-            Debug.Log("Couldn't sort the inventory item");
     }
 
     private void EquipInventoryItem(SelectInventoryItem selectInventoryItem)
