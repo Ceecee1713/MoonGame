@@ -9,7 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 510083e89643c4441bbb2de9e74c9b45, type: 3}
-  m_Name: InventoryData
+  m_Script: {fileID: 11500000, guid: 8b2a049b7b1b42343ae9344a0016c105, type: 3}
+  m_Name: CraftableTest
   m_EditorClassIdentifier: 
-  Inventory: []
+  ItemData:
+    SlotImageSprite: {fileID: 0}
+    NameOfItem: 
+    ItemType: 2
+    ItemObject: {fileID: 0}
+    Quantity: 0
+    IsThisAStackableItem: 0

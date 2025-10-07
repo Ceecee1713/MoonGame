@@ -731,6 +731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   craftManager: {fileID: 31982664}
+  craftableInventoryItem: {fileID: 0}
   craftingMaterials:
   - {fileID: 11400000, guid: 4089defa6d0e83548b7d1da7ed80de1a, type: 2}
   - {fileID: 11400000, guid: 4089defa6d0e83548b7d1da7ed80de1a, type: 2}
@@ -882,8 +883,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   craftManager: {fileID: 31982664}
+  craftableInventoryItem: {fileID: 11400000, guid: 66134ccbf567fef439585e58155411fc, type: 2}
   craftingMaterials:
-  - {fileID: 11400000, guid: fe92a3265061512439824995b6f5a323, type: 2}
   - {fileID: 11400000, guid: fe92a3265061512439824995b6f5a323, type: 2}
   - {fileID: 11400000, guid: fe92a3265061512439824995b6f5a323, type: 2}
 --- !u!1 &319904478
@@ -1799,6 +1800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   craftManager: {fileID: 31982664}
+  craftableInventoryItem: {fileID: 0}
   craftingMaterials:
   - {fileID: 11400000, guid: fe92a3265061512439824995b6f5a323, type: 2}
   - {fileID: 11400000, guid: fe92a3265061512439824995b6f5a323, type: 2}

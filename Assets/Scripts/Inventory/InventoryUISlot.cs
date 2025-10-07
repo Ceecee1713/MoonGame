@@ -45,6 +45,5 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         EventBus.Instance.Publish(new SelectInventoryItem(InventoryItem, this));
-        //Debug.Log("I clicked on the slot");
     }
 }

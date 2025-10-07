@@ -8,7 +8,8 @@ using UnityEngine;
 public enum InventoryItemTypes 
 {
     Stone,
-    Beryllium
+    Beryllium,
+    Ruby
 }
 
 //Used by "InventoryItem" script 

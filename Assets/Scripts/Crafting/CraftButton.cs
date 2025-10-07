@@ -7,11 +7,16 @@ public class CraftButton : MonoBehaviour
     private CraftManager craftManager;
 
     [SerializeField]
+    private InventoryItem craftableInventoryItem;
+
+    [SerializeField]
     private List <InventoryItem> craftingMaterials;
 
     public void OnCraftClick()
     {
+        craftManager.ResetStatus();
+
         for(int i = 0; i < craftingMaterials.Count; i++)
-            craftManager.CheckInventoryForCraftingMaterials(craftingMaterials[i]);
+            craftManager.CheckInventoryForCraftingMaterials(craftableInventoryItem, craftingMaterials[i], craftingMaterials.Count);
     }
 }

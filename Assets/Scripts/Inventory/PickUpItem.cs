@@ -17,7 +17,7 @@ public class PickUpItem : MonoBehaviour
         if(_playerCollisionDetected == true)
         {
             EventBus.Instance.Publish(new CheckToAddInventoryItem(inventoryItem));
-            Debug.Log("I've been picked up by the player");
+            //Debug.Log("I've been picked up by the player");
         }
     }
 
