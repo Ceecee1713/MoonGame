@@ -7,15 +7,15 @@ using UnityEngine;
 //Types of the all possible inventory items
 public enum InventoryItemTypes 
 {
+    None,
     Stone,
     Beryllium,
     Ruby
 }
 
-//Used by "InventoryItem" script 
 //Data of every inventory item
 [Serializable]
-public struct ItemData
+public class ItemData
 {
     public Sprite SlotImageSprite; //Changes the sprite of "SlotImage"
     public string NameOfItem; //Changes the text of "ItemNameText"
@@ -24,6 +24,19 @@ public struct ItemData
 
     public int Quantity; //Used for stacking quantity of the same type of inventory item
     public bool IsThisAStackableItem;
+
+    public ItemData Clone()
+    {
+        return new ItemData
+        {
+            SlotImageSprite = this.SlotImageSprite,
+            NameOfItem = this.NameOfItem,
+            ItemType = this.ItemType,
+            ItemObject = this.ItemObject,
+            Quantity = this.Quantity,
+            IsThisAStackableItem = this.IsThisAStackableItem
+        };
+    }
 }
 
 //Used by "InventoryUISlot" script

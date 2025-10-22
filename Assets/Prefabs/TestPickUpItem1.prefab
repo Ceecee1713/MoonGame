@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6091970659190166961}
   - component: {fileID: 1186873715110594485}
   m_Layer: 0
-  m_Name: TestPickUpItem
+  m_Name: TestPickUpItem1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9e298875f45d1f24891e89762809e44d, type: 2}
+  - {fileID: 2100000, guid: 833b27c519056904f9ed8714b9e66307, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -175,6 +175,6 @@ MonoBehaviour:
     SlotImageSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
     NameOfItem: Beryllium
     ItemType: 2
-    ItemObject: {fileID: 8118162022096007086, guid: 20410bd47c0b5cd4eb8f0368fabf5f5c, type: 3}
+    ItemObject: {fileID: 8118162022096007086}
     Quantity: 1
-    IsThisAStackableItem: 1
+    IsThisAStackableItem: 0

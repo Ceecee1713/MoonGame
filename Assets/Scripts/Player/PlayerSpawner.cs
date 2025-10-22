@@ -9,6 +9,6 @@ public class PlayerSpawner : MonoBehaviour
 
     private void SpawnInventoryItem(SpawnDroppedInventoryItem spawnDroppedInventoryItem)
     {
-        Instantiate(spawnDroppedInventoryItem.InventoryItem.ItemData.ItemObject, this.gameObject.transform.position, Quaternion.Euler(0,0,0));
+        Instantiate(spawnDroppedInventoryItem.InventoryItem.ItemObject, this.gameObject.transform.position, Quaternion.Euler(0,0,0));
     }
 }

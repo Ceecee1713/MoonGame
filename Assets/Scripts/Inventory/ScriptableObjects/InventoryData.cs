@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "InventoryData", menuName = "Inventory System/Store all Inventory Items")]
 public class InventoryData : ScriptableObject
 {
-    public List <InventoryItem> Inventory;
+    public List <ItemData> Inventory;
 }

@@ -7,10 +7,10 @@ public class CraftButton : MonoBehaviour
     private CraftManager craftManager;
 
     [SerializeField]
-    private InventoryItem craftableInventoryItem;
+    private ItemData craftableInventoryItem;
 
     [SerializeField]
-    private List <InventoryItem> craftingMaterials;
+    private List <ItemData> craftingMaterials;
 
     public void OnCraftClick()
     {

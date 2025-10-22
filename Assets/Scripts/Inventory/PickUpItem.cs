@@ -3,7 +3,7 @@ using UnityEngine;
 public class PickUpItem : MonoBehaviour
 {
     [SerializeField]
-    private InventoryItem inventoryItem;
+    private ItemData inventoryItem;
 
     private bool _playerCollisionDetected = false; 
 
@@ -16,8 +16,8 @@ public class PickUpItem : MonoBehaviour
     {
         if(_playerCollisionDetected == true)
         {
-            EventBus.Instance.Publish(new CheckToAddInventoryItem(inventoryItem));
-            //Debug.Log("I've been picked up by the player");
+            ItemData clonedInventoryItem = inventoryItem.Clone();
+            EventBus.Instance.Publish(new CheckToAddInventoryItem(clonedInventoryItem));
         }
     }
 
@@ -45,3 +45,13 @@ public class PickUpItem : MonoBehaviour
         }
     }
 }
+
+/*
+inventoryitem.itemSlotImageSprite; 
+inventoryitem.NameOfItem; 
+inventoryitem.ItemType; 
+inventoryitem.ItemObject; 
+
+inventoryitem.Quantity; 
+inventoryitem.IsThisAStackableItem;
+*/

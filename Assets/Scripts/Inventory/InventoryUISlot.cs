@@ -7,39 +7,42 @@ using TMPro;
 
 public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
 {
-    public InventoryItem InventoryItem;
+    public ItemData InventoryItem;
+    public bool IsEmpty;
+    
     public GameObject OutlineImage; //Visuals
 
     [SerializeField]
     private InventorySlot inventorySlotData;
 
-    public void AddItemToSlot(InventoryItem newInventoryItem)
+    void Start()
     {
-        if(InventoryItem == null)
-        {
-            InventoryItem = newInventoryItem;
-            
-            //Debug.Log("I've added a new inventory item");
+        IsEmpty = true;
+    }
 
-            //inventorySlotData.SlotImage.sprite = newInventoryItem.SlotImageSprite;
-            //inventorySlotData.ItemNameText = newInventoryItem.NameOfItem;
-            //inventorySlotData.typeOfItem = newInventoryItem.ItemType;
-        }
+    public void AddItemToSlot(ItemData newInventoryItem)
+    {
+        IsEmpty = false;
+        InventoryItem = newInventoryItem;
+    }
+
+    public void RemoveItemFromSlot()
+    {
+        IsEmpty = true;
+        InventoryItem.SlotImageSprite = null;
+        InventoryItem.NameOfItem = "Nothing";
+        InventoryItem.ItemType = InventoryItemTypes.None;
+        InventoryItem.ItemObject = null;
+        InventoryItem.Quantity = 0;
+        InventoryItem.IsThisAStackableItem = false;
     }
 
     public void DropItem()
     {
-        if(InventoryItem != null)
-        {
+        if(InventoryItem.ItemObject != null)
             EventBus.Instance.Publish(new SpawnDroppedInventoryItem(InventoryItem));
-            InventoryItem = null;
 
-            //Debug.Log("I've dropped an inventory item");
-
-            //inventorySlotData.SlotImage.sprite = newInventoryItem.SlotImageSprite;
-            //inventorySlotData.ItemNameText = newInventoryItem.NameOfItem;
-            //inventorySlotData.typeOfItem = newInventoryItem.ItemType;
-        }
+        RemoveItemFromSlot();
     }
 
     public void OnPointerClick(PointerEventData eventData)

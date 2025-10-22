@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: StackableTest
   m_EditorClassIdentifier: 
   ItemData:
-    SlotImageSprite: {fileID: 0}
-    NameOfItem: 
+    SlotImageSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    NameOfItem: AAAAAA
     ItemType: 0
     ItemObject: {fileID: 8118162022096007086, guid: c327a025010c2fb44a4c0c9b9a21d25b, type: 3}
-    Quantity: 0
+    Quantity: 1
     IsThisAStackableItem: 1

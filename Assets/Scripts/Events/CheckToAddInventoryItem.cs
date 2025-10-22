@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class CheckToAddInventoryItem : IEvent 
 {
-    public InventoryItem InventoryItem;
+    public ItemData InventoryItem;
 
-    public CheckToAddInventoryItem(InventoryItem inventoryItem)
+    public CheckToAddInventoryItem(ItemData inventoryItem)
     {
         InventoryItem = inventoryItem;
     }
@@ -15,22 +15,24 @@ public class CheckToAddInventoryItem : IEvent
 
 public class CheckToAddCraftedItem : IEvent 
 {
-    public InventoryItem InventoryItem;
-    public List <InventoryItem> CraftingMaterialItems;
+    public ItemData InventoryItem;
+    public List <ItemData> CraftingMaterialItems;
+    public List <int> AmountsPerStackableItemToRemove;
 
-    public CheckToAddCraftedItem(InventoryItem inventoryItem, List <InventoryItem> craftingMaterialItems)
+    public CheckToAddCraftedItem(ItemData inventoryItem, List <ItemData> craftingMaterialItems, List <int> amountsPerStackableItemToRemove)
     {
         InventoryItem = inventoryItem;
         CraftingMaterialItems = craftingMaterialItems;
+        AmountsPerStackableItemToRemove = amountsPerStackableItemToRemove;
     }
 }
 
 public class SelectInventoryItem : IEvent 
 {
-    public InventoryItem InventoryItem;
+    public ItemData InventoryItem;
     public InventoryUISlot InventoryUISlot;
 
-    public SelectInventoryItem(InventoryItem inventoryItem, InventoryUISlot inventoryUISlot)
+    public SelectInventoryItem(ItemData inventoryItem, InventoryUISlot inventoryUISlot)
     {
         InventoryItem = inventoryItem;
         InventoryUISlot = inventoryUISlot;
@@ -39,9 +41,9 @@ public class SelectInventoryItem : IEvent
 
 public class SpawnDroppedInventoryItem : IEvent
 {
-    public InventoryItem InventoryItem;
+    public ItemData InventoryItem;
 
-    public SpawnDroppedInventoryItem(InventoryItem inventoryItem)
+    public SpawnDroppedInventoryItem(ItemData inventoryItem)
     {
         InventoryItem = inventoryItem;
     }

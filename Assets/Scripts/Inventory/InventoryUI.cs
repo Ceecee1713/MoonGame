@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ public class InventoryUI : MonoBehaviour
     private InventoryUISlot [] inventorySlots = new InventoryUISlot [8];
 
     [SerializeField] //Delete later
-    private InventoryItem _equipedInventoryItem;
+    private ItemData _equipedInventoryItem;
 
     [SerializeField] //Delete later
     private InventoryUISlot _selectedInventoryUISlot;
@@ -19,11 +20,16 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] //Delete later
     private InventoryUISlot _previousInventoryUISlot;
 
-    private int _maxAmountOfStackableItems = 64;
+    private int _maxAmountOfStackableItems = 3;
     private bool _canCraftItem = false;
+
+    private int _amountNeededForMaterial;
+    private int _numberToMatchAmountNeededForMaterial;
 
     void Start()
     {
+        inventoryData.Inventory.Clear();
+
         EventBus.Instance.Subscribe<CheckToAddInventoryItem>(CheckInventorySlot);
         EventBus.Instance.Subscribe<CheckToAddCraftedItem>(CheckToAddCraftedItem);
         EventBus.Instance.Subscribe<SelectInventoryItem>(EquipInventoryItem);
@@ -36,27 +42,29 @@ public class InventoryUI : MonoBehaviour
             _equipedInventoryItem = _selectedInventoryUISlot.InventoryItem;
     }
 
-    private void CheckInventorySlot(CheckToAddInventoryItem checkToAddInventoryItem)
+    private void CheckInventorySlot(CheckToAddInventoryItem checkToAddInventoryItem) //To add an inventory item (not from crafting)
     {
-        for(int i = 0; i < inventorySlots.Length; i++) //Check if new inventory item's stackable and if any inventory slot has the same inventory item
+        for(int i = 0; i < inventorySlots.Length; i++) 
         {
-            //If both are labelled as stackable items
-            if(inventorySlots[i].InventoryItem != null && inventorySlots[i].InventoryItem.ItemData.IsThisAStackableItem == true 
-                && checkToAddInventoryItem.InventoryItem.ItemData.IsThisAStackableItem == true)
+            //If new inventory item and current inventory slot that's being checked are stackable items
+            if(inventorySlots[i].InventoryItem.IsThisAStackableItem == true && checkToAddInventoryItem.InventoryItem.IsThisAStackableItem == true)
             {
-                //If both are the same item type and the inventory slot's quantity of that item isn't above the "_maxAmountOfStackableItems"
-                if(inventorySlots[i].InventoryItem.ItemData.ItemType == checkToAddInventoryItem.InventoryItem.ItemData.ItemType && 
-                    inventorySlots[i].InventoryItem.ItemData.Quantity <= _maxAmountOfStackableItems)
+                //If new inventory item and current inventory slot that's being checked are the same item type 
+                if(inventorySlots[i].InventoryItem.ItemType == checkToAddInventoryItem.InventoryItem.ItemType)
                 {
-                    inventorySlots[i].InventoryItem.ItemData.Quantity++;
-                    return;
-                }
+                    //If the inventory slot's item's quantity isn't above the "_maxAmountOfStackableItems" (for stackable items to stack)
+                    if(inventorySlots[i].InventoryItem.Quantity < _maxAmountOfStackableItems) 
+                    {
+                        inventorySlots[i].InventoryItem.Quantity++;
+                        return;
+                    }
+                } 
             }
         }
 
-        for(int i = 0; i < inventorySlots.Length; i++) //Add new inventory item in any empty inventory slot and inventory data
+        for(int i = 0; i < inventorySlots.Length; i++) //Add new inventory item in any empty inventory slot, whether item is stackable or not
         {
-            if(inventorySlots[i].InventoryItem == null)
+            if(inventorySlots[i].IsEmpty == true)
             {
                 inventorySlots[i].AddItemToSlot(checkToAddInventoryItem.InventoryItem);
                 inventoryData.Inventory.Add(checkToAddInventoryItem.InventoryItem);
@@ -65,11 +73,11 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    private void CheckToAddCraftedItem(CheckToAddCraftedItem checkToAddCraftedItem) //Craftable items do not stack
+    private void CheckToAddCraftedItem(CheckToAddCraftedItem checkToAddCraftedItem) //To add crafted inventory item. Note that craftable items DO NOT stack
     {
-        for(int i = 0; i < inventorySlots.Length; i++) //Add new inventory item in any empty inventory slot
+        for(int i = 0; i < inventorySlots.Length; i++) //Add new crafted inventory item in any empty inventory slot
         {
-            if(inventorySlots[i].InventoryItem == null)
+            if(inventorySlots[i].IsEmpty == true)
             {
                 inventorySlots[i].AddItemToSlot(checkToAddCraftedItem.InventoryItem);
                 inventoryData.Inventory.Add(checkToAddCraftedItem.InventoryItem);
@@ -85,25 +93,11 @@ public class InventoryUI : MonoBehaviour
             return;
         }
 
-        /*
-        for(int i = 0; i < inventorySlots.Length; i++) //Check if new inventory item's stackable and if any inventory slot has the same inventory item
-        {
-            //If both are labelled as stackable items
-            if(inventorySlots[i].InventoryItem != null && inventorySlots[i].InventoryItem.ItemData.IsThisAStackableItem == true && checkToAddInventoryItem.InventoryItem.ItemData.IsThisAStackableItem == true)
-            {
-                //If both are the same item type and the inventory slot's quantity of that item isn't above the "_maxAmountOfStackableItems"
-                if(inventorySlots[i].InventoryItem.ItemData.ItemType == checkToAddInventoryItem.InventoryItem.ItemData.ItemType && 
-                    inventorySlots[i].InventoryItem.ItemData.Quantity <= _maxAmountOfStackableItems)
-                {
-                    inventorySlots[i].InventoryItem.ItemData.Quantity++;
-                    return;
-                }
-            }
-        }
-        */
 
-        //Check all inventory slots and remove total amount of crafting materials
-        //Checking for singular items, not their quantities (not considering stackable)
+        //The removal of inventory items that were used as crafting materials for the CraftManager:
+
+        /*
+        //Checking for non-stacking items
         for(int i = 0; i < inventorySlots.Length; i++)
         {
             for(int j = 0; j < checkToAddCraftedItem.CraftingMaterialItems.Count; j++)
@@ -111,7 +105,37 @@ public class InventoryUI : MonoBehaviour
                 if(checkToAddCraftedItem.CraftingMaterialItems.Contains(inventorySlots[i].InventoryItem))
                 {
                     inventoryData.Inventory.Remove(inventorySlots[i].InventoryItem);
-                    inventorySlots[i].InventoryItem = null;
+                    inventorySlots[i].RemoveItemFromSlot(); //Clear item data from the inventory slot
+                }
+            }
+        }
+        */
+
+        //Checking for stackable items
+        if(checkToAddCraftedItem.AmountsPerStackableItemToRemove.Count == 0) //No stackable materials needed to consume
+        {
+            _canCraftItem = false;
+            return;
+        }
+
+        for(int i = 0; i < checkToAddCraftedItem.AmountsPerStackableItemToRemove.Count; i++)
+        {
+            _amountNeededForMaterial = checkToAddCraftedItem.AmountsPerStackableItemToRemove[i];
+            _numberToMatchAmountNeededForMaterial = 0;
+            Debug.Log("This is the number we gotta match to: " + _amountNeededForMaterial);
+
+            for(int j = 0; j < inventorySlots.Length; j++)
+            {
+                if(_numberToMatchAmountNeededForMaterial >= _amountNeededForMaterial)
+                    break;
+
+                //Comparing inventory item types from the inventory slot array to ANY INDEX in the "checkToAddCraftedItem.CraftingMaterialItems" List
+                if (checkToAddCraftedItem.CraftingMaterialItems.Any(InventoryItem => InventoryItem.ItemType == inventorySlots[j].InventoryItem.ItemType))
+                {
+                    inventoryData.Inventory.Remove(inventorySlots[j].InventoryItem); //Remove inventory item from the inventory data
+                    inventorySlots[j].RemoveItemFromSlot(); //Clear item data from "j" inventory slot
+                    _numberToMatchAmountNeededForMaterial++;
+                    Debug.Log(_numberToMatchAmountNeededForMaterial);
                 }
             }
         }
@@ -119,7 +143,7 @@ public class InventoryUI : MonoBehaviour
         _canCraftItem = false; //Reset value
     }
 
-    private void EquipInventoryItem(SelectInventoryItem selectInventoryItem)
+    private void EquipInventoryItem(SelectInventoryItem selectInventoryItem) //When selecting on an inventory slot with mouse
     {
         for(int i = 0; i < inventorySlots.Length; i++)
         {
@@ -145,12 +169,12 @@ public class InventoryUI : MonoBehaviour
         {
             //If the selected UI slot is within the "inventorySlots" array, the selected inventory slot has an inventory item inside it 
             //AND the equiped inventory item isn't empty
-            if(inventorySlots[i] == _selectedInventoryUISlot && _selectedInventoryUISlot.InventoryItem != null && _equipedInventoryItem != null)
+            if(inventorySlots[i] == _selectedInventoryUISlot) //&& _equipedInventoryItem != null)
             {
                 //Remove the item from inventory data, its inventory slot and instiantiate the inventory item in world space
-                inventoryData.Inventory.Remove(_equipedInventoryItem);
+                inventoryData.Inventory.Remove(inventorySlots[i].InventoryItem);
                 inventorySlots[i].DropItem();
-                _equipedInventoryItem = null;
+                //_equipedInventoryItem = null;
                 break;
             }
         }

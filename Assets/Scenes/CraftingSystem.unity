@@ -670,7 +670,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 209566433}
         m_TargetAssemblyTypeName: CraftButton, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: OnCraftClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -731,11 +731,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   craftManager: {fileID: 31982664}
-  craftableInventoryItem: {fileID: 0}
+  craftableInventoryItem:
+    SlotImageSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+    NameOfItem: Ruby
+    ItemType: 3
+    ItemObject: {fileID: 8118162022096007086, guid: c327a025010c2fb44a4c0c9b9a21d25b, type: 3}
+    Quantity: 1
+    IsThisAStackableItem: 0
   craftingMaterials:
-  - {fileID: 11400000, guid: 4089defa6d0e83548b7d1da7ed80de1a, type: 2}
-  - {fileID: 11400000, guid: 4089defa6d0e83548b7d1da7ed80de1a, type: 2}
-  - {fileID: 11400000, guid: 4089defa6d0e83548b7d1da7ed80de1a, type: 2}
+  - SlotImageSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    NameOfItem: Stone
+    ItemType: 1
+    ItemObject: {fileID: 8118162022096007086, guid: c327a025010c2fb44a4c0c9b9a21d25b, type: 3}
+    Quantity: 7
+    IsThisAStackableItem: 1
+  - SlotImageSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    NameOfItem: Beryllium
+    ItemType: 2
+    ItemObject: {fileID: 8118162022096007086, guid: 20410bd47c0b5cd4eb8f0368fabf5f5c, type: 3}
+    Quantity: 2
+    IsThisAStackableItem: 1
 --- !u!1 &215767827
 GameObject:
   m_ObjectHideFlags: 0
@@ -883,10 +898,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   craftManager: {fileID: 31982664}
-  craftableInventoryItem: {fileID: 11400000, guid: 66134ccbf567fef439585e58155411fc, type: 2}
+  craftableInventoryItem:
+    SlotImageSprite: {fileID: 0}
+    NameOfItem: 
+    ItemType: 0
+    ItemObject: {fileID: 0}
+    Quantity: 0
+    IsThisAStackableItem: 0
   craftingMaterials:
-  - {fileID: 11400000, guid: fe92a3265061512439824995b6f5a323, type: 2}
-  - {fileID: 11400000, guid: fe92a3265061512439824995b6f5a323, type: 2}
+  - SlotImageSprite: {fileID: 0}
+    NameOfItem: 
+    ItemType: 0
+    ItemObject: {fileID: 0}
+    Quantity: 0
+    IsThisAStackableItem: 0
 --- !u!1 &319904478
 GameObject:
   m_ObjectHideFlags: 0
@@ -1800,14 +1825,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   craftManager: {fileID: 31982664}
-  craftableInventoryItem: {fileID: 0}
+  craftableInventoryItem:
+    SlotImageSprite: {fileID: 0}
+    NameOfItem: 
+    ItemType: 0
+    ItemObject: {fileID: 0}
+    Quantity: 0
+    IsThisAStackableItem: 0
   craftingMaterials:
-  - {fileID: 11400000, guid: fe92a3265061512439824995b6f5a323, type: 2}
-  - {fileID: 11400000, guid: fe92a3265061512439824995b6f5a323, type: 2}
-  - {fileID: 11400000, guid: fe92a3265061512439824995b6f5a323, type: 2}
-  - {fileID: 11400000, guid: 4089defa6d0e83548b7d1da7ed80de1a, type: 2}
-  - {fileID: 11400000, guid: 4089defa6d0e83548b7d1da7ed80de1a, type: 2}
-  - {fileID: 11400000, guid: 4089defa6d0e83548b7d1da7ed80de1a, type: 2}
+  - SlotImageSprite: {fileID: 0}
+    NameOfItem: 
+    ItemType: 0
+    ItemObject: {fileID: 0}
+    Quantity: 0
+    IsThisAStackableItem: 0
 --- !u!1 &759905239
 GameObject:
   m_ObjectHideFlags: 0
@@ -2708,7 +2739,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9812631fc05549b44b2c3aaf8782a7a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryItem: {fileID: 11400000, guid: 4089defa6d0e83548b7d1da7ed80de1a, type: 2}
+  inventoryItem:
+    SlotImageSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    NameOfItem: Stone
+    ItemType: 1
+    ItemObject: {fileID: 8118162022096007086, guid: c327a025010c2fb44a4c0c9b9a21d25b, type: 3}
+    Quantity: 1
+    IsThisAStackableItem: 1
 --- !u!65 &1356608700
 BoxCollider:
   m_ObjectHideFlags: 0
