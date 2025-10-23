@@ -122,23 +122,29 @@ public class InventoryUI : MonoBehaviour
         {
             _amountNeededForMaterial = checkToAddCraftedItem.AmountsPerStackableItemToRemove[i];
             _numberToMatchAmountNeededForMaterial = 0;
+            
+            //Set the specific material type we're looking for at this index
+            var targetMaterialType = checkToAddCraftedItem.CraftingMaterialItems[i].ItemType;
+            
             Debug.Log("This is the number we gotta match to: " + _amountNeededForMaterial);
-
+            Debug.Log("Looking for material type: " + targetMaterialType);
+            
             for(int j = 0; j < inventorySlots.Length; j++)
             {
+                //Check if we've already removed enough items for this specific material
                 if(_numberToMatchAmountNeededForMaterial >= _amountNeededForMaterial)
                     break;
-
-                //Comparing inventory item types from the inventory slot array to ANY INDEX in the "checkToAddCraftedItem.CraftingMaterialItems" List
-                if (checkToAddCraftedItem.CraftingMaterialItems.Any(InventoryItem => InventoryItem.ItemType == inventorySlots[j].InventoryItem.ItemType))
+                
+                //Check if the slot matches "targetMaterialType"
+                if (inventorySlots[j].InventoryItem.ItemType == targetMaterialType)
                 {
-                    inventoryData.Inventory.Remove(inventorySlots[j].InventoryItem); //Remove inventory item from the inventory data
-                    inventorySlots[j].RemoveItemFromSlot(); //Clear item data from "j" inventory slot
+                    inventoryData.Inventory.Remove(inventorySlots[j].InventoryItem);
+                    inventorySlots[j].RemoveItemFromSlot();
                     _numberToMatchAmountNeededForMaterial++;
-                    Debug.Log(_numberToMatchAmountNeededForMaterial);
                 }
             }
         }
+
 
         _canCraftItem = false; //Reset value
     }
