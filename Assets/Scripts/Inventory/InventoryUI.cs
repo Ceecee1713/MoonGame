@@ -42,38 +42,9 @@ public class InventoryUI : MonoBehaviour
             _equipedInventoryItem = _selectedInventoryUISlot.InventoryItem;
     }
 
-    private void CheckInventorySlot(CheckToAddInventoryItem checkToAddInventoryItem) //To add an inventory item (not from crafting)
+    private void CheckInventorySlot(CheckToAddInventoryItem checkToAddInventoryItem) 
     {
         AddInventoryItem(checkToAddInventoryItem.InventoryItem);
-
-        /*
-        for(int i = 0; i < inventorySlots.Length; i++) 
-        {
-            if(inventorySlots[i].InventoryItem.IsThisAStackableItem == true && checkToAddInventoryItem.InventoryItem.IsThisAStackableItem == true)
-            {
-                if(inventorySlots[i].InventoryItem.ItemType == checkToAddInventoryItem.InventoryItem.ItemType)
-                {
-                    //If the inventory slot's item's quantity isn't above "_maxStackAmount" (allow items to stack)
-                    if(inventorySlots[i].InventoryItem.Quantity < _maxStackAmount) 
-                    {
-                        inventorySlots[i].InventoryItem.Quantity++;
-                        return;
-                    }
-                } 
-            }
-        }
-
-        //Add new inventory item in any empty inventory slot, whether item is stackable or not
-        for(int i = 0; i < inventorySlots.Length; i++) 
-        {
-            if(inventorySlots[i].IsEmpty == true)
-            {
-                inventorySlots[i].AddItemToSlot(checkToAddInventoryItem.InventoryItem);
-                inventoryData.Inventory.Add(checkToAddInventoryItem.InventoryItem);
-                break;
-            }
-        }
-        */
     }
 
     private void AddInventoryItem(ItemData itemToCheck)
@@ -109,35 +80,6 @@ public class InventoryUI : MonoBehaviour
     private void CheckToAddCraftedItem(CheckToAddCraftedItem checkToAddCraftedItem) 
     {
         AddInventoryItem(checkToAddCraftedItem.InventoryItem);
-
-        /*
-        for(int i = 0; i < inventorySlots.Length; i++) 
-        {
-            if(inventorySlots[i].InventoryItem.IsThisAStackableItem == true && checkToAddCraftedItem.InventoryItem.IsThisAStackableItem == true)
-            {
-                if(inventorySlots[i].InventoryItem.ItemType == checkToAddCraftedItem.InventoryItem.ItemType)
-                {
-                    //If the inventory slot's item's quantity isn't above "_maxStackAmount" (allow items to stack)
-                    if(inventorySlots[i].InventoryItem.Quantity < _maxStackAmount) 
-                    {
-                        inventorySlots[i].InventoryItem.Quantity++;
-                        return;
-                    }
-                } 
-            }
-        }
-
-        //Add new crafted inventory item in any empty inventory slot
-        for(int i = 0; i < inventorySlots.Length; i++) 
-        {
-            if(inventorySlots[i].IsEmpty == true)
-            {
-                inventorySlots[i].AddItemToSlot(checkToAddCraftedItem.InventoryItem);
-                inventoryData.Inventory.Add(checkToAddCraftedItem.InventoryItem);
-                break;
-            }
-        }
-        */
 
         if(checkToAddCraftedItem.AmountsPerStackableItemToRemove.Count == 0) 
             return;
