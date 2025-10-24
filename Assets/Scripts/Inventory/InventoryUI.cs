@@ -20,7 +20,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] //Delete later
     private InventoryUISlot _previousInventoryUISlot;
 
-    private int _maxAmountOfStackableItems = 3;
+    private int _maxStackAmount = 3;
     private bool _canCraftItem = false;
 
     private int _amountNeededForMaterial;
@@ -38,7 +38,7 @@ public class InventoryUI : MonoBehaviour
 
     void Update()
     {
-        if(_selectedInventoryUISlot != null) //Update inventory item from "_selectedInventoryUISlot"
+        if(_selectedInventoryUISlot != null) 
             _equipedInventoryItem = _selectedInventoryUISlot.InventoryItem;
     }
 
@@ -53,8 +53,8 @@ public class InventoryUI : MonoBehaviour
                 //If new inventory item and current inventory slot's item are the same type
                 if(inventorySlots[i].InventoryItem.ItemType == checkToAddInventoryItem.InventoryItem.ItemType)
                 {
-                    //If the inventory slot's item's quantity isn't above "_maxAmountOfStackableItems" (allow items to stack)
-                    if(inventorySlots[i].InventoryItem.Quantity < _maxAmountOfStackableItems) 
+                    //If the inventory slot's item's quantity isn't above "_maxStackAmount" (allow items to stack)
+                    if(inventorySlots[i].InventoryItem.Quantity < _maxStackAmount) 
                     {
                         inventorySlots[i].InventoryItem.Quantity++;
                         return;
