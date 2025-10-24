@@ -9,6 +9,6 @@ public class PlayerPauseState : PlayerState
 
     public override void Enter()
     {
-        Debug.Log("I'm in paused state"); 
+    
     }
 }

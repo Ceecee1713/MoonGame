@@ -49,7 +49,7 @@ public class InventoryUI : MonoBehaviour
 
     private void AddInventoryItem(ItemData itemToCheck)
     {
-        for(int i = 0; i < inventorySlots.Length; i++) 
+        for(int i = 0; i < inventorySlots.Length; i++) //Add same type, stackable items together in same inventory slot (increase quantity)
         {
             if(inventorySlots[i].InventoryItem.IsThisAStackableItem == true && itemToCheck.IsThisAStackableItem == true)
             {

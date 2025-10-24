@@ -3,7 +3,7 @@ using UnityEngine;
 public class PickUpItem : MonoBehaviour
 {
     [SerializeField]
-    private ItemData inventoryItem;
+    private ItemData inventoryItem; //Refactor
 
     private bool _playerCollisionDetected = false; 
 

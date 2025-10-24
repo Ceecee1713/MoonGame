@@ -17,7 +17,7 @@ public class CraftingTable : MonoBehaviour
         if(_playerCollisionDetected == true)
         {
             craftingUI.SetActive(true);
-            //Add freezing player event and other things
+            EventBus.Instance.Publish(new FreezePlayer(true));
         }
     }
 

@@ -82,6 +82,8 @@ public class PlayerStateMachine : BaseStateMachine
     {
         ChangeState(IdleState);
         currentState = IdleState;
+
+        EventBus.Instance.Subscribe<FreezePlayer>(FreezePlayer);
     }
 
     public void Move(Vector2 movement)
@@ -89,6 +91,14 @@ public class PlayerStateMachine : BaseStateMachine
         _playerMovement.x = movement.x;
         _playerMovement.y = movement.y;
         _playerDirection = new Vector3(_playerMovement.x, 0f, _playerMovement.y).normalized;
+    }
+
+    private void FreezePlayer(FreezePlayer freezePlayer)
+    {
+        if(freezePlayer.PausePlayerMovement == true)
+            StateChange(PausedState);
+        else
+            StateChange(IdleState);
     }
 
     public override void Update()
@@ -159,6 +169,9 @@ public class PlayerStateMachine : BaseStateMachine
 
         if(PreviousState == WanderState && currentState == IdleState)
             StartCoroutine(SpeedChange(0.0f));
+
+        if((PreviousState == WanderState || PreviousState == IdleState) && currentState == PausedState)
+            StartCoroutine(SpeedChange(0.0f));
     }
 
     IEnumerator SpeedChange(float targetSpeed) 
@@ -177,17 +190,3 @@ public class PlayerStateMachine : BaseStateMachine
         }
     }
 }
-
-/*
-private void OnTriggerEnter(Collider collider)
-{
-	if (collider.gameObject.CompareTag("Whatever"))
-}
-__________________________________________
-
-private void OnTriggerEnter(Collider collider)
-{
-	if (collider.gameObject.CompareTag("Whatever"))
-            variableNameOfAnyVariableType = collider.GetComponent<scriptNameYouWannaReference>().NameOfVariableYouWantToAccess();
-}
-*/

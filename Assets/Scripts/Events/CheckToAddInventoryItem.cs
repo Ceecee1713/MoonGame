@@ -49,6 +49,26 @@ public class SpawnDroppedInventoryItem : IEvent
     }
 }
 
+public class StopCraftingTemporarily : IEvent
+{
+    public bool ShowingWarningMessage;
+
+    public StopCraftingTemporarily(bool showingWarningMessage)
+    {
+        ShowingWarningMessage = showingWarningMessage;
+    }
+}
+
+public class FreezePlayer : IEvent
+{
+    public bool PausePlayerMovement;
+
+    public FreezePlayer(bool pausePlayerMovement)
+    {
+        PausePlayerMovement = pausePlayerMovement;
+    }
+}
+
 public class Interact : IEvent
 {
 

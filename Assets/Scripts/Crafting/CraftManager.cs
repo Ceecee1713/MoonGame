@@ -7,6 +7,8 @@ public class CraftManager : MonoBehaviour
     [SerializeField]
     private InventoryData inventoryData;
 
+    private CraftingUI _craftingUI;
+
     private List <int> _amountsPerUniqueInventoryItemsToRemove = new List <int>(); //Each index represents the total number of a unique inventory item to be removed
     private List <ItemData> _materialsForCraftableItem = new List <ItemData>();
 
@@ -18,6 +20,11 @@ public class CraftManager : MonoBehaviour
     private int _remainingQuantity; 
     private int _amountOfAnInventoryItemNeeded; //Int to be added into "_amountsPerUniqueInventoryItemsToRemove" list 
     //Counts the number of a unique inventory item to be removed (its quantity is fully consumed)
+
+    void Start()
+    {
+        _craftingUI = GetComponent<CraftingUI>();
+    }
 
     public void ResetStatus() 
     {
@@ -36,6 +43,7 @@ public class CraftManager : MonoBehaviour
     private void CannotCraftItem()
     {
         //Add warning
+        _craftingUI.DisplayWarningMessage();
     }
     
     public void CheckInventoryForCraftingMaterials(ItemData craftableInventoryItem, ItemData craftingMaterial, int maxAmountOfCraftingMaterialTypes)
