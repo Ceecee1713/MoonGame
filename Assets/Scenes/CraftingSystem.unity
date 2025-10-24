@@ -743,13 +743,13 @@ MonoBehaviour:
     NameOfItem: Stone
     ItemType: 1
     ItemObject: {fileID: 8118162022096007086, guid: c327a025010c2fb44a4c0c9b9a21d25b, type: 3}
-    Quantity: 6
+    Quantity: 8
     IsThisAStackableItem: 1
   - SlotImageSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
     NameOfItem: Beryllium
     ItemType: 2
     ItemObject: {fileID: 8118162022096007086, guid: 20410bd47c0b5cd4eb8f0368fabf5f5c, type: 3}
-    Quantity: 3
+    Quantity: 2
     IsThisAStackableItem: 1
 --- !u!1 &215767827
 GameObject:

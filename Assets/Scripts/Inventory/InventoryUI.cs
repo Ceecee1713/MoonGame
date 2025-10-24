@@ -44,15 +44,16 @@ public class InventoryUI : MonoBehaviour
 
     private void CheckInventorySlot(CheckToAddInventoryItem checkToAddInventoryItem) //To add an inventory item (not from crafting)
     {
+        //Add same type, stackable inventory item into the an inventory slot that matches its type and is also stackable
         for(int i = 0; i < inventorySlots.Length; i++) 
         {
-            //If new inventory item and current inventory slot that's being checked are stackable items
+            //If new inventory item and current inventory slot's item are stackable items
             if(inventorySlots[i].InventoryItem.IsThisAStackableItem == true && checkToAddInventoryItem.InventoryItem.IsThisAStackableItem == true)
             {
-                //If new inventory item and current inventory slot that's being checked are the same item type 
+                //If new inventory item and current inventory slot's item are the same type
                 if(inventorySlots[i].InventoryItem.ItemType == checkToAddInventoryItem.InventoryItem.ItemType)
                 {
-                    //If the inventory slot's item's quantity isn't above the "_maxAmountOfStackableItems" (for stackable items to stack)
+                    //If the inventory slot's item's quantity isn't above "_maxAmountOfStackableItems" (allow items to stack)
                     if(inventorySlots[i].InventoryItem.Quantity < _maxAmountOfStackableItems) 
                     {
                         inventorySlots[i].InventoryItem.Quantity++;
@@ -62,7 +63,8 @@ public class InventoryUI : MonoBehaviour
             }
         }
 
-        for(int i = 0; i < inventorySlots.Length; i++) //Add new inventory item in any empty inventory slot, whether item is stackable or not
+        //Add new inventory item in any empty inventory slot, whether item is stackable or not
+        for(int i = 0; i < inventorySlots.Length; i++) 
         {
             if(inventorySlots[i].IsEmpty == true)
             {
@@ -73,9 +75,10 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    private void CheckToAddCraftedItem(CheckToAddCraftedItem checkToAddCraftedItem) //To add crafted inventory item. Note that craftable items DO NOT stack
+    private void CheckToAddCraftedItem(CheckToAddCraftedItem checkToAddCraftedItem) 
     {
-        for(int i = 0; i < inventorySlots.Length; i++) //Add new crafted inventory item in any empty inventory slot
+        //Add new crafted inventory item in any empty inventory slot
+        for(int i = 0; i < inventorySlots.Length; i++) 
         {
             if(inventorySlots[i].IsEmpty == true)
             {
@@ -86,57 +89,30 @@ public class InventoryUI : MonoBehaviour
             }
         }
 
-        if(_canCraftItem == false)
-        {
-            Debug.Log("Cannot add crafted item into inventory.");
-            //Add event to show warning message and freeze mouse input for a set duration
-            return;
-        }
-
-
-        //The removal of inventory items that were used as crafting materials for the CraftManager:
-
-        /*
-        //Checking for non-stacking items
-        for(int i = 0; i < inventorySlots.Length; i++)
-        {
-            for(int j = 0; j < checkToAddCraftedItem.CraftingMaterialItems.Count; j++)
-            {
-                if(checkToAddCraftedItem.CraftingMaterialItems.Contains(inventorySlots[i].InventoryItem))
-                {
-                    inventoryData.Inventory.Remove(inventorySlots[i].InventoryItem);
-                    inventorySlots[i].RemoveItemFromSlot(); //Clear item data from the inventory slot
-                }
-            }
-        }
-        */
-
-        //Checking for stackable items
-        if(checkToAddCraftedItem.AmountsPerStackableItemToRemove.Count == 0) //No stackable materials needed to consume
+        if(_canCraftItem == false || checkToAddCraftedItem.AmountsPerStackableItemToRemove.Count == 0) 
         {
             _canCraftItem = false;
+            //Edit later
             return;
         }
 
+        //The removal of inventory items that were used as crafting materials for the CraftManager:
         for(int i = 0; i < checkToAddCraftedItem.AmountsPerStackableItemToRemove.Count; i++)
         {
             _amountNeededForMaterial = checkToAddCraftedItem.AmountsPerStackableItemToRemove[i];
             _numberToMatchAmountNeededForMaterial = 0;
+            var targetInventoryItemType = checkToAddCraftedItem.CraftingMaterialItems[i].ItemType;
             
-            //Set the specific material type we're looking for at this index
-            var targetMaterialType = checkToAddCraftedItem.CraftingMaterialItems[i].ItemType;
-            
-            Debug.Log("This is the number we gotta match to: " + _amountNeededForMaterial);
-            Debug.Log("Looking for material type: " + targetMaterialType);
+            //Debug.Log("This is the number we gotta match to: " + _amountNeededForMaterial);
+            //Debug.Log("Looking for material type: " + targetInventoryItemType);
             
             for(int j = 0; j < inventorySlots.Length; j++)
             {
-                //Check if we've already removed enough items for this specific material
                 if(_numberToMatchAmountNeededForMaterial >= _amountNeededForMaterial)
                     break;
                 
-                //Check if the slot matches "targetMaterialType"
-                if (inventorySlots[j].InventoryItem.ItemType == targetMaterialType)
+                //If the the inventory slot's inventory item's item type matches "targetInventoryItemType"
+                if (inventorySlots[j].InventoryItem.ItemType == targetInventoryItemType)
                 {
                     inventoryData.Inventory.Remove(inventorySlots[j].InventoryItem);
                     inventorySlots[j].RemoveItemFromSlot();
@@ -144,7 +120,6 @@ public class InventoryUI : MonoBehaviour
                 }
             }
         }
-
 
         _canCraftItem = false; //Reset value
     }
@@ -155,14 +130,17 @@ public class InventoryUI : MonoBehaviour
         {
             if(inventorySlots[i] == selectInventoryItem.InventoryUISlot)
             {
-                if(_selectedInventoryUISlot != null) //Disable visuals of the previously selected inventory slot
+                if(_selectedInventoryUISlot != null) 
                 {
+                    //Disable visuals of the previously selected inventory slot
                     _previousInventoryUISlot = _selectedInventoryUISlot;
                     _previousInventoryUISlot.OutlineImage.SetActive(false);
                 }
 
                 _selectedInventoryUISlot = selectInventoryItem.InventoryUISlot; 
-                _selectedInventoryUISlot.OutlineImage.SetActive(true); //Enable visuals of selected inventory slot
+                
+                //Enable visuals of selected inventory slot
+                _selectedInventoryUISlot.OutlineImage.SetActive(true); 
                 _equipedInventoryItem = selectInventoryItem.InventoryUISlot.InventoryItem;
                 break;
             }
@@ -173,14 +151,12 @@ public class InventoryUI : MonoBehaviour
     {
         for(int i = 0; i < inventorySlots.Length; i++)
         {
-            //If the selected UI slot is within the "inventorySlots" array, the selected inventory slot has an inventory item inside it 
-            //AND the equiped inventory item isn't empty
-            if(inventorySlots[i] == _selectedInventoryUISlot) //&& _equipedInventoryItem != null)
+            //If selected UI slot is within the "inventorySlots" array and selected inventory slot has an inventory item
+            if(inventorySlots[i] == _selectedInventoryUISlot)
             {
-                //Remove the item from inventory data, its inventory slot and instiantiate the inventory item in world space
+                //Remove inventory item from inventory, its inventory slot and instiantiate item in world space
                 inventoryData.Inventory.Remove(inventorySlots[i].InventoryItem);
                 inventorySlots[i].DropItem();
-                //_equipedInventoryItem = null;
                 break;
             }
         }

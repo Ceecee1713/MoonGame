@@ -6,9 +6,8 @@ public class CraftManager : MonoBehaviour
     [SerializeField]
     private InventoryData inventoryData;
 
-    private List <int> checkedInventoryDataIndexes = new List <int>(); //For single items to prevent unnessacary inventory slot array checks
-    private List <int> amountOfItemsToRemove = new List <int>(); //For stackable items
-    private List <ItemData> allCraftingMaterials = new List <ItemData>();
+    private List <int> _amountsPerUniqueInventoryItemsToRemove = new List <int>(); 
+    private List <ItemData> _materialsForCraftableItem = new List <ItemData>();
 
     private bool _canCraft = false;
     private bool _quantityRemaining = false;
@@ -16,23 +15,22 @@ public class CraftManager : MonoBehaviour
 
     private int _amountOfMatchingCraftingMaterials = 0;
     private int _remainingQuantity;
-    private int _leftoverQuantity;
-    private int _amountOfItemsNeeded;
+    private int _leftoverQuantity; //Holds a reference from "_remainingQuantity"
+    private int _amountOfAnInventoryItemNeeded;
 
     public void ResetStatus() //Called every click on a crafting button (once per click)
     {
-        checkedInventoryDataIndexes.Clear();
-        amountOfItemsToRemove.Clear();
-        allCraftingMaterials.Clear();
-
-        _amountOfMatchingCraftingMaterials = 0;
-        _remainingQuantity = 0;
-        _leftoverQuantity = 0;
-        _amountOfItemsNeeded = 0;
+        _amountsPerUniqueInventoryItemsToRemove.Clear();
+        _materialsForCraftableItem.Clear();
 
         _canCraft = false;
         _quantityRemaining = false;
         _breakLoop = false;
+
+        _amountOfMatchingCraftingMaterials = 0;
+        _remainingQuantity = 0;
+        _leftoverQuantity = 0;
+        _amountOfAnInventoryItemNeeded = 0;
     }
 
     //Called "maxAmountOfCraftingMaterialTypes" of times per one crafting button click
@@ -42,36 +40,19 @@ public class CraftManager : MonoBehaviour
             return;
         
         _breakLoop = false;
-
-        /*
-        //For single, non-stackable items
-        for(int i = 0; i < inventoryData.Inventory.Count; i++) 
-        {
-            for(int j = 0; j < maxAmountOfCraftingMaterialTypes; j++)
-            {
-                if(inventoryData.Inventory[i].ItemType == craftingMaterial.ItemType && !checkedInventoryDataIndexes.Contains(i)) //For single items, not stackable
-                {
-                    _amountOfMatchingCraftingMaterials++;
-                    checkedInventoryDataIndexes.Add(i); //Prevent checked inventory data indexes from being looked at again 
-                    allCraftingMaterials.Add(craftingMaterial); 
-                }  
-            }
-        }
-        */
         
-        //Checking inventory data if it has the same inventory item data as "craftingMaterial's" inventory item data
-        //And interate completely through inventory data's list for "maxAmountOfCraftingMaterialTypes" amount of times
-        //For stackable items
-        for(int i = 0; i < maxAmountOfCraftingMaterialTypes; i++) //Used to be "inventoryData.Inventory.Count"
+        //Checking inventory if it has the same inventory item data as "craftingMaterial's" inventory item data (single inventory item comparison check)
+        //Interate through inventory for "maxAmountOfCraftingMaterialTypes" amount of times
+        for(int i = 0; i < maxAmountOfCraftingMaterialTypes; i++) 
         {
             if(_breakLoop == true)
                 break;
-                
-            _amountOfItemsNeeded = 0;
 
-            for(int j = 0; j < inventoryData.Inventory.Count; j++) //Used to be "maxAmountOfCraftingMaterialTypes"
+            _amountOfAnInventoryItemNeeded = 0;
+
+            for(int j = 0; j < inventoryData.Inventory.Count; j++) 
             {
-                //Debug.Log("amountOfItemsToRemove length: " + amountOfItemsToRemove.Count);
+                //Debug.Log("_amountsPerUniqueInventoryItemsToRemove length: " + _amountsPerUniqueInventoryItemsToRemove.Count);
 
                 if(_breakLoop == true)
                     break;
@@ -98,7 +79,7 @@ public class CraftManager : MonoBehaviour
                         if(_remainingQuantity > 0)
                         {
                             _quantityRemaining = true;
-                            _amountOfItemsNeeded++;
+                            _amountOfAnInventoryItemNeeded++;
                             _leftoverQuantity = _remainingQuantity;
                             //Debug.Log("More than zero and is there quantity remaining?" + _quantityRemaining);
                         }
@@ -106,18 +87,18 @@ public class CraftManager : MonoBehaviour
                         else if(_remainingQuantity == 0) //Removing the inventory items happens in the InventoryUI script
                         {
                             _quantityRemaining = false;
-                            _amountOfItemsNeeded++;
-                            amountOfItemsToRemove.Add(_amountOfItemsNeeded);
-                            allCraftingMaterials.Add(inventoryData.Inventory[j]); 
+                            _amountOfAnInventoryItemNeeded++;
+                            _amountsPerUniqueInventoryItemsToRemove.Add(_amountOfAnInventoryItemNeeded);
+                            _materialsForCraftableItem.Add(inventoryData.Inventory[j]); 
 
                             //Debug.Log("Equal to zero and is there quantity remaining?" + _quantityRemaining);
 
                             for(int k = 0; k < inventoryData.Inventory.Count; k++)
                             {
                                 if(inventoryData.Inventory[k].ItemType == craftingMaterial.ItemType)
-                                    _amountOfItemsNeeded--;
+                                    _amountOfAnInventoryItemNeeded--;
 
-                                if(_amountOfItemsNeeded == 0)
+                                if(_amountOfAnInventoryItemNeeded == 0)
                                 {
                                     _amountOfMatchingCraftingMaterials++;
                                     break;
@@ -131,8 +112,8 @@ public class CraftManager : MonoBehaviour
                         else if(_remainingQuantity < 0) //Removing the inventory items happens in the InventoryUI script
                         {
                             _quantityRemaining = false;
-                            amountOfItemsToRemove.Add(_amountOfItemsNeeded); 
-                            allCraftingMaterials.Add(inventoryData.Inventory[j]); 
+                            _amountsPerUniqueInventoryItemsToRemove.Add(_amountOfAnInventoryItemNeeded); 
+                            _materialsForCraftableItem.Add(inventoryData.Inventory[j]); 
 
                             //Debug.Log("Less to zero and is there quantity remaining?" + _quantityRemaining);
                             //Debug.Log("This is leftover quantity: " + _leftoverQuantity);
@@ -141,8 +122,8 @@ public class CraftManager : MonoBehaviour
                             {
                                 if(inventoryData.Inventory[k].ItemType == craftingMaterial.ItemType)
                                 {
-                                    if(_amountOfItemsNeeded != 0)
-                                        _amountOfItemsNeeded--;
+                                    if(_amountOfAnInventoryItemNeeded != 0)
+                                        _amountOfAnInventoryItemNeeded--;
 
                                     else //Removing quantity of the inventory slot's item if there's leftover
                                     {
@@ -171,6 +152,6 @@ public class CraftManager : MonoBehaviour
     private void CraftInventoryItem(ItemData craftableInventoryItem)
     {
         //Debug.Log("We got enough materials to craft!");
-        EventBus.Instance.Publish(new CheckToAddCraftedItem(craftableInventoryItem, allCraftingMaterials, amountOfItemsToRemove));
+        EventBus.Instance.Publish(new CheckToAddCraftedItem(craftableInventoryItem, _materialsForCraftableItem, _amountsPerUniqueInventoryItemsToRemove));
     }
 }
