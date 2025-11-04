@@ -350,7 +350,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67ed601a12e9ed84ea7763ef19b32234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InventoryItem: {fileID: 0}
+  InventoryItem:
+    SlotImageSprite: {fileID: 0}
+    NameOfItem: 
+    ItemType: 0
+    ItemObject: {fileID: 0}
+    Quantity: 0
+    IsThisAStackableItem: 0
+  IsEmpty: 0
   OutlineImage: {fileID: 291134996774492661}
   inventorySlotData:
     SlotImage: {fileID: 8798190940635094048}
@@ -406,7 +413,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67ed601a12e9ed84ea7763ef19b32234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InventoryItem: {fileID: 0}
+  InventoryItem:
+    SlotImageSprite: {fileID: 0}
+    NameOfItem: 
+    ItemType: 0
+    ItemObject: {fileID: 0}
+    Quantity: 0
+    IsThisAStackableItem: 0
+  IsEmpty: 0
   OutlineImage: {fileID: 106082366129178352}
   inventorySlotData:
     SlotImage: {fileID: 1763173189617733090}
@@ -687,7 +701,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67ed601a12e9ed84ea7763ef19b32234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InventoryItem: {fileID: 0}
+  InventoryItem:
+    SlotImageSprite: {fileID: 0}
+    NameOfItem: 
+    ItemType: 0
+    ItemObject: {fileID: 0}
+    Quantity: 0
+    IsThisAStackableItem: 0
+  IsEmpty: 0
   OutlineImage: {fileID: 7660340986796293189}
   inventorySlotData:
     SlotImage: {fileID: 6000707851931116172}
@@ -961,7 +982,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67ed601a12e9ed84ea7763ef19b32234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InventoryItem: {fileID: 0}
+  InventoryItem:
+    SlotImageSprite: {fileID: 0}
+    NameOfItem: 
+    ItemType: 0
+    ItemObject: {fileID: 0}
+    Quantity: 0
+    IsThisAStackableItem: 0
+  IsEmpty: 0
   OutlineImage: {fileID: 3494989221009700367}
   inventorySlotData:
     SlotImage: {fileID: 1921860818174090814}
@@ -1167,7 +1195,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67ed601a12e9ed84ea7763ef19b32234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InventoryItem: {fileID: 0}
+  InventoryItem:
+    SlotImageSprite: {fileID: 0}
+    NameOfItem: 
+    ItemType: 0
+    ItemObject: {fileID: 0}
+    Quantity: 0
+    IsThisAStackableItem: 0
+  IsEmpty: 0
   OutlineImage: {fileID: 5472702201273485199}
   inventorySlotData:
     SlotImage: {fileID: 6883913734034470520}
@@ -1186,6 +1221,7 @@ GameObject:
   - component: {fileID: 2876184891031753494}
   - component: {fileID: 799653641344641829}
   - component: {fileID: 8518854061628355280}
+  - component: {fileID: 5353291560563476263}
   m_Layer: 5
   m_Name: Test Inventory Grid
   m_TagString: Untagged
@@ -1235,7 +1271,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &2876184891031753494
 MonoBehaviour:
@@ -1299,9 +1335,27 @@ MonoBehaviour:
   - {fileID: 383654520660577177}
   - {fileID: 4090155772341147759}
   - {fileID: 1635943218810258234}
-  _equipedInventoryItem: {fileID: 0}
+  _equipedInventoryItem:
+    SlotImageSprite: {fileID: 0}
+    NameOfItem: 
+    ItemType: 0
+    ItemObject: {fileID: 0}
+    Quantity: 0
+    IsThisAStackableItem: 0
   _selectedInventoryUISlot: {fileID: 0}
   _previousInventoryUISlot: {fileID: 0}
+--- !u!225 &5353291560563476263
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4946269175956629527}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5472702201273485199
 GameObject:
   m_ObjectHideFlags: 0
@@ -1652,7 +1706,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67ed601a12e9ed84ea7763ef19b32234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InventoryItem: {fileID: 0}
+  InventoryItem:
+    SlotImageSprite: {fileID: 0}
+    NameOfItem: 
+    ItemType: 0
+    ItemObject: {fileID: 0}
+    Quantity: 0
+    IsThisAStackableItem: 0
+  IsEmpty: 0
   OutlineImage: {fileID: 186494504349836995}
   inventorySlotData:
     SlotImage: {fileID: 3820094496780020655}
@@ -1858,7 +1919,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67ed601a12e9ed84ea7763ef19b32234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InventoryItem: {fileID: 0}
+  InventoryItem:
+    SlotImageSprite: {fileID: 0}
+    NameOfItem: 
+    ItemType: 0
+    ItemObject: {fileID: 0}
+    Quantity: 0
+    IsThisAStackableItem: 0
+  IsEmpty: 0
   OutlineImage: {fileID: 6195437484838429052}
   inventorySlotData:
     SlotImage: {fileID: 1161452407734043942}
@@ -1914,7 +1982,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67ed601a12e9ed84ea7763ef19b32234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InventoryItem: {fileID: 0}
+  InventoryItem:
+    SlotImageSprite: {fileID: 0}
+    NameOfItem: 
+    ItemType: 0
+    ItemObject: {fileID: 0}
+    Quantity: 0
+    IsThisAStackableItem: 0
+  IsEmpty: 0
   OutlineImage: {fileID: 2568450285276203379}
   inventorySlotData:
     SlotImage: {fileID: 3521519399103599913}

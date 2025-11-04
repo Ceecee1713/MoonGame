@@ -59,6 +59,20 @@ public class StopCraftingTemporarily : IEvent
     }
 }
 
+public class ChangeCanvases : IEvent
+{
+    public GameObject NewCanvas;
+    public bool SolvedMoonPuzzle;
+    public bool PromptTextAdventure;
+
+    public ChangeCanvases(GameObject newCanvas, bool solvedMoonPuzzle, bool promptTextAdventure)
+    {
+        NewCanvas = newCanvas;
+        SolvedMoonPuzzle = solvedMoonPuzzle;
+        PromptTextAdventure = promptTextAdventure;
+    }
+}
+
 public class FreezePlayer : IEvent
 {
     public bool PausePlayerMovement;
