@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 792e0d2b76dade94b846a0b70d72d54f, type: 3}
+  m_Name: MoonPuzzleTextAdventure
+  m_EditorClassIdentifier: 
+  TextBranches:
+  - FirstQuestionDialogue: {fileID: 11400000, guid: ccaa5baaa1d187b4687ba105747bb8c0, type: 2}
+    SecondQuestionDialogue: {fileID: 11400000, guid: c87266406bb442140bc393331d188135, type: 2}
+    ThirdQuestionDialogue: {fileID: 11400000, guid: b3c04739e2e644546a6471b88373830b, type: 2}
+    FinishTextAdventureDialogue: {fileID: 11400000, guid: 3c86193e53bb209449b05eb0d3e63984, type: 2}

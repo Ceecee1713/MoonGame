@@ -15,6 +15,7 @@ public class CanvasManager : MonoBehaviour
     [SerializeField]
     private float shortenedFadingTime = 0.45f;
 
+    private bool _showTextAdventure;
     private GameObject _currentCanvas;
     private CanvasGroup _currentCanvasGroup, _newCanvasGroup;
 
@@ -65,7 +66,7 @@ public class CanvasManager : MonoBehaviour
         if(promptTextAdventure == true)
         {
             //Prompt the first message of dialogue to be said
-            StopAllCoroutines();
+            EventBus.Instance.Publish(new StartTextAdventure());
         }
     }
 }

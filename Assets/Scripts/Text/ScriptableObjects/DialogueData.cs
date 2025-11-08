@@ -7,5 +7,8 @@ public class DialogueData : ScriptableObject
 {
     [TextArea(2,5)] public string [] Messages;
     public string ButtonOneText, ButtonTwoText, ButtonThreeText;
-    public string ButtonFourText = "Try Again";
+
+    [Header("Correct Button Number To Advance Dialogue")]
+    [Range(1, 3)]
+    public int correctButtonNumber;
 }

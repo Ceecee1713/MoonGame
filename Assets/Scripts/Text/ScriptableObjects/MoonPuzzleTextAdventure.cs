@@ -1,10 +1,10 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CompleteTextAdventure", menuName = "Dialogue Scriptable Objects/Create a New Text Adventure Sequence")]
-public class CompleteTextAdventure : ScriptableObject
+[CreateAssetMenu(fileName = "MoonPuzzleTextAdventure", menuName = "Dialogue Scriptable Objects/Create a Complete Moon Puzzle Text Adventure Sequence")]
+public class MoonPuzzleTextAdventure : ScriptableObject
 {
-    public TextBranches [] TextBranches = new TextBranches[4];
+    public TextBranches [] TextBranches = new TextBranches[3];
 }
 
 [Serializable]

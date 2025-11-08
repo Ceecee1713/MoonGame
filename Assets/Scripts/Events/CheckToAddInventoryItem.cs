@@ -3,6 +3,8 @@ using UnityEngine;
 
 //This contains all the events (data types) that the game uses
 
+//Inventory and Crafting System Events below
+
 public class CheckToAddInventoryItem : IEvent 
 {
     public ItemData InventoryItem;
@@ -59,6 +61,37 @@ public class StopCraftingTemporarily : IEvent
     }
 }
 
+//Text System events below
+
+public class StartTextAdventure : IEvent
+{
+
+}
+
+public class AdvanceTextAdventure : IEvent
+{
+
+}
+
+public class FinishTextAdventure : IEvent
+{
+    
+}
+
+public class SetTextAdventureQuestion : IEvent
+{
+    public DialogueData QuestionDialogue;
+    public int TextBranchIndex;
+
+    public SetTextAdventureQuestion(DialogueData questionDialogue, int textBranchIndex)
+    {
+        QuestionDialogue = questionDialogue;
+        TextBranchIndex = textBranchIndex;
+    }
+}
+
+//UI events below
+
 public class ChangeCanvases : IEvent
 {
     public GameObject NewCanvas;
@@ -72,6 +105,8 @@ public class ChangeCanvases : IEvent
         PromptTextAdventure = promptTextAdventure;
     }
 }
+
+//Player interactions with keybindings events below
 
 public class FreezePlayer : IEvent
 {

@@ -18,11 +18,11 @@ public class PlayerInputController : MonoBehaviour
             _playerInputs = new PlayerInputs();
 
         _playerInputs.PlayerActions.Movement.performed += OnMovementPerformed;
-        _playerInputs.PlayerActions.LookAround.performed += OnLookAroundPerformed;
         _playerInputs.PlayerActions.Interact.performed += OnInteractPerformed;
         _playerInputs.PlayerActions.Use.performed += OnUsePerformed;
         _playerInputs.PlayerActions.Drop.performed += OnDropPerformed;
         _playerInputs.PlayerActions.Exit.performed += OnExitPerformed;
+        _playerInputs.PlayerActions.NextMessage.performed += NextMessagePerformed;
 
         _playerInputs.Enable();
     }
@@ -30,11 +30,11 @@ public class PlayerInputController : MonoBehaviour
     void OnDisable()
     {
         _playerInputs.PlayerActions.Movement.performed -= OnMovementPerformed;
-        _playerInputs.PlayerActions.LookAround.performed -= OnLookAroundPerformed;
         _playerInputs.PlayerActions.Interact.performed -= OnInteractPerformed;
         _playerInputs.PlayerActions.Use.performed -= OnUsePerformed;
         _playerInputs.PlayerActions.Drop.performed -= OnDropPerformed;
         _playerInputs.PlayerActions.Exit.performed -= OnExitPerformed;
+        _playerInputs.PlayerActions.NextMessage.performed -= NextMessagePerformed;
 
         _playerInputs.Disable();
     }
@@ -44,14 +44,14 @@ public class PlayerInputController : MonoBehaviour
         _PlayerStateMachine.Move(val.ReadValue<Vector2>());
     }
 
-    void OnLookAroundPerformed(InputAction.CallbackContext val)
-    {
-        
-    }
-
     void OnInteractPerformed(InputAction.CallbackContext val)
     {
         EventBus.Instance.Publish(new Interact());
+    }
+
+    void NextMessagePerformed(InputAction.CallbackContext val)
+    {
+        EventBus.Instance.Publish(new AdvanceTextAdventure());
     }
 
     void OnUsePerformed(InputAction.CallbackContext val)

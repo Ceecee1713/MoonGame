@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "PlayerInputs",
     "maps": [
         {
@@ -9,15 +10,6 @@
                     "name": "Movement",
                     "type": "PassThrough",
                     "id": "8e9b9603-1512-44e2-bb5b-c582e3c33320",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "LookAround",
-                    "type": "PassThrough",
-                    "id": "7eb8e721-3e92-46bd-926b-8bfbd7c7e2f4",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -54,6 +46,15 @@
                     "name": "Drop",
                     "type": "Button",
                     "id": "4f00564a-742a-4cd4-81e8-effd6fb3f349",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NextMessage",
+                    "type": "Button",
+                    "id": "99aaa902-e283-4519-86f0-579cc06f9be2",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -151,23 +152,23 @@
                 },
                 {
                     "name": "",
-                    "id": "69ae8558-0889-40c8-a3ce-0a4d94882399",
-                    "path": "<Mouse>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "LookAround",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "15e64f89-9c11-4adc-bcea-a0ee452293c3",
                     "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Drop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a60409db-5c1b-46ad-89c9-cc7c445fcf6e",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextMessage",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -9,7 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 792e0d2b76dade94b846a0b70d72d54f, type: 3}
-  m_Name: CompleteTextAdventure
+  m_Script: {fileID: 11500000, guid: 334035ecee4cd9f4d8be1f6282ba7c23, type: 3}
+  m_Name: DialogueData 1
   m_EditorClassIdentifier: 
-  TextBranches: []
+  Messages:
+  - NEXT DIALOGUE
+  - NIERRRRRRR
+  - ASOIFNOAM
+  - KAINEEEEEEEE
+  ButtonOneText: AAAAAAA
+  ButtonTwoText: OOOOOOO
+  ButtonThreeText: PPPPPPP
+  correctButtonNumber: 2

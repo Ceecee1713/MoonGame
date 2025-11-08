@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class TextArea : MonoBehaviour
+public class MoonPuzzleArea : MonoBehaviour
 {
     [SerializeField]
     private GameObject textAdventureUI;
 
     private bool _textAdventure = true;
     private bool _solvedMoonPuzzle = false;
-    public bool _playerCollisionDetected = false;
+    private bool _playerCollisionDetected = false;
 
     void Start()
     {

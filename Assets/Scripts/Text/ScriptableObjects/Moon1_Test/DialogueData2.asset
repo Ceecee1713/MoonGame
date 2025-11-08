@@ -10,10 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 334035ecee4cd9f4d8be1f6282ba7c23, type: 3}
-  m_Name: DialogueData
+  m_Name: DialogueData2
   m_EditorClassIdentifier: 
-  Messages: []
-  ButtonOneText: 
-  ButtonTwoText: 
-  ButtonThreeText: 
-  ButtonFourText: Try Again
+  Messages:
+  - DEVOLAAAAAAAAA
+  - POPOLAAAAAAAA
+  - THE SHADOWLORD
+  - I'm sobbing
+  ButtonOneText: EMIL
+  ButtonTwoText: EMILLLLL
+  ButtonThreeText: E MM III  LLLLLLLLL
+  correctButtonNumber: 1
