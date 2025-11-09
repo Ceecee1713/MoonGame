@@ -22,6 +22,7 @@ public class CanvasManager : MonoBehaviour
     void Start()
     {
         EventBus.Instance.Subscribe<ChangeCanvases>(ChangeCanvases);
+        EventBus.Instance.Subscribe<FadeSingleCanvas>(FadeSingleCanvas);
     }
 
     private void ChangeCanvases(ChangeCanvases changeCanvases)
@@ -37,10 +38,34 @@ public class CanvasManager : MonoBehaviour
         }
 
         _newCanvasGroup = changeCanvases.NewCanvas.GetComponent<CanvasGroup>();
-        StartCoroutine(FadeCanvases(_newCanvasGroup, changeCanvases.NewCanvas, changeCanvases.SolvedMoonPuzzle, changeCanvases.PromptTextAdventure));
+        StartCoroutine(SwitchCanvases(_newCanvasGroup, changeCanvases.NewCanvas, changeCanvases.SolvedMoonPuzzle, changeCanvases.PromptTextAdventure));
     }
 
-    IEnumerator FadeCanvases(CanvasGroup newCanvasGroup, GameObject newCanvas, bool solvedMoonPuzzle, bool promptTextAdventure)
+    private void FadeSingleCanvas(FadeSingleCanvas fadeSingleCanvas)
+    {
+        _currentCanvas = fadeSingleCanvas.CurrentCanvas;
+        _currentCanvasGroup = fadeSingleCanvas.CurrentCanvas.GetComponent<CanvasGroup>();
+        StopAllCoroutines();
+        StartCoroutine(FadeOneCanvas(fadeSingleCanvas.FadeOutUI));
+    }
+
+    IEnumerator FadeOneCanvas(bool fadeOutUI)
+    {
+        if(fadeOutUI == true)
+        {
+            Tween firstTween = _currentCanvasGroup.DOFade(0f, normalFadingTime);
+            yield return firstTween.WaitForCompletion();
+            _currentCanvas.SetActive(false);
+        }
+
+        else
+        {
+            Tween firstTween = _currentCanvasGroup.DOFade(1f, normalFadingTime);
+            yield return firstTween.WaitForCompletion();
+        }
+    }
+
+    IEnumerator SwitchCanvases(CanvasGroup newCanvasGroup, GameObject newCanvas, bool solvedMoonPuzzle, bool promptTextAdventure)
     {
         //Fade out of current active canvas
         Tween firstTween = _currentCanvasGroup.DOFade(0f, normalFadingTime);
@@ -49,7 +74,6 @@ public class CanvasManager : MonoBehaviour
 
         if(solvedMoonPuzzle == true)
         {
-            //Fade into new canvas
             newCanvas.SetActive(true);
             Tween secondTween = newCanvasGroup.DOFade(1.0f, shortenedFadingTime);
             yield return secondTween.WaitForCompletion();
@@ -57,7 +81,6 @@ public class CanvasManager : MonoBehaviour
 
         else
         {
-            //Fade into new canvas
             newCanvas.SetActive(true);
             Tween secondTween = newCanvasGroup.DOFade(1.0f, normalFadingTime);
             yield return secondTween.WaitForCompletion();

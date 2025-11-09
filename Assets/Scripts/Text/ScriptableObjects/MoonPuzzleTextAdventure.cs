@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "MoonPuzzleTextAdventure", menuName = "Dialogue Scriptable Objects/Create a Complete Moon Puzzle Text Adventure Sequence")]
 public class MoonPuzzleTextAdventure : ScriptableObject
@@ -14,4 +15,6 @@ public struct TextBranches
     public DialogueData SecondQuestionDialogue;
     public DialogueData ThirdQuestionDialogue;
     public DialogueData FinishTextAdventureDialogue;
+
+    public Sprite MoonFragmentSprite;
 }

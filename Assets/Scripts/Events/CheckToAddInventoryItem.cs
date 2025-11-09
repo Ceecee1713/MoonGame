@@ -73,9 +73,14 @@ public class AdvanceTextAdventure : IEvent
 
 }
 
-public class RestartTextAdventure : IEvent
+public class DisplayMoonFragmentImage : IEvent
 {
+    public Sprite MoonFragmentSprite;
 
+    public DisplayMoonFragmentImage(Sprite moonFragmentSprite)
+    {
+        MoonFragmentSprite = moonFragmentSprite;
+    }
 }
 
 public class SetTextAdventureQuestion : IEvent
@@ -103,6 +108,18 @@ public class ChangeCanvases : IEvent
         NewCanvas = newCanvas;
         SolvedMoonPuzzle = solvedMoonPuzzle;
         PromptTextAdventure = promptTextAdventure;
+    }
+}
+
+public class FadeSingleCanvas : IEvent
+{
+    public GameObject CurrentCanvas;
+    public bool FadeOutUI;
+
+    public FadeSingleCanvas(GameObject currentCanvas, bool fadeOutUI)
+    {
+        CurrentCanvas = currentCanvas;
+        FadeOutUI = fadeOutUI;
     }
 }
 

@@ -6,6 +6,7 @@ public class TextAdventureButton : MonoBehaviour
     private DialogueText moonPuzzleText;
 
     [SerializeField]
+    [Range(1, 3)]
     private int buttonNumber; 
 
     private DialogueData _nextQuestionDialogue;
@@ -77,9 +78,8 @@ public class TextAdventureButton : MonoBehaviour
             moonPuzzleText.PromptDialogueFromButton(_nextQuestionDialogue);
         }
 
-        else //Wrong button chosen, pass event to dialogueText to show return button
+        else 
         {
-            Debug.Log("Wrong button");
             _allowPlayerToInteract = false;
             moonPuzzleText.DisableButtonOptions();
         }
