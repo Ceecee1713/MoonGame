@@ -63,7 +63,7 @@ public class StopCraftingTemporarily : IEvent
 
 //Text System events below
 
-public class StartTextAdventure : IEvent
+public class StartNewTextAdventure : IEvent
 {
 
 }
@@ -73,9 +73,9 @@ public class AdvanceTextAdventure : IEvent
 
 }
 
-public class FinishTextAdventure : IEvent
+public class RestartTextAdventure : IEvent
 {
-    
+
 }
 
 public class SetTextAdventureQuestion : IEvent

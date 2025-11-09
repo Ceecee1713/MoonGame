@@ -66,7 +66,7 @@ public class CanvasManager : MonoBehaviour
         if(promptTextAdventure == true)
         {
             //Prompt the first message of dialogue to be said
-            EventBus.Instance.Publish(new StartTextAdventure());
+            EventBus.Instance.Publish(new StartNewTextAdventure());
         }
     }
 }

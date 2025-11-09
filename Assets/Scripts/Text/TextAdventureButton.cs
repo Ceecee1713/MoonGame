@@ -11,6 +11,7 @@ public class TextAdventureButton : MonoBehaviour
     private DialogueData _nextQuestionDialogue;
     private DialogueData _currentQuestionDialogue;
 
+    private bool _allowPlayerToInteract = false;
     private bool _concludeMoonPuzzle;
     private int _branchIndex;
 
@@ -27,6 +28,7 @@ public class TextAdventureButton : MonoBehaviour
 
     private void SetNextQuestionDialogue(SetTextAdventureQuestion setTextAdventureQuestion) 
     {
+        _allowPlayerToInteract = true;
         _branchIndex = setTextAdventureQuestion.TextBranchIndex;
         _currentQuestionDialogue = setTextAdventureQuestion.QuestionDialogue;
 
@@ -49,6 +51,9 @@ public class TextAdventureButton : MonoBehaviour
 
     public void OnDialogueButtonClick()
     {
+        if(_allowPlayerToInteract == false)
+            return; 
+
         if (_currentQuestionDialogue == null)
         {
             Debug.LogError($"Button {buttonNumber}: No current dialogue set!");
@@ -65,7 +70,7 @@ public class TextAdventureButton : MonoBehaviour
 
             if(_concludeMoonPuzzle == true)
             {
-                EventBus.Instance.Publish(new FinishTextAdventure());
+                moonPuzzleText.FinishTextAdventure();
                 _concludeMoonPuzzle = false; //Reset
             }
             
@@ -75,6 +80,8 @@ public class TextAdventureButton : MonoBehaviour
         else //Wrong button chosen, pass event to dialogueText to show return button
         {
             Debug.Log("Wrong button");
+            _allowPlayerToInteract = false;
+            moonPuzzleText.DisableButtonOptions();
         }
     }
 }

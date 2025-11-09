@@ -7,6 +7,8 @@ public class DialogueText : MonoBehaviour
 {
     public MoonPuzzleTextAdventure TextAdventureDialogue;
 
+    public int WrongButtonChoicesCounter = 0;
+
     [Header ("UI Information")]
     [SerializeField]
     private GameObject textAdventureUI;
@@ -24,22 +26,24 @@ public class DialogueText : MonoBehaviour
     private DialogueData _currentQuestionDialogue;
 
     private int _messageLength;
-    private int _index = -1; //Index to go through the dialogue message arrays from "dialogueData"
+    private int _index = 0; //Index to go through the dialogue message arrays from "dialogueData"
     private int _textBranchIndex = -1;
 
-    public bool _concludeMoonPuzzle = false;
+    private bool _doNotRepeat = false; 
+    private bool _concludeMoonPuzzle = false;
     private bool _displayingFirstQuestionDialogue = false;
     private bool _hasActivatedButtonOptions = false; 
     private bool _finishedTypingMessage = false; //Prevent or allow going through messages when they're not fully typed out
     private bool _allowGoingThroughMessages = false; //Prevent or allow going through messages entirely
 
+    private const int MAX_COUNTER_AMOUNT_FOR_WRONG_BUTTON_CHOICES = 2;
     private const float TYPING_SPEED = 0.015f;
 
     void Start()
     {
-        EventBus.Instance.Subscribe<StartTextAdventure>(StartTextAdventure);
+        EventBus.Instance.Subscribe<StartNewTextAdventure>(StartNewTextAdventure);
         EventBus.Instance.Subscribe<AdvanceTextAdventure>(NextTextAdvetureDialogue);
-        EventBus.Instance.Subscribe<FinishTextAdventure>(FinishTextAdventure);
+        EventBus.Instance.Subscribe<RestartTextAdventure>(RestartTextAdventureDialogue);
 
         ButtonOptions.SetActive(false);
         textAdventureUI.SetActive(false);
@@ -48,6 +52,7 @@ public class DialogueText : MonoBehaviour
 
     void OnEnable()
     {
+        _doNotRepeat = false;
     }
 
     void OnDisable()
@@ -61,8 +66,8 @@ public class DialogueText : MonoBehaviour
         buttonOneText.text = "";
         buttonTwoText.text = "";
         buttonThreeText.text = "";
-        
-        _index = -1; 
+
+        _index = 0; 
         _hasActivatedButtonOptions = false;
         _allowGoingThroughMessages = true;
 
@@ -72,14 +77,60 @@ public class DialogueText : MonoBehaviour
         returnButton.SetActive(false);
     }
 
-    private void FinishTextAdventure(FinishTextAdventure finishTextAdventure)
+    void Update()
+    {
+        if(WrongButtonChoicesCounter >= MAX_COUNTER_AMOUNT_FOR_WRONG_BUTTON_CHOICES && _doNotRepeat == false)
+        {
+            ResetValues();
+            FailedMoonPuzzle();
+            _doNotRepeat = true;
+        }
+    }
+
+    public void DisableButtonOptions() //Caled by "TextAdventureButton" (Dialogue Buttons) when having clicked on incorrect button
+    {
+        WrongButtonChoicesCounter++;
+        returnButton.SetActive(true); //Can make them fade in to be more clean before becoming active
+        ButtonOptions.SetActive(false); //Can make them fade out to be more clean before becoming inactive
+    }
+
+    private void FailedMoonPuzzle() 
+    {
+        _concludeMoonPuzzle = true;
+        Debug.Log("You lose the entire game!");
+        //Send event to show end game screen
+    }
+
+    public void FinishTextAdventure() //Caled by "TextAdventureButton" (Dialogue Buttons)
     {
         _concludeMoonPuzzle = true;
     }
 
+    private void RestartTextAdventureDialogue(RestartTextAdventure restartTextAdventure)
+    {
+        if(WrongButtonChoicesCounter == MAX_COUNTER_AMOUNT_FOR_WRONG_BUTTON_CHOICES)
+            return;
+
+        ResetValues();
+        StartCoroutine(TypeMessage(_currentQuestionDialogue.Messages[_index]));
+    }
+
+    private void StartNewTextAdventure(StartNewTextAdventure startNewTextAdventure) 
+    {
+        _concludeMoonPuzzle = false;
+        WrongButtonChoicesCounter = 0;
+
+        _textBranchIndex++;
+        _currentQuestionDialogue = TextAdventureDialogue.TextBranches[_textBranchIndex].FirstQuestionDialogue;
+        _messageLength = _currentQuestionDialogue.Messages.Length;
+
+        StopAllCoroutines();
+        StartCoroutine(TypeMessage(_currentQuestionDialogue.Messages[_index]));
+    }
+
     private void NextTextAdvetureDialogue(AdvanceTextAdventure advanceTextAdventure) //Called by "PlayerInputController"
     {
-        if(_finishedTypingMessage != true)
+        if(_finishedTypingMessage != true || _doNotRepeat == true)
             return;
 
         if(_index+1 == _messageLength && _concludeMoonPuzzle == false)
@@ -104,33 +155,23 @@ public class DialogueText : MonoBehaviour
                 }
             }
 
-            else //No longer show text anymore, stop the text adventure
+            else //No longer show text, stop the text adventure (completed the moon puzzle successfully)
             {
                 Debug.Log("CONCLUDED MOON PUZZLE");
+                _doNotRepeat = true;
+                textAdventureUI.SetActive(false); //Send event to fade textAdventureUI screen and show moon reward UI
             }
         }
     }
 
-    private void StartTextAdventure(StartTextAdventure startTextAdventure) 
-    {
-        _index++;
-        _textBranchIndex++;
-        _currentQuestionDialogue = TextAdventureDialogue.TextBranches[_textBranchIndex].FirstQuestionDialogue;
-        _messageLength = _currentQuestionDialogue.Messages.Length;
-
-        StopAllCoroutines();
-        StartCoroutine(TypeMessage(_currentQuestionDialogue.Messages[_index]));
-    }
-
-    public void PromptDialogueFromButton(DialogueData dialogueData)
+    public void PromptDialogueFromButton(DialogueData dialogueData) //Caled by "TextAdventureButton" (Dialogue Buttons)
     {
         //Resetting values
-        _index = -1; 
+        _index = 0;
         _hasActivatedButtonOptions = false;
         _allowGoingThroughMessages = true;
         ButtonOptions.SetActive(false);
 
-        _index++;
         _currentQuestionDialogue = dialogueData;
         _messageLength = _currentQuestionDialogue.Messages.Length; 
 
@@ -151,7 +192,7 @@ public class DialogueText : MonoBehaviour
 
         if(_concludeMoonPuzzle == false && _index+1 == _messageLength && _hasActivatedButtonOptions == false) //Show button display
         {
-            ButtonOptions.SetActive(true);
+            ButtonOptions.SetActive(true); //Can make them fade in to be more clean before becoming active
 
             //Set the button text for all three text adventure buttons 
             buttonOneText.text = _currentQuestionDialogue.ButtonOneText;
