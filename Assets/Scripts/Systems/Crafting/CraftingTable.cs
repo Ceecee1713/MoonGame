@@ -5,7 +5,8 @@ public class CraftingTable : MonoBehaviour
     [SerializeField]
     private GameObject craftingUI;
 
-    private bool _playerCollisionDetected = false; 
+    private bool _playerStayingInCollision = false; 
+    private bool _playerInCollision = false; 
 
     void Start()
     {
@@ -14,10 +15,19 @@ public class CraftingTable : MonoBehaviour
 
     private void OpenCraftingUI(Interact interact) //When player "interacts" with this game object (keybind for interact)
     {
-        if(_playerCollisionDetected == true)
+        if(_playerStayingInCollision == true)
         {
             craftingUI.SetActive(true);
             EventBus.Instance.Publish(new FreezePlayer(true));
+        }
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.CompareTag("Player"))
+        {
+            _playerInCollision = true;
+            EventBus.Instance.Publish(new InCollision(_playerInCollision));
         }
     }
 
@@ -25,7 +35,7 @@ public class CraftingTable : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Player"))
         {
-            _playerCollisionDetected = true;
+            _playerStayingInCollision = true;
         }
     }
 
@@ -33,7 +43,9 @@ public class CraftingTable : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Player"))
         {
-            _playerCollisionDetected = false; 
+            _playerInCollision = false;
+            _playerStayingInCollision = false; 
+            EventBus.Instance.Publish(new InCollision(_playerInCollision));
         }
     }
 }

@@ -10,7 +10,8 @@ public enum InventoryItemTypes
     None,
     Stone,
     Beryllium,
-    Ruby
+    Ruby,
+    SpeedPotion
 }
 
 //Data of every inventory item

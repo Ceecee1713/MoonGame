@@ -61,6 +61,11 @@ public class StopCraftingTemporarily : IEvent
     }
 }
 
+public class UseInventoryItem : IEvent
+{
+
+}
+
 //Text System events below
 
 public class StartNewTextAdventure : IEvent
@@ -147,12 +152,32 @@ public class FreezePlayer : IEvent
     }
 }
 
+public class SpeedUpPlayer : IEvent
+{
+
+}
+
+//Player input events below
+
 public class Interact : IEvent
 {
 
 }
 
-public class DropEquipedInventoryItem : IEvent
+public class DropEquipedInventoryItem : IEvent //For inventory system
 {
 
 }
+
+//Mis.
+
+public class InCollision : IEvent
+{
+    public bool PlayerInCollision;
+
+    public InCollision(bool playerInCollision)
+    {
+        PlayerInCollision = playerInCollision;
+    }
+}
+

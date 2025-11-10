@@ -257,6 +257,17 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""NextMessage"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""930555b4-bf78-45cf-81f5-c2b30e314127"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextMessage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }

@@ -28,7 +28,6 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
 
     public void RemoveItemFromSlot() 
     {
-        //Refactor
         IsEmpty = true;
         InventoryItem.SlotImageSprite = null;
         InventoryItem.NameOfItem = "Nothing";

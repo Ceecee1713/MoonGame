@@ -11,14 +11,12 @@ public class InventoryUI : MonoBehaviour
     [SerializeField]
     private InventoryUISlot [] inventorySlots = new InventoryUISlot [8];
 
-    [SerializeField] //Delete later
     private ItemData _equipedInventoryItem;
 
-    [SerializeField] //Delete later
     private InventoryUISlot _selectedInventoryUISlot;
-
-    [SerializeField] //Delete later
     private InventoryUISlot _previousInventoryUISlot;
+
+    private bool _playerIsInCollision = false;
 
     private int _maxStackAmount = 3;
 
@@ -34,12 +32,19 @@ public class InventoryUI : MonoBehaviour
         EventBus.Instance.Subscribe<CheckToAddCraftedItem>(CheckToAddCraftedItem);
         EventBus.Instance.Subscribe<SelectInventoryItem>(EquipInventoryItem);
         EventBus.Instance.Subscribe<DropEquipedInventoryItem>(DropEquipedInventoryItem);
+        EventBus.Instance.Subscribe<InCollision>(CheckIfPlayerIsInACollision);
+        EventBus.Instance.Subscribe<UseInventoryItem>(CheckToUseInventoryItem);
     }
 
     void Update()
     {
         if(_selectedInventoryUISlot != null) 
             _equipedInventoryItem = _selectedInventoryUISlot.InventoryItem;
+    }
+
+    private void CheckIfPlayerIsInACollision(InCollision inCollision)
+    {
+        _playerIsInCollision = inCollision.PlayerInCollision;
     }
 
     private void CheckInventorySlot(CheckToAddInventoryItem checkToAddInventoryItem) 
@@ -133,16 +138,47 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
+    private void CheckToUseInventoryItem(UseInventoryItem useInventoryItem)
+    {
+        if(_playerIsInCollision == true)
+            return;
+
+        if(_equipedInventoryItem != null && _equipedInventoryItem.ItemType == InventoryItemTypes.SpeedPotion)
+        {
+            for(int i = 0; i < inventorySlots.Length; i++)
+            {
+                //If selected UI slot is within the "inventorySlots" array
+                if(inventorySlots[i] == _selectedInventoryUISlot)
+                {
+                    inventoryData.Inventory.Remove(inventorySlots[i].InventoryItem);
+                    _selectedInventoryUISlot.RemoveItemFromSlot();
+                    EventBus.Instance.Publish(new SpeedUpPlayer());
+
+                    //Deselect inventory slot
+                    _selectedInventoryUISlot.OutlineImage.SetActive(false); 
+                    _selectedInventoryUISlot = null;
+                    _equipedInventoryItem = null;
+                    break;
+                }
+            }
+        }
+    }
+
     private void DropEquipedInventoryItem(DropEquipedInventoryItem dropEquipedInventoryItem)
     {
         for(int i = 0; i < inventorySlots.Length; i++)
         {
-            //If selected UI slot is within the "inventorySlots" array and selected inventory slot has an inventory item
+            //If selected UI slot is within the "inventorySlots" array 
             if(inventorySlots[i] == _selectedInventoryUISlot)
             {
                 //Remove inventory item from inventory, its inventory slot and instiantiate item in world space
                 inventoryData.Inventory.Remove(inventorySlots[i].InventoryItem);
                 inventorySlots[i].DropItem();
+
+                //Deselect inventory slot
+                _selectedInventoryUISlot.OutlineImage.SetActive(false); 
+                _selectedInventoryUISlot = null;
+                _equipedInventoryItem = null;
                 break;
             }
         }

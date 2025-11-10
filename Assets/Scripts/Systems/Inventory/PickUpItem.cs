@@ -3,9 +3,10 @@ using UnityEngine;
 public class PickUpItem : MonoBehaviour
 {
     [SerializeField]
-    private ItemData inventoryItem; //Refactor
+    private ItemData inventoryItem; 
 
-    private bool _playerCollisionDetected = false; 
+    private bool _playerStayingInCollision = false; 
+    private bool _playerInCollision = false;
 
     void Start()
     {
@@ -14,7 +15,7 @@ public class PickUpItem : MonoBehaviour
 
     private void CheckIfItemIsPickedUp(Interact pickingUpItem) //When player "interacts" with this game object (keybind for interact)
     {
-        if(_playerCollisionDetected == true)
+        if(_playerStayingInCollision == true)
         {
             ItemData clonedInventoryItem = inventoryItem.Clone();
             EventBus.Instance.Publish(new CheckToAddInventoryItem(clonedInventoryItem));
@@ -25,7 +26,8 @@ public class PickUpItem : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Player"))
         {
-            
+            _playerInCollision = true;
+            EventBus.Instance.Publish(new InCollision(_playerInCollision));
         }
     }
 
@@ -33,7 +35,7 @@ public class PickUpItem : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Player"))
         {
-            _playerCollisionDetected = true;
+            _playerStayingInCollision = true;
         }
     }
 
@@ -41,7 +43,9 @@ public class PickUpItem : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Player"))
         {
-            _playerCollisionDetected = false; 
+            _playerInCollision = false;
+            _playerStayingInCollision = false; 
+            EventBus.Instance.Publish(new InCollision(_playerInCollision));
         }
     }
 }

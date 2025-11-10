@@ -48,6 +48,8 @@ public class PlayerStateMachine : BaseStateMachine
     private float _durationOfSpeedChanging; //Time window in order to change speed 
     private float _speedOfMovementChanging; //How fast to change speed
 
+    private bool _speedUpPlayer = false;
+
 
     public PlayerState currentState { get; set; }
     public PlayerState PreviousState { get; set; }
@@ -84,6 +86,7 @@ public class PlayerStateMachine : BaseStateMachine
         currentState = IdleState;
 
         EventBus.Instance.Subscribe<FreezePlayer>(FreezePlayer);
+        EventBus.Instance.Subscribe<SpeedUpPlayer>(AllowToSpeedUpPlayer);
     }
 
     public void Move(Vector2 movement)
@@ -101,11 +104,16 @@ public class PlayerStateMachine : BaseStateMachine
             StateChange(IdleState);
     }
 
+    private void AllowToSpeedUpPlayer(SpeedUpPlayer speedUpPlayer)
+    {
+        _speedUpPlayer = true;
+    }
+
     public override void Update()
     {
         Mathf.Clamp(_currentTimeLengthForSpeedUp, 0.0f, _maxLengthOfTimeForSpeedUp);
 
-        CheckForItemUsage();
+        CheckToSpeedUpPlayer();
 
         if(currentState == IdleState && _playerDirection.magnitude >= _minimumMovementDistance)
             StateChange(WanderState);
@@ -114,7 +122,29 @@ public class PlayerStateMachine : BaseStateMachine
             SpeedUpPlayer();
     }
 
-    public void CheckForItemUsage()
+    private void CheckToSpeedUpPlayer()
+    {
+        if(_speedUpPlayer == true && _hasPlayerTakenSpeedPotion == false && _currentTimeLengthForSpeedUp == 0.0f) //Change key binding to something else
+        {
+            Debug.Log("Speed up player");
+
+            _currentTimeLengthForSpeedUp = _maxLengthOfTimeForSpeedUp;
+
+            //Changing values for speed up coroutine
+            _durationOfSpeedChanging = _itemDurationOfSpeedChanging;
+            _speedOfMovementChanging = _itemSpeedOfMovementChanging;
+            maximumSpeed = potionSpeed;
+
+            _speedUpPlayer = false;
+            _hasPlayerTakenSpeedPotion = true;
+
+            if(currentState == WanderState)
+                StartSpeedChange();
+        }
+    }
+
+    /*
+    public void CheckToSpeedUpPlayer() //Old way of speeding up player with F keybinding, hardcoded
     {
         if(Input.GetKeyDown(KeyCode.F) && _hasPlayerTakenSpeedPotion == false && _currentTimeLengthForSpeedUp == 0.0f) //Change key binding to something else
         {
@@ -131,6 +161,7 @@ public class PlayerStateMachine : BaseStateMachine
                 StartSpeedChange();
         }
     }
+    */
 
     public void SpeedUpPlayer()
     {
