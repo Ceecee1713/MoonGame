@@ -123,7 +123,19 @@ public class FadeSingleCanvas : IEvent
     }
 }
 
-//Player interactions with keybindings events below
+//Player events below
+
+public class AlterPlayerHealth : IEvent
+{
+    public bool RecoverHealth;
+    public float SpeedToChangeHealth;
+
+    public AlterPlayerHealth(bool recoverHealth, float speedToChangeHealth)
+    {
+        RecoverHealth = recoverHealth;
+        SpeedToChangeHealth = speedToChangeHealth;
+    }
+}
 
 public class FreezePlayer : IEvent
 {
