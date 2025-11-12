@@ -100,6 +100,20 @@ public class SetTextAdventureQuestion : IEvent
     }
 }
 
+//Cluebook Events below
+
+public class FoundClueFragment : IEvent
+{
+    public Dialogue ClueDialogue;
+
+    public FoundClueFragment(Dialogue clueDialogue)
+    {
+        ClueDialogue = clueDialogue;
+    }
+}
+
+
+
 //UI events below
 
 public class ChangeCanvases : IEvent
@@ -126,6 +140,21 @@ public class FadeSingleCanvas : IEvent
         CurrentCanvas = currentCanvas;
         FadeOutUI = fadeOutUI;
     }
+}
+
+public class SingleDialogueMessage : IEvent
+{
+    public string Message;
+
+    public SingleDialogueMessage(string message)
+    {
+        Message = message;
+    }
+} 
+
+public class AdvanceSingleMessage : IEvent
+{
+
 }
 
 //Player events below
@@ -181,3 +210,12 @@ public class InCollision : IEvent
     }
 }
 
+public class MaintainPlayerHealth : IEvent
+{
+    public bool PauseCorrioson;
+
+    public MaintainPlayerHealth(bool pauseCorrioson)
+    {
+        PauseCorrioson = pauseCorrioson;
+    }
+}

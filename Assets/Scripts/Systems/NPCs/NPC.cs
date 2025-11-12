@@ -1,24 +1,35 @@
 using UnityEngine;
 
-public class PickUpItem : MonoBehaviour
+public class NPC : MonoBehaviour
 {
     [SerializeField]
-    private ItemData inventoryItem; 
+    private GameObject dialogueCanvas;
+
+    [SerializeField]
+    private Dialogue npcMessage;
+
+    private string _extraMessage = "... (You can't understand what they're saying, but you write down their words anyways).";
+    private string _fullNPCMesasge;
 
     private bool _playerStayingInCollision = false; 
     private bool _playerInCollision = false;
 
     void Start()
     {
-        EventBus.Instance.Subscribe<Interact>(CheckIfItemIsPickedUp);
+        _fullNPCMesasge = npcMessage.Message + _extraMessage;
+        EventBus.Instance.Subscribe<Interact>(CheckToShowDialogue);
     }
 
-    private void CheckIfItemIsPickedUp(Interact pickingUpItem) //When player "interacts" with this game object (keybind for interact)
+    private void CheckToShowDialogue(Interact pickingUpItem) //When player "interacts" with this game object (keybind for interact)
     {
         if(_playerStayingInCollision == true)
         {
-            ItemData clonedInventoryItem = inventoryItem.Clone();
-            EventBus.Instance.Publish(new CheckToAddInventoryItem(clonedInventoryItem));
+            dialogueCanvas.SetActive(true);
+
+            EventBus.Instance.Publish(new FreezePlayer(true));
+            EventBus.Instance.Publish(new MaintainPlayerHealth(true));
+            EventBus.Instance.Publish(new SingleDialogueMessage(_fullNPCMesasge));
+            EventBus.Instance.Publish(new FoundClueFragment(npcMessage));
         }
     }
 

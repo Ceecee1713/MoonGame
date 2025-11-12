@@ -1,0 +1,67 @@
+using System;
+using System.Collections;
+using UnityEngine;
+using TMPro;
+
+public class DialogueCanvas : MonoBehaviour
+{
+    [SerializeField]
+    private TextMeshProUGUI dialogueText;
+
+    private bool _finishedTypingMessage = false;
+    private string _dialogue;
+
+    private const float TYPING_SPEED = 0.01f;
+
+    void Awake()
+    {
+        EventBus.Instance.Subscribe<SingleDialogueMessage>(DisplayMessage);
+        EventBus.Instance.Subscribe<AdvanceSingleMessage>(FinishMessage);
+    }
+
+    void Start()
+    {
+        this.gameObject.SetActive(false);
+    }
+
+    void OnEnable()
+    {
+    }
+
+    void OnDisable()
+    {
+        dialogueText.text = "";
+    }
+
+    private void FinishMessage(AdvanceSingleMessage advanceSingleMessage) //Called by "PlayerInputController"
+    {
+        if(_finishedTypingMessage != true)
+            return;
+
+        EventBus.Instance.Publish(new FreezePlayer(false));
+        EventBus.Instance.Publish(new MaintainPlayerHealth(false));
+        StopAllCoroutines();
+        this.gameObject.SetActive(false);
+    }
+
+    private void DisplayMessage(SingleDialogueMessage singleDialogueMessage)
+    {
+        _dialogue = singleDialogueMessage.Message;
+        StopAllCoroutines();
+        StartCoroutine(TypeMessage(_dialogue));
+    }
+
+    IEnumerator TypeMessage(string message) 
+    {
+        _finishedTypingMessage = false;
+        dialogueText.text = ""; //Clearing the "dialogueText".text for the new dialouge to be said
+        
+        foreach (char letter in message.ToCharArray()) //Conversion of string to a char array to mimick a "typing" effect of dialouge
+        {
+            dialogueText.text += letter;
+            yield return new WaitForSeconds(TYPING_SPEED); //Time in between of each character being typed out
+        } 
+
+        _finishedTypingMessage = true;
+    }
+}
