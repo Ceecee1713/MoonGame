@@ -12,6 +12,7 @@ public class CraftManager : MonoBehaviour
     private List <int> _amountsPerUniqueInventoryItemsToRemove = new List <int>(); //Each index represents the total number of a unique inventory item to be removed
     private List <ItemData> _materialsForCraftableItem = new List <ItemData>();
 
+    private bool _allowCraftingForClue = false;
     private bool _quantityRemaining = false;
     private bool _breakLoop = false;
     private bool _notEnoughItemQuantity = false;
@@ -24,6 +25,8 @@ public class CraftManager : MonoBehaviour
     void Start()
     {
         _craftingUI = GetComponent<CraftingUI>();
+
+        EventBus.Instance.Subscribe<AllowToCraftClue>(CheckToMakeClue);
     }
 
     public void ResetStatus() 
@@ -45,7 +48,51 @@ public class CraftManager : MonoBehaviour
         //Add warning
         _craftingUI.DisplayWarningMessage();
     }
+
+    private void CheckToMakeClue(AllowToCraftClue allowToCraftClue)
+    {
+        _allowCraftingForClue = allowToCraftClue.AvaliableClueToDecipher;
+    }
+
+    //This method is for checking for materials for when wanting to decipher a clue (not adding an item into the inventory)
+    public void CheckMaterialsForDecipheringClue(ItemData craftingMaterial, int maxAmountOfCraftingMaterialTypes)
+    {
+        if(_notEnoughItemQuantity == true) //|| _allowCraftingForClue == false)
+        {
+            CannotCraftItem();
+            return;
+        }
+        
+        _breakLoop = false;
+        
+        //Iterate through inventory for "maxAmountOfCraftingMaterialTypes" amount of times
+        for(int i = 0; i < maxAmountOfCraftingMaterialTypes; i++) 
+        {
+            if(_breakLoop == true)
+                break;
+
+            //If there's still remaining quantity needed for previous material when wanting to move on to the next material, exit method
+            if(_remainingQuantity > 0) 
+            {
+                _notEnoughItemQuantity = true;
+                CannotCraftItem();
+                return;
+            }
+
+            _amountOfAnInventoryItemNeeded = 0;
+
+            SearchInventoryForItemMaterial(craftingMaterial);
+        }
+
+        //If found all required inventory item materials, craft item
+        if(_amountOfMatchingCraftingMaterials >= maxAmountOfCraftingMaterialTypes && _allowCraftingForClue != false)
+        {
+            DecipherClue();
+            EventBus.Instance.Publish(new DecipherClue());
+        }
+    }
     
+    //This method is for adding an inventory item from a craft button into the player's inventory
     public void CheckInventoryForCraftingMaterials(ItemData craftableInventoryItem, ItemData craftingMaterial, int maxAmountOfCraftingMaterialTypes)
     {
         if(_notEnoughItemQuantity == true)
@@ -190,5 +237,10 @@ public class CraftManager : MonoBehaviour
     {
         Debug.Log("We got enough materials to craft!");
         EventBus.Instance.Publish(new CheckToAddCraftedItem(craftableInventoryItem, _materialsForCraftableItem, _amountsPerUniqueInventoryItemsToRemove));
+    }
+
+    private void DecipherClue()
+    {
+        EventBus.Instance.Publish(new RemoveInventoryItemsForMaterials(_materialsForCraftableItem, _amountsPerUniqueInventoryItemsToRemove));
     }
 }

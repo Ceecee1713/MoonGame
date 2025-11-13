@@ -28,12 +28,18 @@ public class InventoryUI : MonoBehaviour
     {
         inventoryData.Inventory.Clear();
 
+        //Adding inventory/crafted item into inventory and removing any inventory items that were used as materials
         EventBus.Instance.Subscribe<CheckToAddInventoryItem>(CheckInventorySlot);
         EventBus.Instance.Subscribe<CheckToAddCraftedItem>(CheckToAddCraftedItem);
+
+        //Player interaction events with the inventory system
+        EventBus.Instance.Subscribe<InCollision>(CheckIfPlayerIsInACollision);
         EventBus.Instance.Subscribe<SelectInventoryItem>(EquipInventoryItem);
         EventBus.Instance.Subscribe<DropEquipedInventoryItem>(DropEquipedInventoryItem);
-        EventBus.Instance.Subscribe<InCollision>(CheckIfPlayerIsInACollision);
         EventBus.Instance.Subscribe<UseInventoryItem>(CheckToUseInventoryItem);
+
+        //Removing any inventory items that were used as materials when having deciphered a clue for the cluebook
+        EventBus.Instance.Subscribe<RemoveInventoryItemsForMaterials>(RemoveInventoryItemsForDecipheringClue);
     }
 
     void Update()
@@ -47,12 +53,12 @@ public class InventoryUI : MonoBehaviour
         _playerIsInCollision = inCollision.PlayerInCollision;
     }
 
-    private void CheckInventorySlot(CheckToAddInventoryItem checkToAddInventoryItem) 
+    private void CheckInventorySlot(CheckToAddInventoryItem checkToAddInventoryItem) //Add normal inventory item to player inventory
     {
         AddInventoryItem(checkToAddInventoryItem.InventoryItem);
     }
 
-    private void AddInventoryItem(ItemData itemToCheck)
+    private void AddInventoryItem(ItemData itemToCheck) //Add an inventory item (Crafted item or not)
     {
         for(int i = 0; i < inventorySlots.Length; i++) //Add same type, stackable items together in same inventory slot (increase quantity)
         {
@@ -96,6 +102,38 @@ public class InventoryUI : MonoBehaviour
             _numberToMatchAmountOfFullyConsumedMaterial = 0;
 
             var targetInventoryItemType = checkToAddCraftedItem.CraftingMaterialItems[i].ItemType;
+            
+            //Debug.Log("This is the number we gotta match to: " + _amountOfSingleFullyConsumedMaterialToRemove);
+            //Debug.Log("Looking for material type: " + targetInventoryItemType);
+            
+            for(int j = 0; j < inventorySlots.Length; j++)
+            {
+                if(_numberToMatchAmountOfFullyConsumedMaterial >= _amountOfSingleFullyConsumedMaterialToRemove)
+                    break;
+                
+                if (inventorySlots[j].InventoryItem.ItemType == targetInventoryItemType)
+                {
+                    inventoryData.Inventory.Remove(inventorySlots[j].InventoryItem);
+                    inventorySlots[j].RemoveItemFromSlot();
+                    _numberToMatchAmountOfFullyConsumedMaterial++;
+                }
+            }
+        }
+    }
+
+    //Remove inventory items that were used as materials for deciphering a clue
+    private void RemoveInventoryItemsForDecipheringClue(RemoveInventoryItemsForMaterials removeInventoryItemsForMaterials) 
+    {
+        if(removeInventoryItemsForMaterials.AmountsPerStackableItemToRemove.Count == 0) 
+            return;
+
+        //Removal of inventory items that were used as crafting materials for the CraftManager:
+        for(int i = 0; i < removeInventoryItemsForMaterials.AmountsPerStackableItemToRemove.Count; i++)
+        {
+            _amountOfSingleFullyConsumedMaterialToRemove = removeInventoryItemsForMaterials.AmountsPerStackableItemToRemove[i];
+            _numberToMatchAmountOfFullyConsumedMaterial = 0;
+
+            var targetInventoryItemType = removeInventoryItemsForMaterials.CraftingMaterialItems[i].ItemType;
             
             //Debug.Log("This is the number we gotta match to: " + _amountOfSingleFullyConsumedMaterialToRemove);
             //Debug.Log("Looking for material type: " + targetInventoryItemType);

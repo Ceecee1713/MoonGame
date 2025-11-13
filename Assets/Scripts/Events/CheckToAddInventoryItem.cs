@@ -61,6 +61,28 @@ public class StopCraftingTemporarily : IEvent
     }
 }
 
+public class AllowToCraftClue : IEvent
+{
+    public bool AvaliableClueToDecipher;
+
+    public AllowToCraftClue(bool avaliableClueToDecipher)
+    {
+        AvaliableClueToDecipher = avaliableClueToDecipher;
+    }
+}
+
+public class RemoveInventoryItemsForMaterials : IEvent
+{
+    public List <ItemData> CraftingMaterialItems;
+    public List <int> AmountsPerStackableItemToRemove;
+
+    public RemoveInventoryItemsForMaterials(List <ItemData> craftingMaterialItems, List <int> amountsPerStackableItemToRemove)
+    {
+        CraftingMaterialItems = craftingMaterialItems;
+        AmountsPerStackableItemToRemove = amountsPerStackableItemToRemove;
+    }
+}
+
 public class UseInventoryItem : IEvent
 {
 
@@ -112,6 +134,15 @@ public class FoundClueFragment : IEvent
     }
 }
 
+public class DecipherClue : IEvent
+{
+    
+}
+
+public class CheckForFinishedClues : IEvent
+{
+    
+}
 
 
 //UI events below

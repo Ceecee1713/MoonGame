@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -21,8 +22,11 @@ public class CluebookManager : MonoBehaviour
     [SerializeField]
     private Clue [] clueIndexes = new Clue [9];
 
+    private List <int> _clueIndexesDeciphered = new List <int>(); 
+
     private Dialogue _clueDialogue;
 
+    private bool _resolvedClue = false;
     private string _incompleteMessage = " (Search for the other clue fragment).";
 
     void Start()
@@ -31,6 +35,8 @@ public class CluebookManager : MonoBehaviour
             clueIndexes[i].FullCodedClue = clueIndexes[i].FirstClueFragment.Message + " " + clueIndexes[i].SecondClueFragment.Message;
 
         EventBus.Instance.Subscribe<FoundClueFragment>(CheckForMatchingClueFragments);
+        EventBus.Instance.Subscribe<DecipherClue>(DecipherSingleClue);
+        EventBus.Instance.Subscribe<CheckForFinishedClues>(CheckForResolvedClues);
     }
 
     private void CheckForMatchingClueFragments(FoundClueFragment foundClueFragment)
@@ -57,5 +63,34 @@ public class CluebookManager : MonoBehaviour
                 break;
             }
         }
+    }
+
+    private void DecipherSingleClue(DecipherClue decipherClue)
+    {
+        for(int i = 0; i < clueIndexes.Length; i++)
+        {
+            if(clueIndexes[i].ClueText.text == clueIndexes[i].FullCodedClue && !_clueIndexesDeciphered.Contains(i))
+            {
+                clueIndexes[i].ClueText.text = clueIndexes[i].FullDecipheredClue;
+                _clueIndexesDeciphered.Add(i);
+                break;
+            }
+        }
+    }
+
+    private void CheckForResolvedClues(CheckForFinishedClues checkForFinishedClues)
+    {
+        for(int i = 0; i < clueIndexes.Length; i++)
+        {
+            if(clueIndexes[i].ClueText.text == clueIndexes[i].FullCodedClue)
+            {
+                _resolvedClue = true;
+                break;
+            }
+
+            _resolvedClue = false;
+        }
+
+        EventBus.Instance.Publish(new AllowToCraftClue(_resolvedClue));
     }
 }

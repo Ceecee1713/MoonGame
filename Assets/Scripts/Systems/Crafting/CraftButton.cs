@@ -19,12 +19,13 @@ public class CraftButton : MonoBehaviour
         EventBus.Instance.Subscribe<StopCraftingTemporarily>(AllowButtonInteractionToCraft);
     }
 
+    //Called for when a warning message pops up saying crafting materials anre insufficient
     private void AllowButtonInteractionToCraft(StopCraftingTemporarily stopCraftingTemporarily)
     {
         _stopCrafting = stopCraftingTemporarily.ShowingWarningMessage;
     }
 
-    public void OnCraftClick()
+    public void OnCraftInventoryItemClick()
     {
         if(_stopCrafting == true)
             return; 
@@ -33,5 +34,17 @@ public class CraftButton : MonoBehaviour
 
         for(int i = 0; i < craftingMaterials.Count; i++)
             craftManager.CheckInventoryForCraftingMaterials(craftableInventoryItem, craftingMaterials[i], craftingMaterials.Count);
+    }
+
+    public void OnDecipherClueClick()
+    {
+        if(_stopCrafting == true)
+            return; 
+
+        EventBus.Instance.Publish(new CheckForFinishedClues());
+        craftManager.ResetStatus();
+
+        for(int i = 0; i < craftingMaterials.Count; i++)
+            craftManager.CheckMaterialsForDecipheringClue(craftingMaterials[i], craftingMaterials.Count);
     }
 }
