@@ -13,7 +13,7 @@ public class PickUpItem : MonoBehaviour
         EventBus.Instance.Subscribe<Interact>(CheckIfItemIsPickedUp);
     }
 
-    private void CheckIfItemIsPickedUp(Interact pickingUpItem) //When player "interacts" with this game object (keybind for interact)
+    private void CheckIfItemIsPickedUp(Interact pickingUpItem) //When player "interacts" with this game object (keybind E)
     {
         if(_playerStayingInCollision == true)
         {

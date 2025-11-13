@@ -89,7 +89,7 @@ public class DialogueText : MonoBehaviour
         }
     }
 
-    public void DisableButtonOptions() //Caled by "TextAdventureButton" (Dialogue Buttons) when having clicked on incorrect button
+    public void DisableButtonOptions() //Caled when having clicked on an incorrect button
     {
         WrongButtonChoicesCounter++;
         returnButton.SetActive(true); 
@@ -130,7 +130,7 @@ public class DialogueText : MonoBehaviour
         StartCoroutine(TypeMessage(_currentQuestionDialogue.Messages[_index]));
     }
 
-    private void NextTextAdvetureDialogue(AdvanceTextAdventure advanceTextAdventure) //Called by "PlayerInputController"
+    private void NextTextAdvetureDialogue(AdvanceTextAdventure advanceTextAdventure) //Called by "PlayerInputController" (keybind Enter/left mouse click)
     {
         if(_finishedTypingMessage != true || _doNotRepeat == true)
             return;
@@ -204,8 +204,6 @@ public class DialogueText : MonoBehaviour
         if(_concludeMoonPuzzle == false && _index+1 == _messageLength && _hasActivatedButtonOptions == false) //Show button display
         {
             ButtonOptions.SetActive(true); 
-
-            //Set the button text for all three text adventure buttons 
             buttonOneText.text = _currentQuestionDialogue.ButtonOneText;
             buttonTwoText.text = _currentQuestionDialogue.ButtonTwoText;
             buttonThreeText.text = _currentQuestionDialogue.ButtonThreeText;

@@ -13,7 +13,7 @@ public class CraftingTable : MonoBehaviour
         EventBus.Instance.Subscribe<Interact>(OpenCraftingUI);
     }
 
-    private void OpenCraftingUI(Interact interact) //When player "interacts" with this game object (keybind for interact)
+    private void OpenCraftingUI(Interact interact) //When player "interacts" with this game object (keybind E)
     {
         if(_playerStayingInCollision == true)
         {

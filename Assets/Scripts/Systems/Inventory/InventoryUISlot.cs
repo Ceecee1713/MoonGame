@@ -40,12 +40,13 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
     public void DropItem()
     {
         if(InventoryItem.ItemObject != null)
+        {
             EventBus.Instance.Publish(new SpawnDroppedInventoryItem(InventoryItem));
-
-        RemoveItemFromSlot();
+            RemoveItemFromSlot();
+        }
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData eventData) 
     {
         EventBus.Instance.Publish(new SelectInventoryItem(InventoryItem, this));
     }

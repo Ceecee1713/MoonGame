@@ -20,12 +20,11 @@ public class CraftManager : MonoBehaviour
     private int _amountOfMatchingCraftingMaterials = 0; //To be compared to the needed amount of unique materials for craftable item's recipe
     private int _remainingQuantity; 
     private int _amountOfAnInventoryItemNeeded; //Int to be added into "_amountsPerUniqueInventoryItemsToRemove" list 
-    //Counts the number of a unique inventory item to be removed (its quantity is fully consumed)
+    //Counts the number (quantity) of a single unique inventory item to be removed
 
     void Start()
     {
         _craftingUI = GetComponent<CraftingUI>();
-
         EventBus.Instance.Subscribe<AllowToCraftClue>(CheckToMakeClue);
     }
 
@@ -45,7 +44,6 @@ public class CraftManager : MonoBehaviour
 
     private void CannotCraftItem()
     {
-        //Add warning
         _craftingUI.DisplayWarningMessage();
     }
 
@@ -127,7 +125,7 @@ public class CraftManager : MonoBehaviour
             CraftInventoryItem(craftableInventoryItem);
     }
 
-    //Iterate through inventory slots for specific inventory item material ("craftingMaterial")
+    //Iterate through inventory slots for the specific inventory item material ("craftingMaterial")
     private void SearchInventoryForItemMaterial(ItemData craftingMaterial)
     {
         for(int j = 0; j < inventoryData.Inventory.Count; j++) 
@@ -151,7 +149,7 @@ public class CraftManager : MonoBehaviour
                craftingMaterial.IsThisAStackableItem == true;
     }
 
-    //Determine the inventory items's quantity 
+    //Determine the inventory item's quantity 
     private void DetermineInventoryItemQuantity(int slotIndex, ItemData craftingMaterial)
     {
         CalculateRemainingQuantity(slotIndex, craftingMaterial);
@@ -220,7 +218,7 @@ public class CraftManager : MonoBehaviour
         _breakLoop = true;
     }
 
-    //Mark an inventory item to be removed later (in "InventoryUI")
+    //Mark an inventory item to be removed (item is removed in "InventoryUI")
     private void MarkItemForRemoval(int slotIndex)
     {
         _amountsPerUniqueInventoryItemsToRemove.Add(_amountOfAnInventoryItemNeeded);

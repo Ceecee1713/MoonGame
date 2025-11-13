@@ -26,7 +26,7 @@ public class CluebookManager : MonoBehaviour
 
     private Dialogue _clueDialogue;
 
-    private bool _resolvedClue = false;
+    private bool _resolvedClue = false; //Clue that's complete but hasn't been deciphered
     private string _incompleteMessage = " (Search for the other clue fragment).";
 
     void Start()
@@ -35,8 +35,8 @@ public class CluebookManager : MonoBehaviour
             clueIndexes[i].FullCodedClue = clueIndexes[i].FirstClueFragment.Message + " " + clueIndexes[i].SecondClueFragment.Message;
 
         EventBus.Instance.Subscribe<FoundClueFragment>(CheckForMatchingClueFragments);
+        EventBus.Instance.Subscribe<CheckForCompleteClues>(CheckForACompleteClue);
         EventBus.Instance.Subscribe<DecipherClue>(DecipherSingleClue);
-        EventBus.Instance.Subscribe<CheckForFinishedClues>(CheckForResolvedClues);
     }
 
     private void CheckForMatchingClueFragments(FoundClueFragment foundClueFragment)
@@ -59,26 +59,14 @@ public class CluebookManager : MonoBehaviour
 
             if(clueIndexes[i].FoundFirstClueFragment == true && clueIndexes[i].FoundSecondClueFragment == true)
             {
-                clueIndexes[i].ClueText.text = clueIndexes[i].FullCodedClue;
+                clueIndexes[i].ClueText.text = clueIndexes[i].FullCodedClue; //Completed clue but not yet deciphered
                 break;
             }
         }
     }
 
-    private void DecipherSingleClue(DecipherClue decipherClue)
-    {
-        for(int i = 0; i < clueIndexes.Length; i++)
-        {
-            if(clueIndexes[i].ClueText.text == clueIndexes[i].FullCodedClue && !_clueIndexesDeciphered.Contains(i))
-            {
-                clueIndexes[i].ClueText.text = clueIndexes[i].FullDecipheredClue;
-                _clueIndexesDeciphered.Add(i);
-                break;
-            }
-        }
-    }
-
-    private void CheckForResolvedClues(CheckForFinishedClues checkForFinishedClues)
+    //Checking for a complete code that's not deciphered yet
+    private void CheckForACompleteClue(CheckForCompleteClues checkForCompleteClues)
     {
         for(int i = 0; i < clueIndexes.Length; i++)
         {
@@ -92,5 +80,18 @@ public class CluebookManager : MonoBehaviour
         }
 
         EventBus.Instance.Publish(new AllowToCraftClue(_resolvedClue));
+    }
+
+    private void DecipherSingleClue(DecipherClue decipherClue)
+    {
+        for(int i = 0; i < clueIndexes.Length; i++)
+        {
+            if(clueIndexes[i].ClueText.text == clueIndexes[i].FullCodedClue && !_clueIndexesDeciphered.Contains(i))
+            {
+                clueIndexes[i].ClueText.text = clueIndexes[i].FullDecipheredClue;
+                _clueIndexesDeciphered.Add(i);
+                break;
+            }
+        }
     }
 }

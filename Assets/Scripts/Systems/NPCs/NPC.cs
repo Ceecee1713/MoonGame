@@ -20,7 +20,7 @@ public class NPC : MonoBehaviour
         EventBus.Instance.Subscribe<Interact>(CheckToShowDialogue);
     }
 
-    private void CheckToShowDialogue(Interact pickingUpItem) //When player "interacts" with this game object (keybind for interact)
+    private void CheckToShowDialogue(Interact pickingUpItem) //When player "interacts" with this game object (keybind E)
     {
         if(_playerStayingInCollision == true)
         {
@@ -28,7 +28,7 @@ public class NPC : MonoBehaviour
 
             EventBus.Instance.Publish(new FreezePlayer(true));
             EventBus.Instance.Publish(new MaintainPlayerHealth(true));
-            EventBus.Instance.Publish(new SingleDialogueMessage(_fullNPCMesasge));
+            EventBus.Instance.Publish(new TypeOutSingleDialogue(_fullNPCMesasge));
             EventBus.Instance.Publish(new FoundClueFragment(npcMessage));
         }
     }

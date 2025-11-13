@@ -3,8 +3,8 @@ using UnityEngine;
 
 //This contains all the events (data types) that the game uses
 
-//Inventory and Crafting System Events below
-
+//Inventory and Crafting System Events below:
+//For picking up an item in the world to add to inventory
 public class CheckToAddInventoryItem : IEvent 
 {
     public ItemData InventoryItem;
@@ -15,6 +15,8 @@ public class CheckToAddInventoryItem : IEvent
     }
 }
 
+//For adding a crafted item into the inventory and removing items already in the inventory 
+//that's been used as crafting materials
 public class CheckToAddCraftedItem : IEvent 
 {
     public ItemData InventoryItem;
@@ -29,6 +31,8 @@ public class CheckToAddCraftedItem : IEvent
     }
 }
 
+//For selecting on an inventory slot on the inventory UI 
+//and equip the item in that selected inventory slot
 public class SelectInventoryItem : IEvent 
 {
     public ItemData InventoryItem;
@@ -41,6 +45,17 @@ public class SelectInventoryItem : IEvent
     }
 }
 
+//To use an inventory item (the equipped inventory item) on the selected inventory slot
+public class UseInventoryItem : IEvent
+{
+}
+
+//To drop the currently equipped inventory item from the selected inventory slot
+public class DropEquipedInventoryItem : IEvent 
+{
+}
+
+//To instantiate an inventory item into the world after dropping it from the inventory 
 public class SpawnDroppedInventoryItem : IEvent
 {
     public ItemData InventoryItem;
@@ -51,6 +66,8 @@ public class SpawnDroppedInventoryItem : IEvent
     }
 }
 
+//To display a warning message for the crafting UI 
+//if crafting materials aren't insufficient to craft something
 public class StopCraftingTemporarily : IEvent
 {
     public bool ShowingWarningMessage;
@@ -61,6 +78,8 @@ public class StopCraftingTemporarily : IEvent
     }
 }
 
+//Checking if a clue has been resolved from the clue book 
+//before being able to decipher it on the crafting table
 public class AllowToCraftClue : IEvent
 {
     public bool AvaliableClueToDecipher;
@@ -71,6 +90,8 @@ public class AllowToCraftClue : IEvent
     }
 }
 
+//For removing inventory items from the inventory that were 
+//used as crafting materials to decipher a clue on the crafting table
 public class RemoveInventoryItemsForMaterials : IEvent
 {
     public List <ItemData> CraftingMaterialItems;
@@ -83,23 +104,18 @@ public class RemoveInventoryItemsForMaterials : IEvent
     }
 }
 
-public class UseInventoryItem : IEvent
-{
-
-}
-
-//Text System events below
-
+//Text System events below:
+//Starting a Moon Puzzle Text Adventure (prepare the first dialogue)
 public class StartNewTextAdventure : IEvent
 {
-
 }
 
+//Progressing through dialogue in the Moon Puzzle Text Adventure
 public class AdvanceTextAdventure : IEvent
 {
-
 }
 
+//Showing a moon fragment UI with a changing sprite based on the Moon Puzzle
 public class DisplayMoonFragmentImage : IEvent
 {
     public Sprite MoonFragmentSprite;
@@ -110,6 +126,8 @@ public class DisplayMoonFragmentImage : IEvent
     }
 }
 
+//Tracking the current dialogue in the Moon Puzzle Text Adventure
+//To determine the next dialogue to say if the player guesses correctly
 public class SetTextAdventureQuestion : IEvent
 {
     public DialogueData QuestionDialogue;
@@ -122,8 +140,8 @@ public class SetTextAdventureQuestion : IEvent
     }
 }
 
-//Cluebook Events below
-
+//Cluebook Events below:
+//To add a clue fragment into the cluebook after interacting with an NPC that gives a clue fragment
 public class FoundClueFragment : IEvent
 {
     public Dialogue ClueDialogue;
@@ -134,19 +152,21 @@ public class FoundClueFragment : IEvent
     }
 }
 
+//To decipher a clue in the cluebook 
+//when the crafting table has checked it has enough crafting materials in the inventory 
 public class DecipherClue : IEvent
 {
-    
 }
 
-public class CheckForFinishedClues : IEvent
+//To check if any of the clues are complete 
+//to allow for decipher (crafting) of the clue to happen
+public class CheckForCompleteClues : IEvent
 {
-    
 }
 
 
-//UI events below
-
+//UI events below:
+//Change the current active canvas to "NewCanvas" with a fading black screen for a transistion
 public class ChangeCanvases : IEvent
 {
     public GameObject NewCanvas;
@@ -161,6 +181,7 @@ public class ChangeCanvases : IEvent
     }
 }
 
+//Fade "CurrentCanvas" with a black screen for a transistion
 public class FadeSingleCanvas : IEvent
 {
     public GameObject CurrentCanvas;
@@ -173,23 +194,24 @@ public class FadeSingleCanvas : IEvent
     }
 }
 
-public class SingleDialogueMessage : IEvent
+//Assign a single dialogue to the UI responsible for handling single dialogues 
+public class TypeOutSingleDialogue : IEvent
 {
     public string Message;
 
-    public SingleDialogueMessage(string message)
+    public TypeOutSingleDialogue(string message)
     {
         Message = message;
     }
 } 
 
+//Advance through the single dialogue to the UI responsible for handling single dialogues
 public class AdvanceSingleMessage : IEvent
 {
-
 }
 
-//Player events below
-
+//Player events below:
+//To either or lower the player's health based on environment collisions
 public class AlterPlayerHealth : IEvent
 {
     public bool RecoverHealth;
@@ -202,6 +224,7 @@ public class AlterPlayerHealth : IEvent
     }
 }
 
+//To stop the player from moving
 public class FreezePlayer : IEvent
 {
     public bool PausePlayerMovement;
@@ -212,25 +235,17 @@ public class FreezePlayer : IEvent
     }
 }
 
+//To increase the speed of the player after using a speed-up item in the inventory
 public class SpeedUpPlayer : IEvent
 {
-
 }
 
-//Player input events below
-
-public class Interact : IEvent
+//Player input events below:
+public class Interact : IEvent //Interacting with objects in world space
 {
-
 }
 
-public class DropEquipedInventoryItem : IEvent //For inventory system
-{
-
-}
-
-//Mis.
-
+//To prevent the player from using an equpped inventory item when in collision with an object
 public class InCollision : IEvent
 {
     public bool PlayerInCollision;
@@ -241,6 +256,7 @@ public class InCollision : IEvent
     }
 }
 
+//To momentarily pause the dropping of the player's health
 public class MaintainPlayerHealth : IEvent
 {
     public bool PauseCorrioson;

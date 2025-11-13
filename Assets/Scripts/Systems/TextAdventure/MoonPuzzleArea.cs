@@ -14,7 +14,7 @@ public class MoonPuzzleArea : MonoBehaviour
         EventBus.Instance.Subscribe<Interact>(OpenTextAdventureUI);
     } 
 
-    private void OpenTextAdventureUI(Interact interact) //When player "interacts" with this game object (keybind for interact)
+    private void OpenTextAdventureUI(Interact interact) //When player "interacts" with this game object (keybind E)
     {
         if(_playerCollisionDetected == true)
         {

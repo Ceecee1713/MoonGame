@@ -18,7 +18,7 @@ public class PlayerStateMachine : BaseStateMachine
     [SerializeField]
     private float _defaultSpeedOfMovementChanging = 3.0f; //How fast to change speed
 
-    [Header("Potion Usage Speed Values")] //All values to be moved to an item usage
+    [Header("Speed Up Values")] 
     [SerializeField]
     private float potionSpeed = 7.0f;
     [SerializeField]
@@ -27,7 +27,6 @@ public class PlayerStateMachine : BaseStateMachine
     private float _itemSpeedOfMovementChanging = 3.0f; //How fast to change speed for when a speed boost potion is used
     public float _maxLengthOfTimeForSpeedUp = 7.0f;
     public float _currentTimeLengthForSpeedUp;
-    private bool _hasPlayerTakenSpeedPotion = false;
 
     [HideInInspector]
     public CharacterController _characterController;
@@ -49,7 +48,7 @@ public class PlayerStateMachine : BaseStateMachine
     private float _speedOfMovementChanging; //How fast to change speed
 
     private bool _speedUpPlayer = false;
-
+    private bool _hasPlayerTakenSpeedPotion = false;
 
     public PlayerState currentState { get; set; }
     public PlayerState PreviousState { get; set; }
@@ -124,10 +123,8 @@ public class PlayerStateMachine : BaseStateMachine
 
     private void CheckToSpeedUpPlayer()
     {
-        if(_speedUpPlayer == true && _hasPlayerTakenSpeedPotion == false && _currentTimeLengthForSpeedUp == 0.0f) //Change key binding to something else
+        if(_speedUpPlayer == true && _hasPlayerTakenSpeedPotion == false && _currentTimeLengthForSpeedUp == 0.0f) 
         {
-            Debug.Log("Speed up player");
-
             _currentTimeLengthForSpeedUp = _maxLengthOfTimeForSpeedUp;
 
             //Changing values for speed up coroutine
@@ -142,26 +139,6 @@ public class PlayerStateMachine : BaseStateMachine
                 StartSpeedChange();
         }
     }
-
-    /*
-    public void CheckToSpeedUpPlayer() //Old way of speeding up player with F keybinding, hardcoded
-    {
-        if(Input.GetKeyDown(KeyCode.F) && _hasPlayerTakenSpeedPotion == false && _currentTimeLengthForSpeedUp == 0.0f) //Change key binding to something else
-        {
-            _currentTimeLengthForSpeedUp = _maxLengthOfTimeForSpeedUp;
-
-            //Changing values for speed up coroutine
-            _durationOfSpeedChanging = _itemDurationOfSpeedChanging;
-            _speedOfMovementChanging = _itemSpeedOfMovementChanging;
-            maximumSpeed = potionSpeed;
-
-            _hasPlayerTakenSpeedPotion = true;
-
-            if(currentState == WanderState)
-                StartSpeedChange();
-        }
-    }
-    */
 
     public void SpeedUpPlayer()
     {

@@ -15,7 +15,7 @@ public class DialogueCanvas : MonoBehaviour
 
     void Awake()
     {
-        EventBus.Instance.Subscribe<SingleDialogueMessage>(DisplayMessage);
+        EventBus.Instance.Subscribe<TypeOutSingleDialogue>(DisplayMessage);
         EventBus.Instance.Subscribe<AdvanceSingleMessage>(FinishMessage);
     }
 
@@ -33,7 +33,7 @@ public class DialogueCanvas : MonoBehaviour
         dialogueText.text = "";
     }
 
-    private void FinishMessage(AdvanceSingleMessage advanceSingleMessage) //Called by "PlayerInputController"
+    private void FinishMessage(AdvanceSingleMessage advanceSingleMessage) //Called by "PlayerInputController" (keybind Enter/left mouse click)
     {
         if(_finishedTypingMessage != true)
             return;
@@ -44,9 +44,9 @@ public class DialogueCanvas : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-    private void DisplayMessage(SingleDialogueMessage singleDialogueMessage)
+    private void DisplayMessage(TypeOutSingleDialogue typeOutSingleDialogue)
     {
-        _dialogue = singleDialogueMessage.Message;
+        _dialogue = typeOutSingleDialogue.Message;
         StopAllCoroutines();
         StartCoroutine(TypeMessage(_dialogue));
     }

@@ -20,7 +20,7 @@ public class InventoryUI : MonoBehaviour
 
     private int _maxStackAmount = 3;
 
-    //Used for removing inventory items upon adding a craftable inventory item to the inventory
+    //Removes inventory items consumed during crafting
     private int _amountOfSingleFullyConsumedMaterialToRemove;
     private int _numberToMatchAmountOfFullyConsumedMaterial;
 
@@ -28,17 +28,17 @@ public class InventoryUI : MonoBehaviour
     {
         inventoryData.Inventory.Clear();
 
-        //Adding inventory/crafted item into inventory and removing any inventory items that were used as materials
+        //Adds a new item to inventory and removes the materials used
         EventBus.Instance.Subscribe<CheckToAddInventoryItem>(CheckInventorySlot);
         EventBus.Instance.Subscribe<CheckToAddCraftedItem>(CheckToAddCraftedItem);
 
-        //Player interaction events with the inventory system
+        //Player interaction events 
         EventBus.Instance.Subscribe<InCollision>(CheckIfPlayerIsInACollision);
         EventBus.Instance.Subscribe<SelectInventoryItem>(EquipInventoryItem);
         EventBus.Instance.Subscribe<DropEquipedInventoryItem>(DropEquipedInventoryItem);
         EventBus.Instance.Subscribe<UseInventoryItem>(CheckToUseInventoryItem);
 
-        //Removing any inventory items that were used as materials when having deciphered a clue for the cluebook
+        //Removes inventory items consumed when deciphering a cluebook clue
         EventBus.Instance.Subscribe<RemoveInventoryItemsForMaterials>(RemoveInventoryItemsForDecipheringClue);
     }
 
@@ -60,16 +60,16 @@ public class InventoryUI : MonoBehaviour
 
     private void AddInventoryItem(ItemData itemToCheck) //Add an inventory item (Crafted item or not)
     {
-        for(int i = 0; i < inventorySlots.Length; i++) //Add same type, stackable items together in same inventory slot (increase quantity)
+        for(int i = 0; i < inventorySlots.Length; i++) //Add same type, stackable items together in same inventory slot
         {
             if(inventorySlots[i].InventoryItem.IsThisAStackableItem == true && itemToCheck.IsThisAStackableItem == true)
             {
                 if(inventorySlots[i].InventoryItem.ItemType == itemToCheck.ItemType)
                 {
-                    //If the inventory slot's item's quantity isn't above "_maxStackAmount" (allow items to stack)
+                    //If the inventory slot's item's quantity isn't above "_maxStackAmount" (increase quantity)
                     if(inventorySlots[i].InventoryItem.Quantity < _maxStackAmount) 
                     {
-                        inventorySlots[i].InventoryItem.Quantity++;
+                        inventorySlots[i].InventoryItem.Quantity++; 
                         return;
                     }
                 } 
@@ -88,7 +88,7 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    private void CheckToAddCraftedItem(CheckToAddCraftedItem checkToAddCraftedItem) 
+    private void CheckToAddCraftedItem(CheckToAddCraftedItem checkToAddCraftedItem) //Add crafted inventory item to player inventory
     {
         AddInventoryItem(checkToAddCraftedItem.InventoryItem);
 
@@ -102,9 +102,6 @@ public class InventoryUI : MonoBehaviour
             _numberToMatchAmountOfFullyConsumedMaterial = 0;
 
             var targetInventoryItemType = checkToAddCraftedItem.CraftingMaterialItems[i].ItemType;
-            
-            //Debug.Log("This is the number we gotta match to: " + _amountOfSingleFullyConsumedMaterialToRemove);
-            //Debug.Log("Looking for material type: " + targetInventoryItemType);
             
             for(int j = 0; j < inventorySlots.Length; j++)
             {
@@ -127,16 +124,13 @@ public class InventoryUI : MonoBehaviour
         if(removeInventoryItemsForMaterials.AmountsPerStackableItemToRemove.Count == 0) 
             return;
 
-        //Removal of inventory items that were used as crafting materials for the CraftManager:
+        //Removal of inventory items that were used as crafting materials
         for(int i = 0; i < removeInventoryItemsForMaterials.AmountsPerStackableItemToRemove.Count; i++)
         {
             _amountOfSingleFullyConsumedMaterialToRemove = removeInventoryItemsForMaterials.AmountsPerStackableItemToRemove[i];
             _numberToMatchAmountOfFullyConsumedMaterial = 0;
 
             var targetInventoryItemType = removeInventoryItemsForMaterials.CraftingMaterialItems[i].ItemType;
-            
-            //Debug.Log("This is the number we gotta match to: " + _amountOfSingleFullyConsumedMaterialToRemove);
-            //Debug.Log("Looking for material type: " + targetInventoryItemType);
             
             for(int j = 0; j < inventorySlots.Length; j++)
             {
@@ -153,7 +147,7 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    private void EquipInventoryItem(SelectInventoryItem selectInventoryItem) //When selecting on an inventory slot with mouse
+    private void EquipInventoryItem(SelectInventoryItem selectInventoryItem) //When selecting on an inventory slot
     {
         for(int i = 0; i < inventorySlots.Length; i++)
         {
