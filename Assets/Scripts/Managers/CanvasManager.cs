@@ -9,11 +9,8 @@ public class CanvasManager : MonoBehaviour
     [SerializeField]
     private GameObject [] canvases; //Must contain ALL UI canvases (excluding pause menu, plain black screen)
 
-    [Header ("Fading Times")]
     [SerializeField]
     private float normalFadingTime = 1.0f;
-    [SerializeField]
-    private float shortenedFadingTime = 0.45f;
 
     private bool _showTextAdventure;
     private GameObject _currentCanvas;
@@ -38,7 +35,7 @@ public class CanvasManager : MonoBehaviour
         }
 
         _newCanvasGroup = changeCanvases.NewCanvas.GetComponent<CanvasGroup>();
-        StartCoroutine(SwitchCanvases(_newCanvasGroup, changeCanvases.NewCanvas, changeCanvases.SolvedMoonPuzzle, changeCanvases.PromptTextAdventure));
+        StartCoroutine(SwitchCanvases(_newCanvasGroup, changeCanvases.NewCanvas, changeCanvases.StartMoonPuzzle, changeCanvases.StartPrayerPhase));
     }
 
     private void FadeSingleCanvas(FadeSingleCanvas fadeSingleCanvas)
@@ -65,31 +62,21 @@ public class CanvasManager : MonoBehaviour
         }
     }
 
-    IEnumerator SwitchCanvases(CanvasGroup newCanvasGroup, GameObject newCanvas, bool solvedMoonPuzzle, bool promptTextAdventure)
+    IEnumerator SwitchCanvases(CanvasGroup newCanvasGroup, GameObject newCanvas, bool startMoonPuzzle, bool startPrayerPhase)
     {
         //Fade out of current active canvas
         Tween firstTween = _currentCanvasGroup.DOFade(0f, normalFadingTime);
         yield return firstTween.WaitForCompletion();
         _currentCanvas.SetActive(false);
 
-        if(solvedMoonPuzzle == true)
-        {
-            newCanvas.SetActive(true);
-            Tween secondTween = newCanvasGroup.DOFade(1.0f, shortenedFadingTime);
-            yield return secondTween.WaitForCompletion();
-        }
+        newCanvas.SetActive(true);
+        Tween secondTween = newCanvasGroup.DOFade(1.0f, normalFadingTime);
+        yield return secondTween.WaitForCompletion();
 
-        else
-        {
-            newCanvas.SetActive(true);
-            Tween secondTween = newCanvasGroup.DOFade(1.0f, normalFadingTime);
-            yield return secondTween.WaitForCompletion();
-        }
+        if(startMoonPuzzle == true)
+            EventBus.Instance.Publish(new StartNewTextAdventure()); //Prompt the first message of dialogue to be said
 
-        if(promptTextAdventure == true)
-        {
-            //Prompt the first message of dialogue to be said
-            EventBus.Instance.Publish(new StartNewTextAdventure());
-        }
+        if(startPrayerPhase == true)
+            EventBus.Instance.Publish(new StartPrayerPhase()); //Prompt the first message of dialogue to be said
     }
 }

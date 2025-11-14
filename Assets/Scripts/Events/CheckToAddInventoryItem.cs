@@ -126,6 +126,14 @@ public class DisplayMoonFragmentImage : IEvent
     }
 }
 
+public class StartPrayerPhase : IEvent
+{
+}
+
+public class StartEndGameDialogue : IEvent
+{
+}
+
 //Tracking the current dialogue in the Moon Puzzle Text Adventure
 //To determine the next dialogue to say if the player guesses correctly
 public class SetTextAdventureQuestion : IEvent
@@ -170,14 +178,14 @@ public class CheckForCompleteClues : IEvent
 public class ChangeCanvases : IEvent
 {
     public GameObject NewCanvas;
-    public bool SolvedMoonPuzzle;
-    public bool PromptTextAdventure;
+    public bool StartMoonPuzzle;
+    public bool StartPrayerPhase;
 
-    public ChangeCanvases(GameObject newCanvas, bool solvedMoonPuzzle, bool promptTextAdventure)
+    public ChangeCanvases(GameObject newCanvas, bool startMoonPuzzle, bool startPrayerPhase)
     {
         NewCanvas = newCanvas;
-        SolvedMoonPuzzle = solvedMoonPuzzle;
-        PromptTextAdventure = promptTextAdventure;
+        StartMoonPuzzle = startMoonPuzzle;
+        StartPrayerPhase = startPrayerPhase;
     }
 }
 

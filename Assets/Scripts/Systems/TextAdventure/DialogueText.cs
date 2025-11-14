@@ -47,9 +47,9 @@ public class DialogueText : MonoBehaviour
         EventBus.Instance.Subscribe<StartNewTextAdventure>(StartNewTextAdventure);
         EventBus.Instance.Subscribe<AdvanceTextAdventure>(NextTextAdvetureDialogue);
 
+        ResetValues();
         ButtonOptions.SetActive(false);
         textAdventureUI.SetActive(false);
-        ResetValues();
     }
 
     void OnEnable()

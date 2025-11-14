@@ -1,25 +1,25 @@
 using UnityEngine;
 
-public class MoonPuzzleArea : MonoBehaviour
+public class PrayToMoonStatue : MonoBehaviour
 {
     [SerializeField]
-    private GameObject textAdventureUI;
+    private GameObject storytellingUI;
 
-    private bool _startMoonPuzzle = true;
-    private bool _startPrayerPhase = false;
+    private bool _startMoonPuzzle = false;
+    private bool _startPrayerPhase = true;
     private bool _playerCollisionDetected = false;
 
     void Start()
     {
-        EventBus.Instance.Subscribe<Interact>(OpenTextAdventureUI);
+        EventBus.Instance.Subscribe<Interact>(OpenStorytellingUI);
     } 
 
-    private void OpenTextAdventureUI(Interact interact) //When player "interacts" with this game object (keybind E)
+    private void OpenStorytellingUI(Interact interact) //When player "interacts" with this game object (keybind E)
     {
         if(_playerCollisionDetected == true)
         {
             EventBus.Instance.Publish(new FreezePlayer(true));
-            EventBus.Instance.Publish(new ChangeCanvases(textAdventureUI, _startMoonPuzzle, _startPrayerPhase));
+            EventBus.Instance.Publish(new ChangeCanvases(storytellingUI, _startMoonPuzzle, _startPrayerPhase));
         }
     }
 
