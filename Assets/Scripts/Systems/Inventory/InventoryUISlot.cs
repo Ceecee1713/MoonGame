@@ -15,9 +15,12 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     private InventorySlot inventorySlotData;
 
+    private bool _isAChestOpen = false;
+
     void Start()
     {
         IsEmpty = true;
+        EventBus.Instance.Subscribe<ChestIsOpen>(ChangeInput);
     }
 
     public void AddItemToSlot(ItemData newInventoryItem)
@@ -46,8 +49,21 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
         }
     }
 
+    private void ChangeInput(ChestIsOpen chestIsOpen)
+    {
+        _isAChestOpen = chestIsOpen.IsAChestOpen;
+    }
+
     public void OnPointerClick(PointerEventData eventData) 
     {
-        EventBus.Instance.Publish(new SelectInventoryItem(InventoryItem, this));
+        if(_isAChestOpen == false)
+            EventBus.Instance.Publish(new SelectInventoryItem(InventoryItem, this));
+
+        else
+        {
+            ItemData clonedInventoryItem = InventoryItem.Clone();
+            EventBus.Instance.Publish(new CheckToAddItemToChest(clonedInventoryItem));
+            EventBus.Instance.Publish(new RemoveItemFromSlot(this));
+        }
     }
 }

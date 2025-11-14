@@ -4,7 +4,7 @@ using UnityEngine;
 //This contains all the events (data types) that the game uses
 
 //Inventory and Crafting System Events below:
-//For picking up an item in the world to add to inventory
+//Picking up an item in the world to add to inventory and an empty inventory slot
 public class CheckToAddInventoryItem : IEvent 
 {
     public ItemData InventoryItem;
@@ -15,8 +15,8 @@ public class CheckToAddInventoryItem : IEvent
     }
 }
 
-//For adding a crafted item into the inventory and removing items already in the inventory 
-//that's been used as crafting materials
+//Adding a crafted item into the inventory, add item into inventory data
+//and removing items already in the inventory that's been used as crafting materials
 public class CheckToAddCraftedItem : IEvent 
 {
     public ItemData InventoryItem;
@@ -45,14 +45,28 @@ public class SelectInventoryItem : IEvent
     }
 }
 
-//To use an inventory item (the equipped inventory item) on the selected inventory slot
+//To use an inventory item (the equipped inventory item) on the selected inventory slot,
+//clear the selected inventory slot and remove that item from the inventory data
 public class UseInventoryItem : IEvent
 {
 }
 
-//To drop the currently equipped inventory item from the selected inventory slot
+//To drop the currently equipped inventory item from the selected inventory slot,
+//clear the selected inventory slot and remove that item from the inventory data
 public class DropEquipedInventoryItem : IEvent 
 {
+}
+
+//Clear the selected inventory slot and remove that item from the inventory data
+//This is used for adding an item to a chest but removing it from the inventory data and player's inventory
+public class RemoveItemFromSlot : IEvent 
+{
+    public InventoryUISlot InventorySlot;
+
+    public RemoveItemFromSlot(InventoryUISlot inventorySlot)
+    {
+        InventorySlot = inventorySlot;
+    }
 }
 
 //To instantiate an inventory item into the world after dropping it from the inventory 
@@ -272,5 +286,25 @@ public class MaintainPlayerHealth : IEvent
     public MaintainPlayerHealth(bool pauseCorrioson)
     {
         PauseCorrioson = pauseCorrioson;
+    }
+}
+
+public class ChestIsOpen : IEvent
+{
+    public bool IsAChestOpen;
+
+    public ChestIsOpen(bool isAChestOpen)
+    {
+        IsAChestOpen = isAChestOpen;
+    }
+}
+
+public class CheckToAddItemToChest : IEvent 
+{
+    public ItemData InventoryItem;
+
+    public CheckToAddItemToChest(ItemData inventoryItem)
+    {
+        InventoryItem = inventoryItem;
     }
 }

@@ -40,6 +40,8 @@ public class InventoryUI : MonoBehaviour
 
         //Removes inventory items consumed when deciphering a cluebook clue
         EventBus.Instance.Subscribe<RemoveInventoryItemsForMaterials>(RemoveInventoryItemsForDecipheringClue);
+
+        EventBus.Instance.Subscribe<RemoveItemFromSlot>(RemoveItemFromInventory);
     }
 
     void Update()
@@ -211,6 +213,26 @@ public class InventoryUI : MonoBehaviour
                 _selectedInventoryUISlot.OutlineImage.SetActive(false); 
                 _selectedInventoryUISlot = null;
                 _equipedInventoryItem = null;
+                break;
+            }
+        }
+    }
+
+    private void RemoveItemFromInventory(RemoveItemFromSlot removeItemFromSlot)
+    {
+        for(int i = 0; i < inventorySlots.Length; i++)
+        {
+            //If selected UI slot is within the "inventorySlots" array 
+            if(inventorySlots[i] == removeItemFromSlot.InventorySlot)
+            {
+                //Remove inventory item from inventory, its inventory slot and instiantiate item in world space
+                inventoryData.Inventory.Remove(inventorySlots[i].InventoryItem);
+                inventorySlots[i].RemoveItemFromSlot();
+
+                //Deselect inventory slot
+                //_selectedInventoryUISlot.OutlineImage.SetActive(false); 
+                //_selectedInventoryUISlot = null;
+                //_equipedInventoryItem = null;
                 break;
             }
         }
