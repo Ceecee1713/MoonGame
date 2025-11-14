@@ -33,6 +33,7 @@ public class StorytellingText : MonoBehaviour
     private int _randomPrayerNumber = 0;
     private int _messageLength;
     private int _index = 0; //Index to go through the dialogue message array (individual messages) from "dialogueData" 
+    private int _currentLineCount = 0;
 
     private bool _doNotRepeat = false;
     private bool _beginPrayerPhase = false;
@@ -40,6 +41,7 @@ public class StorytellingText : MonoBehaviour
     private bool _finishGame = false;
     private bool _finishedTypingMessage = false; //Prevent or allow going through individual messages when they're not fully typed out
 
+    private const int MAX_LINES = 3; 
     private const float TYPING_SPEED = 0.015f;
 
     void Start()
@@ -67,6 +69,7 @@ public class StorytellingText : MonoBehaviour
         dialogueText.text = "";
 
         _index = 0; 
+        _currentLineCount = 0;
         _beginPrayerPhase = false;
         _finishPrayerPhase = false;
 
@@ -161,14 +164,26 @@ public class StorytellingText : MonoBehaviour
     IEnumerator TypeMessage(string message) 
     {
         _finishedTypingMessage = false;
-        dialogueText.text = ""; //Clearing the "dialogueText".text for the new dialouge to be said
+    
+        if (_currentLineCount >= MAX_LINES) //Clear text when we've reached max lines
+        {
+            dialogueText.text = "";
+            _currentLineCount = 0;
+        }
         
-        foreach (char letter in message.ToCharArray()) //Conversion of string to a char array to mimick a "typing" effect of dialouge
+        if (_currentLineCount > 0) //Adding empty lines to mimick a paragraph look
+        {
+            dialogueText.text += "\n";
+            dialogueText.text += "\n";
+        }
+        
+        foreach (char letter in message.ToCharArray())
         {
             dialogueText.text += letter;
-            yield return new WaitForSeconds(TYPING_SPEED); //Time in between of each character being typed out
-        } 
-
+            yield return new WaitForSeconds(TYPING_SPEED);
+        }
+        
+        _currentLineCount++; 
         _finishedTypingMessage = true;
     }
 }

@@ -31,6 +31,9 @@ public class DialogueText : MonoBehaviour
     private int _index = 0; //Index to go through the dialogue message array (individual messages) from "dialogueData" 
     private int _textBranchIndex = -1;
 
+    private int _currentLineCount = 0;
+    private const int MAX_LINES = 3; 
+
     private bool _fadeOutCanvas = false;
     private bool _doNotRepeat = false; 
     private bool _concludeMoonPuzzle = false;
@@ -70,6 +73,7 @@ public class DialogueText : MonoBehaviour
         buttonThreeText.text = "";
 
         _index = 0; 
+        _currentLineCount = 0;
         _hasActivatedButtonOptions = false;
         _allowGoingThroughMessages = true;
 
@@ -114,6 +118,8 @@ public class DialogueText : MonoBehaviour
             return;
 
         ResetValues();
+        dialogueText.text = "";
+        _currentLineCount = 0;
         StartCoroutine(TypeMessage(_currentQuestionDialogue.Messages[_index]));
     }
 
@@ -160,6 +166,8 @@ public class DialogueText : MonoBehaviour
     {
         //Resetting values
         _index = 0;
+        dialogueText.text = "";
+        _currentLineCount = 0;
         _hasActivatedButtonOptions = false;
         _allowGoingThroughMessages = true;
         ButtonOptions.SetActive(false);
@@ -193,14 +201,25 @@ public class DialogueText : MonoBehaviour
     IEnumerator TypeMessage(string message) 
     {
         _finishedTypingMessage = false;
-        dialogueText.text = ""; //Clearing the "dialogueText".text for the new dialouge to be said
+    
+        if (_currentLineCount >= MAX_LINES) //Clear text when we've reached max lines
+        {
+            dialogueText.text = "";
+            _currentLineCount = 0;
+        }
         
-        foreach (char letter in message.ToCharArray()) //Conversion of string to a char array to mimick a "typing" effect of dialouge
+        if (_currentLineCount > 0) //Adding empty lines to mimick a paragraph look
+        {
+            dialogueText.text += "\n";
+            dialogueText.text += "\n";
+        }
+        
+        foreach (char letter in message.ToCharArray())
         {
             dialogueText.text += letter;
-            yield return new WaitForSeconds(TYPING_SPEED); //Time in between of each character being typed out
-        } 
-
+            yield return new WaitForSeconds(TYPING_SPEED);
+        }
+        
         if(_concludeMoonPuzzle == false && _index+1 == _messageLength && _hasActivatedButtonOptions == false) //Show button display
         {
             ButtonOptions.SetActive(true); 
@@ -214,6 +233,7 @@ public class DialogueText : MonoBehaviour
             _allowGoingThroughMessages = false; //Prevent going through dialogue entirely
         }
 
+        _currentLineCount++; 
         _finishedTypingMessage = true;
     }
 }

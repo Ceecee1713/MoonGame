@@ -19,6 +19,7 @@ public class MoonPuzzleArea : MonoBehaviour
         if(_playerCollisionDetected == true)
         {
             EventBus.Instance.Publish(new FreezePlayer(true));
+            EventBus.Instance.Publish(new MaintainPlayerHealth(true));
             EventBus.Instance.Publish(new ChangeCanvases(textAdventureUI, _startMoonPuzzle, _startPrayerPhase));
         }
     }

@@ -3,6 +3,9 @@ using UnityEngine;
 public class TextAdventureButton : MonoBehaviour
 {
     [SerializeField]
+    private GameObject cluebookUI;
+
+    [SerializeField]
     private DialogueText moonPuzzleText;
 
     [SerializeField]
@@ -52,7 +55,7 @@ public class TextAdventureButton : MonoBehaviour
 
     public void OnDialogueButtonClick()
     {
-        if(_allowPlayerToInteract == false)
+        if(_allowPlayerToInteract == false || cluebookUI.activeSelf == true)
             return; 
 
         if (_currentQuestionDialogue == null)
