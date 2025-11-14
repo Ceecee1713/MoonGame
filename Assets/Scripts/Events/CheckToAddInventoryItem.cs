@@ -138,10 +138,10 @@ public class StartEndGameDialogue : IEvent
 //To determine the next dialogue to say if the player guesses correctly
 public class SetTextAdventureQuestion : IEvent
 {
-    public DialogueData QuestionDialogue;
+    public MoonPuzzleDialogueData QuestionDialogue;
     public int TextBranchIndex;
 
-    public SetTextAdventureQuestion(DialogueData questionDialogue, int textBranchIndex)
+    public SetTextAdventureQuestion(MoonPuzzleDialogueData questionDialogue, int textBranchIndex)
     {
         QuestionDialogue = questionDialogue;
         TextBranchIndex = textBranchIndex;

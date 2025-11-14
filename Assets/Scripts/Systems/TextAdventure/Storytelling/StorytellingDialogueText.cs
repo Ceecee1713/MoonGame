@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 
-public class StorytellingText : MonoBehaviour
+public class StorytellingDialogueText : MonoBehaviour
 {
     [Header ("Main Dialogues")]
     [SerializeField]

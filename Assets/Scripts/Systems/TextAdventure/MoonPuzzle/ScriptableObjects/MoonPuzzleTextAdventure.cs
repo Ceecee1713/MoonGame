@@ -14,10 +14,10 @@ public class MoonPuzzleTextAdventure : ScriptableObject
 [Serializable]
 public struct TextBranches
 {
-    public DialogueData FirstQuestionDialogue;
-    public DialogueData SecondQuestionDialogue;
-    public DialogueData ThirdQuestionDialogue;
-    public DialogueData FinishTextAdventureDialogue;
+    public MoonPuzzleDialogueData FirstQuestionDialogue;
+    public MoonPuzzleDialogueData SecondQuestionDialogue;
+    public MoonPuzzleDialogueData ThirdQuestionDialogue;
+    public MoonPuzzleDialogueData FinishTextAdventureDialogue;
 
     public Sprite MoonFragmentSprite;
 }

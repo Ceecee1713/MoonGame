@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class ReturnTextAdventureButton : MonoBehaviour
+public class ReturnMoonTextAdventureButton : MonoBehaviour
 {
     [SerializeField]
     private GameObject cluebookUI;
 
     [SerializeField]
-    private DialogueText moonPuzzleText;
+    private MoonPuzzleDialogueText moonPuzzleText;
 
     public void OnRestartTextAdventureClick()
     {

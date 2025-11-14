@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 
-public class DialogueText : MonoBehaviour
+public class MoonPuzzleDialogueText : MonoBehaviour
 {
     public MoonPuzzleTextAdventure TextAdventureDialogue;
 
@@ -25,7 +25,7 @@ public class DialogueText : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI buttonOneText, buttonTwoText, buttonThreeText;
 
-    private DialogueData _currentQuestionDialogue;
+    private MoonPuzzleDialogueData _currentQuestionDialogue;
 
     private int _messageLength;
     private int _index = 0; //Index to go through the dialogue message array (individual messages) from "dialogueData" 
@@ -162,7 +162,7 @@ public class DialogueText : MonoBehaviour
         }
     }
 
-    public void PromptDialogueFromButton(DialogueData dialogueData) //Caled by "TextAdventureButton" (Dialogue Buttons) when having chosen correct button choice
+    public void PromptDialogueFromButton(MoonPuzzleDialogueData dialogueData) //Caled by "TextAdventureButton" (Dialogue Buttons) when having chosen correct button choice
     {
         //Resetting values
         _index = 0;

@@ -1,19 +1,19 @@
 using UnityEngine;
 
-public class TextAdventureButton : MonoBehaviour
+public class MoonTextAdventureButton : MonoBehaviour
 {
     [SerializeField]
     private GameObject cluebookUI;
 
     [SerializeField]
-    private DialogueText moonPuzzleText;
+    private MoonPuzzleDialogueText moonPuzzleText;
 
     [SerializeField]
     [Range(1, 3)]
     private int buttonNumber; 
 
-    private DialogueData _nextQuestionDialogue;
-    private DialogueData _currentQuestionDialogue;
+    private MoonPuzzleDialogueData _nextQuestionDialogue;
+    private MoonPuzzleDialogueData _currentQuestionDialogue;
 
     private bool _allowPlayerToInteract = false;
     private bool _concludeMoonPuzzle;
