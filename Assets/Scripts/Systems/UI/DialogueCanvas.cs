@@ -3,6 +3,8 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 
+//This is for the dialogue canvas for the NPCs to use 
+
 public class DialogueCanvas : MonoBehaviour
 {
     [SerializeField]
