@@ -289,6 +289,7 @@ public class MaintainPlayerHealth : IEvent
     }
 }
 
+//Chest Interaction Events Below:
 public class ChestIsOpen : IEvent
 {
     public bool IsAChestOpen;
@@ -307,4 +308,25 @@ public class CheckToAddItemToChest : IEvent
     {
         InventoryItem = inventoryItem;
     }
+}
+
+//Environment Events Below:
+public class ChangeCorriosonValue : IEvent
+{
+    public float CorriosonValue;
+    public int CorriosonAreaNumber;
+
+    public ChangeCorriosonValue(float corriosonValue, int corriosonAreaNumber)
+    {
+        CorriosonValue = corriosonValue;
+        CorriosonAreaNumber = corriosonAreaNumber;
+    }
+}
+
+public class RestoreCorriosonValue : IEvent
+{
+}
+
+public class NewExplorationPhase : IEvent
+{
 }

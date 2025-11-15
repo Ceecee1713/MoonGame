@@ -4,6 +4,9 @@ using TMPro;
 
 public class StorytellingDialogueText : MonoBehaviour
 {
+    [SerializeField]
+    private CorriosonValues corriosonValues;
+
     [Header ("Main Dialogues")]
     [SerializeField]
     private StorytellingDialogueData startingGameDialogue;
@@ -41,7 +44,11 @@ public class StorytellingDialogueText : MonoBehaviour
     private bool _finishGame = false;
     private bool _finishedTypingMessage = false; //Prevent or allow going through individual messages when they're not fully typed out
 
+    private const int FIRST_MOON_PUZZLE_AREA_NUMBER = 1;
+    private const int SECOND_MOON_PUZZLE_AREA_NUMBER = 2;
+    private const int THIRD_MOON_PUZZLE_AREA_NUMBER = 3;
     private const int MAX_LINES = 3; 
+
     private const float TYPING_SPEED = 0.015f;
 
     void Start()
@@ -116,10 +123,10 @@ public class StorytellingDialogueText : MonoBehaviour
 
         if(_index+1 == _messageLength && _finishPrayerPhase == true)
         {
-            Debug.Log("Can't proceed further.");
             _doNotRepeat = true;
             EventBus.Instance.Publish(new FreezePlayer(false));
             EventBus.Instance.Publish(new ChangeCanvases(mainPlayerUI, false, false));
+            EventBus.Instance.Publish(new NewExplorationPhase());
             return;
         }
 
@@ -140,18 +147,30 @@ public class StorytellingDialogueText : MonoBehaviour
         if(_randomPrayerNumber == 1)
         {
             _currentDialogue = badPrayerDialogue;
-            //Add effect (pass event) to make corrison accumalate faster
+
+            //Make corrioson accumalate faster (lower player health faster)
+            EventBus.Instance.Publish(new ChangeCorriosonValue(corriosonValues.SpeedToLowerHealthForBadPrayerEffect, FIRST_MOON_PUZZLE_AREA_NUMBER));
+            EventBus.Instance.Publish(new ChangeCorriosonValue(corriosonValues.SpeedToLowerHealthForBadPrayerEffect, SECOND_MOON_PUZZLE_AREA_NUMBER));
+            EventBus.Instance.Publish(new ChangeCorriosonValue(corriosonValues.SpeedToLowerHealthForBadPrayerEffect, THIRD_MOON_PUZZLE_AREA_NUMBER));
         }
             
         else if(_randomPrayerNumber == 2)
         {
             _currentDialogue = goodPrayerDialogue;
-            //Add effect (pass event) to make corrison accumalate slower
+
+            //Make corrioson accumalate slower (lower player health slower)
+            EventBus.Instance.Publish(new ChangeCorriosonValue(corriosonValues.SpeedToLowerHealthForGoodPrayerEffect, FIRST_MOON_PUZZLE_AREA_NUMBER));
+            EventBus.Instance.Publish(new ChangeCorriosonValue(corriosonValues.SpeedToLowerHealthForGoodPrayerEffect, SECOND_MOON_PUZZLE_AREA_NUMBER));
+            EventBus.Instance.Publish(new ChangeCorriosonValue(corriosonValues.SpeedToLowerHealthForGoodPrayerEffect, THIRD_MOON_PUZZLE_AREA_NUMBER));
         }
             
 
         else if(_randomPrayerNumber == 3)
+        {
             _currentDialogue = noPrayerDialogue;
+            EventBus.Instance.Publish(new RestoreCorriosonValue());
+        }
+            
 
         _beginPrayerPhase = false;
         _finishPrayerPhase = true;

@@ -376,6 +376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a322fff8c211d40adf2bc61a6a9b67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  corriosonValues: {fileID: 11400000, guid: 0c43309b9484a2f4a880d0e8f0a92b86, type: 2}
   startingGameDialogue: {fileID: 11400000, guid: f66bfd8430bda354393085c9b5e83651, type: 2}
   finishedGameDialogue: {fileID: 11400000, guid: a7b17b83e834a8e4e8aefcebaa52053f, type: 2}
   prayerPhaseDialogue: {fileID: 11400000, guid: 8eeeb97570e2b154f962542e09f34fb7, type: 2}

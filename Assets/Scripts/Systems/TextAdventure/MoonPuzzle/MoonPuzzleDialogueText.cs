@@ -5,6 +5,9 @@ using TMPro;
 
 public class MoonPuzzleDialogueText : MonoBehaviour
 {
+    [SerializeField]
+    private CorriosonValues corriosonValues;
+
     public MoonPuzzleTextAdventure TextAdventureDialogue;
 
     public int WrongButtonChoicesCounter = 0;
@@ -30,9 +33,8 @@ public class MoonPuzzleDialogueText : MonoBehaviour
     private int _messageLength;
     private int _index = 0; //Index to go through the dialogue message array (individual messages) from "dialogueData" 
     private int _textBranchIndex = -1;
-
     private int _currentLineCount = 0;
-    private const int MAX_LINES = 3; 
+    private int _moonAreaCounter = 0;
 
     private bool _fadeOutCanvas = false;
     private bool _doNotRepeat = false; 
@@ -41,8 +43,10 @@ public class MoonPuzzleDialogueText : MonoBehaviour
     private bool _finishedTypingMessage = false; //Prevent or allow going through individual messages when they're not fully typed out
     private bool _allowGoingThroughMessages = false; //Prevent or allow going through new dialogue branches entirely
 
-    private const float TIME_TO_WAIT_BEFORE_FADING_MOON_PUZZLE_POP_UP = 2.5f;
     private const int MAX_COUNTER_AMOUNT_FOR_WRONG_BUTTON_CHOICES = 2;
+    private const int MAX_LINES = 3; 
+
+    private const float TIME_TO_WAIT_BEFORE_FADING_MOON_PUZZLE_POP_UP = 2.5f;
     private const float TYPING_SPEED = 0.015f;
 
     void Start()
@@ -156,6 +160,10 @@ public class MoonPuzzleDialogueText : MonoBehaviour
             else //No longer show text, stop the text adventure (completed the moon puzzle SUCCESSFULLY)
             {
                 _doNotRepeat = true;
+                
+                _moonAreaCounter++;
+                EventBus.Instance.Publish(new ChangeCorriosonValue(corriosonValues.SpeedToLowerHealthWhenAreaIsCleared, _moonAreaCounter));
+
                 StopAllCoroutines();
                 StartCoroutine(ShowMoonPuzzleFragmentUIPopUp());
             }
