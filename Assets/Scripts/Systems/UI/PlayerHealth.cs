@@ -8,12 +8,14 @@ public class PlayerHealth : MonoBehaviour
 
     private bool _pauseCorrioson = false;
     private bool _recoverHealth = false;
+    
     private float _speedToChangeHealth;
 
     void Start()
     {
         EventBus.Instance.Subscribe<AlterPlayerHealth>(ChangeHealthValue);
         EventBus.Instance.Subscribe<MaintainPlayerHealth>(ApplyCorrioson);
+        EventBus.Instance.Subscribe<NewExplorationPhase>(StartNewExplorationPhase);
     }
 
     void Update()
@@ -44,5 +46,10 @@ public class PlayerHealth : MonoBehaviour
     private void ApplyCorrioson(MaintainPlayerHealth maintainPlayerHealth)
     {
         _pauseCorrioson = maintainPlayerHealth.PauseCorrioson;
+    }
+
+    private void StartNewExplorationPhase(NewExplorationPhase newExplorationPhase)
+    {
+        health.value = 1.0f; //Reset health to full
     }
 }

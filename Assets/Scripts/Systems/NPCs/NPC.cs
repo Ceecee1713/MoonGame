@@ -14,6 +14,8 @@ public class NPC : MonoBehaviour
     private bool _playerStayingInCollision = false; 
     private bool _playerInCollision = false;
 
+    private const bool NEW_EXPLORATION_PHASE = false;
+
     void Start()
     {
         _fullNPCMesasge = npcMessage.Message + _extraMessage;
@@ -28,7 +30,7 @@ public class NPC : MonoBehaviour
 
             EventBus.Instance.Publish(new FreezePlayer(true));
             EventBus.Instance.Publish(new MaintainPlayerHealth(true));
-            EventBus.Instance.Publish(new TypeOutSingleDialogue(_fullNPCMesasge));
+            EventBus.Instance.Publish(new TypeOutSingleDialogue(_fullNPCMesasge, NEW_EXPLORATION_PHASE));
             EventBus.Instance.Publish(new FoundClueFragment(npcMessage));
         }
     }

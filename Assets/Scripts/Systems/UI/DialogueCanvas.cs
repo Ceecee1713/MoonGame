@@ -11,9 +11,12 @@ public class DialogueCanvas : MonoBehaviour
     private TextMeshProUGUI dialogueText;
 
     private bool _finishedTypingMessage = false;
+    private bool _newExplorationPhase = false;
+
     private string _dialogue;
 
     private const float TYPING_SPEED = 0.01f;
+    private const float DELAY = 1.5f;
 
     void Awake()
     {
@@ -32,7 +35,14 @@ public class DialogueCanvas : MonoBehaviour
 
     void OnDisable()
     {
+        ResetValues();
+    }
+
+    private void ResetValues()
+    {
         dialogueText.text = "";
+        _finishedTypingMessage = false;
+        _newExplorationPhase = false;
     }
 
     private void FinishMessage(AdvanceSingleMessage advanceSingleMessage) //Called by "PlayerInputController" (keybind Enter/left mouse click)
@@ -42,12 +52,17 @@ public class DialogueCanvas : MonoBehaviour
 
         EventBus.Instance.Publish(new FreezePlayer(false));
         EventBus.Instance.Publish(new MaintainPlayerHealth(false));
+
+        if(_newExplorationPhase == true)
+            EventBus.Instance.Publish(new ResetExplorationPhaseTimer());
+
         StopAllCoroutines();
         this.gameObject.SetActive(false);
     }
 
     private void DisplayMessage(TypeOutSingleDialogue typeOutSingleDialogue)
     {
+        _newExplorationPhase = typeOutSingleDialogue.NewExplorationPhase;
         _dialogue = typeOutSingleDialogue.Message;
         StopAllCoroutines();
         StartCoroutine(TypeMessage(_dialogue));

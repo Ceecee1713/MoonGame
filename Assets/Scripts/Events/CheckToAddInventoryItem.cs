@@ -118,6 +118,12 @@ public class RemoveInventoryItemsForMaterials : IEvent
     }
 }
 
+
+
+
+
+
+
 //Text System events below:
 //Starting a Moon Puzzle Text Adventure (prepare the first dialogue)
 public class StartNewTextAdventure : IEvent
@@ -144,7 +150,7 @@ public class StartPrayerPhase : IEvent
 {
 }
 
-public class StartEndGameDialogue : IEvent
+public class StartEndGameDialogue : IEvent //Not published by any script. Only inside StorytellingDialogueText  - Nov 25
 {
 }
 
@@ -161,6 +167,13 @@ public class SetTextAdventureQuestion : IEvent
         TextBranchIndex = textBranchIndex;
     }
 }
+
+
+
+
+
+
+
 
 //Cluebook Events below:
 //To add a clue fragment into the cluebook after interacting with an NPC that gives a clue fragment
@@ -185,6 +198,11 @@ public class DecipherClue : IEvent
 public class CheckForCompleteClues : IEvent
 {
 }
+
+
+
+
+
 
 
 //UI events below:
@@ -220,10 +238,12 @@ public class FadeSingleCanvas : IEvent
 public class TypeOutSingleDialogue : IEvent
 {
     public string Message;
+    public bool NewExplorationPhase; 
 
-    public TypeOutSingleDialogue(string message)
+    public TypeOutSingleDialogue(string message, bool newExplorationPhase)
     {
         Message = message;
+        NewExplorationPhase = newExplorationPhase;
     }
 } 
 
@@ -231,6 +251,21 @@ public class TypeOutSingleDialogue : IEvent
 public class AdvanceSingleMessage : IEvent
 {
 }
+
+//For a new exploration phase ONLY AFTER completing a moon puzzle text adventure:
+//Show dialogue from the moon statue 
+public class NewMoonFragmentObtained : IEvent 
+{
+}
+
+//For a new exploration phase
+public class ResetExplorationPhaseTimer : IEvent
+{
+}
+
+
+
+
 
 //Player events below:
 //To either or lower the player's health based on environment collisions
@@ -289,6 +324,9 @@ public class MaintainPlayerHealth : IEvent
     }
 }
 
+
+
+
 //Chest Interaction Events Below:
 public class ChestIsOpen : IEvent
 {
@@ -309,6 +347,9 @@ public class CheckToAddItemToChest : IEvent
         InventoryItem = inventoryItem;
     }
 }
+
+
+
 
 //Environment Events Below:
 public class ChangeCorriosonValue : IEvent

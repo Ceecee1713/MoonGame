@@ -24,13 +24,12 @@ public class ExplorationTimer : MonoBehaviour
     private const int SECOND_MOON_PUZZLE_AREA_NUMBER = 2;
     private const int THIRD_MOON_PUZZLE_AREA_NUMBER = 3;
 
-    private const float DELAY = 1.75f;
-
     void Start()
     {
         _remainingTime = maxDurationOfExplorationPhase;
 
         EventBus.Instance.Subscribe<NewExplorationPhase>(StartNewExplorationPhase);
+        EventBus.Instance.Subscribe<ResetExplorationPhaseTimer>(ResetTimer);
     }
 
     void Update()
@@ -61,12 +60,12 @@ public class ExplorationTimer : MonoBehaviour
 
     private void StartNewExplorationPhase(NewExplorationPhase newExplorationPhase)
     {
-        _remainingTime = maxDurationOfExplorationPhase;
-        Invoke("RestartTimer", DELAY);
+        _doNotAllowTimerToCountDown = true;
     }
 
-    private void RestartTimer()
+    private void ResetTimer(ResetExplorationPhaseTimer resetExplorationPhaseTimer)
     {
+        _remainingTime = maxDurationOfExplorationPhase;
         _doNotAllowTimerToCountDown = false;
     }
 }

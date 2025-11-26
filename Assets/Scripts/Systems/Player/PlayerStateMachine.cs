@@ -59,6 +59,8 @@ public class PlayerStateMachine : BaseStateMachine
     public PlayerWanderState WanderState { get; private set; }
     public PlayerPauseState PausedState { get; private set; }
 
+    private Vector3 _moonStatuePosition;
+
     void Awake()
     {
         //Disabling mouse cursor and locking it in one place
@@ -76,6 +78,8 @@ public class PlayerStateMachine : BaseStateMachine
         _durationOfSpeedChanging = _defaultDurationOfSpeedChanging;
         _speedOfMovementChanging = _defaultSpeedOfMovementChanging;
 
+        _moonStatuePosition = new Vector3 (this.gameObject.transform.position.x, this.gameObject.transform.position.y, this.gameObject.transform.position.z);
+
         _characterController = GetComponent<CharacterController>();
     }
 
@@ -86,6 +90,12 @@ public class PlayerStateMachine : BaseStateMachine
 
         EventBus.Instance.Subscribe<FreezePlayer>(FreezePlayer);
         EventBus.Instance.Subscribe<SpeedUpPlayer>(AllowToSpeedUpPlayer);
+        EventBus.Instance.Subscribe<NewExplorationPhase>(StartNewExplorationPhase);
+    }
+
+    private void StartNewExplorationPhase(NewExplorationPhase newExplorationPhase)
+    {
+        this.gameObject.transform.position = _moonStatuePosition; 
     }
 
     public void Move(Vector2 movement)

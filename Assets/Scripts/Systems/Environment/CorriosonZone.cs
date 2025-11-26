@@ -12,7 +12,9 @@ public class CorriosonZone : MonoBehaviour
     [SerializeField]
     private float startingSpeedToLowerHealth = 1.0f;
 
-    private float _speedToLowerHealth;
+    [SerializeField]
+    private float currentSpeedToLowerHealth;
+
     private float _defaultSpeedToLowerHealth;
 
     private bool _recoverHealth = false;
@@ -21,7 +23,7 @@ public class CorriosonZone : MonoBehaviour
     void Start()
     {
         _defaultSpeedToLowerHealth = startingSpeedToLowerHealth; 
-        _speedToLowerHealth = _defaultSpeedToLowerHealth; 
+        currentSpeedToLowerHealth = _defaultSpeedToLowerHealth; 
 
         EventBus.Instance.Subscribe<ChangeCorriosonValue>(ChangeSpeedToLowerHealth);
         EventBus.Instance.Subscribe<RestoreCorriosonValue>(ReturnToDefaultSpeed);
@@ -31,7 +33,7 @@ public class CorriosonZone : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Player") && _playerCollisionDetected == false)
         {
-            EventBus.Instance.Publish(new AlterPlayerHealth(_recoverHealth, _speedToLowerHealth));
+            EventBus.Instance.Publish(new AlterPlayerHealth(_recoverHealth, currentSpeedToLowerHealth));
             _playerCollisionDetected = true;
         }
     }
@@ -52,11 +54,11 @@ public class CorriosonZone : MonoBehaviour
         if(changeCorriosonValue.CorriosonValue == corriosonValues.SpeedToLowerHealthWhenAreaIsCleared)
             _defaultSpeedToLowerHealth = changeCorriosonValue.CorriosonValue;
 
-        _speedToLowerHealth = changeCorriosonValue.CorriosonValue;
+        currentSpeedToLowerHealth = changeCorriosonValue.CorriosonValue;
     }
 
     private void ReturnToDefaultSpeed(RestoreCorriosonValue restoreCorriosonValue)
     {
-        _speedToLowerHealth = _defaultSpeedToLowerHealth;
+        currentSpeedToLowerHealth = _defaultSpeedToLowerHealth;
     }
 }

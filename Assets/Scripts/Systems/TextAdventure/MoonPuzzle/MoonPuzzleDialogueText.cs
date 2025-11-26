@@ -16,6 +16,8 @@ public class MoonPuzzleDialogueText : MonoBehaviour
     [SerializeField]
     private GameObject textAdventureUI;
     [SerializeField]
+    private GameObject mainPlayerUI;
+    [SerializeField]
     private GameObject moonPuzzleUIPopUp;
     [SerializeField]
     private TextMeshProUGUI dialogueText;
@@ -43,10 +45,13 @@ public class MoonPuzzleDialogueText : MonoBehaviour
     private bool _finishedTypingMessage = false; //Prevent or allow going through individual messages when they're not fully typed out
     private bool _allowGoingThroughMessages = false; //Prevent or allow going through new dialogue branches entirely
 
+    private const bool START_MOON_PUZZLE = false;
+    private const bool START_PRAYER_PHASE = false; 
+
     private const int MAX_COUNTER_AMOUNT_FOR_WRONG_BUTTON_CHOICES = 2;
     private const int MAX_LINES = 3; 
 
-    private const float TIME_TO_WAIT_BEFORE_FADING_MOON_PUZZLE_POP_UP = 2.5f;
+    private const float TIME_TO_WAIT_BEFORE_FADING_MOON_PUZZLE_POP_UP = 1.5f;
     private const float TYPING_SPEED = 0.015f;
 
     void Start()
@@ -157,13 +162,12 @@ public class MoonPuzzleDialogueText : MonoBehaviour
                 StartCoroutine(TypeMessage(_currentQuestionDialogue.Messages[_index]));
             }
 
-            else //No longer show text, stop the text adventure (completed the moon puzzle SUCCESSFULLY)
+            else //Stop the text adventure, lower corrioson value for an area (completed the moon puzzle SUCCESSFULLY)
             {
                 _doNotRepeat = true;
-                
                 _moonAreaCounter++;
                 EventBus.Instance.Publish(new ChangeCorriosonValue(corriosonValues.SpeedToLowerHealthWhenAreaIsCleared, _moonAreaCounter));
-
+                
                 StopAllCoroutines();
                 StartCoroutine(ShowMoonPuzzleFragmentUIPopUp());
             }
@@ -189,19 +193,20 @@ public class MoonPuzzleDialogueText : MonoBehaviour
 
     IEnumerator ShowMoonPuzzleFragmentUIPopUp()
     {
-        //Show moon fragment UI Pop Up
+        //Show moon fragment UI Pop Up and start a new exploration phase
         _fadeOutCanvas = false;
         moonPuzzleUIPopUp.SetActive(true);
+        EventBus.Instance.Publish(new NewExplorationPhase());
+        EventBus.Instance.Publish(new NewMoonFragmentObtained()); //Show a dialogue message from moon statue
         EventBus.Instance.Publish(new DisplayMoonFragmentImage(TextAdventureDialogue.TextBranches[_textBranchIndex].MoonFragmentSprite));
         EventBus.Instance.Publish(new FadeSingleCanvas(moonPuzzleUIPopUp, _fadeOutCanvas));
 
         yield return new WaitForSeconds(TIME_TO_WAIT_BEFORE_FADING_MOON_PUZZLE_POP_UP);
 
-        //No longer moon fragment UI Pop Up and no longer show text adventure UI
+        //No longer moon fragment UI Pop Up, no longer show text adventure UI, show main player UI
         _fadeOutCanvas = true;
         EventBus.Instance.Publish(new FadeSingleCanvas(moonPuzzleUIPopUp, _fadeOutCanvas));
-        EventBus.Instance.Publish(new FreezePlayer(false));
-        EventBus.Instance.Publish(new FadeSingleCanvas(textAdventureUI, _fadeOutCanvas));
+        EventBus.Instance.Publish(new ChangeCanvases(mainPlayerUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
 
         yield return null;
     }
