@@ -13,6 +13,7 @@ public class CraftButton : MonoBehaviour
     private List <ItemData> craftingMaterials;
 
     private bool _stopCrafting = false;
+    private bool _craftingAClue = false;
 
     void Start()
     {
@@ -31,9 +32,12 @@ public class CraftButton : MonoBehaviour
             return; 
 
         craftManager.ResetStatus();
+        craftManager.SetInventoryItemToCraft(craftableInventoryItem);
+
+        _craftingAClue = false;
 
         for(int i = 0; i < craftingMaterials.Count; i++)
-            craftManager.CheckInventoryForCraftingMaterials(craftableInventoryItem, craftingMaterials[i], craftingMaterials.Count);
+            craftManager.CheckInventoryForCraftingMaterials(craftingMaterials[i], craftingMaterials.Count, _craftingAClue); 
     }
 
     public void OnDecipherClueClick()
@@ -44,7 +48,9 @@ public class CraftButton : MonoBehaviour
         EventBus.Instance.Publish(new CheckForCompleteClues());
         craftManager.ResetStatus();
 
+        _craftingAClue = true;
+
         for(int i = 0; i < craftingMaterials.Count; i++)
-            craftManager.CheckMaterialsForDecipheringClue(craftingMaterials[i], craftingMaterials.Count);
+            craftManager.CheckInventoryForCraftingMaterials(craftingMaterials[i], craftingMaterials.Count, _craftingAClue);
     }
 }

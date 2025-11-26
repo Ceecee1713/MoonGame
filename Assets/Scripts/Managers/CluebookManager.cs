@@ -65,7 +65,7 @@ public class CluebookManager : MonoBehaviour
         }
     }
 
-    //Checking for a complete code that's not deciphered yet
+    //Checking for a complete code that's not deciphered yet, called by a craft button
     private void CheckForACompleteClue(CheckForCompleteClues checkForCompleteClues)
     {
         for(int i = 0; i < clueIndexes.Length; i++)
@@ -79,6 +79,7 @@ public class CluebookManager : MonoBehaviour
             _resolvedClue = false;
         }
 
+        //Allow for a clue to be crafted in the CraftManager
         EventBus.Instance.Publish(new AllowToCraftClue(_resolvedClue));
     }
 
