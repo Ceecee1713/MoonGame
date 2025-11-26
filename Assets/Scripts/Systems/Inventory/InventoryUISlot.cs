@@ -13,7 +13,7 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
     public GameObject OutlineImage; //Visuals
 
     [SerializeField]
-    private InventorySlot inventorySlotData;
+    private InventorySlot inventorySlotData; //Edit
 
     private bool _isAChestOpen = false;
 

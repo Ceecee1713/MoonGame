@@ -4,28 +4,23 @@ using UnityEngine;
 //This contains all the events (data types) that the game uses
 
 //Inventory and Crafting System Events below:
-//Picking up an item in the world to add to inventory and an empty inventory slot
-public class CheckToAddInventoryItem : IEvent 
+public class AddItemToInventory : IEvent
 {
     public ItemData InventoryItem;
 
-    public CheckToAddInventoryItem(ItemData inventoryItem)
+    public AddItemToInventory(ItemData inventoryItem)
     {
         InventoryItem = inventoryItem;
     }
 }
 
-//Adding a crafted item into the inventory, add item into inventory data
-//and removing items already in the inventory that's been used as crafting materials
-public class CheckToAddCraftedItem : IEvent 
+public class RemoveUsedMaterials : IEvent
 {
-    public ItemData InventoryItem;
     public List <ItemData> CraftingMaterialItems;
     public List <int> AmountsPerStackableItemToRemove;
 
-    public CheckToAddCraftedItem(ItemData inventoryItem, List <ItemData> craftingMaterialItems, List <int> amountsPerStackableItemToRemove)
+    public RemoveUsedMaterials(List <ItemData> craftingMaterialItems, List <int> amountsPerStackableItemToRemove)
     {
-        InventoryItem = inventoryItem;
         CraftingMaterialItems = craftingMaterialItems;
         AmountsPerStackableItemToRemove = amountsPerStackableItemToRemove;
     }
@@ -103,22 +98,6 @@ public class AllowToCraftClue : IEvent
         AvaliableClueToDecipher = avaliableClueToDecipher;
     }
 }
-
-//For removing inventory items from the inventory that were 
-//used as crafting materials to decipher a clue on the crafting table
-public class RemoveInventoryItemsForMaterials : IEvent
-{
-    public List <ItemData> CraftingMaterialItems;
-    public List <int> AmountsPerStackableItemToRemove;
-
-    public RemoveInventoryItemsForMaterials(List <ItemData> craftingMaterialItems, List <int> amountsPerStackableItemToRemove)
-    {
-        CraftingMaterialItems = craftingMaterialItems;
-        AmountsPerStackableItemToRemove = amountsPerStackableItemToRemove;
-    }
-}
-
-
 
 
 

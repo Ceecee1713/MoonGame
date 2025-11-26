@@ -18,7 +18,7 @@ public class PickUpItem : MonoBehaviour
         if(_playerStayingInCollision == true)
         {
             ItemData clonedInventoryItem = inventoryItem.Clone();
-            EventBus.Instance.Publish(new CheckToAddInventoryItem(clonedInventoryItem));
+            EventBus.Instance.Publish(new AddItemToInventory(clonedInventoryItem));
         }
     }
 

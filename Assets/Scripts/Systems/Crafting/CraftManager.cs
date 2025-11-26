@@ -233,12 +233,14 @@ public class CraftManager : MonoBehaviour
 
     private void CraftInventoryItem(ItemData craftableInventoryItem)
     {
-        Debug.Log("We got enough materials to craft!");
-        EventBus.Instance.Publish(new CheckToAddCraftedItem(craftableInventoryItem, _materialsForCraftableItem, _amountsPerUniqueInventoryItemsToRemove));
+        EventBus.Instance.Publish(new AddItemToInventory(craftableInventoryItem));
+        EventBus.Instance.Publish(new RemoveUsedMaterials(_materialsForCraftableItem, _amountsPerUniqueInventoryItemsToRemove));
+        ResetStatus();
     }
 
     private void DecipherClue()
     {
-        EventBus.Instance.Publish(new RemoveInventoryItemsForMaterials(_materialsForCraftableItem, _amountsPerUniqueInventoryItemsToRemove));
+        EventBus.Instance.Publish(new RemoveUsedMaterials(_materialsForCraftableItem, _amountsPerUniqueInventoryItemsToRemove));
+        ResetStatus();
     }
 }

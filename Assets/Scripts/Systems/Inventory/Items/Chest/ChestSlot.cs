@@ -11,7 +11,7 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler
     public bool IsEmpty;
 
     [SerializeField]
-    private InventorySlot inventorySlotData;
+    private InventorySlot inventorySlotData; //Edit
 
     void Start()
     {
@@ -38,7 +38,7 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData) 
     {
         ItemData clonedInventoryItem = InventoryItem.Clone();
-        EventBus.Instance.Publish(new CheckToAddInventoryItem(clonedInventoryItem));
+        EventBus.Instance.Publish(new AddItemToInventory(clonedInventoryItem));
         RemoveItemFromSlot();
     }
 }
