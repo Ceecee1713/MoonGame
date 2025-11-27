@@ -35,7 +35,7 @@ public class PauseMenu : MonoBehaviour
         EventBus.Instance.Publish(new MaintainPlayerHealth(false));
         EventBus.Instance.Publish(new PauseExplorationTimer(false));
 
-        //Prevent Player Inputs
+        //Allow Player Inputs
         _allowPlayerInputs = true;
         EventBus.Instance.Publish(new ActivatePlayerInputs(_allowPlayerInputs));
     }
