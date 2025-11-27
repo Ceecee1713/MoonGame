@@ -1,11 +1,7 @@
 using UnityEngine;
 
-public class FinishingUI : MonoBehaviour
+public class WinGameUI : MonoBehaviour
 {
-    void Start()
-    { 
-    }
-
     void OnEnable()
     {
         EventBus.Instance.Publish(new FreezePlayer(true));
