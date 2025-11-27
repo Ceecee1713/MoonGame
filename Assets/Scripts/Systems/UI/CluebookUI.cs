@@ -1,0 +1,35 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+public class CluebookUI : MonoBehaviour
+{
+    [SerializeField]
+    private GameObject textAdventureUI;
+
+    private bool _allowPlayerInputs = false;
+
+    void OnEnable()
+    {
+        //Prevent Player Inputs
+        _allowPlayerInputs = false;
+        EventBus.Instance.Publish(new ActivatePlayerInputs(_allowPlayerInputs));
+
+        EventBus.Instance.Publish(new FreezePlayer(true));
+        EventBus.Instance.Publish(new MaintainPlayerHealth(true));
+        EventBus.Instance.Publish(new PauseExplorationTimer(true));
+    }
+
+    void OnDisable()
+    {
+        if(textAdventureUI.activeSelf == false)
+        {
+            EventBus.Instance.Publish(new FreezePlayer(false));
+            EventBus.Instance.Publish(new MaintainPlayerHealth(false));
+            EventBus.Instance.Publish(new PauseExplorationTimer(false));
+
+            //Allow Player Inputs
+            _allowPlayerInputs = true;
+            EventBus.Instance.Publish(new ActivatePlayerInputs(_allowPlayerInputs));
+        }
+    }
+}

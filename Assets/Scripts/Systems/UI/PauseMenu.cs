@@ -1,7 +1,13 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject [] uisToCheckFor; //storytellingUI, textAdventureUI, cluebookUI, craftingUI
+
+    private bool _allowPlayerInputs = false;
+
     void Awake()
     {
         EventBus.Instance.Subscribe<PauseGame>(DisplayPauseMenu);
@@ -17,6 +23,10 @@ public class PauseMenu : MonoBehaviour
         EventBus.Instance.Publish(new FreezePlayer(true));
         EventBus.Instance.Publish(new MaintainPlayerHealth(true));
         EventBus.Instance.Publish(new PauseExplorationTimer(true));
+
+        //Prevent Player Inputs
+        _allowPlayerInputs = false;
+        EventBus.Instance.Publish(new ActivatePlayerInputs(_allowPlayerInputs));
     }
 
     void OnDisable()
@@ -24,10 +34,19 @@ public class PauseMenu : MonoBehaviour
         EventBus.Instance.Publish(new FreezePlayer(false));
         EventBus.Instance.Publish(new MaintainPlayerHealth(false));
         EventBus.Instance.Publish(new PauseExplorationTimer(false));
+
+        //Prevent Player Inputs
+        _allowPlayerInputs = true;
+        EventBus.Instance.Publish(new ActivatePlayerInputs(_allowPlayerInputs));
     }
 
     private void DisplayPauseMenu(PauseGame pauseGame)
     {
-        this.gameObject.SetActive(true);
+        for(int i = 0; i < uisToCheckFor.Length; i++)
+        {
+            if(uisToCheckFor[i].activeSelf == true)
+                return;
+        }
+            this.gameObject.SetActive(true);
     }
 }

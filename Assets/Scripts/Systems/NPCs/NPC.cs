@@ -13,17 +13,28 @@ public class NPC : MonoBehaviour
 
     private bool _playerStayingInCollision = false; 
     private bool _playerInCollision = false;
+    private bool _allowInput = false;
 
     private const bool NEW_EXPLORATION_PHASE = false;
 
     void Start()
     {
         _fullNPCMesasge = npcMessage.Message + _extraMessage;
+
         EventBus.Instance.Subscribe<Interact>(CheckToShowDialogue);
+        EventBus.Instance.Subscribe<ActivatePlayerInputs>(AllowPlayerInput);
+    }
+
+    private void AllowPlayerInput(ActivatePlayerInputs activatePlayerInputs)
+    {
+        _allowInput = activatePlayerInputs.AllowInputs;
     }
 
     private void CheckToShowDialogue(Interact pickingUpItem) //When player "interacts" with this game object (keybind E)
     {
+        if(_allowInput == false)
+            return;
+
         if(_playerStayingInCollision == true)
         {
             dialogueCanvas.SetActive(true);

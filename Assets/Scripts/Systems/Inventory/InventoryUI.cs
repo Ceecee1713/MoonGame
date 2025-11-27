@@ -17,12 +17,14 @@ public class InventoryUI : MonoBehaviour
     private InventoryUISlot _previousInventoryUISlot;
 
     private bool _playerIsInCollision = false;
+    private bool _allowInput = false;
 
     private int _maxStackAmount = 3;
 
     //Removes inventory items consumed during crafting
     private int _amountOfSingleFullyConsumedMaterialToRemove;
     private int _numberToMatchAmountOfFullyConsumedMaterial;
+
 
     void Start()
     {
@@ -37,7 +39,9 @@ public class InventoryUI : MonoBehaviour
         EventBus.Instance.Subscribe<SelectInventoryItem>(EquipInventoryItem);
         EventBus.Instance.Subscribe<DropEquipedInventoryItem>(DropEquipedInventoryItem);
         EventBus.Instance.Subscribe<UseInventoryItem>(CheckToUseInventoryItem);
+        EventBus.Instance.Subscribe<ActivatePlayerInputs>(AllowPlayerInput);
 
+        //For removing an inventory item when moving item into a chest
         EventBus.Instance.Subscribe<RemoveItemFromSlot>(RemoveItemFromInventory);
     }
 
@@ -50,6 +54,11 @@ public class InventoryUI : MonoBehaviour
     private void CheckIfPlayerIsInACollision(InCollision inCollision)
     {
         _playerIsInCollision = inCollision.PlayerInCollision;
+    }
+
+    private void AllowPlayerInput(ActivatePlayerInputs activatePlayerInputs)
+    {
+        _allowInput = activatePlayerInputs.AllowInputs;
     }
 
     private void AddInventoryItem(AddItemToInventory addItemToInventory) 
@@ -137,7 +146,7 @@ public class InventoryUI : MonoBehaviour
 
     private void CheckToUseInventoryItem(UseInventoryItem useInventoryItem)
     {
-        if(_playerIsInCollision == true)
+        if(_playerIsInCollision == true || _allowInput == false)
             return;
 
         if(_equipedInventoryItem != null && _equipedInventoryItem.ItemType == InventoryItemTypes.SpeedPotion)
@@ -163,6 +172,9 @@ public class InventoryUI : MonoBehaviour
 
     private void DropEquipedInventoryItem(DropEquipedInventoryItem dropEquipedInventoryItem)
     {
+        if(_allowInput == false)
+            return;
+
         for(int i = 0; i < inventorySlots.Length; i++)
         {
             //If selected UI slot is within the "inventorySlots" array 

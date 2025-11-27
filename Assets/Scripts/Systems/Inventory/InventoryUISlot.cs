@@ -16,11 +16,14 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
     private InventorySlot inventorySlotData; //Edit
 
     private bool _isAChestOpen = false;
+    private bool _allowInput = false;
 
     void Start()
     {
         IsEmpty = true;
+
         EventBus.Instance.Subscribe<ChestIsOpen>(ChangeInput);
+        EventBus.Instance.Subscribe<ActivatePlayerInputs>(AllowPlayerInput);
     }
 
     public void AddItemToSlot(ItemData newInventoryItem)
@@ -54,8 +57,16 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
         _isAChestOpen = chestIsOpen.IsAChestOpen;
     }
 
+    private void AllowPlayerInput(ActivatePlayerInputs activatePlayerInputs)
+    {
+        _allowInput = activatePlayerInputs.AllowInputs;
+    }
+
     public void OnPointerClick(PointerEventData eventData) 
     {
+        if(_allowInput == false)
+            return;
+
         if(_isAChestOpen == false)
             EventBus.Instance.Publish(new SelectInventoryItem(InventoryItem, this));
 

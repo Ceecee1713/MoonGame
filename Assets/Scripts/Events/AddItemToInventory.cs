@@ -252,16 +252,23 @@ public class PauseExplorationTimer : IEvent
     }
 }
 
-public class PauseGame : IEvent
-{
-}
-
 
 
 
 
 
 //Player events below:
+//Prevent player interactions with specific UI/object interactions
+public class ActivatePlayerInputs : IEvent
+{
+    public bool AllowInputs;
+
+    public ActivatePlayerInputs(bool allowInputs)
+    {
+        AllowInputs = allowInputs;
+    }
+}
+
 //To either or lower the player's health based on environment collisions
 public class AlterPlayerHealth : IEvent
 {
@@ -291,8 +298,13 @@ public class SpeedUpPlayer : IEvent
 {
 }
 
+
+
+
+
 //Player input events below:
-public class Interact : IEvent //Interacting with objects in world space
+//Interacting with objects in world space
+public class Interact : IEvent 
 {
 }
 
@@ -316,6 +328,11 @@ public class MaintainPlayerHealth : IEvent
     {
         PauseCorrioson = pauseCorrioson;
     }
+}
+
+//Open the Pause Menu UI
+public class PauseGame : IEvent
+{
 }
 
 

@@ -13,9 +13,13 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     private InventorySlot inventorySlotData; //Edit
 
+    private bool _allowInput = false;
+
     void Start()
     {
         IsEmpty = true;
+
+        EventBus.Instance.Subscribe<ActivatePlayerInputs>(AllowPlayerInput);
     }
 
     public void AddItemToSlot(ItemData newInventoryItem)
@@ -35,8 +39,16 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler
         InventoryItem.IsThisAStackableItem = false;
     }
 
+    private void AllowPlayerInput(ActivatePlayerInputs activatePlayerInputs)
+    {
+        _allowInput = activatePlayerInputs.AllowInputs;
+    }
+
     public void OnPointerClick(PointerEventData eventData) 
     {
+        if(_allowInput == false)
+            return;
+
         ItemData clonedInventoryItem = InventoryItem.Clone();
         EventBus.Instance.Publish(new AddItemToInventory(clonedInventoryItem));
         RemoveItemFromSlot();

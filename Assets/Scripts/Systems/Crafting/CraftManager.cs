@@ -9,7 +9,7 @@ public class CraftManager : MonoBehaviour
 
     private ItemData _itemToCraft;
 
-    private CraftWarningPopUp _craftingWarningPopUp;
+    private CraftingUI _craftingUI;
 
     private List <int> _amountsPerUniqueInventoryItemsToRemove = new List <int>(); //Each index represents the total number of a unique inventory item to be removed
     private List <ItemData> _materialsForCraftableItem = new List <ItemData>();
@@ -26,7 +26,7 @@ public class CraftManager : MonoBehaviour
 
     void Start()
     {
-        _craftingWarningPopUp = GetComponent<CraftWarningPopUp>();
+        _craftingUI = GetComponent<CraftingUI>();
         EventBus.Instance.Subscribe<AllowToCraftClue>(CheckToMakeClue);
     }
 
@@ -46,7 +46,7 @@ public class CraftManager : MonoBehaviour
 
     private void CannotCraftItem()
     {
-        _craftingWarningPopUp.DisplayWarningMessage();
+        _craftingUI.DisplayWarningMessage();
     }
 
     private void CheckToMakeClue(AllowToCraftClue allowToCraftClue)

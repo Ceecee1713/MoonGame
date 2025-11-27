@@ -9,5 +9,6 @@ public class CloseCraftingUI : MonoBehaviour
     {
         craftingUI.SetActive(false);
         EventBus.Instance.Publish(new FreezePlayer(false));
+        EventBus.Instance.Publish(new PauseExplorationTimer(false));
     }
 }

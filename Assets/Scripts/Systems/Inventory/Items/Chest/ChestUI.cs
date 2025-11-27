@@ -12,6 +12,20 @@ public class ChestUI : MonoBehaviour
         EventBus.Instance.Subscribe<CheckToAddItemToChest>(CheckToAddItemIntoChest);
     }
 
+    void OnEnable()
+    {
+        EventBus.Instance.Publish(new FreezePlayer(true));
+        EventBus.Instance.Publish(new MaintainPlayerHealth(true));
+        EventBus.Instance.Publish(new PauseExplorationTimer(true));
+    }
+
+    void OnDisable()
+    {
+        EventBus.Instance.Publish(new FreezePlayer(false));
+        EventBus.Instance.Publish(new MaintainPlayerHealth(false));
+        EventBus.Instance.Publish(new PauseExplorationTimer(false));
+    }
+
     private void CheckToAddItemIntoChest(CheckToAddItemToChest checkToAddItemToChest)
     {
         AddInventoryItem(checkToAddItemToChest.InventoryItem);

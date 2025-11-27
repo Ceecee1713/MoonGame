@@ -7,18 +7,29 @@ public class CraftingTable : MonoBehaviour
 
     private bool _playerStayingInCollision = false; 
     private bool _playerInCollision = false; 
+    private bool _allowInput = false;
 
     void Start()
     {
         EventBus.Instance.Subscribe<Interact>(OpenCraftingUI);
+        EventBus.Instance.Subscribe<ActivatePlayerInputs>(AllowPlayerInput);
+    }
+
+    private void AllowPlayerInput(ActivatePlayerInputs activatePlayerInputs)
+    {
+        _allowInput = activatePlayerInputs.AllowInputs;
     }
 
     private void OpenCraftingUI(Interact interact) //When player "interacts" with this game object (keybind E)
     {
+        if(_allowInput == false)
+            return;
+
         if(_playerStayingInCollision == true)
         {
             craftingUI.SetActive(true);
             EventBus.Instance.Publish(new FreezePlayer(true));
+            EventBus.Instance.Publish(new PauseExplorationTimer(true));
         }
     }
 

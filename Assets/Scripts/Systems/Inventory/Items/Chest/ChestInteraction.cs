@@ -19,13 +19,7 @@ public class ChestInteraction : MonoBehaviour
     private void CheckForInteraction(Interact interact) //When player "interacts" with this game object (keybind E)
     {
         if(_playerStayingInCollision == true)
-        {
-            EventBus.Instance.Publish(new FreezePlayer(true));
-            EventBus.Instance.Publish(new MaintainPlayerHealth(true));
-            EventBus.Instance.Publish(new ChestIsOpen(true));
-            
             chestUI.SetActive(true);
-        }
     }
 
     private void OnTriggerEnter(Collider collider)
