@@ -28,8 +28,8 @@ public class ExplorationTimer : MonoBehaviour
     {
         _remainingTime = maxDurationOfExplorationPhase;
 
-        EventBus.Instance.Subscribe<NewExplorationPhase>(StartNewExplorationPhase);
-        EventBus.Instance.Subscribe<ResetExplorationPhaseTimer>(ResetTimer);
+        EventBus.Instance.Subscribe<PauseExplorationTimer>(PauseTimerCountdown);
+        EventBus.Instance.Subscribe<ResetExplorationTimer>(ResetTimer);
     }
 
     void Update()
@@ -58,12 +58,12 @@ public class ExplorationTimer : MonoBehaviour
         timerText.text = string.Format("{0:00}:{1:00}", _minutes, _seconds);
     }
 
-    private void StartNewExplorationPhase(NewExplorationPhase newExplorationPhase)
+    private void PauseTimerCountdown(PauseExplorationTimer pauseExplorationTimer)
     {
-        _doNotAllowTimerToCountDown = true;
+        _doNotAllowTimerToCountDown = pauseExplorationTimer.AllowCountdown;
     }
 
-    private void ResetTimer(ResetExplorationPhaseTimer resetExplorationPhaseTimer)
+    private void ResetTimer(ResetExplorationTimer resetExplorationTimer)
     {
         _remainingTime = maxDurationOfExplorationPhase;
         _doNotAllowTimerToCountDown = false;

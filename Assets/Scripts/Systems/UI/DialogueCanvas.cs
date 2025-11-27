@@ -54,7 +54,7 @@ public class DialogueCanvas : MonoBehaviour
         EventBus.Instance.Publish(new MaintainPlayerHealth(false));
 
         if(_newExplorationPhase == true)
-            EventBus.Instance.Publish(new ResetExplorationPhaseTimer());
+            EventBus.Instance.Publish(new ResetExplorationTimer());
 
         StopAllCoroutines();
         this.gameObject.SetActive(false);

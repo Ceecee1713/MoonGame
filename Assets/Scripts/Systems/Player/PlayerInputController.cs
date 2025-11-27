@@ -67,6 +67,6 @@ public class PlayerInputController : MonoBehaviour
 
     void OnExitPerformed(InputAction.CallbackContext val)
     {
-
+        EventBus.Instance.Publish(new PauseGame());
     }
 }

@@ -238,9 +238,24 @@ public class NewMoonFragmentObtained : IEvent
 }
 
 //For a new exploration phase
-public class ResetExplorationPhaseTimer : IEvent
+public class ResetExplorationTimer : IEvent
 {
 }
+
+public class PauseExplorationTimer : IEvent
+{
+    public bool AllowCountdown;
+
+    public PauseExplorationTimer(bool allowCountdown)
+    {
+        AllowCountdown = allowCountdown;
+    }
+}
+
+public class PauseGame : IEvent
+{
+}
+
 
 
 

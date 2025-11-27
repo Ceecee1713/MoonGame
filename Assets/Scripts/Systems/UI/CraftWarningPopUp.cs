@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class CraftingUI : MonoBehaviour
+public class CraftWarningPopUp : MonoBehaviour
 {
     [SerializeField]
     private GameObject warningMessage;

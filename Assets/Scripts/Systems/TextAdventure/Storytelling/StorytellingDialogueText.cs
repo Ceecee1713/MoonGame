@@ -127,7 +127,7 @@ public class StorytellingDialogueText : MonoBehaviour
             EventBus.Instance.Publish(new FreezePlayer(false));
             EventBus.Instance.Publish(new ChangeCanvases(mainPlayerUI, false, false));
             EventBus.Instance.Publish(new NewExplorationPhase());
-            EventBus.Instance.Publish(new ResetExplorationPhaseTimer());
+            EventBus.Instance.Publish(new ResetExplorationTimer());
             return;
         }
 
