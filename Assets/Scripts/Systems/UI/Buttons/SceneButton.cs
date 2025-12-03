@@ -1,9 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement; 
-using DG.Tweening;
 
-public class SwitchSceneButton : MonoBehaviour
+public class SceneButton : MonoBehaviour
 {
     [SerializeField]
     private CanvasGroup currentCanvasGroup;
@@ -12,15 +11,25 @@ public class SwitchSceneButton : MonoBehaviour
     private QuitButton quitButton;
     
     [SerializeField]
-    private string sceneNameToLoadOnClick;
+    private string mainMenuSceneName;
+
+    private Scene _currentScene;
+
+    private string _currentSceneName;
 
     private bool _hasBeenClicked = false;
     private bool _calledCoroutine = false;
     private bool _allowClicking = false;
     private bool _preventInput = false;
 
-    private const float DELAY = 0.5f;
+    private const float DELAY = 0.2f;
     private const float CHANGE_SCENE_DELAY = 1.5f;
+
+    void Start()
+    {
+        _currentScene = SceneManager.GetActiveScene();
+        _currentSceneName = _currentScene.name;
+    }
 
     void Update()
     {
@@ -54,9 +63,29 @@ public class SwitchSceneButton : MonoBehaviour
         }
     }
 
+    public void OnPlayAgainClick()
+    {
+        if(_hasBeenClicked || _preventInput == true)
+            return;
+
+        if(_allowClicking == true)
+        {
+            _hasBeenClicked = true;
+            _preventInput = true;
+            quitButton.PreventInput();
+            //Play sound here
+            Invoke("LoadCurrentScene", CHANGE_SCENE_DELAY);
+        }
+    }
+
+    private void LoadCurrentScene()
+    {
+        SceneManager.LoadSceneAsync(_currentSceneName);
+    }
+
     private void ChangeScene()
     {
-        SceneManager.LoadSceneAsync(sceneNameToLoadOnClick);
+        SceneManager.LoadSceneAsync(mainMenuSceneName);
     }
 
     IEnumerator AllowClicking()

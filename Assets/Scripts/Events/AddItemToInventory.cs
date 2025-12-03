@@ -379,6 +379,11 @@ public class RestoreCorriosonValue : IEvent
 {
 }
 
+//Teleport player back to moon puzzle and reset player health to full
 public class NewExplorationPhase : IEvent
+{
+}
+
+public class CompletedAllMoonPuzzles : IEvent
 {
 }

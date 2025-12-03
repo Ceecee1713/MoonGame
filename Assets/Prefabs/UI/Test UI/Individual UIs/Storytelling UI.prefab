@@ -173,7 +173,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &1929112238908392620
 MonoBehaviour:
@@ -385,4 +385,5 @@ MonoBehaviour:
   noPrayerDialogue: {fileID: 11400000, guid: ac80e585f3bd3584f8530ad00735ca29, type: 2}
   storytellingUI: {fileID: 6535581254111900172}
   mainPlayerUI: {fileID: 0}
+  endScreenUI: {fileID: 0}
   dialogueText: {fileID: 7851264716219384663}

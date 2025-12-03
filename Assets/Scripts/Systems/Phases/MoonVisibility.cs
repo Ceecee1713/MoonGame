@@ -37,7 +37,8 @@ public class MoonVisibility : MonoBehaviour
         moonFragmentRenderer.material = litUpMoonMaterial;
         moonCounter++;
 
-        Invoke("ShowMoonStatueMessage",  delayBeforeShowingMoonMessage);
+        if(moonCounter != moonFragments.Length)
+            Invoke("ShowMoonStatueMessage",  delayBeforeShowingMoonMessage);
     }
 
     private void ShowMoonStatueMessage()

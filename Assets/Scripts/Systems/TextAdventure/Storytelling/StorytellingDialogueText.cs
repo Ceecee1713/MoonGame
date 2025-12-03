@@ -29,6 +29,8 @@ public class StorytellingDialogueText : MonoBehaviour
     [SerializeField]
     private GameObject mainPlayerUI;
     [SerializeField]
+    private GameObject endScreenUI;
+    [SerializeField]
     private TextMeshProUGUI dialogueText;
 
     private StorytellingDialogueData _currentDialogue;
@@ -48,6 +50,9 @@ public class StorytellingDialogueText : MonoBehaviour
     private const int SECOND_MOON_PUZZLE_AREA_NUMBER = 2;
     private const int THIRD_MOON_PUZZLE_AREA_NUMBER = 3;
     private const int MAX_LINES = 3; 
+
+    private const bool START_MOON_PUZZLE = false;
+    private const bool START_PRAYER_PHASE = false; 
 
     private const float TYPING_SPEED = 0.015f;
 
@@ -114,18 +119,18 @@ public class StorytellingDialogueText : MonoBehaviour
             return;
         }
 
-        /*
-        if(_index+1 == _messageLength && _finishGame == true)
+        if(_index+1 == _messageLength && _finishGame == true) //Show winning end game screen
         {
-           //Show end screen
+            _doNotRepeat = true;
+            EventBus.Instance.Publish(new ChangeCanvases(endScreenUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
+            return;
         }
-        */
 
         if(_index+1 == _messageLength && _finishPrayerPhase == true)
         {
             _doNotRepeat = true;
             EventBus.Instance.Publish(new FreezePlayer(false));
-            EventBus.Instance.Publish(new ChangeCanvases(mainPlayerUI, false, false));
+            EventBus.Instance.Publish(new ChangeCanvases(mainPlayerUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
             EventBus.Instance.Publish(new NewExplorationPhase());
             EventBus.Instance.Publish(new ResetExplorationTimer());
             return;

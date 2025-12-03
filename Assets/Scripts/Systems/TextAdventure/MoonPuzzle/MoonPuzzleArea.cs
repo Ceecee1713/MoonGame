@@ -5,11 +5,12 @@ public class MoonPuzzleArea : MonoBehaviour
     [SerializeField]
     private GameObject textAdventureUI;
 
-    private bool _startMoonPuzzle = true;
-    private bool _startPrayerPhase = false;
+    private bool _allowInput = true;
     private bool _playerCollisionDetected = false;
-    private bool _allowInput = false;
     private bool _interactedOnce = false;
+
+    private const bool START_MOON_PUZZLE = true;
+    private const bool START_PRAYER_PHASE = false;
 
     void Start()
     {
@@ -33,7 +34,7 @@ public class MoonPuzzleArea : MonoBehaviour
 
             EventBus.Instance.Publish(new FreezePlayer(true));
             EventBus.Instance.Publish(new MaintainPlayerHealth(true));
-            EventBus.Instance.Publish(new ChangeCanvases(textAdventureUI, _startMoonPuzzle, _startPrayerPhase));
+            EventBus.Instance.Publish(new ChangeCanvases(textAdventureUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
         }
     }
 

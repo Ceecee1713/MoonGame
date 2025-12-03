@@ -396,7 +396,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3121334020881363237}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -548,6 +548,7 @@ GameObject:
   - component: {fileID: 8021213397100849515}
   - component: {fileID: 2630656562415423424}
   - component: {fileID: 5727506081718804314}
+  - component: {fileID: 1974226915931292085}
   m_Layer: 5
   m_Name: Play Again Button
   m_TagString: Untagged
@@ -656,7 +657,34 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2630656562415423424}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1974226915931292085}
+        m_TargetAssemblyTypeName: SceneButton, Assembly-CSharp
+        m_MethodName: OnPlayAgainClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1974226915931292085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4853514720494398499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001f2c10e9f9a6e41b3747f112f75e70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCanvasGroup: {fileID: 7987649781534949033}
+  quitButton: {fileID: 1768756388627602145}
+  mainMenuSceneName: 
 --- !u!1 &6287802155775350593
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,6 +697,7 @@ GameObject:
   - component: {fileID: 3089670842041772928}
   - component: {fileID: 5655745287263314854}
   - component: {fileID: 4368082820638127126}
+  - component: {fileID: 1768756388627602145}
   m_Layer: 5
   m_Name: Quit Game Button
   m_TagString: Untagged
@@ -777,7 +806,33 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5655745287263314854}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1768756388627602145}
+        m_TargetAssemblyTypeName: QuitButton, Assembly-CSharp
+        m_MethodName: OnQuitClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1768756388627602145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6287802155775350593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be7531248073a314185e5c8410301cc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCanvasGroup: {fileID: 7987649781534949033}
+  sceneButton: {fileID: 1974226915931292085}
 --- !u!1 &6411458568284176601
 GameObject:
   m_ObjectHideFlags: 0

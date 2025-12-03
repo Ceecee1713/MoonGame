@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField]
-    private GameObject [] uisToCheckFor; //storytellingUI, textAdventureUI, cluebookUI, craftingUI
+    private GameObject [] uisToCheckFor; //storytellingUI, textAdventureUI, cluebookUI, craftingUI, win and lose UIs
 
     private bool _allowPlayerInputs = false;
 

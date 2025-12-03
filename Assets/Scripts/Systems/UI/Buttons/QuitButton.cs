@@ -10,7 +10,7 @@ public class QuitButton : MonoBehaviour
     private CanvasGroup currentCanvasGroup;
 
     [SerializeField]
-    private SwitchSceneButton switchSceneButton;
+    private SceneButton sceneButton;
 
     private bool _dontRepeat = false;
     private bool _calledCoroutine = false;
@@ -46,7 +46,7 @@ public class QuitButton : MonoBehaviour
         {
             _dontRepeat = true;
             _preventInput = true;
-            switchSceneButton.PreventInput();
+            sceneButton.PreventInput();
             //Play sound here
             Invoke("Quit", QUIT_DELAY);
         }

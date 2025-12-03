@@ -5,9 +5,9 @@ public class PickUpItem : MonoBehaviour
     [SerializeField]
     private ItemData inventoryItem; 
 
+    private bool _allowInput = true;
     private bool _playerStayingInCollision = false; 
     private bool _playerInCollision = false;
-    private bool _allowInput = false;
 
     void Start()
     {

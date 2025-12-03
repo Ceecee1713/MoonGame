@@ -1,15 +1,27 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField]
+    private GameObject failedGameUI;
+    
+    [SerializeField]
     private Slider health;
 
     private bool _pauseCorrioson = false;
+    private bool _doNotRepeat = false;
     private bool _recoverHealth = false;
     
     private float _speedToChangeHealth;
+
+    private const float SMALL_TIME_DELAY = 0.2F;
+
+    private const bool ALLOW_PLAYER_INPUT = false;
+    private const bool START_MOON_PUZZLE = false;
+    private const bool START_PRAYER_PHASE = false; 
 
     void Start()
     {
@@ -20,7 +32,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
-        if( _pauseCorrioson == true)
+        if( _pauseCorrioson == true || _doNotRepeat == true)
             return;
 
         if(_recoverHealth == false && health.value != 0.0f)
@@ -33,8 +45,11 @@ public class PlayerHealth : MonoBehaviour
             health.value += Time.deltaTime * _speedToChangeHealth;
         }
 
-        //if(health.value == 0.0f) //Edit to show death screen
-            //Debug.Log("You died");
+        if(health.value == 0.0f) 
+        {
+            StartCoroutine(ShowFailedGameScreen());
+            _doNotRepeat = true;
+        }
     }
 
     private void ChangeHealthValue(AlterPlayerHealth alterPlayerHealth)
@@ -51,5 +66,16 @@ public class PlayerHealth : MonoBehaviour
     private void StartNewExplorationPhase(NewExplorationPhase newExplorationPhase)
     {
         health.value = 1.0f; //Reset health to full
+    }
+
+    IEnumerator ShowFailedGameScreen()
+    {
+        EventBus.Instance.Publish(new FreezePlayer(true));
+        EventBus.Instance.Publish(new PauseExplorationTimer(true));
+        EventBus.Instance.Publish(new ActivatePlayerInputs(false));
+
+        yield return new WaitForSeconds(SMALL_TIME_DELAY);
+
+        EventBus.Instance.Publish(new ChangeCanvases(failedGameUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
     }
 }

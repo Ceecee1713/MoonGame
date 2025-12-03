@@ -5,9 +5,10 @@ public class CraftingTable : MonoBehaviour
     [SerializeField]
     private GameObject craftingUI;
 
+    private bool _allowInput = true;
+
     private bool _playerStayingInCollision = false; 
     private bool _playerInCollision = false; 
-    private bool _allowInput = false;
 
     void Start()
     {

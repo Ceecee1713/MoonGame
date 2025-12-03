@@ -5,11 +5,12 @@ public class PrayToMoonStatue : MonoBehaviour
     [SerializeField]
     private GameObject storytellingUI;
 
-    private bool _startMoonPuzzle = false;
-    private bool _startPrayerPhase = true;
+    private bool _allowInput = true;
     private bool _playerCollisionDetected = false;
     private bool _interactedOnce = false;
-    private bool _allowInput = false;
+
+    private const bool START_MOON_PUZZLE = false;
+    private const bool START_PRAYER_PHASE = true;
 
     void Start()
     {
@@ -32,7 +33,7 @@ public class PrayToMoonStatue : MonoBehaviour
             _interactedOnce = true;
 
             EventBus.Instance.Publish(new FreezePlayer(true));
-            EventBus.Instance.Publish(new ChangeCanvases(storytellingUI, _startMoonPuzzle, _startPrayerPhase));
+            EventBus.Instance.Publish(new ChangeCanvases(storytellingUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
         }
     }
 

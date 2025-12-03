@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCanvasGroup: {fileID: 9081252054241002525}
-  switchSceneButton: {fileID: 3562097392555047460}
+  sceneButton: {fileID: 3562097392555047460}
 --- !u!1 &1257413433256008401
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,7 +565,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCanvasGroup: {fileID: 9081252054241002525}
   quitButton: {fileID: 4997650792005865968}
-  sceneNameToLoadOnClick: 
+  mainMenuSceneName: 
 --- !u!1 &2297199353307489664
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,6 +821,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uisToCheckFor:
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
