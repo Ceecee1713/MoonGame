@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class MoonPuzzleDialogueText : MonoBehaviour
@@ -27,6 +28,10 @@ public class MoonPuzzleDialogueText : MonoBehaviour
     private GameObject textAdventureUI;
     [SerializeField]
     private TextMeshProUGUI dialogueText;
+    [SerializeField]
+    private Image heartImage;
+    [SerializeField]
+    private Sprite emptyHeartSprite;
 
     [Header ("Button Displays")]
     [SerializeField]
@@ -37,6 +42,8 @@ public class MoonPuzzleDialogueText : MonoBehaviour
     private TextMeshProUGUI buttonOneText, buttonTwoText, buttonThreeText;
 
     private MoonPuzzleDialogueData _currentQuestionDialogue;
+
+    private Sprite _fullHeartSprite;
 
     private int _messageLength;
     private int _index = 0; //Index to go through the dialogue message array (individual messages) from "dialogueData" 
@@ -62,12 +69,13 @@ public class MoonPuzzleDialogueText : MonoBehaviour
 
     private const float TIME_TO_WAIT_FOR_FADING_CANVASES = 1.5f;
     private const float TYPING_SPEED = 0.015f;
-    private const float SMALL_TIME_DELAY = 0.2F;
 
     void Start()
     {
         EventBus.Instance.Subscribe<StartNewTextAdventure>(StartNewTextAdventure);
         EventBus.Instance.Subscribe<AdvanceTextAdventure>(NextTextAdvetureDialogue);
+
+        _fullHeartSprite = heartImage.sprite;
 
         ResetValues();
         ButtonOptions.SetActive(false);
@@ -91,6 +99,8 @@ public class MoonPuzzleDialogueText : MonoBehaviour
         buttonTwoText.text = "";
         buttonThreeText.text = "";
 
+        heartImage.sprite = _fullHeartSprite;
+
         _index = 0; 
         _currentLineCount = 0;
         _hasActivatedButtonOptions = false;
@@ -107,9 +117,17 @@ public class MoonPuzzleDialogueText : MonoBehaviour
         if(WrongButtonChoicesCounter >= MAX_COUNTER_AMOUNT_FOR_WRONG_BUTTON_CHOICES && _doNotRepeat == false)
         {
             ResetValues();
-            StartCoroutine(FailedMoonPuzzle());
+            FailedMoonPuzzle();
             _doNotRepeat = true;
         }
+    }
+
+    private void FailedMoonPuzzle()
+    {
+        _concludeMoonPuzzle = true;
+        _failedMoonPuzzle = true;
+        blackScreenUI.SetActive(true);
+        EventBus.Instance.Publish(new ChangeCanvases(failedGameUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
     }
 
     public void DisableButtonOptions() //Caled when having clicked on an incorrect button
@@ -131,6 +149,7 @@ public class MoonPuzzleDialogueText : MonoBehaviour
             return;
 
         ResetValues();
+        heartImage.sprite = emptyHeartSprite;
         dialogueText.text = "";
         _currentLineCount = 0;
         StartCoroutine(TypeMessage(_currentQuestionDialogue.Messages[_index]));
@@ -223,17 +242,6 @@ public class MoonPuzzleDialogueText : MonoBehaviour
             EventBus.Instance.Publish(new ChangeCanvases(mainPlayerUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
             
         yield return null;
-    }
-
-    IEnumerator FailedMoonPuzzle()
-    {
-        _concludeMoonPuzzle = true;
-        _failedMoonPuzzle = true;
-        blackScreenUI.SetActive(true);
-
-        yield return new WaitForSeconds(SMALL_TIME_DELAY);
-
-        EventBus.Instance.Publish(new ChangeCanvases(failedGameUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
     }
 
     IEnumerator TypeMessage(string message) 

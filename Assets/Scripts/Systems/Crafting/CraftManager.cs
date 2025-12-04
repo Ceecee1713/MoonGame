@@ -9,8 +9,6 @@ public class CraftManager : MonoBehaviour
 
     private ItemData _itemToCraft;
 
-    private CraftingUI _craftingUI;
-
     private List <int> _amountsPerUniqueInventoryItemsToRemove = new List <int>(); //Each index represents the total number of a unique inventory item to be removed
     private List <ItemData> _materialsForCraftableItem = new List <ItemData>();
 
@@ -18,6 +16,7 @@ public class CraftManager : MonoBehaviour
     private bool _quantityRemaining = false;
     private bool _breakLoop = false;
     private bool _notEnoughItemQuantity = false;
+    private bool _allowPlayerInputs = false;
 
     private int _amountOfMatchingCraftingMaterials = 0; //To be compared to the needed amount of unique materials for craftable item's recipe
     private int _remainingQuantity; 
@@ -26,8 +25,21 @@ public class CraftManager : MonoBehaviour
 
     void Start()
     {
-        _craftingUI = GetComponent<CraftingUI>();
         EventBus.Instance.Subscribe<AllowToCraftClue>(CheckToMakeClue);
+    }
+
+    void OnEnable()
+    {
+        //Prevent Player Inputs
+        _allowPlayerInputs = false;
+        EventBus.Instance.Publish(new ActivatePlayerInputs(_allowPlayerInputs));
+    }
+
+    void OnDisable()
+    {
+        //Allow Player Inputs
+        _allowPlayerInputs = true;
+        EventBus.Instance.Publish(new ActivatePlayerInputs(_allowPlayerInputs));
     }
 
     public void ResetStatus() 
@@ -44,11 +56,6 @@ public class CraftManager : MonoBehaviour
         _amountOfAnInventoryItemNeeded = 0;
     }
 
-    private void CannotCraftItem()
-    {
-        _craftingUI.DisplayWarningMessage();
-    }
-
     private void CheckToMakeClue(AllowToCraftClue allowToCraftClue)
     {
         _allowCraftingForClue = allowToCraftClue.AvaliableClueToDecipher;
@@ -62,10 +69,7 @@ public class CraftManager : MonoBehaviour
     public void CheckInventoryForCraftingMaterials(ItemData craftingMaterial, int maxAmountOfCraftingMaterialTypes, bool craftingAClue)
     {
         if(_notEnoughItemQuantity == true)
-        {
-            CannotCraftItem();
             return;
-        }
         
         _breakLoop = false;
         
@@ -79,7 +83,6 @@ public class CraftManager : MonoBehaviour
             if(_remainingQuantity > 0) 
             {
                 _notEnoughItemQuantity = true;
-                CannotCraftItem();
                 return;
             }
 

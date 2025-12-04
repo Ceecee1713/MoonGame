@@ -4,6 +4,8 @@ using TMPro;
 
 public class ExplorationTimer : MonoBehaviour
 {
+    public float RemainingTime; 
+
     [SerializeField]
     private CorriosonValues corriosonValues;
 
@@ -12,8 +14,6 @@ public class ExplorationTimer : MonoBehaviour
 
     [SerializeField]
     private float maxDurationOfExplorationPhase; 
-
-    private float _remainingTime; 
 
     private bool _doNotAllowTimerToCountDown = false; 
 
@@ -26,7 +26,7 @@ public class ExplorationTimer : MonoBehaviour
 
     void Start()
     {
-        _remainingTime = maxDurationOfExplorationPhase;
+        RemainingTime = maxDurationOfExplorationPhase;
 
         EventBus.Instance.Subscribe<PauseExplorationTimer>(PauseTimerCountdown);
         EventBus.Instance.Subscribe<ResetExplorationTimer>(ResetTimer);
@@ -37,7 +37,7 @@ public class ExplorationTimer : MonoBehaviour
         if(_doNotAllowTimerToCountDown == true)
             return;
 
-        if(_remainingTime == 0)
+        if(RemainingTime == 0)
         {
             EventBus.Instance.Publish(new ChangeCorriosonValue(corriosonValues.SpeedToLowerHealthWhenTimerIsUp, FIRST_MOON_PUZZLE_AREA_NUMBER));
             EventBus.Instance.Publish(new ChangeCorriosonValue(corriosonValues.SpeedToLowerHealthWhenTimerIsUp, SECOND_MOON_PUZZLE_AREA_NUMBER));
@@ -47,14 +47,14 @@ public class ExplorationTimer : MonoBehaviour
             return;
         }
 
-        if(_remainingTime > 0)
-            _remainingTime -= Time.deltaTime;
+        if(RemainingTime > 0)
+            RemainingTime -= Time.deltaTime;
 
-        else if (_remainingTime < 0)
-            _remainingTime = 0;
+        else if (RemainingTime < 0)
+            RemainingTime = 0;
 
-        _minutes = Mathf.FloorToInt(_remainingTime / 60);
-        _seconds = Mathf.FloorToInt(_remainingTime % 60);
+        _minutes = Mathf.FloorToInt(RemainingTime / 60);
+        _seconds = Mathf.FloorToInt(RemainingTime % 60);
         timerText.text = string.Format("{0:00}:{1:00}", _minutes, _seconds);
     }
 
@@ -65,7 +65,7 @@ public class ExplorationTimer : MonoBehaviour
 
     private void ResetTimer(ResetExplorationTimer resetExplorationTimer)
     {
-        _remainingTime = maxDurationOfExplorationPhase;
+        RemainingTime = maxDurationOfExplorationPhase;
         _doNotAllowTimerToCountDown = false;
     }
 }
