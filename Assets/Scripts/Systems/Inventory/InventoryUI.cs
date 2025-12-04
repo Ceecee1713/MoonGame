@@ -43,6 +43,8 @@ public class InventoryUI : MonoBehaviour
 
         //For removing an inventory item when moving item into a chest
         EventBus.Instance.Subscribe<RemoveItemFromSlot>(RemoveItemFromInventory);
+
+        this.gameObject.SetActive(false);
     }
 
     void Update()

@@ -207,6 +207,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3956707493790610901, guid: 71af20f874715374e971a6cc410c9fb1, type: 3}
+      propertyPath: m_Alpha
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4269967530538008343, guid: 71af20f874715374e971a6cc410c9fb1, type: 3}
       propertyPath: endScreenUI
       value: 
@@ -218,6 +222,14 @@ PrefabInstance:
     - target: {fileID: 6535581254111900172, guid: 71af20f874715374e971a6cc410c9fb1, type: 3}
       propertyPath: m_Name
       value: Storytelling UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7851264716219384663, guid: 71af20f874715374e971a6cc410c9fb1, type: 3}
+      propertyPath: m_fontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7851264716219384663, guid: 71af20f874715374e971a6cc410c9fb1, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

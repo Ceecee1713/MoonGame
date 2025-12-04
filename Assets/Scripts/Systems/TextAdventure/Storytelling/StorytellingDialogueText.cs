@@ -40,11 +40,13 @@ public class StorytellingDialogueText : MonoBehaviour
     private int _index = 0; //Index to go through the dialogue message array (individual messages) from "dialogueData" 
     private int _currentLineCount = 0;
 
+    private bool _finishedTypingMessage = false; //Prevent or allow going through individual messages when they're not fully typed out
     private bool _doNotRepeat = false;
+
     private bool _beginPrayerPhase = false;
     private bool _finishPrayerPhase = false;
     private bool _finishGame = false;
-    private bool _finishedTypingMessage = false; //Prevent or allow going through individual messages when they're not fully typed out
+    private bool _startIntroductoryDialogue = false;
 
     private const int FIRST_MOON_PUZZLE_AREA_NUMBER = 1;
     private const int SECOND_MOON_PUZZLE_AREA_NUMBER = 2;
@@ -55,6 +57,7 @@ public class StorytellingDialogueText : MonoBehaviour
     private const bool START_PRAYER_PHASE = false; 
 
     private const float TYPING_SPEED = 0.015f;
+    private const float DELAY = 0.25f;
 
     void Start()
     {
@@ -63,7 +66,7 @@ public class StorytellingDialogueText : MonoBehaviour
         EventBus.Instance.Subscribe<AdvanceTextAdventure>(NextDialogue);
 
         ResetValues();
-        storytellingUI.SetActive(false);
+        Invoke("StartIntroductoryDialogue", DELAY);
     }
 
     void OnEnable()
@@ -86,6 +89,20 @@ public class StorytellingDialogueText : MonoBehaviour
         _finishPrayerPhase = false;
 
         StopAllCoroutines();
+    }
+
+    private void StartIntroductoryDialogue() 
+    {
+        _startIntroductoryDialogue = true;
+        _currentDialogue = startingGameDialogue;
+        _messageLength = _currentDialogue.Messages.Length;
+
+        EventBus.Instance.Publish(new FreezePlayer(true));
+        EventBus.Instance.Publish(new MaintainPlayerHealth(true));
+        EventBus.Instance.Publish(new PauseExplorationTimer(true));
+
+        StopAllCoroutines();
+        StartCoroutine(TypeMessage(_currentDialogue.Messages[_index]));
     }
 
     private void StartEndGameDialogueAdventure(StartEndGameDialogue startEndGameDialogue) 
@@ -133,6 +150,13 @@ public class StorytellingDialogueText : MonoBehaviour
             EventBus.Instance.Publish(new ChangeCanvases(mainPlayerUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
             EventBus.Instance.Publish(new NewExplorationPhase());
             EventBus.Instance.Publish(new ResetExplorationTimer());
+            return;
+        }
+
+        if(_index+1 == _messageLength && _startIntroductoryDialogue == true) //Edit for tutorial
+        {
+            _doNotRepeat = true;
+            EventBus.Instance.Publish(new ChangeCanvases(mainPlayerUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
             return;
         }
 
