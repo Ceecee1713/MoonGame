@@ -2662,6 +2662,27 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5302779148953855492, guid: ab9362916603c6546844183092416196, type: 3}
   m_PrefabInstance: {fileID: 948181266}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1141339839 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7205516822280749619, guid: 51119a0542cff3c47a35b5d98c6c70df, type: 3}
+  m_PrefabInstance: {fileID: 1230862991952786796}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1141339843 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2431215503894648464, guid: 51119a0542cff3c47a35b5d98c6c70df, type: 3}
+  m_PrefabInstance: {fileID: 1230862991952786796}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1141339844 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4429380879015813020, guid: 51119a0542cff3c47a35b5d98c6c70df, type: 3}
+  m_PrefabInstance: {fileID: 1230862991952786796}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141339839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7448efa871c4d5741bf32952a35c9593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1184447793
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2674,6 +2695,14 @@ PrefabInstance:
       propertyPath: textAdventureUI
       value: 
       objectReference: {fileID: 781347863}
+    - target: {fileID: 2903623959552293172, guid: db8ad6c4d7f8e064c8ad90d781b9970e, type: 3}
+      propertyPath: warningMoonPuzzleUI
+      value: 
+      objectReference: {fileID: 1141339839}
+    - target: {fileID: 2903623959552293172, guid: db8ad6c4d7f8e064c8ad90d781b9970e, type: 3}
+      propertyPath: warningMoonPuzzleUIScript
+      value: 
+      objectReference: {fileID: 1141339844}
     - target: {fileID: 5457298387253372689, guid: db8ad6c4d7f8e064c8ad90d781b9970e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.18
@@ -3071,6 +3100,14 @@ PrefabInstance:
       propertyPath: textAdventureUI
       value: 
       objectReference: {fileID: 781347863}
+    - target: {fileID: 2903623959552293172, guid: db8ad6c4d7f8e064c8ad90d781b9970e, type: 3}
+      propertyPath: warningMoonPuzzleUI
+      value: 
+      objectReference: {fileID: 1141339839}
+    - target: {fileID: 2903623959552293172, guid: db8ad6c4d7f8e064c8ad90d781b9970e, type: 3}
+      propertyPath: warningMoonPuzzleUIScript
+      value: 
+      objectReference: {fileID: 1141339844}
     - target: {fileID: 5457298387253372689, guid: db8ad6c4d7f8e064c8ad90d781b9970e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.27
@@ -3733,6 +3770,7 @@ Transform:
   - {fileID: 2049450240}
   - {fileID: 412527387}
   - {fileID: 1442456495}
+  - {fileID: 1141339843}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2070840532
@@ -3931,6 +3969,14 @@ PrefabInstance:
       propertyPath: textAdventureUI
       value: 
       objectReference: {fileID: 781347863}
+    - target: {fileID: 2903623959552293172, guid: db8ad6c4d7f8e064c8ad90d781b9970e, type: 3}
+      propertyPath: warningMoonPuzzleUI
+      value: 
+      objectReference: {fileID: 1141339839}
+    - target: {fileID: 2903623959552293172, guid: db8ad6c4d7f8e064c8ad90d781b9970e, type: 3}
+      propertyPath: warningMoonPuzzleUIScript
+      value: 
+      objectReference: {fileID: 1141339844}
     - target: {fileID: 5457298387253372689, guid: db8ad6c4d7f8e064c8ad90d781b9970e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.26
@@ -4045,6 +4091,107 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7142d860e508cb34ebd67072fcffe19b, type: 3}
+--- !u!1001 &1230862991952786796
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2061546377}
+    m_Modifications:
+    - target: {fileID: 2431215503894648464, guid: 51119a0542cff3c47a35b5d98c6c70df, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431215503894648464, guid: 51119a0542cff3c47a35b5d98c6c70df, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431215503894648464, guid: 51119a0542cff3c47a35b5d98c6c70df, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431215503894648464, guid: 51119a0542cff3c47a35b5d98c6c70df, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431215503894648464, guid: 51119a0542cff3c47a35b5d98c6c70df, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431215503894648464, guid: 51119a0542cff3c47a35b5d98c6c70df, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431215503894648464, guid: 51119a0542cff3c47a35b5d98c6c70df, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431215503894648464, guid: 51119a0542cff3c47a35b5d98c6c70df, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431215503894648464, guid: 51119a0542cff3c47a35b5d98c6c70df, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431215503894648464, guid: 51119a0542cff3c47a35b5d98c6c70df, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431215503894648464, guid: 51119a0542cff3c47a35b5d98c6c70df, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431215503894648464, guid: 51119a0542cff3c47a35b5d98c6c70df, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431215503894648464, guid: 51119a0542cff3c47a35b5d98c6c70df, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431215503894648464, guid: 51119a0542cff3c47a35b5d98c6c70df, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431215503894648464, guid: 51119a0542cff3c47a35b5d98c6c70df, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431215503894648464, guid: 51119a0542cff3c47a35b5d98c6c70df, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431215503894648464, guid: 51119a0542cff3c47a35b5d98c6c70df, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431215503894648464, guid: 51119a0542cff3c47a35b5d98c6c70df, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431215503894648464, guid: 51119a0542cff3c47a35b5d98c6c70df, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431215503894648464, guid: 51119a0542cff3c47a35b5d98c6c70df, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4623849327923943257, guid: 51119a0542cff3c47a35b5d98c6c70df, type: 3}
+      propertyPath: textAdventureUI
+      value: 
+      objectReference: {fileID: 781347863}
+    - target: {fileID: 7205516822280749619, guid: 51119a0542cff3c47a35b5d98c6c70df, type: 3}
+      propertyPath: m_Name
+      value: Warning UI - Moon Puzzle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 51119a0542cff3c47a35b5d98c6c70df, type: 3}
 --- !u!1001 &1540668454570778732
 PrefabInstance:
   m_ObjectHideFlags: 0

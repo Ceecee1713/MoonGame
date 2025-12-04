@@ -3,11 +3,15 @@ using UnityEngine;
 public class MoonPuzzleArea : MonoBehaviour
 {
     [SerializeField]
-    private GameObject textAdventureUI;
+    private GameObject warningMoonPuzzleUI;
+    [SerializeField]
+    private WarningMoonPuzzleUI warningMoonPuzzleUIScript;
 
     private bool _allowInput = true;
     private bool _playerCollisionDetected = false;
-    private bool _interactedOnce = false;
+
+    [HideInInspector]
+    public bool InteractedOnce = false;
 
     private const bool START_MOON_PUZZLE = true;
     private const bool START_PRAYER_PHASE = false;
@@ -25,16 +29,17 @@ public class MoonPuzzleArea : MonoBehaviour
 
     private void OpenTextAdventureUI(Interact interact) //When player "interacts" with this game object (keybind E)
     {
-        if(_interactedOnce == true || _allowInput == false)
+        if(InteractedOnce == true || _allowInput == false)
             return;
 
         if(_playerCollisionDetected == true)
         {
-            _interactedOnce = true;
-
             EventBus.Instance.Publish(new FreezePlayer(true));
             EventBus.Instance.Publish(new MaintainPlayerHealth(true));
-            EventBus.Instance.Publish(new ChangeCanvases(textAdventureUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
+            EventBus.Instance.Publish(new PauseExplorationTimer(true));
+            
+            warningMoonPuzzleUI.SetActive(true);
+            warningMoonPuzzleUIScript.ShowWarningMessage(this);
         }
     }
 
