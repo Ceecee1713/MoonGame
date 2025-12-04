@@ -6,20 +6,20 @@ public class NPC : MonoBehaviour
     private GameObject dialogueCanvas;
 
     [SerializeField]
-    private Dialogue npcMessage;
+    private StorytellingDialogueData npcDialogue;
 
-    private string _extraMessage = "... (You can't understand what they're saying, but you write down their words anyways).";
-    private string _fullNPCMesasge;
+    private string _npcMessage;
 
     private bool _playerStayingInCollision = false; 
     private bool _playerInCollision = false;
     private bool _allowInput = false;
 
     private const bool NEW_EXPLORATION_PHASE = false;
+    private const bool STARTING_THE_GAME = false; 
 
     void Start()
     {
-        _fullNPCMesasge = npcMessage.Message + _extraMessage;
+        _npcMessage = npcDialogue.Messages[0];
 
         EventBus.Instance.Subscribe<Interact>(CheckToShowDialogue);
         EventBus.Instance.Subscribe<ActivatePlayerInputs>(AllowPlayerInput);
@@ -41,8 +41,8 @@ public class NPC : MonoBehaviour
 
             EventBus.Instance.Publish(new FreezePlayer(true));
             EventBus.Instance.Publish(new MaintainPlayerHealth(true));
-            EventBus.Instance.Publish(new TypeOutSingleDialogue(_fullNPCMesasge, NEW_EXPLORATION_PHASE));
-            EventBus.Instance.Publish(new FoundClueFragment(npcMessage));
+            EventBus.Instance.Publish(new TypeDialogueOnMainUI(npcDialogue, NEW_EXPLORATION_PHASE, STARTING_THE_GAME));
+            EventBus.Instance.Publish(new FoundClueFragment(_npcMessage));
         }
     }
 

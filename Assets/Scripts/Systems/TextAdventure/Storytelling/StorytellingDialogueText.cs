@@ -7,6 +7,9 @@ public class StorytellingDialogueText : MonoBehaviour
     [SerializeField]
     private CorriosonValues corriosonValues;
 
+    [SerializeField]
+    private StorytellingDialogueData tutorialDialogue;
+
     [Header ("Main Dialogues")]
     [SerializeField]
     private StorytellingDialogueData startingGameDialogue;
@@ -25,11 +28,13 @@ public class StorytellingDialogueText : MonoBehaviour
 
     [Header ("UI Information")]
     [SerializeField]
-    private GameObject storytellingUI;
+    private GameObject dialogueCanvas;
     [SerializeField]
     private GameObject mainPlayerUI;
     [SerializeField]
     private GameObject endScreenUI;
+    [SerializeField]
+    private GameObject storytellingUI;
     [SerializeField]
     private TextMeshProUGUI dialogueText;
 
@@ -55,6 +60,7 @@ public class StorytellingDialogueText : MonoBehaviour
 
     private const bool START_MOON_PUZZLE = false;
     private const bool START_PRAYER_PHASE = false; 
+    private const bool STARTING_THE_GAME = true; 
 
     private const float TYPING_SPEED = 0.015f;
     private const float DELAY = 0.25f;
@@ -157,6 +163,9 @@ public class StorytellingDialogueText : MonoBehaviour
         {
             _doNotRepeat = true;
             EventBus.Instance.Publish(new ChangeCanvases(mainPlayerUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
+
+            dialogueCanvas.SetActive(true);
+            EventBus.Instance.Publish(new TypeDialogueOnMainUI(tutorialDialogue, false, STARTING_THE_GAME));
             return;
         }
 

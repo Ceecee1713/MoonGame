@@ -5,8 +5,10 @@ public class MoonVisibility : MonoBehaviour
     [Header ("Moon Dialogue - UI")]
     [SerializeField]
     private GameObject dialogueCanvas;
+
     [SerializeField]
-    private string moonStatueDialogue = "You've lit up a piece of the Moon Statue! Continue on your journey to restore the Moon's brillance!";
+    private StorytellingDialogueData completedMoonPuzzleDialogue;
+
     [SerializeField]
     private float delayBeforeShowingMoonMessage = 1.5f;
 
@@ -21,6 +23,7 @@ public class MoonVisibility : MonoBehaviour
     private int moonCounter = 0;
 
     private const bool NEW_EXPLORATION_PHASE = true;
+    private const bool STARTING_THE_GAME = false; 
 
     void Start()
     {
@@ -44,6 +47,6 @@ public class MoonVisibility : MonoBehaviour
     private void ShowMoonStatueMessage()
     {
         dialogueCanvas.SetActive(true);
-        EventBus.Instance.Publish(new TypeOutSingleDialogue(moonStatueDialogue, NEW_EXPLORATION_PHASE));
+        EventBus.Instance.Publish(new TypeDialogueOnMainUI(completedMoonPuzzleDialogue, NEW_EXPLORATION_PHASE, STARTING_THE_GAME));
     }
 }

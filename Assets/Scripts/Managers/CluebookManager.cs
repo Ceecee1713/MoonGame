@@ -6,12 +6,12 @@ using TMPro;
 [Serializable]
 public struct Clue
 {
-    public TextMeshProUGUI ClueText;
-    public Dialogue FirstClueFragment;
-    public Dialogue SecondClueFragment;
+    public TextMeshProUGUI ClueText; //Assign in inspector
+    public string FirstClueFragment; //Assign in inspector
+    public string SecondClueFragment; //Assign in inspector
 
-    public string FullCodedClue;
-    public string FullDecipheredClue;
+    public string FullCodedClue; 
+    public string FullDecipheredClue; //Assign in inspector
 
     public bool FoundFirstClueFragment;
     public bool FoundSecondClueFragment;
@@ -24,7 +24,7 @@ public class CluebookManager : MonoBehaviour
 
     private List <int> _clueIndexesDeciphered = new List <int>(); 
 
-    private Dialogue _clueDialogue;
+    private string _clueDialogue;
 
     private bool _resolvedClue = false; //Clue that's complete but hasn't been deciphered
     private string _incompleteMessage = " (Search for the other clue fragment).";
@@ -32,7 +32,7 @@ public class CluebookManager : MonoBehaviour
     void Start()
     {
         for(int i = 0; i < clueIndexes.Length; i++)
-            clueIndexes[i].FullCodedClue = clueIndexes[i].FirstClueFragment.Message + " " + clueIndexes[i].SecondClueFragment.Message;
+            clueIndexes[i].FullCodedClue = clueIndexes[i].FirstClueFragment + " " + clueIndexes[i].SecondClueFragment;
 
         EventBus.Instance.Subscribe<FoundClueFragment>(CheckForMatchingClueFragments);
         EventBus.Instance.Subscribe<CheckForCompleteClues>(CheckForACompleteClue);
@@ -47,13 +47,13 @@ public class CluebookManager : MonoBehaviour
         {
             if(_clueDialogue == clueIndexes[i].FirstClueFragment)
             {
-                clueIndexes[i].ClueText.text = clueIndexes[i].FirstClueFragment.Message + _incompleteMessage;
+                clueIndexes[i].ClueText.text = clueIndexes[i].FirstClueFragment + _incompleteMessage;
                 clueIndexes[i].FoundFirstClueFragment = true;
             }
 
             if(_clueDialogue == clueIndexes[i].SecondClueFragment)
             {
-                clueIndexes[i].ClueText.text = clueIndexes[i].SecondClueFragment.Message + _incompleteMessage;
+                clueIndexes[i].ClueText.text = clueIndexes[i].SecondClueFragment + _incompleteMessage;
                 clueIndexes[i].FoundSecondClueFragment = true;
             }
 

@@ -2,16 +2,25 @@ using UnityEngine;
 
 public class PrayToMoonStatue : MonoBehaviour
 {
+    [Header ("UI Information")]
     [SerializeField]
     private GameObject storytellingUI;
+    [SerializeField]
+    private GameObject dialogueUI;
 
+    [SerializeField]
+    private StorytellingDialogueData moonStatueTutorialDialogue;
+
+    private bool _showMoonTutorial = false;
     private bool _allowInput = true;
     private bool _playerCollisionDetected = false;
     private bool _interactedOnce = false;
 
-    private const bool START_MOON_PUZZLE = false;
     private const bool START_PRAYER_PHASE = true;
-
+    private const bool START_MOON_PUZZLE = false;
+    private const bool NEW_EXPLORATION_PHASE = false;
+    private const bool STARTING_THE_GAME = false; 
+    
     void Start()
     {
         EventBus.Instance.Subscribe<Interact>(OpenStorytellingUI);
@@ -30,8 +39,17 @@ public class PrayToMoonStatue : MonoBehaviour
 
         if(_playerCollisionDetected == true)
         {
-            _interactedOnce = true;
+            if(_showMoonTutorial == false)
+            {
+                _showMoonTutorial = true;
+                dialogueUI.SetActive(true);
+                
+                EventBus.Instance.Publish(new FreezePlayer(true));
+                EventBus.Instance.Publish(new TypeDialogueOnMainUI(moonStatueTutorialDialogue, NEW_EXPLORATION_PHASE, STARTING_THE_GAME));
+                return;
+            }
 
+            _interactedOnce = true;
             EventBus.Instance.Publish(new FreezePlayer(true));
             EventBus.Instance.Publish(new ChangeCanvases(storytellingUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
         }

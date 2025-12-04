@@ -158,9 +158,9 @@ public class SetTextAdventureQuestion : IEvent
 //To add a clue fragment into the cluebook after interacting with an NPC that gives a clue fragment
 public class FoundClueFragment : IEvent
 {
-    public Dialogue ClueDialogue;
+    public string ClueDialogue;
 
-    public FoundClueFragment(Dialogue clueDialogue)
+    public FoundClueFragment(string clueDialogue)
     {
         ClueDialogue = clueDialogue;
     }
@@ -214,20 +214,22 @@ public class FadeSingleCanvas : IEvent
 }
 
 //Assign a single dialogue to the UI responsible for handling single dialogues 
-public class TypeOutSingleDialogue : IEvent
+public class TypeDialogueOnMainUI : IEvent
 {
-    public string Message;
+    public StorytellingDialogueData Dialogue;
     public bool NewExplorationPhase; 
+    public bool StartingTheGame; 
 
-    public TypeOutSingleDialogue(string message, bool newExplorationPhase)
+    public TypeDialogueOnMainUI(StorytellingDialogueData dialogue, bool newExplorationPhase, bool startingTheGame)
     {
-        Message = message;
+        Dialogue = dialogue;
         NewExplorationPhase = newExplorationPhase;
+        StartingTheGame = startingTheGame;
     }
 } 
 
 //Advance through the single dialogue to the UI responsible for handling single dialogues
-public class AdvanceSingleMessage : IEvent
+public class AdvanceDialogueOnMainUI : IEvent
 {
 }
 

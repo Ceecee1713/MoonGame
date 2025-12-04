@@ -219,6 +219,14 @@ PrefabInstance:
       propertyPath: mainPlayerUI
       value: 
       objectReference: {fileID: 2297768215407671026}
+    - target: {fileID: 4269967530538008343, guid: 71af20f874715374e971a6cc410c9fb1, type: 3}
+      propertyPath: dialogueCanvas
+      value: 
+      objectReference: {fileID: 1250170720}
+    - target: {fileID: 4269967530538008343, guid: 71af20f874715374e971a6cc410c9fb1, type: 3}
+      propertyPath: tutorialDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: f0d4982d18740ba449022a7ae9b42cf1, type: 2}
     - target: {fileID: 6535581254111900172, guid: 71af20f874715374e971a6cc410c9fb1, type: 3}
       propertyPath: m_Name
       value: Storytelling UI
@@ -549,9 +557,17 @@ PrefabInstance:
       value: 0.87085676
       objectReference: {fileID: 0}
     - target: {fileID: 7090821191877481275, guid: 52fa42ca21cedae47aeb92ee82935da1, type: 3}
+      propertyPath: dialogueUI
+      value: 
+      objectReference: {fileID: 1250170720}
+    - target: {fileID: 7090821191877481275, guid: 52fa42ca21cedae47aeb92ee82935da1, type: 3}
       propertyPath: speedToIncraseHealth
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 7090821191877481275, guid: 52fa42ca21cedae47aeb92ee82935da1, type: 3}
+      propertyPath: corriosonZoneTutorial
+      value: 
+      objectReference: {fileID: 11400000, guid: d2123748ee23e184180301ccbfdb920c, type: 2}
     - target: {fileID: 7205013701281643526, guid: 52fa42ca21cedae47aeb92ee82935da1, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.75
@@ -1465,7 +1481,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 893300183961849840, guid: 3fa16e7edf61f104f9f73b134acb6567, type: 3}
       propertyPath: m_Name
-      value: Single Dialogue UI
+      value: Main UI - Dialogue Box
       objectReference: {fileID: 0}
     - target: {fileID: 893300183961849840, guid: 3fa16e7edf61f104f9f73b134acb6567, type: 3}
       propertyPath: m_IsActive
@@ -1683,7 +1699,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 633751787}
         m_TargetAssemblyTypeName: CraftButton, Assembly-CSharp
-        m_MethodName: OnCraftInventoryItemClick
+        m_MethodName: OnDecipherClueClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1844,7 +1860,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: RUBY
+  m_text: DECIPHER CLUE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2840,6 +2856,14 @@ PrefabInstance:
       propertyPath: clueIndexes.Array.data[8].ClueText
       value: 
       objectReference: {fileID: 352419288}
+    - target: {fileID: 757537653442933301, guid: 5e1f6c33495138f4a9f0546ce96c726b, type: 3}
+      propertyPath: clueIndexes.Array.data[0].FirstClueFragment
+      value: 'Somuli petra auonem ilullius '
+      objectReference: {fileID: 0}
+    - target: {fileID: 757537653442933301, guid: 5e1f6c33495138f4a9f0546ce96c726b, type: 3}
+      propertyPath: clueIndexes.Array.data[0].SecondClueFragment
+      value: Pico mujik weno ilu
+      objectReference: {fileID: 0}
     - target: {fileID: 6165559360547426615, guid: 5e1f6c33495138f4a9f0546ce96c726b, type: 3}
       propertyPath: m_Name
       value: Cluebook Manager
@@ -3225,6 +3249,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3918582228356778458, guid: 5078fcc123afefb4cb4ea86ff77431c1, type: 3}
+      propertyPath: npcDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 2dd451edcded8ea4aa73e6181a33ab97, type: 2}
     - target: {fileID: 3918582228356778458, guid: 5078fcc123afefb4cb4ea86ff77431c1, type: 3}
       propertyPath: dialogueCanvas
       value: 
@@ -3625,12 +3653,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5865290406452594478, guid: 939b4f8fa05a118438ddab9919449cf4, type: 3}
+      propertyPath: npcDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 10de9c9e0a7a3db4fb4dc70f57a6c0a5, type: 2}
+    - target: {fileID: 5865290406452594478, guid: 939b4f8fa05a118438ddab9919449cf4, type: 3}
       propertyPath: dialogueCanvas
       value: 
       objectReference: {fileID: 1250170720}
     - target: {fileID: 7765888621968633676, guid: 939b4f8fa05a118438ddab9919449cf4, type: 3}
       propertyPath: m_Name
       value: Pink NPC Ghost
+      objectReference: {fileID: 0}
+    - target: {fileID: 9198162910573729827, guid: 939b4f8fa05a118438ddab9919449cf4, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3860,6 +3896,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   storytellingUI: {fileID: 55846057}
+  dialogueUI: {fileID: 1250170720}
+  moonStatueTutorialDialogue: {fileID: 11400000, guid: 3e614623475e2ad4a980d1e55478c777, type: 2}
 --- !u!114 &2070840537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3873,8 +3911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueCanvas: {fileID: 1250170720}
-  moonStatueDialogue: You've lit up a piece of the Moon Statue! Continue on your
-    journey to restore the Moon's brillance!
+  completedMoonPuzzleDialogue: {fileID: 11400000, guid: b335073467f4084489135adead6cb05a, type: 2}
   delayBeforeShowingMoonMessage: 2
   moonFragments:
   - {fileID: 984323318}

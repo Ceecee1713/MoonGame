@@ -3,25 +3,30 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 
-//This is for the dialogue canvas for the NPCs to use 
+//This is for the dialogue canvas for the NPCs and tutorials to use 
+//It's the dialogue box that's laid on top of the main player UI 
 
 public class DialogueCanvas : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI dialogueText;
 
+    private StorytellingDialogueData _currentDialogue;
+
     private bool _finishedTypingMessage = false;
     private bool _newExplorationPhase = false;
+    private bool _startingTheGame = false;
 
-    private string _dialogue;
+    private int _dialogueArrayLength;
+    private int _index = 0; //Index to go through the dialogue message array (individual messages) from "dialogueData" 
 
     private const float TYPING_SPEED = 0.01f;
     private const float DELAY = 1.5f;
 
     void Awake()
     {
-        EventBus.Instance.Subscribe<TypeOutSingleDialogue>(DisplayMessage);
-        EventBus.Instance.Subscribe<AdvanceSingleMessage>(FinishMessage);
+        EventBus.Instance.Subscribe<TypeDialogueOnMainUI>(DisplayMessage);
+        EventBus.Instance.Subscribe<AdvanceDialogueOnMainUI>(FinishMessage);
     }
 
     void Start()
@@ -43,29 +48,41 @@ public class DialogueCanvas : MonoBehaviour
         dialogueText.text = "";
         _finishedTypingMessage = false;
         _newExplorationPhase = false;
+        _index = 0;
     }
 
-    private void FinishMessage(AdvanceSingleMessage advanceSingleMessage) //Called by "PlayerInputController" (keybind Enter/left mouse click)
+    private void FinishMessage(AdvanceDialogueOnMainUI advanceDialogueOnMainUI) //Called by "PlayerInputController" (keybind Enter/left mouse click)
     {
         if(_finishedTypingMessage != true)
             return;
 
-        EventBus.Instance.Publish(new FreezePlayer(false));
-        EventBus.Instance.Publish(new MaintainPlayerHealth(false));
+        if(_index+1 == _dialogueArrayLength)
+        {
+            EventBus.Instance.Publish(new FreezePlayer(false));
+            EventBus.Instance.Publish(new MaintainPlayerHealth(false));
 
-        if(_newExplorationPhase == true)
-            EventBus.Instance.Publish(new ResetExplorationTimer());
+            if(_newExplorationPhase == true || _startingTheGame == true)
+                EventBus.Instance.Publish(new ResetExplorationTimer());
 
+            StopAllCoroutines();
+            this.gameObject.SetActive(false);
+            return;
+        }
+
+        _index++;
         StopAllCoroutines();
-        this.gameObject.SetActive(false);
+        StartCoroutine(TypeMessage(_currentDialogue.Messages[_index]));
     }
 
-    private void DisplayMessage(TypeOutSingleDialogue typeOutSingleDialogue)
+    private void DisplayMessage(TypeDialogueOnMainUI typeDialogueOnMainUI)
     {
-        _newExplorationPhase = typeOutSingleDialogue.NewExplorationPhase;
-        _dialogue = typeOutSingleDialogue.Message;
+        _newExplorationPhase = typeDialogueOnMainUI.NewExplorationPhase;
+        _startingTheGame = typeDialogueOnMainUI.StartingTheGame;
+        _currentDialogue = typeDialogueOnMainUI.Dialogue;
+        _dialogueArrayLength = _currentDialogue.Messages.Length;
+
         StopAllCoroutines();
-        StartCoroutine(TypeMessage(_dialogue));
+        StartCoroutine(TypeMessage(_currentDialogue.Messages[_index]));
     }
 
     IEnumerator TypeMessage(string message) 
