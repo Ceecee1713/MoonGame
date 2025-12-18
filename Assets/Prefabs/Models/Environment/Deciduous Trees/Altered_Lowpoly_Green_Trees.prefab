@@ -1,0 +1,299 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3827776628013365379
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -9194908077529847051, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 67bd145026d8e25468e2b197870e1bf4, type: 2}
+    - target: {fileID: -9194908077529847051, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 424f8cf4d00c908409a25b252fbb1a05, type: 2}
+    - target: {fileID: -8679921383154817045, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8247505617394588717, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f01a331b6f565624f8ba49bd3eb92fc7, type: 2}
+    - target: {fileID: -8247505617394588717, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 191bbe086b63d5148849818efe0861a2, type: 2}
+    - target: {fileID: -7939112153010726699, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: m_Name
+      value: Lowpolytree_4_purple
+      objectReference: {fileID: 0}
+    - target: {fileID: -7687795787004622798, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: m_Name
+      value: Lowpolytree_03_purple
+      objectReference: {fileID: 0}
+    - target: {fileID: -7098199277486698500, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 78b721e020cc6924e81c60fe10fd93b4, type: 2}
+    - target: {fileID: -7098199277486698500, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0da898ce87e8f164398cbaf719e865a3, type: 2}
+    - target: {fileID: -5127273036610699706, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0da898ce87e8f164398cbaf719e865a3, type: 2}
+    - target: {fileID: -5127273036610699706, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 78b721e020cc6924e81c60fe10fd93b4, type: 2}
+    - target: {fileID: -4107397016102360750, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b5f0786520a7bb346b371d0114447842, type: 2}
+    - target: {fileID: -4107397016102360750, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cbe9ccdfcaab4cf4f968cf1b4cd6f6b1, type: 2}
+    - target: {fileID: -2956489096045306496, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: m_Name
+      value: Lowpolytree_5_purple
+      objectReference: {fileID: 0}
+    - target: {fileID: -2417137746195540017, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b5f0786520a7bb346b371d0114447842, type: 2}
+    - target: {fileID: -2417137746195540017, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cbe9ccdfcaab4cf4f968cf1b4cd6f6b1, type: 2}
+    - target: {fileID: -2084528845922723034, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cbe9ccdfcaab4cf4f968cf1b4cd6f6b1, type: 2}
+    - target: {fileID: -2084528845922723034, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b5f0786520a7bb346b371d0114447842, type: 2}
+    - target: {fileID: -1969888684849493597, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 424f8cf4d00c908409a25b252fbb1a05, type: 2}
+    - target: {fileID: -1969888684849493597, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 67bd145026d8e25468e2b197870e1bf4, type: 2}
+    - target: {fileID: -1354666989047343894, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f01a331b6f565624f8ba49bd3eb92fc7, type: 2}
+    - target: {fileID: -1354666989047343894, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 191bbe086b63d5148849818efe0861a2, type: 2}
+    - target: {fileID: -964118305899254985, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: m_Name
+      value: Lowpolytree_6_purple
+      objectReference: {fileID: 0}
+    - target: {fileID: 100425264699392894, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 78b721e020cc6924e81c60fe10fd93b4, type: 2}
+    - target: {fileID: 100425264699392894, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0da898ce87e8f164398cbaf719e865a3, type: 2}
+    - target: {fileID: 491989516240119932, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 424f8cf4d00c908409a25b252fbb1a05, type: 2}
+    - target: {fileID: 491989516240119932, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 67bd145026d8e25468e2b197870e1bf4, type: 2}
+    - target: {fileID: 919132149155446097, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: m_Name
+      value: Altered_Lowpoly_Green_Trees
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1110555291903359248, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f01a331b6f565624f8ba49bd3eb92fc7, type: 2}
+    - target: {fileID: 1110555291903359248, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 191bbe086b63d5148849818efe0861a2, type: 2}
+    - target: {fileID: 1940280169676117065, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 191bbe086b63d5148849818efe0861a2, type: 2}
+    - target: {fileID: 1940280169676117065, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f01a331b6f565624f8ba49bd3eb92fc7, type: 2}
+    - target: {fileID: 2911859859215212776, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cbe9ccdfcaab4cf4f968cf1b4cd6f6b1, type: 2}
+    - target: {fileID: 2911859859215212776, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b5f0786520a7bb346b371d0114447842, type: 2}
+    - target: {fileID: 3277364209083703259, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0da898ce87e8f164398cbaf719e865a3, type: 2}
+    - target: {fileID: 3277364209083703259, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 78b721e020cc6924e81c60fe10fd93b4, type: 2}
+    - target: {fileID: 3496633103116875052, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 78b721e020cc6924e81c60fe10fd93b4, type: 2}
+    - target: {fileID: 3496633103116875052, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0da898ce87e8f164398cbaf719e865a3, type: 2}
+    - target: {fileID: 3579275214462602466, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: m_Name
+      value: Lowpolytree_01_purple
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787969912795772820, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b5f0786520a7bb346b371d0114447842, type: 2}
+    - target: {fileID: 3787969912795772820, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cbe9ccdfcaab4cf4f968cf1b4cd6f6b1, type: 2}
+    - target: {fileID: 4220002520021712263, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 191bbe086b63d5148849818efe0861a2, type: 2}
+    - target: {fileID: 4220002520021712263, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f01a331b6f565624f8ba49bd3eb92fc7, type: 2}
+    - target: {fileID: 4946827946638654289, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: m_Name
+      value: Lowpolytree_02_purple
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247934575777056976, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b5f0786520a7bb346b371d0114447842, type: 2}
+    - target: {fileID: 6247934575777056976, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cbe9ccdfcaab4cf4f968cf1b4cd6f6b1, type: 2}
+    - target: {fileID: 6641258893198219614, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 67bd145026d8e25468e2b197870e1bf4, type: 2}
+    - target: {fileID: 6641258893198219614, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 424f8cf4d00c908409a25b252fbb1a05, type: 2}
+    - target: {fileID: 6723502050272372126, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 78b721e020cc6924e81c60fe10fd93b4, type: 2}
+    - target: {fileID: 6723502050272372126, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0da898ce87e8f164398cbaf719e865a3, type: 2}
+    - target: {fileID: 7485285005122630524, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f01a331b6f565624f8ba49bd3eb92fc7, type: 2}
+    - target: {fileID: 7485285005122630524, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 191bbe086b63d5148849818efe0861a2, type: 2}
+    - target: {fileID: 8324855808674763109, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 424f8cf4d00c908409a25b252fbb1a05, type: 2}
+    - target: {fileID: 8324855808674763109, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 67bd145026d8e25468e2b197870e1bf4, type: 2}
+    - target: {fileID: 8599324596640544293, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 424f8cf4d00c908409a25b252fbb1a05, type: 2}
+    - target: {fileID: 8599324596640544293, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 67bd145026d8e25468e2b197870e1bf4, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 5050422055867433376, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+    - {fileID: 2962982584307669950, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+    - {fileID: 3544618925687260137, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+    - {fileID: -4696091613617519115, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+    - {fileID: 2714247639207303824, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+    - {fileID: -5236250571657642032, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+    - {fileID: 65011055344004786, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+    - {fileID: -4128662555986591169, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+    - {fileID: -3657750776012494988, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+    - {fileID: 3579275214462602466, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+    - {fileID: -5285430347625061942, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+    - {fileID: 4946827946638654289, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+    - {fileID: -6841176734986277786, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+    - {fileID: -7687795787004622798, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+    - {fileID: -3667833476756049606, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+    - {fileID: -7939112153010726699, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+    - {fileID: -3526051994998432588, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+    - {fileID: -2956489096045306496, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+    - {fileID: 785806922763613921, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+    - {fileID: -964118305899254985, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 408e390e4ece76d4ea7d28587220c7af, type: 3}
