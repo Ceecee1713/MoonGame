@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5544851412471059908}
   - component: {fileID: 1387423741292444949}
   - component: {fileID: 7411128027253513442}
+  - component: {fileID: 8484397003782491227}
   m_Layer: 0
   m_Name: Berries
   m_TagString: Untagged
@@ -128,6 +129,18 @@ MonoBehaviour:
   gameObjectToSetInactive: {fileID: 0}
   makeGameObjectInactive: 0
   deleteAfterInteraction: 1
+--- !u!114 &8484397003782491227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3299304838343083962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbe8c957b99ff9648a7f5456fd0a3d32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1536781726540228262
 PrefabInstance:
   m_ObjectHideFlags: 0

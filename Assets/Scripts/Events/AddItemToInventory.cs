@@ -75,18 +75,6 @@ public class SpawnDroppedInventoryItem : IEvent
     }
 }
 
-//To display a warning message for the crafting UI 
-//if crafting materials aren't insufficient to craft something
-public class StopCraftingTemporarily : IEvent
-{
-    public bool ShowingWarningMessage;
-
-    public StopCraftingTemporarily(bool showingWarningMessage)
-    {
-        ShowingWarningMessage = showingWarningMessage;
-    }
-}
-
 //Checking if a clue has been resolved from the clue book 
 //before being able to decipher it on the crafting table
 public class AllowToCraftClue : IEvent
@@ -234,7 +222,7 @@ public class AdvanceDialogueOnMainUI : IEvent
 }
 
 //For a new exploration phase ONLY AFTER completing a moon puzzle text adventure:
-//Show dialogue from the moon statue 
+//Show dialogue from the moon statue AND change materials for deciphering clue on craft manager
 public class NewMoonFragmentObtained : IEvent 
 {
 }
@@ -381,7 +369,8 @@ public class RestoreCorriosonValue : IEvent
 {
 }
 
-//Teleport player back to moon puzzle and reset player health to full
+//Teleport player back to moon puzzle, reset player health to full AND delete item drops
+//Published for EACH new exploration phase, not just for finishing a moon puzzle
 public class NewExplorationPhase : IEvent
 {
 }

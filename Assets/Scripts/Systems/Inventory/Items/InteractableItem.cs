@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PickUpItem : MonoBehaviour
+public class InteractableItem : MonoBehaviour
 {
     [SerializeField]
     public ItemData inventoryItem; 

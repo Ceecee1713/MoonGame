@@ -71,25 +71,22 @@ public class CraftManager : MonoBehaviour
         if(_notEnoughItemQuantity == true)
             return;
         
+        //Resetting for each new material 
+        _quantityRemaining = false;
+        _remainingQuantity = 0;
+        _amountOfAnInventoryItemNeeded = 0;
         _breakLoop = false;
-        
-        //Iterate through inventory for "maxAmountOfCraftingMaterialTypes" amount of times
-        for(int i = 0; i < maxAmountOfCraftingMaterialTypes; i++) 
+
+        //If there's still remaining quantity needed for previous material
+        //when wanting to move on to the next material, exit method
+        if(_remainingQuantity > 0) 
         {
-            if(_breakLoop == true)
-                break;
-
-            //If there's still remaining quantity needed for previous material when wanting to move on to the next material, exit method
-            if(_remainingQuantity > 0) 
-            {
-                _notEnoughItemQuantity = true;
-                return;
-            }
-
-            _amountOfAnInventoryItemNeeded = 0;
-
-            SearchInventoryForItemMaterial(craftingMaterial);
+            _notEnoughItemQuantity = true;
+            return;
         }
+
+        _amountOfAnInventoryItemNeeded = 0;
+        SearchInventoryForItemMaterial(craftingMaterial);
 
         if(craftingAClue == true)
         {
@@ -126,9 +123,8 @@ public class CraftManager : MonoBehaviour
     //Check if the inventory slot's item matches the inventory item data of "craftingMaterial" (same type and are stackable)
     private bool IsMatchingInventoryItemMaterial(int slotIndex, ItemData craftingMaterial)
     {
-        return inventoryData.Inventory[slotIndex].ItemType == craftingMaterial.ItemType &&
-               inventoryData.Inventory[slotIndex].IsThisAStackableItem == true && 
-               craftingMaterial.IsThisAStackableItem == true;
+        //Checks both stackable and non-stackable items
+        return inventoryData.Inventory[slotIndex].ItemType == craftingMaterial.ItemType;
     }
 
     //Determine the inventory item's quantity 
@@ -137,7 +133,7 @@ public class CraftManager : MonoBehaviour
         CalculateRemainingQuantity(slotIndex, craftingMaterial);
         
         if(_remainingQuantity > 0)
-            HandleMoreInventoryItemQuantityNeeded(); 
+            HandleMoreInventoryItemQuantityNeeded();
 
         else if(_remainingQuantity == 0)
             HandleInventoryItemQuantityConsumed(slotIndex, craftingMaterial);
@@ -182,7 +178,7 @@ public class CraftManager : MonoBehaviour
 
             if(_amountOfAnInventoryItemNeeded == 0)
             {
-                _amountOfMatchingCraftingMaterials++; //Count for one of the materials for the craftable item's recipe found
+                _amountOfMatchingCraftingMaterials++;
                 break;
             }
         }
@@ -215,15 +211,11 @@ public class CraftManager : MonoBehaviour
 
     private void CraftInventoryItem(ItemData craftableInventoryItem)
     {
-        // Clone the item before adding to inventory
+        //Clone item before adding to inventory
         ItemData clonedItem = craftableInventoryItem.Clone();
         EventBus.Instance.Publish(new AddItemToInventory(clonedItem));
         EventBus.Instance.Publish(new RemoveUsedMaterials(_materialsForCraftableItem, _amountsPerUniqueInventoryItemsToRemove));
         ResetStatus();
-
-        //EventBus.Instance.Publish(new AddItemToInventory(craftableInventoryItem));
-        //EventBus.Instance.Publish(new RemoveUsedMaterials(_materialsForCraftableItem, _amountsPerUniqueInventoryItemsToRemove));
-        //ResetStatus();
     }
 
     private void DecipherClue()
