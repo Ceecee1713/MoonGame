@@ -36,7 +36,7 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
     {
         IsEmpty = true;
         InventoryItem.SlotImageSprite = null;
-        InventoryItem.NameOfItem = "Nothing";
+        //InventoryItem.NameOfItem = "Nothing";
         InventoryItem.ItemType = InventoryItemTypes.None;
         InventoryItem.ItemObject = null;
         InventoryItem.Quantity = 0;

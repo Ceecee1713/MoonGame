@@ -389,3 +389,7 @@ public class NewExplorationPhase : IEvent
 public class CompletedAllMoonPuzzles : IEvent
 {
 }
+
+public class ResetWorldItems : IEvent
+{
+}

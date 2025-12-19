@@ -155,6 +155,7 @@ public class StorytellingDialogueText : MonoBehaviour
             EventBus.Instance.Publish(new FreezePlayer(false));
             EventBus.Instance.Publish(new ChangeCanvases(mainPlayerUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
             EventBus.Instance.Publish(new NewExplorationPhase());
+            EventBus.Instance.Publish(new ResetWorldItems());
             EventBus.Instance.Publish(new ResetExplorationTimer());
             return;
         }

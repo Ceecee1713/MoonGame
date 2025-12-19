@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 203fb1b7f5fa4124cb4bdaff5e54d16f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 70
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 203fb1b7f5fa4124cb4bdaff5e54d16f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 70
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 203fb1b7f5fa4124cb4bdaff5e54d16f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 70
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 203fb1b7f5fa4124cb4bdaff5e54d16f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -62,10 +62,87 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 203fb1b7f5fa4124cb4bdaff5e54d16f, type: 3}
       propertyPath: m_Name
-      value: BushBerries
+      value: Berry Bush
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 203fb1b7f5fa4124cb4bdaff5e54d16f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8532546258571058853}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 203fb1b7f5fa4124cb4bdaff5e54d16f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6352729685304583131}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 203fb1b7f5fa4124cb4bdaff5e54d16f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1124109193442715755}
   m_SourcePrefab: {fileID: 100100000, guid: 203fb1b7f5fa4124cb4bdaff5e54d16f, type: 3}
+--- !u!1 &5553697466349756750 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 203fb1b7f5fa4124cb4bdaff5e54d16f, type: 3}
+  m_PrefabInstance: {fileID: 4743376426001931295}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &8532546258571058853
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5553697466349756750}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.013387331, y: 0.013344807, z: 0.011297957}
+  m_Center: {x: 0, y: 0, z: 0.00506816}
+--- !u!135 &6352729685304583131
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5553697466349756750}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.013221697
+  m_Center: {x: 0, y: -8.060796e-18, z: 0.008707961}
+--- !u!114 &1124109193442715755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5553697466349756750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9812631fc05549b44b2c3aaf8782a7a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryItem:
+    SlotImageSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+    ItemType: 9
+    ItemObject: {fileID: 3299304838343083962, guid: 9baad26d85a43504ba5980da8e9f95c5, type: 3}
+    Quantity: 1
+    IsThisAStackableItem: 1
+  gameObjectToSetInactive: {fileID: 0}
+  makeGameObjectInactive: 0
+  deleteAfterInteraction: 0

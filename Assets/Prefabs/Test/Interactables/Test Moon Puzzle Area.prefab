@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2903623959552293172}
   m_Layer: 0
   m_Name: Test Moon Puzzle Area
-  m_TagString: PickUpItem
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,4 +143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 785775405698ab3418e07a6e2b1dbf3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textAdventureUI: {fileID: 0}
+  warningMoonPuzzleUI: {fileID: 0}
+  warningMoonPuzzleUIScript: {fileID: 0}
+  InteractedOnce: 0

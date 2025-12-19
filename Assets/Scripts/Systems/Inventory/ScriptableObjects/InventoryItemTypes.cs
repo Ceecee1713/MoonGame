@@ -12,8 +12,14 @@ public enum InventoryItemTypes
     Beryllium,
     Ruby,
     SpeedPotion, 
-    Chest,
-    Map
+    Sapphire,
+    Gold,
+    Wood,
+    Fern,
+    Berries,
+    TornDictionary,
+    UsedDictionary,
+    SophisticatedDictionary
 }
 
 //Data of every inventory item
@@ -21,7 +27,7 @@ public enum InventoryItemTypes
 public class ItemData
 {
     public Sprite SlotImageSprite; //Changes the sprite of "SlotImage"
-    public string NameOfItem; //Changes the text of "ItemNameText"
+    //public string NameOfItem; //Changes the text of "ItemNameText"
     public InventoryItemTypes ItemType; //Changes the value of "TypeOfItem"
     public GameObject ItemObject; //Object to instantiate by the player
 
@@ -33,7 +39,7 @@ public class ItemData
         return new ItemData
         {
             SlotImageSprite = this.SlotImageSprite,
-            NameOfItem = this.NameOfItem,
+            //NameOfItem = this.NameOfItem,
             ItemType = this.ItemType,
             ItemObject = this.ItemObject,
             Quantity = this.Quantity,
@@ -47,6 +53,6 @@ public class ItemData
 public struct InventorySlot
 {
     public Image SlotImage;
-    public TextMeshProUGUI ItemNameText;
+    //public TextMeshProUGUI ItemNameText;
     public InventoryItemTypes TypeOfItem; 
 }

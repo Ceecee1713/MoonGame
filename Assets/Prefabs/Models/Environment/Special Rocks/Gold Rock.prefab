@@ -353,6 +353,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 498340912024425810}
+  - component: {fileID: 8462345407090578461}
+  - component: {fileID: 3815139261526573331}
+  - component: {fileID: 2144366952457180327}
   m_Layer: 0
   m_Name: Gold Rock
   m_TagString: Untagged
@@ -370,7 +373,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4608184590987781585}
@@ -378,6 +381,69 @@ Transform:
   - {fileID: 3893659827081257202}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8462345407090578461
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3181800027292152334}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.8531821, y: 1.4835377, z: 1}
+  m_Center: {x: 0.045832276, y: 0.34048355, z: 0}
+--- !u!135 &3815139261526573331
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3181800027292152334}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.8327951
+  m_Center: {x: -0.0024101734, y: 0.94000196, z: 0}
+--- !u!114 &2144366952457180327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3181800027292152334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9812631fc05549b44b2c3aaf8782a7a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryItem:
+    SlotImageSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+    ItemType: 6
+    ItemObject: {fileID: 560252757601124543, guid: 9dab40504cbd6b04e9f13daaf9fe3bfc, type: 3}
+    Quantity: 1
+    IsThisAStackableItem: 1
+  gameObjectToSetInactive: {fileID: 7926212539207275866}
+  makeGameObjectInactive: 1
+  deleteAfterInteraction: 0
 --- !u!1 &7913621155721020889
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,7 +540,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3893659827081257202}
   m_Layer: 0
-  m_Name: Gold Ingots
+  m_Name: Gold Gems
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

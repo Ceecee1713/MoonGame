@@ -9,6 +9,13 @@ public class PlayerSpawner : MonoBehaviour
 
     private void SpawnInventoryItem(SpawnDroppedInventoryItem spawnDroppedInventoryItem)
     {
-        Instantiate(spawnDroppedInventoryItem.InventoryItem.ItemObject, this.gameObject.transform.position, Quaternion.Euler(0,0,0));
+        Quaternion prefabRotation = spawnDroppedInventoryItem.InventoryItem.ItemObject.transform.rotation;
+        GameObject instance = Instantiate(spawnDroppedInventoryItem.InventoryItem.ItemObject, this.gameObject.transform.position, prefabRotation);
+
+        PickUpItem instanceScript = instance.GetComponent<PickUpItem>();
+        
+        //Setting the instantiated item's paramaters to be the same as the original item's paramaters
+        if (instanceScript != null)
+            instanceScript.inventoryItem = spawnDroppedInventoryItem.InventoryItem.Clone();
     }
 }

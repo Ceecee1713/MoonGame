@@ -215,9 +215,15 @@ public class CraftManager : MonoBehaviour
 
     private void CraftInventoryItem(ItemData craftableInventoryItem)
     {
-        EventBus.Instance.Publish(new AddItemToInventory(craftableInventoryItem));
+        // Clone the item before adding to inventory
+        ItemData clonedItem = craftableInventoryItem.Clone();
+        EventBus.Instance.Publish(new AddItemToInventory(clonedItem));
         EventBus.Instance.Publish(new RemoveUsedMaterials(_materialsForCraftableItem, _amountsPerUniqueInventoryItemsToRemove));
         ResetStatus();
+
+        //EventBus.Instance.Publish(new AddItemToInventory(craftableInventoryItem));
+        //EventBus.Instance.Publish(new RemoveUsedMaterials(_materialsForCraftableItem, _amountsPerUniqueInventoryItemsToRemove));
+        //ResetStatus();
     }
 
     private void DecipherClue()

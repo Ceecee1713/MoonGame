@@ -19,12 +19,11 @@ public class InventoryUI : MonoBehaviour
     private bool _playerIsInCollision = false;
     private bool _allowInput = false;
 
-    private int _maxStackAmount = 3;
-
     //Removes inventory items consumed during crafting
     private int _amountOfSingleFullyConsumedMaterialToRemove;
     private int _numberToMatchAmountOfFullyConsumedMaterial;
 
+    private const int MAX_STACK_AMOUNT = 9;
 
     void Start()
     {
@@ -66,32 +65,80 @@ public class InventoryUI : MonoBehaviour
     private void AddInventoryItem(AddItemToInventory addItemToInventory) 
     {
         ItemData itemToCheck = addItemToInventory.InventoryItem;
+        
+        int remainingQuantity = itemToCheck.Quantity;
 
-        for(int i = 0; i < inventorySlots.Length; i++) //Add same type, stackable items together in same inventory slot
+        //Add quantity of newly added item
+        //Into existing items of the same type in the inventory
+        if(itemToCheck.IsThisAStackableItem == true)
         {
-            if(inventorySlots[i].InventoryItem.IsThisAStackableItem == true && itemToCheck.IsThisAStackableItem == true)
+            for(int i = 0; i < inventorySlots.Length; i++) 
             {
-                if(inventorySlots[i].InventoryItem.ItemType == itemToCheck.ItemType)
+                if(remainingQuantity <= 0)
+                    break;
+
+                if(inventorySlots[i].InventoryItem.IsThisAStackableItem == true && inventorySlots[i].InventoryItem.ItemType == itemToCheck.ItemType)
                 {
-                    //If the inventory slot's item's quantity isn't above "_maxStackAmount" (increase quantity)
-                    if(inventorySlots[i].InventoryItem.Quantity < _maxStackAmount) 
+                    int currentQuantity = inventorySlots[i].InventoryItem.Quantity;
+                    
+                    //Calculate how much space is available in this item 
+                    int availableSpace = MAX_STACK_AMOUNT - currentQuantity;
+                    
+                    if(availableSpace > 0)
                     {
-                        inventorySlots[i].InventoryItem.Quantity++; 
-                        return;
+                        //Calculate how much quantity can add to this item 
+                        int amountToAdd = Mathf.Min(availableSpace, remainingQuantity);
+                        
+                        //Add quantity to existing item 
+                        inventorySlots[i].InventoryItem.Quantity += amountToAdd;
+                        remainingQuantity -= amountToAdd;
                     }
-                } 
+                }
             }
         }
 
-        //Add new inventory item in any empty inventory slot, whether item is stackable or not
-        for(int i = 0; i < inventorySlots.Length; i++) 
+        //Create a new item for any remaining quantity
+        //This accounts for non-stackable items as well (not adding quantity)
+        while(remainingQuantity > 0)
         {
-            if(inventorySlots[i].IsEmpty == true)
+            bool foundEmptySlot = false;
+            
+            for(int i = 0; i < inventorySlots.Length; i++) 
             {
-                inventorySlots[i].AddItemToSlot(itemToCheck);
-                inventoryData.Inventory.Add(itemToCheck);
-                break;
+                if(inventorySlots[i].IsEmpty == true)
+                {
+                    //For the first new item, use the original item
+                    if(remainingQuantity == itemToCheck.Quantity)
+                    {
+                        int quantityForThisStack = Mathf.Min(remainingQuantity, MAX_STACK_AMOUNT);
+                        itemToCheck.Quantity = quantityForThisStack;
+                        
+                        inventorySlots[i].AddItemToSlot(itemToCheck);
+                        inventoryData.Inventory.Add(itemToCheck);
+                        
+                        remainingQuantity -= quantityForThisStack;
+                    }
+
+                    //Clone for additional overflow quantity
+                    else
+                    {
+                        ItemData itemToCheckClone = itemToCheck.Clone();
+                        itemToCheckClone.Quantity = Mathf.Min(remainingQuantity, MAX_STACK_AMOUNT);
+                        
+                        inventorySlots[i].AddItemToSlot(itemToCheckClone);
+                        inventoryData.Inventory.Add(itemToCheckClone);
+                        
+                        remainingQuantity -= itemToCheckClone.Quantity;
+                    }
+                    
+                    foundEmptySlot = true;
+                    break;
+                }
             }
+            
+            //If no empty slot was found, we can't add more items
+            if(!foundEmptySlot)
+                break;
         }
     }
 

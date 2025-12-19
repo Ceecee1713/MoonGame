@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 3918582228356778458}
   m_Layer: 0
   m_Name: 'NPC '
-  m_TagString: PickUpItem
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueCanvas: {fileID: 0}
-  npcMessage: {fileID: 11400000, guid: 7a96fe29a4641d9498be6ce327fbd059, type: 2}
+  npcDialogue: {fileID: 0}
 --- !u!1 &7680710378471728968
 GameObject:
   m_ObjectHideFlags: 0

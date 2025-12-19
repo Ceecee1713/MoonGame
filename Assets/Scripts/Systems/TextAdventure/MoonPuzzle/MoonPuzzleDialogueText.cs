@@ -221,6 +221,7 @@ public class MoonPuzzleDialogueText : MonoBehaviour
         _fadeOutCanvas = false;
         moonPuzzleUIPopUp.SetActive(true);
         EventBus.Instance.Publish(new NewExplorationPhase());
+        EventBus.Instance.Publish(new ResetWorldItems());
         EventBus.Instance.Publish(new PauseExplorationTimer(true));
         EventBus.Instance.Publish(new NewMoonFragmentObtained()); //Show a dialogue message from moon statue
         EventBus.Instance.Publish(new DisplayMoonFragmentImage(TextAdventureDialogue.TextBranches[_textBranchIndex].MoonFragmentSprite));

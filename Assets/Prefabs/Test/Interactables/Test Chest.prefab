@@ -51,7 +51,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
     Quantity: 0
@@ -59,7 +58,6 @@ MonoBehaviour:
   IsEmpty: 0
   inventorySlotData:
     SlotImage: {fileID: 0}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &151352770243024603
 GameObject:
@@ -456,7 +454,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
     Quantity: 0
@@ -464,7 +461,6 @@ MonoBehaviour:
   IsEmpty: 0
   inventorySlotData:
     SlotImage: {fileID: 0}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &461888036910025201
 GameObject:
@@ -592,7 +588,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
     Quantity: 0
@@ -600,7 +595,6 @@ MonoBehaviour:
   IsEmpty: 0
   inventorySlotData:
     SlotImage: {fileID: 0}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &1118366370554298679
 GameObject:
@@ -805,7 +799,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
     Quantity: 0
@@ -813,7 +806,6 @@ MonoBehaviour:
   IsEmpty: 0
   inventorySlotData:
     SlotImage: {fileID: 0}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &1473831925770766478
 GameObject:
@@ -941,7 +933,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
     Quantity: 0
@@ -949,7 +940,6 @@ MonoBehaviour:
   IsEmpty: 0
   inventorySlotData:
     SlotImage: {fileID: 0}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &1759745061696796289
 GameObject:
@@ -1002,7 +992,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
     Quantity: 0
@@ -1010,7 +999,6 @@ MonoBehaviour:
   IsEmpty: 0
   inventorySlotData:
     SlotImage: {fileID: 0}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &1835216721561249494
 GameObject:
@@ -1346,7 +1334,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
     Quantity: 0
@@ -1354,7 +1341,6 @@ MonoBehaviour:
   IsEmpty: 0
   inventorySlotData:
     SlotImage: {fileID: 0}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &2337876046558363795
 GameObject:
@@ -1690,7 +1676,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
     Quantity: 0
@@ -1698,7 +1683,6 @@ MonoBehaviour:
   IsEmpty: 0
   inventorySlotData:
     SlotImage: {fileID: 0}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &3178745732971769857
 GameObject:
@@ -1826,7 +1810,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
     Quantity: 0
@@ -1834,7 +1817,6 @@ MonoBehaviour:
   IsEmpty: 0
   inventorySlotData:
     SlotImage: {fileID: 0}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &3552372378934319721
 GameObject:
@@ -1905,7 +1887,6 @@ MonoBehaviour:
   chestUI: {fileID: 5914634098606054304}
   inventoryItem:
     SlotImageSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-    NameOfItem: Chest
     ItemType: 5
     ItemObject: {fileID: 7527349296283804737}
     Quantity: 1
@@ -1961,7 +1942,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
     Quantity: 0
@@ -1969,7 +1949,6 @@ MonoBehaviour:
   IsEmpty: 0
   inventorySlotData:
     SlotImage: {fileID: 0}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &4079008177425811665
 GameObject:
@@ -2022,7 +2001,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
     Quantity: 0
@@ -2030,7 +2008,6 @@ MonoBehaviour:
   IsEmpty: 0
   inventorySlotData:
     SlotImage: {fileID: 0}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &4119686664942638686
 GameObject:
@@ -2458,7 +2435,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
     Quantity: 0
@@ -2466,7 +2442,6 @@ MonoBehaviour:
   IsEmpty: 0
   inventorySlotData:
     SlotImage: {fileID: 0}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &4911249796738068504
 GameObject:
@@ -2680,7 +2655,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
     Quantity: 0
@@ -2688,7 +2662,6 @@ MonoBehaviour:
   IsEmpty: 0
   inventorySlotData:
     SlotImage: {fileID: 0}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &5373804444767317112
 GameObject:
@@ -2741,7 +2714,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
     Quantity: 0
@@ -2749,7 +2721,6 @@ MonoBehaviour:
   IsEmpty: 0
   inventorySlotData:
     SlotImage: {fileID: 0}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &5857012873513078516
 GameObject:
@@ -3092,7 +3063,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
     Quantity: 0
@@ -3100,7 +3070,6 @@ MonoBehaviour:
   IsEmpty: 0
   inventorySlotData:
     SlotImage: {fileID: 0}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &6117883542549099622
 GameObject:
@@ -3153,7 +3122,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
     Quantity: 0
@@ -3161,7 +3129,6 @@ MonoBehaviour:
   IsEmpty: 0
   inventorySlotData:
     SlotImage: {fileID: 0}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &6123245993445141970
 GameObject:
@@ -3367,7 +3334,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
     Quantity: 0
@@ -3375,7 +3341,6 @@ MonoBehaviour:
   IsEmpty: 0
   inventorySlotData:
     SlotImage: {fileID: 0}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &6355540313320805809
 GameObject:
@@ -3605,7 +3570,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
     Quantity: 0
@@ -3613,7 +3577,6 @@ MonoBehaviour:
   IsEmpty: 0
   inventorySlotData:
     SlotImage: {fileID: 0}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &6532638729683295206
 GameObject:
@@ -3891,7 +3854,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
     Quantity: 0
@@ -3899,7 +3861,6 @@ MonoBehaviour:
   IsEmpty: 0
   inventorySlotData:
     SlotImage: {fileID: 0}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &7146936325922487419
 GameObject:
@@ -4067,7 +4028,7 @@ GameObject:
   - component: {fileID: 5889694392462090341}
   m_Layer: 0
   m_Name: Test Chest
-  m_TagString: PickUpItem
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4479,7 +4440,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
     Quantity: 0
@@ -4487,7 +4447,6 @@ MonoBehaviour:
   IsEmpty: 0
   inventorySlotData:
     SlotImage: {fileID: 0}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &8254723020710361272
 GameObject:
@@ -4540,7 +4499,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
     Quantity: 0
@@ -4548,7 +4506,6 @@ MonoBehaviour:
   IsEmpty: 0
   inventorySlotData:
     SlotImage: {fileID: 0}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &8410248796485850568
 GameObject:
@@ -4601,7 +4558,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
     Quantity: 0
@@ -4609,7 +4565,6 @@ MonoBehaviour:
   IsEmpty: 0
   inventorySlotData:
     SlotImage: {fileID: 0}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &8577525449479689485
 GameObject:
@@ -4662,7 +4617,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
     Quantity: 0
@@ -4670,7 +4624,6 @@ MonoBehaviour:
   IsEmpty: 0
   inventorySlotData:
     SlotImage: {fileID: 0}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &8809891521022539523
 GameObject:
@@ -4934,7 +4887,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
     Quantity: 0
@@ -4942,5 +4894,4 @@ MonoBehaviour:
   IsEmpty: 0
   inventorySlotData:
     SlotImage: {fileID: 0}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
