@@ -5,9 +5,6 @@ public class ChestInteraction : MonoBehaviour
     [SerializeField]
     private GameObject chestUI;
 
-    [SerializeField]
-    private ItemData inventoryItem; //Need this to add an item to the inventory system
-
     private bool _playerStayingInCollision = false; 
     private bool _playerInCollision = false;
 

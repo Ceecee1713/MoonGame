@@ -139,7 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryItem:
     SlotImageSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-    ItemType: 9
+    ItemType: 10
     ItemObject: {fileID: 3299304838343083962, guid: 9baad26d85a43504ba5980da8e9f95c5, type: 3}
     Quantity: 1
     IsThisAStackableItem: 1

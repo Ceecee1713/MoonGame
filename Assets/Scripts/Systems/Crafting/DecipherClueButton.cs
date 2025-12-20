@@ -24,7 +24,7 @@ public class DecipherClueButton : MonoBehaviour
 
     void OnEnable()
     {
-        newMoonPuzzleIndex = gameManager.numberToChangeMaterials;
+        newMoonPuzzleIndex = gameManager.areaChangesCount;
         CheckToSwitchMaterials();
     }
 

@@ -14,9 +14,9 @@ public class GameManager : MonoBehaviour
     private float timeDelayBeforeShowingEndGameDialogue = 2.0f;
 
     [HideInInspector]
-    public int numberToChangeMaterials; //Accessed by "DecipherClueButton" script
+    public int areaChangesCount = 0; //Accessed by "DecipherClueButton" and "StreetLamps" script
 
-    private const int MAX_NUMBER_OF_CHANGES_FOR_MATERIAL_CHANGING = 2; 
+    private const int MAX_NUMBER_OF_AREA_CHANGES = 2; 
 
     private const float TIME_TO_WAIT_FOR_FADING_CANVASES = 1.5f;
 
@@ -31,13 +31,13 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        Mathf.Clamp(numberToChangeMaterials, 0, MAX_NUMBER_OF_CHANGES_FOR_MATERIAL_CHANGING);
+        Mathf.Clamp(areaChangesCount, 0, MAX_NUMBER_OF_AREA_CHANGES);
     }
 
     //Changes materials for deciphering clues in the crafting table UI
     private void ChangeMaterialsForDecipheringClues(NewMoonFragmentObtained newMoonFragmentObtained)
     {
-        numberToChangeMaterials++;
+        areaChangesCount++;
     }
 
     //Called BEFORE moon text adventure UI has been disabled, keep in mind

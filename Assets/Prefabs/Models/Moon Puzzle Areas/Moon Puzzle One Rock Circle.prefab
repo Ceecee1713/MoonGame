@@ -3139,6 +3139,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 414539490983694767}
+  - component: {fileID: 5983111658172449787}
+  - component: {fileID: 7259940359449916489}
+  - component: {fileID: 234665190511341476}
   m_Layer: 0
   m_Name: Moon Puzzle One Rock Circle
   m_TagString: Untagged
@@ -3154,7 +3157,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6712539341223954843}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 36.229164, y: 36.22914, z: 165.17664}
   m_ConstrainProportionsScale: 0
@@ -3174,7 +3177,64 @@ Transform:
   - {fileID: 1325246082722556217}
   - {fileID: 8496352964304676446}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!135 &5983111658172449787
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6712539341223954843}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.030350747
+  m_Center: {x: 0.013533985, y: 0.035551585, z: 0.009288852}
+--- !u!135 &7259940359449916489
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6712539341223954843}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.04567699
+  m_Center: {x: 0.013682107, y: 0.036544833, z: 0.009199398}
+--- !u!114 &234665190511341476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6712539341223954843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 785775405698ab3418e07a6e2b1dbf3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  warningMoonPuzzleUI: {fileID: 0}
+  warningMoonPuzzleUIScript: {fileID: 0}
+  InteractedOnce: 0
 --- !u!1 &7011379684475249219
 GameObject:
   m_ObjectHideFlags: 0

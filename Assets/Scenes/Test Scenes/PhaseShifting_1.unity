@@ -577,63 +577,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52fa42ca21cedae47aeb92ee82935da1, type: 3}
---- !u!1001 &116336632
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5069191463048575988, guid: 8d0169e0325225e4db7fb6fbe0acbfe2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.0684266
-      objectReference: {fileID: 0}
-    - target: {fileID: 5069191463048575988, guid: 8d0169e0325225e4db7fb6fbe0acbfe2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.00000047683716
-      objectReference: {fileID: 0}
-    - target: {fileID: 5069191463048575988, guid: 8d0169e0325225e4db7fb6fbe0acbfe2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -16.745365
-      objectReference: {fileID: 0}
-    - target: {fileID: 5069191463048575988, guid: 8d0169e0325225e4db7fb6fbe0acbfe2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071067
-      objectReference: {fileID: 0}
-    - target: {fileID: 5069191463048575988, guid: 8d0169e0325225e4db7fb6fbe0acbfe2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 5069191463048575988, guid: 8d0169e0325225e4db7fb6fbe0acbfe2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5069191463048575988, guid: 8d0169e0325225e4db7fb6fbe0acbfe2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5069191463048575988, guid: 8d0169e0325225e4db7fb6fbe0acbfe2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5069191463048575988, guid: 8d0169e0325225e4db7fb6fbe0acbfe2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5069191463048575988, guid: 8d0169e0325225e4db7fb6fbe0acbfe2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5553697466349756750, guid: 8d0169e0325225e4db7fb6fbe0acbfe2, type: 3}
-      propertyPath: m_Name
-      value: Berry Bush
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8d0169e0325225e4db7fb6fbe0acbfe2, type: 3}
 --- !u!114 &169730171 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 670113041071487757, guid: fb9cc22cb854d7f41b93547550ea5abc, type: 3}
@@ -949,7 +892,7 @@ MonoBehaviour:
     IsThisAStackableItem: 0
   craftingMaterials:
   - SlotImageSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-    ItemType: 1
+    ItemType: 2
     ItemObject: {fileID: 8118162022096007086, guid: c327a025010c2fb44a4c0c9b9a21d25b, type: 3}
     Quantity: 1
     IsThisAStackableItem: 1
@@ -1825,7 +1768,6 @@ GameObject:
   - component: {fileID: 633751790}
   - component: {fileID: 633751789}
   - component: {fileID: 633751788}
-  - component: {fileID: 633751787}
   - component: {fileID: 633751791}
   m_Layer: 5
   m_Name: Craft Button
@@ -1854,36 +1796,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.00001697969, y: -150}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0}
---- !u!114 &633751787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 633751785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b3f7b81541482a458ababd3e8ba0729, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  craftManager: {fileID: 1569407298}
-  craftableInventoryItem:
-    SlotImageSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-    ItemType: 12
-    ItemObject: {fileID: 8467054885054056117, guid: 31ebe164e7e4c8742acbc884112d27fb, type: 3}
-    Quantity: 1
-    IsThisAStackableItem: 0
-  craftingMaterials:
-  - SlotImageSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-    ItemType: 1
-    ItemObject: {fileID: 8118162022096007086, guid: c327a025010c2fb44a4c0c9b9a21d25b, type: 3}
-    Quantity: 3
-    IsThisAStackableItem: 1
-  - SlotImageSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-    ItemType: 10
-    ItemObject: {fileID: 2531503607323169615, guid: 9efe3e39e7ae73b45baca5ae2f91adc5, type: 3}
-    Quantity: 1
-    IsThisAStackableItem: 0
 --- !u!114 &633751788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1994,23 +1906,23 @@ MonoBehaviour:
   craftManager: {fileID: 1569407298}
   craftingMaterials:
   - SlotImageSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-    ItemType: 1
-    ItemObject: {fileID: 8118162022096007086, guid: c327a025010c2fb44a4c0c9b9a21d25b, type: 3}
-    Quantity: 3
-    IsThisAStackableItem: 1
-  - SlotImageSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-    ItemType: 10
-    ItemObject: {fileID: 2531503607323169615, guid: 9efe3e39e7ae73b45baca5ae2f91adc5, type: 3}
-    Quantity: 1
-    IsThisAStackableItem: 0
-  craftingMaterialsForAreaTwo:
-  - SlotImageSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-    ItemType: 1
+    ItemType: 2
     ItemObject: {fileID: 8118162022096007086, guid: c327a025010c2fb44a4c0c9b9a21d25b, type: 3}
     Quantity: 3
     IsThisAStackableItem: 1
   - SlotImageSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
     ItemType: 11
+    ItemObject: {fileID: 2531503607323169615, guid: 9efe3e39e7ae73b45baca5ae2f91adc5, type: 3}
+    Quantity: 1
+    IsThisAStackableItem: 0
+  craftingMaterialsForAreaTwo:
+  - SlotImageSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    ItemType: 2
+    ItemObject: {fileID: 8118162022096007086, guid: c327a025010c2fb44a4c0c9b9a21d25b, type: 3}
+    Quantity: 3
+    IsThisAStackableItem: 1
+  - SlotImageSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+    ItemType: 12
     ItemObject: {fileID: 3984589940245469194, guid: bf45fbad4f845774e969c84824b75423, type: 3}
     Quantity: 1
     IsThisAStackableItem: 0
@@ -2697,7 +2609,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1300694797697179759, guid: 9cad5985aed18454c99ad5488ccbe951, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.49
+      value: 8.09
       objectReference: {fileID: 0}
     - target: {fileID: 1300694797697179759, guid: 9cad5985aed18454c99ad5488ccbe951, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3633,7 +3545,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1300694797697179759, guid: 9cad5985aed18454c99ad5488ccbe951, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.16
+      value: 4.12
       objectReference: {fileID: 0}
     - target: {fileID: 1300694797697179759, guid: 9cad5985aed18454c99ad5488ccbe951, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3905,15 +3817,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2952115386314254964, guid: 2ae9900688475f445baa3c58463e3732, type: 3}
       propertyPath: craftableInventoryItem.ItemType
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2952115386314254964, guid: 2ae9900688475f445baa3c58463e3732, type: 3}
       propertyPath: craftableInventoryItem.ItemObject
       value: 
-      objectReference: {fileID: 7527349296283804737, guid: 2819614345c055142ae209c313e3c2e5, type: 3}
+      objectReference: {fileID: 673514031273012113, guid: f270e084a71d99a4dae744d542d83e4b, type: 3}
     - target: {fileID: 2952115386314254964, guid: 2ae9900688475f445baa3c58463e3732, type: 3}
       propertyPath: craftableInventoryItem.NameOfItem
       value: Chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 2952115386314254964, guid: 2ae9900688475f445baa3c58463e3732, type: 3}
+      propertyPath: craftingMaterials.Array.data[0].ItemType
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2952115386314254964, guid: 2ae9900688475f445baa3c58463e3732, type: 3}
       propertyPath: craftingMaterials.Array.data[0].Quantity
@@ -5946,4 +5862,3 @@ SceneRoots:
   - {fileID: 908925105}
   - {fileID: 1984553202}
   - {fileID: 1394714751}
-  - {fileID: 116336632}

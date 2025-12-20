@@ -173,8 +173,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryItem:
     SlotImageSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-    NameOfItem: Beryllium
-    ItemType: 2
+    ItemType: 3
     ItemObject: {fileID: 8118162022096007086}
     Quantity: 1
     IsThisAStackableItem: 0
+  gameObjectToSetInactive: {fileID: 0}
+  makeGameObjectInactive: 0
+  deleteAfterInteraction: 0

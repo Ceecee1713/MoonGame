@@ -8,6 +8,7 @@ using UnityEngine;
 public enum InventoryItemTypes 
 {
     None,
+    Chest,
     Stone,
     Beryllium,
     Ruby,

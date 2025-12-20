@@ -1887,7 +1887,7 @@ MonoBehaviour:
   chestUI: {fileID: 5914634098606054304}
   inventoryItem:
     SlotImageSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-    ItemType: 5
+    ItemType: 1
     ItemObject: {fileID: 7527349296283804737}
     Quantity: 1
     IsThisAStackableItem: 0
