@@ -68,7 +68,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   corriosonValues: {fileID: 11400000, guid: 0c43309b9484a2f4a880d0e8f0a92b86, type: 2}
   areaNumber: 3
-  speedToLowerHealth: 1.7
+  startingSpeedToLowerHealth: 1
+  currentSpeedToLowerHealth: 0
 --- !u!1 &1250870041479745809
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +138,77 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   corriosonValues: {fileID: 11400000, guid: 0c43309b9484a2f4a880d0e8f0a92b86, type: 2}
   areaNumber: 2
-  speedToLowerHealth: 1.7
+  startingSpeedToLowerHealth: 1
+  currentSpeedToLowerHealth: 0
+--- !u!1 &3186354443612990807
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2334203348180394821}
+  - component: {fileID: 1452327144088818833}
+  - component: {fileID: 5151130035431761176}
+  m_Layer: 0
+  m_Name: Safe Zone (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2334203348180394821
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3186354443612990807}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3497925791397990806}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1452327144088818833
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3186354443612990807}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.5716102, y: 3.07203, z: 3.6045735}
+  m_Center: {x: 0.00000011920929, y: 1.036015, z: 0.014304042}
+--- !u!114 &5151130035431761176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3186354443612990807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9257f4d4940f4324ab64c865fe3d8d14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueUI: {fileID: 0}
+  corriosonZoneTutorial: {fileID: 0}
+  speedToIncraseHealth: 1.2
 --- !u!1 &4059097111974093791
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +277,77 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   corriosonValues: {fileID: 11400000, guid: 0c43309b9484a2f4a880d0e8f0a92b86, type: 2}
   areaNumber: 1
-  speedToLowerHealth: 1.7
+  startingSpeedToLowerHealth: 1
+  currentSpeedToLowerHealth: 0
+--- !u!1 &4089792901666932433
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6086437322333866876}
+  - component: {fileID: 7490598600462307996}
+  - component: {fileID: 1257137298483785423}
+  m_Layer: 0
+  m_Name: Safe Zone (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &6086437322333866876
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4089792901666932433}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3497925791397990806}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7490598600462307996
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4089792901666932433}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.5716102, y: 3.07203, z: 3.6045735}
+  m_Center: {x: 0.00000011920929, y: 1.036015, z: 0.014304042}
+--- !u!114 &1257137298483785423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4089792901666932433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9257f4d4940f4324ab64c865fe3d8d14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueUI: {fileID: 0}
+  corriosonZoneTutorial: {fileID: 0}
+  speedToIncraseHealth: 1.2
 --- !u!1 &5339635152527515304
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,6 +378,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5636239961844576979}
+  - {fileID: 2334203348180394821}
+  - {fileID: 6086437322333866876}
   - {fileID: 7205013701281643526}
   - {fileID: 5308114845546340051}
   - {fileID: 1557019329558667939}
@@ -252,9 +395,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5636239961844576979}
   - component: {fileID: 2361966908421635256}
-  - component: {fileID: 7090821191877481275}
+  - component: {fileID: 7016924787795790897}
   m_Layer: 0
-  m_Name: Safe Zone
+  m_Name: First Safe Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -296,7 +439,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.5716102, y: 3.07203, z: 3.6045735}
   m_Center: {x: 0.00000011920929, y: 1.036015, z: 0.014304042}
---- !u!114 &7090821191877481275
+--- !u!114 &7016924787795790897
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -305,7 +448,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7924914294772372121}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9257f4d4940f4324ab64c865fe3d8d14, type: 3}
+  m_Script: {fileID: 11500000, guid: 06970ad2c1d82f1458191862066e0634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueUI: {fileID: 0}
+  corriosonZoneTutorial: {fileID: 0}
   speedToIncraseHealth: 1.2
