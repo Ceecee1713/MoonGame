@@ -10,9 +10,9 @@ public class NPC : MonoBehaviour
 
     private string _npcMessage;
 
+    private bool _allowInput = true;
     private bool _playerStayingInCollision = false; 
     private bool _playerInCollision = false;
-    private bool _allowInput = false;
 
     private const bool NEW_EXPLORATION_PHASE = false;
     private const bool STARTING_THE_GAME = false; 
