@@ -8,6 +8,12 @@ public class NPC : MonoBehaviour
     [SerializeField]
     private StorytellingDialogueData npcDialogue;
 
+    [SerializeField]
+    [Range(1, 3)]
+    private int areaNumberForNPC;
+
+    private int numberOfMoonPuzzlesCompleted = 0;
+
     private string _npcMessage;
 
     private bool _allowInput = true;
@@ -23,6 +29,25 @@ public class NPC : MonoBehaviour
 
         EventBus.Instance.Subscribe<Interact>(CheckToShowDialogue);
         EventBus.Instance.Subscribe<ActivatePlayerInputs>(AllowPlayerInput);
+        EventBus.Instance.Subscribe<NewMoonFragmentObtained>(DestroyAfterMoonPuzzleCompletion);
+    }
+
+    void OnDestroy()
+    {
+        if (EventBus.Instance != null)
+        {
+            EventBus.Instance.Unsubscribe<Interact>(CheckToShowDialogue);
+            EventBus.Instance.Unsubscribe<ActivatePlayerInputs>(AllowPlayerInput);
+            EventBus.Instance.Unsubscribe<NewMoonFragmentObtained>(DestroyAfterMoonPuzzleCompletion);
+        }
+    }
+
+    private void DestroyAfterMoonPuzzleCompletion(NewMoonFragmentObtained newMoonFragmentObtained)
+    {
+        numberOfMoonPuzzlesCompleted++;
+
+        if(areaNumberForNPC == numberOfMoonPuzzlesCompleted)
+            Destroy(this.gameObject);
     }
 
     private void AllowPlayerInput(ActivatePlayerInputs activatePlayerInputs)

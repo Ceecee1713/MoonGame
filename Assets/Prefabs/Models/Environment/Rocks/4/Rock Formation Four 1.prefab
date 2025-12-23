@@ -132,7 +132,6 @@ GameObject:
   - component: {fileID: 3560877530591356989}
   - component: {fileID: 7066714412761777331}
   - component: {fileID: 6519223287825343736}
-  - component: {fileID: 117539562801900399}
   m_Layer: 0
   m_Name: Sphere.005
   m_TagString: Untagged
@@ -149,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 5109892820350552634}
   serializedVersion: 2
   m_LocalRotation: {x: -0.5449917, y: -0.4505378, z: -0.4505376, w: 0.54499143}
-  m_LocalPosition: {x: -0.020239137, y: 0.016077636, z: -0.022068879}
+  m_LocalPosition: {x: -0.020239137, y: 0.0173, z: -0.0221}
   m_LocalScale: {x: 0.0040859915, y: 0.003380324, z: 0.02111409}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -208,27 +207,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &117539562801900399
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5109892820350552634}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.2411609, y: 2.6974258, z: 1.2938014}
-  m_Center: {x: -0.5179183, y: 0.06413627, z: -0.32855797}
 --- !u!1 &7666759851415334633
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,7 +218,6 @@ GameObject:
   - component: {fileID: 5416524378991745768}
   - component: {fileID: 4846358094443325093}
   - component: {fileID: 1187094584929041473}
-  - component: {fileID: 6483910180090973887}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -316,27 +293,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6483910180090973887
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7666759851415334633}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.031230135, y: 0.017071785, z: 0.0309438}
-  m_Center: {x: 0.008474864, y: 0.0018868578, z: -0.0064748116}
 --- !u!1 &8608520951285807941
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,7 +320,7 @@ Transform:
   m_GameObject: {fileID: 8608520951285807941}
   serializedVersion: 2
   m_LocalRotation: {x: -0.69838387, y: 0.1107255, z: 0.11072549, w: 0.6983837}
-  m_LocalPosition: {x: -0.029824434, y: 0.0012538761, z: -0.023373377}
+  m_LocalPosition: {x: -0.029824434, y: 0.007, z: -0.0234}
   m_LocalScale: {x: 0.007813756, y: 0.007739042, z: 0.008233924}
   m_ConstrainProportionsScale: 0
   m_Children: []

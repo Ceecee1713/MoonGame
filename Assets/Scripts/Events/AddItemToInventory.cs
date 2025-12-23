@@ -222,7 +222,8 @@ public class AdvanceDialogueOnMainUI : IEvent
 }
 
 //For a new exploration phase ONLY AFTER completing a moon puzzle text adventure:
-//Show dialogue from the moon statue AND change materials for deciphering clue on craft manager
+//Show dialogue from the moon statue, change materials for deciphering clue on craft manager
+//AND to destroy NPCs in that completed puzzle area
 public class NewMoonFragmentObtained : IEvent 
 {
 }

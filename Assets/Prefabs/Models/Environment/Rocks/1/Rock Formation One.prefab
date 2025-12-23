@@ -45,7 +45,6 @@ GameObject:
   - component: {fileID: 6782106351824060199}
   - component: {fileID: 9088202015290528186}
   - component: {fileID: 5285014590539245391}
-  - component: {fileID: 735339363772187479}
   m_Layer: 0
   m_Name: Sphere.002 (1)
   m_TagString: Untagged
@@ -121,27 +120,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &735339363772187479
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5918473029065251156}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3.766, y: 2.2208822, z: 0.40285563}
-  m_Center: {x: -0.9533225, y: 0.12729362, z: -0.7777404}
 --- !u!1 &7951184531615576562
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,7 +217,6 @@ GameObject:
   - component: {fileID: 456233239284290853}
   - component: {fileID: 8841340104370582087}
   - component: {fileID: 7166826732165161607}
-  - component: {fileID: 8237737793255399034}
   m_Layer: 0
   m_Name: Cylinder (1)
   m_TagString: Untagged
@@ -315,24 +292,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8237737793255399034
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8190126784424791391}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.026341043, y: 0.019627444, z: 0.020456774}
-  m_Center: {x: -0.0032052647, y: 0.000077697085, z: 0.00022841086}

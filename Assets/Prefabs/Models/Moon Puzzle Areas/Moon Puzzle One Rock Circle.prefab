@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7809828055638788997}
   - component: {fileID: 5580800658751565230}
   - component: {fileID: 544957591653290398}
+  - component: {fileID: 6899102023935693604}
   m_Layer: 0
   m_Name: Rock Pillar
   m_TagString: Untagged
@@ -86,6 +87,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6899102023935693604
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16069587074251658}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.019999998, y: 0.020000005, z: 0.020000005}
+  m_Center: {x: 0.0000000037252903, y: 0.000000059604645, z: 0.0000000037252903}
 --- !u!1 &398280592812350394
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,7 +135,7 @@ Transform:
   m_GameObject: {fileID: 398280592812350394}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0019, y: -0.0667, z: 0.0136}
+  m_LocalPosition: {x: -0.0019, y: -0.0462, z: 0.0136}
   m_LocalScale: {x: 2.4524605, y: 2.4524598, z: 6.628121}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -680,7 +702,7 @@ Transform:
   m_GameObject: {fileID: 1154604125504216246}
   serializedVersion: 2
   m_LocalRotation: {x: -1, y: -0, z: 0, w: -0.00000008940697}
-  m_LocalPosition: {x: 0.0282, y: 0.0018, z: -0.00302}
+  m_LocalPosition: {x: 0.0188, y: 0.0018, z: -0.00302}
   m_LocalScale: {x: 0.90572906, y: 0.90572834, z: 1.0351299}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -819,6 +841,7 @@ GameObject:
   - component: {fileID: 8224424049979577999}
   - component: {fileID: 8167861364061995164}
   - component: {fileID: 4716474127173151925}
+  - component: {fileID: 8459345671673776554}
   m_Layer: 0
   m_Name: Rock Pillar
   m_TagString: Untagged
@@ -894,6 +917,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8459345671673776554
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277794588366840084}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.06635566, y: 0.054258876, z: 0.13607642}
+  m_Center: {x: 0.0007192027, y: 0.00000011920929, z: -0.009615151}
 --- !u!1 &1396003075357587994
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,7 +999,7 @@ Transform:
   m_GameObject: {fileID: 1609633916435601560}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0004, y: 0.0223, z: 0.00329}
+  m_LocalPosition: {x: -0.0004, y: 0.02, z: 0.00329}
   m_LocalScale: {x: 1.1205469, y: 1.1205467, z: 0.98224956}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1060,6 +1104,7 @@ GameObject:
   - component: {fileID: 8684287187291380809}
   - component: {fileID: 7561266139938502742}
   - component: {fileID: 7866173019693749143}
+  - component: {fileID: 8966140903154257430}
   m_Layer: 0
   m_Name: Rock Pillar
   m_TagString: Untagged
@@ -1135,6 +1180,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8966140903154257430
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693441527488039822}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.02, y: 0.020000007, z: 0.020000005}
+  m_Center: {x: 0, y: 0.000000037252903, z: 0.0000000018626451}
 --- !u!1 &1787038158855629618
 GameObject:
   m_ObjectHideFlags: 0
@@ -1282,7 +1348,7 @@ Transform:
   m_GameObject: {fileID: 2008660014603434573}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0222, y: -0.0196, z: 0.00356}
+  m_LocalPosition: {x: 0.0158, y: -0.0196, z: 0.00356}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1387,6 +1453,7 @@ GameObject:
   - component: {fileID: 2071875998197187296}
   - component: {fileID: 8319848934762363778}
   - component: {fileID: 1114517941400123301}
+  - component: {fileID: 6916844324642202019}
   m_Layer: 0
   m_Name: Rock Pillar
   m_TagString: Untagged
@@ -1462,6 +1529,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6916844324642202019
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2314025584589904697}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.06635566, y: 0.054258876, z: 0.13607642}
+  m_Center: {x: 0.0007192027, y: -0.000000044703484, z: -0.009615151}
 --- !u!1 &2316601960779583854
 GameObject:
   m_ObjectHideFlags: 0
@@ -1523,7 +1611,7 @@ Transform:
   m_GameObject: {fileID: 2431738893302156766}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0032, y: 0.0686, z: 0.0142}
+  m_LocalPosition: {x: 0.0032, y: 0.0544, z: 0.0142}
   m_LocalScale: {x: 2.4524605, y: 2.4524593, z: 6.6281214}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1628,6 +1716,7 @@ GameObject:
   - component: {fileID: 3145147690277927330}
   - component: {fileID: 2110592159580165877}
   - component: {fileID: 313366771682856619}
+  - component: {fileID: 3249900571538309183}
   m_Layer: 0
   m_Name: Rock Pillar
   m_TagString: Untagged
@@ -1703,6 +1792,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3249900571538309183
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2554793499470841656}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.020000001, y: 0.020000007, z: 0.020000005}
+  m_Center: {x: 0, y: 0.000000059604645, z: 0.0000000027939677}
 --- !u!1 &3082712147648163841
 GameObject:
   m_ObjectHideFlags: 0
@@ -1714,6 +1824,7 @@ GameObject:
   - component: {fileID: 3416435595681719106}
   - component: {fileID: 3115320900432868100}
   - component: {fileID: 890632921742596822}
+  - component: {fileID: 3581785903310272895}
   m_Layer: 0
   m_Name: Rock Pillar
   m_TagString: Untagged
@@ -1789,6 +1900,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3581785903310272895
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3082712147648163841}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.020000001, y: 0.020000005, z: 0.020000005}
+  m_Center: {x: 0, y: -0.000000037252903, z: -0.0000000018626451}
 --- !u!1 &3088951720690744301
 GameObject:
   m_ObjectHideFlags: 0
@@ -1800,6 +1932,7 @@ GameObject:
   - component: {fileID: 2031225715066597729}
   - component: {fileID: 9107003149078252078}
   - component: {fileID: 7740247264884273173}
+  - component: {fileID: 4315930369274351323}
   m_Layer: 0
   m_Name: Rock Pillar
   m_TagString: Untagged
@@ -1875,6 +2008,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4315930369274351323
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3088951720690744301}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.020000001, y: 0.020000005, z: 0.020000005}
+  m_Center: {x: 0, y: 0.000000011175871, z: -0.0000000027939677}
 --- !u!1 &3178778873043381603
 GameObject:
   m_ObjectHideFlags: 0
@@ -1902,7 +2056,7 @@ Transform:
   m_GameObject: {fileID: 3178778873043381603}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0155, y: 0.0203, z: 0.00394}
+  m_LocalPosition: {x: 0.0135, y: 0.0168, z: 0.00394}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2127,6 +2281,7 @@ GameObject:
   - component: {fileID: 7656112934959136908}
   - component: {fileID: 8434257826409875831}
   - component: {fileID: 7116570855699024008}
+  - component: {fileID: 7279298036290951245}
   m_Layer: 0
   m_Name: Rock Pillar
   m_TagString: Untagged
@@ -2202,6 +2357,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7279298036290951245
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3506522288818219321}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.02, y: 0.020000007, z: 0.020000005}
+  m_Center: {x: 0, y: -0.000000029802322, z: 0.0000000027939677}
 --- !u!1 &3524096749346714887
 GameObject:
   m_ObjectHideFlags: 0
@@ -2213,6 +2389,7 @@ GameObject:
   - component: {fileID: 9031941642104736555}
   - component: {fileID: 681360501503861408}
   - component: {fileID: 7076182908378355427}
+  - component: {fileID: 3219758930262430297}
   m_Layer: 0
   m_Name: Rock Pillar
   m_TagString: Untagged
@@ -2288,6 +2465,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3219758930262430297
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3524096749346714887}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.019999998, y: 0.020000005, z: 0.020000005}
+  m_Center: {x: 0.0000000037252903, y: -0.000000029802322, z: 0.0000000018626451}
 --- !u!1 &3556804941254608978
 GameObject:
   m_ObjectHideFlags: 0
@@ -2315,7 +2513,7 @@ Transform:
   m_GameObject: {fileID: 3556804941254608978}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0292, y: -0, z: 0.00396}
+  m_LocalPosition: {x: -0.0239, y: -0, z: 0.00396}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2420,6 +2618,7 @@ GameObject:
   - component: {fileID: 1503234313854734887}
   - component: {fileID: 432278671872498900}
   - component: {fileID: 1738705845635291784}
+  - component: {fileID: 2855930490692109003}
   m_Layer: 0
   m_Name: Rock Pillar
   m_TagString: Untagged
@@ -2495,6 +2694,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2855930490692109003
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3579779201626625391}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.06635566, y: 0.054258876, z: 0.13607642}
+  m_Center: {x: 0.0007191729, y: 0.000000029802322, z: -0.009615151}
 --- !u!1 &4241583897440671646
 GameObject:
   m_ObjectHideFlags: 0
@@ -2540,6 +2760,7 @@ GameObject:
   - component: {fileID: 803571634332772623}
   - component: {fileID: 8728741532437414742}
   - component: {fileID: 8384490478251887231}
+  - component: {fileID: 4509905192963670451}
   m_Layer: 0
   m_Name: Rock Pillar
   m_TagString: Untagged
@@ -2615,6 +2836,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4509905192963670451
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4948694745612146632}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.02, y: 0.020000007, z: 0.020000005}
+  m_Center: {x: 0, y: 0.000000014901161, z: 0.0000000027939677}
 --- !u!1 &4991663001272393463
 GameObject:
   m_ObjectHideFlags: 0
@@ -2642,7 +2884,7 @@ Transform:
   m_GameObject: {fileID: 4991663001272393463}
   serializedVersion: 2
   m_LocalRotation: {x: -1, y: -0, z: 0, w: -0.00000008940697}
-  m_LocalPosition: {x: -0.0164, y: -0.0147, z: -0.00416}
+  m_LocalPosition: {x: -0.0145, y: -0.0126, z: -0.00416}
   m_LocalScale: {x: 0.90572906, y: 0.90572834, z: 1.0351299}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3159,7 +3401,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 36.229164, y: 36.22914, z: 165.17664}
+  m_LocalScale: {x: 50.111847, y: 50.111816, z: 228.47081}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6325327580774979988}
@@ -3366,6 +3608,7 @@ GameObject:
   - component: {fileID: 561023176760550506}
   - component: {fileID: 8019780688792999702}
   - component: {fileID: 8228158929902715243}
+  - component: {fileID: 2237983117168999049}
   m_Layer: 0
   m_Name: Rock Pillar
   m_TagString: Untagged
@@ -3441,6 +3684,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2237983117168999049
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7118648049147919809}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.020000001, y: 0.020000005, z: 0.020000005}
+  m_Center: {x: 0.000000014901161, y: 0.0000000055879354, z: -0.0000000027939677}
 --- !u!1 &7367462990288781503
 GameObject:
   m_ObjectHideFlags: 0
@@ -3452,6 +3716,7 @@ GameObject:
   - component: {fileID: 3975009389888943771}
   - component: {fileID: 5972891296111927271}
   - component: {fileID: 1514446993172857169}
+  - component: {fileID: 5305987868454637945}
   m_Layer: 0
   m_Name: Rock Pillar
   m_TagString: Untagged
@@ -3527,6 +3792,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5305987868454637945
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7367462990288781503}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.020000001, y: 0.020000007, z: 0.020000005}
+  m_Center: {x: 0, y: -0.000000022351742, z: 0.0000000027939677}
 --- !u!1 &7617820451267509035
 GameObject:
   m_ObjectHideFlags: 0
@@ -3710,6 +3996,7 @@ GameObject:
   - component: {fileID: 8322484022193849699}
   - component: {fileID: 5051143064701541388}
   - component: {fileID: 8789155834015996267}
+  - component: {fileID: 4746115501220660403}
   m_Layer: 0
   m_Name: Rock Pillar
   m_TagString: Untagged
@@ -3785,6 +4072,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4746115501220660403
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7836440746715942858}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.020000001, y: 0.020000007, z: 0.020000005}
+  m_Center: {x: 0, y: 1.7462298e-10, z: 0.0000000018626451}
 --- !u!1 &7849182878172561387
 GameObject:
   m_ObjectHideFlags: 0
@@ -3812,7 +4120,7 @@ Transform:
   m_GameObject: {fileID: 7849182878172561387}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0723, y: 0.001, z: 0.01608291}
+  m_LocalPosition: {x: 0.0583, y: 0.001, z: 0.01608291}
   m_LocalScale: {x: 2.4524605, y: 2.4524596, z: 6.6281214}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4019,7 +4327,7 @@ Transform:
   m_GameObject: {fileID: 8157277527776580322}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.032450102, z: 0.003199474}
+  m_LocalPosition: {x: 0, y: -0.0231, z: 0.0032}
   m_LocalScale: {x: 1.1205469, y: 1.1205468, z: 0.98224956}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4140,7 +4448,7 @@ Transform:
   m_GameObject: {fileID: 8379261358838679979}
   serializedVersion: 2
   m_LocalRotation: {x: -1, y: -0, z: 0, w: -0.00000008940697}
-  m_LocalPosition: {x: -0.0117, y: 0.0218, z: -0.00413}
+  m_LocalPosition: {x: -0.0087, y: 0.02, z: -0.00413}
   m_LocalScale: {x: 0.90572906, y: 0.90572846, z: 1.0351299}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4261,7 +4569,7 @@ Transform:
   m_GameObject: {fileID: 8610677558954550667}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.026, y: -0.0009, z: 0.00363}
+  m_LocalPosition: {x: -0.0202, y: -0.0009, z: 0.00363}
   m_LocalScale: {x: 0.90572906, y: 0.9057286, z: 0.97707903}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4382,7 +4690,7 @@ Transform:
   m_GameObject: {fileID: 8756371392656319873}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.47868004, w: 0.8779894}
-  m_LocalPosition: {x: -0.0203, y: -0.0203, z: 0.00357}
+  m_LocalPosition: {x: -0.01636, y: -0.01776, z: 0.00357}
   m_LocalScale: {x: 0.90572906, y: 0.9057286, z: 0.9770789}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4503,7 +4811,7 @@ Transform:
   m_GameObject: {fileID: 8765468784074093255}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0015, y: 0.0228, z: 0.00333}
+  m_LocalPosition: {x: 0.0015, y: 0.0193, z: 0.00333}
   m_LocalScale: {x: 0.90572906, y: 0.9057284, z: 0.97707903}
   m_ConstrainProportionsScale: 0
   m_Children: []
