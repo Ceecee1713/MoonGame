@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.5, y: 0.49999997, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 31.548729, y: 31.548729, z: 31.548729}
+  m_LocalScale: {x: 42.70436, y: 42.70436, z: 42.70436}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -110,8 +110,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.057324376, y: 0.015588677, z: 0.11046705}
-  m_Center: {x: 0, y: -0.0004890385, z: 0}
+  m_Size: {x: 0.009974131, y: 0.015588677, z: 0.11046704}
+  m_Center: {x: -0.004984207, y: -0.00048903824, z: -4.3435295e-19}
 --- !u!65 &942502280377524202
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -131,8 +131,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.057324376, y: 0.084378414, z: 0.052435942}
-  m_Center: {x: -2.577098e-17, y: -1.4537108e-18, z: 0.029015547}
+  m_Size: {x: 0.057324376, y: 0.084378414, z: 0.045458015}
+  m_Center: {x: -2.88698e-17, y: -3.842505e-17, z: 0.032504506}
 --- !u!135 &8308627776577255579
 SphereCollider:
   m_ObjectHideFlags: 0
