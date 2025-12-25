@@ -49,7 +49,6 @@ public class MoonPuzzleDialogueText : MonoBehaviour
     private int _index = 0; //Index to go through the dialogue message array (individual messages) from "dialogueData" 
     private int _textBranchIndex = -1;
     private int _currentLineCount = 0;
-    private int _moonAreaCounter = 0;
     private int _completedMoonPuzzlesCounter = 0;
 
     private bool _fadeOutCanvas = false;
@@ -185,13 +184,10 @@ public class MoonPuzzleDialogueText : MonoBehaviour
                 StartCoroutine(TypeMessage(_currentQuestionDialogue.Messages[_index]));
             }
 
-            else //Stop the text adventure, lower corrioson value for an area (completed the moon puzzle SUCCESSFULLY)
+            else //Stop the text adventure (completed A moon puzzle SUCCESSFULLY)
             {
                 _doNotRepeat = true;
-                _moonAreaCounter++;
                 _completedMoonPuzzlesCounter++;
-                EventBus.Instance.Publish(new ChangeCorriosonValue(corriosonValues.SpeedToLowerHealthWhenAreaIsCleared, _moonAreaCounter));
-                
                 StopAllCoroutines();
                 StartCoroutine(ShowMoonPuzzleFragmentUIPopUp());
             }

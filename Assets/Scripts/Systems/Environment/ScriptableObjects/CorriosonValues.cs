@@ -4,7 +4,6 @@ using UnityEngine;
 public class CorriosonValues : ScriptableObject
 {
     public float SpeedToLowerHealthWhenTimerIsUp; 
-    public float SpeedToLowerHealthWhenAreaIsCleared; 
     public float SpeedToLowerHealthForBadPrayerEffect; 
     public float SpeedToLowerHealthForGoodPrayerEffect; 
 }

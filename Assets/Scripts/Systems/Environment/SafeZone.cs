@@ -3,17 +3,33 @@ using UnityEngine;
 public class SafeZone : MonoBehaviour
 {
     [SerializeField]
-    private GameObject dialogueUI;
-    [SerializeField]
-    private StorytellingDialogueData corriosonZoneTutorial;
-
+    private GameObject newSafeZoneArea;
+    
     [SerializeField]
     private float speedToIncraseHealth = 1.2f;
 
     private bool _recoverHealth = true;
     private bool _playerCollisionDetected = false; 
 
-    private const float DELAY = 0.5f;
+    void Start()
+    {
+        EventBus.Instance.Subscribe<NewMoonFragmentObtained>(SetNewSafeZoneCollision);
+    }
+
+    void OnDestroy()
+    {
+        if (EventBus.Instance != null)
+            EventBus.Instance.Unsubscribe<NewMoonFragmentObtained>(SetNewSafeZoneCollision);
+    }
+
+    private void SetNewSafeZoneCollision(NewMoonFragmentObtained newMoonFragmentObtained)
+    {
+        if(newSafeZoneArea != null)
+        {
+            newSafeZoneArea.SetActive(true);
+            Destroy(this.gameObject);
+        } 
+    }
 
     private void OnTriggerStay(Collider collider)
     {

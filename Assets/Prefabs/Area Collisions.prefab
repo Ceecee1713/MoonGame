@@ -67,9 +67,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   corriosonValues: {fileID: 11400000, guid: 0c43309b9484a2f4a880d0e8f0a92b86, type: 2}
+  otherAreaCollision: {fileID: 0}
   areaNumber: 3
-  startingSpeedToLowerHealth: 1
-  currentSpeedToLowerHealth: 0
+  DefaultSpeedToLowerHealth: 0
+  CurrentSpeedToLowerHealth: 0
+  counter: 0
 --- !u!1 &1250870041479745809
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,9 +139,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   corriosonValues: {fileID: 11400000, guid: 0c43309b9484a2f4a880d0e8f0a92b86, type: 2}
+  otherAreaCollision: {fileID: 2483839844155720236}
   areaNumber: 2
-  startingSpeedToLowerHealth: 1
-  currentSpeedToLowerHealth: 0
+  DefaultSpeedToLowerHealth: 0.3
+  CurrentSpeedToLowerHealth: 0
+  counter: 0
 --- !u!1 &2483839844155720236
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,9 +211,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   corriosonValues: {fileID: 11400000, guid: 0c43309b9484a2f4a880d0e8f0a92b86, type: 2}
+  otherAreaCollision: {fileID: 0}
   areaNumber: 2
-  startingSpeedToLowerHealth: 1
-  currentSpeedToLowerHealth: 0
+  DefaultSpeedToLowerHealth: 1
+  CurrentSpeedToLowerHealth: 0
+  counter: 0
 --- !u!1 &3186354443612990807
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,8 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9257f4d4940f4324ab64c865fe3d8d14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueUI: {fileID: 0}
-  corriosonZoneTutorial: {fileID: 0}
+  newSafeZoneArea: {fileID: 3186354443612990807}
   speedToIncraseHealth: 1.2
 --- !u!1 &4059097111974093791
 GameObject:
@@ -346,9 +351,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   corriosonValues: {fileID: 11400000, guid: 0c43309b9484a2f4a880d0e8f0a92b86, type: 2}
+  otherAreaCollision: {fileID: 6702080772393797434}
   areaNumber: 1
-  startingSpeedToLowerHealth: 1
-  currentSpeedToLowerHealth: 0
+  DefaultSpeedToLowerHealth: 0.3
+  CurrentSpeedToLowerHealth: 0
+  counter: 0
 --- !u!1 &4089792901666932433
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,8 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9257f4d4940f4324ab64c865fe3d8d14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueUI: {fileID: 0}
-  corriosonZoneTutorial: {fileID: 0}
+  newSafeZoneArea: {fileID: 0}
   speedToIncraseHealth: 1.2
 --- !u!1 &5339635152527515304
 GameObject:
@@ -524,9 +530,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   corriosonValues: {fileID: 11400000, guid: 0c43309b9484a2f4a880d0e8f0a92b86, type: 2}
+  otherAreaCollision: {fileID: 0}
   areaNumber: 1
-  startingSpeedToLowerHealth: 1
-  currentSpeedToLowerHealth: 0
+  DefaultSpeedToLowerHealth: 1
+  CurrentSpeedToLowerHealth: 0
+  counter: 0
 --- !u!1 &7924914294772372121
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,6 +601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06970ad2c1d82f1458191862066e0634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newSafeZoneArea: {fileID: 3186354443612990807}
   dialogueUI: {fileID: 0}
   corriosonZoneTutorial: {fileID: 0}
   speedToIncraseHealth: 1.2
