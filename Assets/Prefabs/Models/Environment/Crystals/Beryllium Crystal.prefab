@@ -256,7 +256,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6611202281652330841, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
       propertyPath: m_Radius
-      value: 6.7370005
+      value: 5.7295947
       objectReference: {fileID: 0}
     - target: {fileID: 6611202281652330841, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
       propertyPath: m_Center.x
@@ -264,11 +264,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6611202281652330841, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
       propertyPath: m_Center.y
-      value: 0.6725255
+      value: 0.672524
       objectReference: {fileID: 0}
     - target: {fileID: 6611202281652330841, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
       propertyPath: m_Center.z
-      value: -0.00803113
+      value: 0.015218258
       objectReference: {fileID: 0}
     - target: {fileID: 7597273152441028554, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
       propertyPath: m_fontSize
