@@ -382,16 +382,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
+    IsDroppedItem: 0
     Quantity: 0
     IsThisAStackableItem: 0
   IsEmpty: 0
   OutlineImage: {fileID: 6021025932576275569}
   inventorySlotData:
     SlotImage: {fileID: 4356695288618033070}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &1118503710039272264
 GameObject:
@@ -445,16 +444,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
+    IsDroppedItem: 0
     Quantity: 0
     IsThisAStackableItem: 0
   IsEmpty: 0
   OutlineImage: {fileID: 8824490900296449772}
   inventorySlotData:
     SlotImage: {fileID: 3070285032896454118}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &1613599704497577908
 GameObject:
@@ -879,7 +877,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e9330caa23a794e9c28d249c56cd56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryData: {fileID: 11400000, guid: 3e223954c69a03a4ca8d8bbf172e7db9, type: 2}
   inventorySlots:
   - {fileID: 7320417435662912802}
   - {fileID: 2330065756570465180}
@@ -889,6 +886,7 @@ MonoBehaviour:
   - {fileID: 5157690645169386797}
   - {fileID: 1947940343452114619}
   - {fileID: 9143242338245141100}
+  _inventoryData: {fileID: 11400000, guid: 3e223954c69a03a4ca8d8bbf172e7db9, type: 2}
 --- !u!225 &6372700222854663731
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1351,16 +1349,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
+    IsDroppedItem: 0
     Quantity: 0
     IsThisAStackableItem: 0
   IsEmpty: 0
   OutlineImage: {fileID: 6066862178895168132}
   inventorySlotData:
     SlotImage: {fileID: 2512119043446089574}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &4228927852962859666
 GameObject:
@@ -1489,16 +1486,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
+    IsDroppedItem: 0
     Quantity: 0
     IsThisAStackableItem: 0
   IsEmpty: 0
   OutlineImage: {fileID: 7240118834821460094}
   inventorySlotData:
     SlotImage: {fileID: 7455394153079651580}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &4927775985794955920
 GameObject:
@@ -2077,16 +2073,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
+    IsDroppedItem: 0
     Quantity: 0
     IsThisAStackableItem: 0
   IsEmpty: 0
   OutlineImage: {fileID: 3277338423532604293}
   inventorySlotData:
     SlotImage: {fileID: 5192287862146691596}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &6732973610471879365
 GameObject:
@@ -2330,16 +2325,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
+    IsDroppedItem: 0
     Quantity: 0
     IsThisAStackableItem: 0
   IsEmpty: 0
   OutlineImage: {fileID: 3189041024101416358}
   inventorySlotData:
     SlotImage: {fileID: 7122523013317649101}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &7212629834817814000
 GameObject:
@@ -2543,16 +2537,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
+    IsDroppedItem: 0
     Quantity: 0
     IsThisAStackableItem: 0
   IsEmpty: 0
   OutlineImage: {fileID: 4927775985794955920}
   inventorySlotData:
     SlotImage: {fileID: 6915083588241307548}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &7483305747231821627
 GameObject:
@@ -2681,16 +2674,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryItem:
     SlotImageSprite: {fileID: 0}
-    NameOfItem: 
     ItemType: 0
     ItemObject: {fileID: 0}
+    IsDroppedItem: 0
     Quantity: 0
     IsThisAStackableItem: 0
   IsEmpty: 0
   OutlineImage: {fileID: 5753854250053252300}
   inventorySlotData:
     SlotImage: {fileID: 8856341036821999567}
-    ItemNameText: {fileID: 0}
     TypeOfItem: 0
 --- !u!1 &8024444452878775282
 GameObject:

@@ -3,7 +3,7 @@ using UnityEngine;
 public class ChestUI : MonoBehaviour
 {
     [SerializeField]
-    private ChestSlot [] chestSlots;
+    private ChestSlot[] chestSlots;
 
     private const int MAX_STACK_AMOUNT = 9;
 
@@ -31,40 +31,13 @@ public class ChestUI : MonoBehaviour
         AddInventoryItem(checkToAddItemToChest.InventoryItem);
     }
 
-    private void AddInventoryItem(ItemData itemToCheck) //Add an inventory item (Crafted item or not)
+    private void AddInventoryItem(ItemData itemToCheck)
     {
-        /* //Dec 18
-        for(int i = 0; i < chestSlots.Length; i++) //Add same type, stackable items together in same inventory slot
-        {
-            if(chestSlots[i].InventoryItem.IsThisAStackableItem == true && itemToCheck.IsThisAStackableItem == true)
-            {
-                if(chestSlots[i].InventoryItem.ItemType == itemToCheck.ItemType)
-                {
-                    //If the inventory slot's item's quantity isn't above "_maxStackAmount" (increase quantity)
-                    if(chestSlots[i].InventoryItem.Quantity < _maxStackAmount) 
-                    {
-                        chestSlots[i].InventoryItem.Quantity++; 
-                        return;
-                    }
-                } 
-            }
-        }
-
-        //Add new inventory item in any empty inventory slot, whether item is stackable or not
-        for(int i = 0; i < chestSlots.Length; i++) 
-        {
-            if(chestSlots[i].IsEmpty == true)
-            {
-                chestSlots[i].AddItemToSlot(itemToCheck);
-                break;
-            }
-        }
-        */
-
         int remainingQuantity = itemToCheck.Quantity;
 
-        //Add quantity of newly added item
-        //Into existing items of the same type in the inventory
+        itemToCheck.IsDroppedItem = false;
+
+        //Add quantity to existing stacks
         if(itemToCheck.IsThisAStackableItem == true)
         {
             for(int i = 0; i < chestSlots.Length; i++) 
@@ -72,19 +45,15 @@ public class ChestUI : MonoBehaviour
                 if(remainingQuantity <= 0)
                     break;
 
-                if(chestSlots[i].InventoryItem.IsThisAStackableItem == true && chestSlots[i].InventoryItem.ItemType == itemToCheck.ItemType)
+                //If chest slot isn't null, if chest slot is stackable and if the chest slot's item type and new item type match
+                if(chestSlots[i].InventoryItem != null && chestSlots[i].InventoryItem.IsThisAStackableItem == true && chestSlots[i].InventoryItem.ItemType == itemToCheck.ItemType)
                 {
                     int currentQuantity = chestSlots[i].InventoryItem.Quantity;
-                    
-                    //Calculate how much space is available in this item 
                     int availableSpace = MAX_STACK_AMOUNT - currentQuantity;
                     
                     if(availableSpace > 0)
                     {
-                        //Calculate how much quantity can add to this item 
                         int amountToAdd = Mathf.Min(availableSpace, remainingQuantity);
-                        
-                        //Add quantity to existing item 
                         chestSlots[i].InventoryItem.Quantity += amountToAdd;
                         remainingQuantity -= amountToAdd;
                     }
@@ -92,8 +61,23 @@ public class ChestUI : MonoBehaviour
             }
         }
 
-        //Create a new item for any remaining quantity
-        //This accounts for non-stackable items as well (not adding quantity)
+        //Create a new stack for the same inventory type
+        if(remainingQuantity > 0)
+        {
+            itemToCheck.Quantity = Mathf.Min(remainingQuantity, MAX_STACK_AMOUNT);
+            
+            for(int i = 0; i < chestSlots.Length; i++) 
+            {
+                if(chestSlots[i].IsEmpty == true)
+                {
+                    chestSlots[i].AddItemToSlot(itemToCheck);
+                    remainingQuantity -= itemToCheck.Quantity;
+                    break;
+                }
+            }
+        }
+        
+        //Handling subsequent overflow of quantity stacking with clones 
         while(remainingQuantity > 0)
         {
             bool foundEmptySlot = false;
@@ -102,32 +86,18 @@ public class ChestUI : MonoBehaviour
             {
                 if(chestSlots[i].IsEmpty == true)
                 {
-                    //For the first new item, use the original item
-                    if(remainingQuantity == itemToCheck.Quantity)
-                    {
-                        int quantityForThisStack = Mathf.Min(remainingQuantity, MAX_STACK_AMOUNT);
-                        itemToCheck.Quantity = quantityForThisStack;
-                        
-                        chestSlots[i].AddItemToSlot(itemToCheck);
-                        remainingQuantity -= quantityForThisStack;
-                    }
-
-                    //Clone for additional overflow quantity
-                    else
-                    {
-                        ItemData itemToCheckClone = itemToCheck.Clone();
-                        itemToCheckClone.Quantity = Mathf.Min(remainingQuantity, MAX_STACK_AMOUNT);
-                        
-                        chestSlots[i].AddItemToSlot(itemToCheckClone);
-                        remainingQuantity -= itemToCheckClone.Quantity;
-                    }
+                    ItemData clonedItem = itemToCheck.Clone();
+                    clonedItem.Quantity = Mathf.Min(remainingQuantity, MAX_STACK_AMOUNT);
+                    clonedItem.IsDroppedItem = false; 
+                    
+                    chestSlots[i].AddItemToSlot(clonedItem);
+                    remainingQuantity -= clonedItem.Quantity;
                     
                     foundEmptySlot = true;
                     break;
                 }
             }
             
-            //If no empty slot was found, we can't add more items
             if(!foundEmptySlot)
                 break;
         }

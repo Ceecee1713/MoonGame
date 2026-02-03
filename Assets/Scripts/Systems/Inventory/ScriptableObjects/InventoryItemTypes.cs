@@ -28,9 +28,9 @@ public enum InventoryItemTypes
 public class ItemData
 {
     public Sprite SlotImageSprite; //Changes the sprite of "SlotImage"
-    //public string NameOfItem; //Changes the text of "ItemNameText"
     public InventoryItemTypes ItemType; //Changes the value of "TypeOfItem"
     public GameObject ItemObject; //Object to instantiate by the player
+    public bool IsDroppedItem = false; //Tracking if this inventory item was dropped by player
 
     public int Quantity; //Used for stacking quantity of the same type of inventory item
     public bool IsThisAStackableItem;
@@ -40,11 +40,11 @@ public class ItemData
         return new ItemData
         {
             SlotImageSprite = this.SlotImageSprite,
-            //NameOfItem = this.NameOfItem,
             ItemType = this.ItemType,
             ItemObject = this.ItemObject,
             Quantity = this.Quantity,
-            IsThisAStackableItem = this.IsThisAStackableItem
+            IsThisAStackableItem = this.IsThisAStackableItem,
+            IsDroppedItem = this.IsDroppedItem
         };
     }
 }
@@ -54,6 +54,5 @@ public class ItemData
 public struct InventorySlot
 {
     public Image SlotImage;
-    //public TextMeshProUGUI ItemNameText;
     public InventoryItemTypes TypeOfItem; 
 }

@@ -13,10 +13,10 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
     public GameObject OutlineImage; //Visuals
 
     [SerializeField]
-    private InventorySlot inventorySlotData; //Edit
+    private InventorySlot inventorySlotData; //Visual data for inventory slot
 
     private bool _isAChestOpen = false;
-    private bool _allowInput = false;
+    private bool _allowInput = true;
 
     void Start()
     {
@@ -26,21 +26,16 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
         EventBus.Instance.Subscribe<ActivatePlayerInputs>(AllowPlayerInput);
     }
 
-    public void AddItemToSlot(ItemData newInventoryItem)
+    public void AddItemToSlot(ItemData newInventoryItem) //Add inventory slot UI visual data (EDITTTT)
     {
         IsEmpty = false;
-        InventoryItem = newInventoryItem;
+        InventoryItem = newInventoryItem.Clone();
     }
 
-    public void RemoveItemFromSlot() 
+    public void RemoveItemFromSlot() //Add inventory slot UI visual data (EDITTTT)
     {
         IsEmpty = true;
-        InventoryItem.SlotImageSprite = null;
-        //InventoryItem.NameOfItem = "Nothing";
-        InventoryItem.ItemType = InventoryItemTypes.None;
-        InventoryItem.ItemObject = null;
-        InventoryItem.Quantity = 0;
-        InventoryItem.IsThisAStackableItem = false;
+        InventoryItem = null;
     }
 
     public void DropItem()
@@ -74,7 +69,7 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
         {
             ItemData clonedInventoryItem = InventoryItem.Clone();
             EventBus.Instance.Publish(new CheckToAddItemToChest(clonedInventoryItem));
-            EventBus.Instance.Publish(new RemoveItemFromSlot(this));
+            EventBus.Instance.Publish(new RemoveItemFromSlot(this)); //Removing this slot's inventory item from inventory (in InventoryUI)
         }
     }
 }

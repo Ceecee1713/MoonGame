@@ -64,6 +64,22 @@ public class RemoveItemFromSlot : IEvent
     }
 }
 
+//Adjusting an inventory item's quantity in an inventory UI slot and in the
+//inventory data. This is used by the Craft Manager to manage remaining quantities with comparing crafting
+//materials' quantities and quantities in the inventory data
+public class AdjustInventorySlotItemQuantity : IEvent 
+{
+    public int NewQuantity;
+    public int InventoryIndex;
+
+    public AdjustInventorySlotItemQuantity(int newQuantity, int inventoryIndex)
+    {
+        NewQuantity = newQuantity;
+        InventoryIndex = inventoryIndex;
+    }
+}
+
+
 //To instantiate an inventory item into the world after dropping it from the inventory 
 public class SpawnDroppedInventoryItem : IEvent
 {

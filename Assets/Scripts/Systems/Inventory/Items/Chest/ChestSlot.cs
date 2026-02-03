@@ -11,33 +11,32 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler
     public bool IsEmpty;
 
     [SerializeField]
-    private InventorySlot inventorySlotData; //Edit
+    private InventorySlot inventorySlotData; //Visual data for inventory slot
 
     void Start()
     {
         IsEmpty = true;
     }
 
-    public void AddItemToSlot(ItemData newInventoryItem)
+    public void AddItemToSlot(ItemData newInventoryItem) //Add inventory slot UI visual data
     {
         IsEmpty = false;
         InventoryItem = newInventoryItem;
     }
 
-    public void RemoveItemFromSlot() 
+    public void RemoveItemFromSlot() //Add inventory slot UI visual data
     {
         IsEmpty = true;
-        InventoryItem.SlotImageSprite = null;
-        //InventoryItem.NameOfItem = "Nothing";
-        InventoryItem.ItemType = InventoryItemTypes.None;
-        InventoryItem.ItemObject = null;
-        InventoryItem.Quantity = 0;
-        InventoryItem.IsThisAStackableItem = false;
+        InventoryItem = null;
     }
 
     public void OnPointerClick(PointerEventData eventData) 
     {
+        if(InventoryItem == null || IsEmpty)
+            return;
+
         ItemData clonedInventoryItem = InventoryItem.Clone();
+        clonedInventoryItem.IsDroppedItem = false;
         EventBus.Instance.Publish(new AddItemToInventory(clonedInventoryItem));
         RemoveItemFromSlot();
     }

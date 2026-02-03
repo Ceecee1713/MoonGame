@@ -39,19 +39,19 @@ public class CluebookManager : MonoBehaviour
         EventBus.Instance.Subscribe<DecipherClue>(DecipherSingleClue);
     }
 
-    private void CheckForMatchingClueFragments(FoundClueFragment foundClueFragment)
+    private void CheckForMatchingClueFragments(FoundClueFragment foundClueFragment) //Event call passed from NPC
     {
         _clueDialogue = foundClueFragment.ClueDialogue;
 
         for(int i = 0; i < clueIndexes.Length; i++)
         {
-            if(_clueDialogue == clueIndexes[i].FirstClueFragment)
+            if(_clueDialogue == clueIndexes[i].FirstClueFragment) //Found first clue fragment
             {
                 clueIndexes[i].ClueText.text = clueIndexes[i].FirstClueFragment + _incompleteMessage;
                 clueIndexes[i].FoundFirstClueFragment = true;
             }
 
-            if(_clueDialogue == clueIndexes[i].SecondClueFragment)
+            if(_clueDialogue == clueIndexes[i].SecondClueFragment) //Found second clue fragment
             {
                 clueIndexes[i].ClueText.text = clueIndexes[i].SecondClueFragment + _incompleteMessage;
                 clueIndexes[i].FoundSecondClueFragment = true;
@@ -65,7 +65,7 @@ public class CluebookManager : MonoBehaviour
         }
     }
 
-    //Checking for a complete code that's not deciphered yet, called by a craft button
+    //Checking for a complete code that's not deciphered yet, called by DecipherClueButton
     private void CheckForACompleteClue(CheckForCompleteClues checkForCompleteClues)
     {
         for(int i = 0; i < clueIndexes.Length; i++)

@@ -24,17 +24,4 @@ public class CraftButton : MonoBehaviour
         for(int i = 0; i < craftingMaterials.Count; i++)
             craftManager.CheckInventoryForCraftingMaterials(craftingMaterials[i], craftingMaterials.Count, _craftingAClue); 
     }
-
-    /*
-    public void OnDecipherClueClick()
-    {
-        EventBus.Instance.Publish(new CheckForCompleteClues());
-        craftManager.ResetStatus();
-
-        _craftingAClue = true;
-
-        for(int i = 0; i < craftingMaterials.Count; i++)
-            craftManager.CheckInventoryForCraftingMaterials(craftingMaterials[i], craftingMaterials.Count, _craftingAClue);
-    }
-    */
 }

@@ -124,7 +124,7 @@ MonoBehaviour:
   inventoryItem:
     SlotImageSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
     ItemType: 10
-    ItemObject: {fileID: 3299304838343083962}
+    ItemObject: {fileID: 3299304838343083962, guid: 0185cec2179a77e468a09a852188af6e, type: 3}
     Quantity: 1
     IsThisAStackableItem: 1
   gameObjectToSetInactive: {fileID: 0}

@@ -5,13 +5,14 @@ public class InteractableItem : MonoBehaviour
     [SerializeField]
     public ItemData inventoryItem; 
 
-    [Header ("Game Object's Visibility")]
-    [SerializeField]
-    private GameObject gameObjectToSetInactive;
+    [Header ("Game Object's Visibility - Envrionment")]
+    public GameObject gameObjectToSetInactive;
     [SerializeField]
     private bool makeGameObjectInactive = false;
-    [SerializeField]
-    private bool deleteAfterInteraction = false;
+
+    //Game Object's Visibility - Item Drops
+    [HideInInspector]
+    public bool DeleteAfterInteraction = false;
 
     private bool _interactedWithOne = false;
     private bool _allowInput = true;
@@ -57,14 +58,14 @@ public class InteractableItem : MonoBehaviour
         {
             //Pass item into inventory system
             ItemData clonedInventoryItem = inventoryItem.Clone();
-            EventBus.Instance.Publish(new AddItemToInventory(clonedInventoryItem));
+            EventBus.Instance.Publish(new AddItemToInventory(clonedInventoryItem)); 
 
             _interactedWithOne = true;
 
             if(makeGameObjectInactive == true && gameObjectToSetInactive != null)
                 gameObjectToSetInactive.SetActive(false);
 
-            if(deleteAfterInteraction == true && makeGameObjectInactive == false)
+            if(DeleteAfterInteraction == true && makeGameObjectInactive == false)
                 Destroy(this.gameObject);
         }
     }
