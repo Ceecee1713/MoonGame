@@ -9,7 +9,7 @@ public class CraftManager : MonoBehaviour
 
     private ItemData _itemToCraft;
 
-    private List <int> _amountsPerUniqueInventoryItemsToRemove = new List <int>(); //Each index represents the total number of a unique inventory item to be removed
+    private List <int> _amountOfFullStacksPerMaterialToRemove = new List <int>(); //Each index represents the total number of a unique inventory item to be removed
     private List <ItemData> _materialsForCraftableItem = new List <ItemData>();
 
     private bool _allowCraftingForClue = false;
@@ -20,13 +20,13 @@ public class CraftManager : MonoBehaviour
 
     private int _amountOfMatchingCraftingMaterials = 0; //To be compared to the needed amount of unique materials for craftable item's recipe
     private int _remainingQuantity; 
-    private int _amountOfAnInventoryItemNeeded; //Int to be added into "_amountsPerUniqueInventoryItemsToRemove" list 
-    //Counts the number (quantity) of a single unique inventory item to be removed
+    private int _amountOfAnInventoryItemNeeded; //Int to be added into "_amountOfFullStacksPerMaterialToRemove" list 
+    //Counts the number of FULL STACKS of a single unique inventory item to be removed
 
     /*
-    "_amountsPerUniqueInventoryItemsToRemove[i]" means the amount of a unique material to be removed. 
+    "_amountOfFullStacksPerMaterialToRemove[i]" means the amount of a unique material to be removed. 
     For example, if I have wood as the material I use for my crafting recipe and I have 3 stacks of 10 of wood in my inventory (30 in total) 
-    and my recipe needed 30 stacks, that value "_amountsPerUniqueInventoryItemsToRemove[i]" would be 3. 
+    and my recipe needed 30 stacks, that value "_amountOfFullStacksPerMaterialToRemove[i]" would be 3. 
     "_materialsForCraftableItem[i]" represents a unique material's item data. 
     */
 
@@ -51,7 +51,7 @@ public class CraftManager : MonoBehaviour
 
     public void ResetStatus() 
     {
-        _amountsPerUniqueInventoryItemsToRemove.Clear();
+        _amountOfFullStacksPerMaterialToRemove.Clear();
         _materialsForCraftableItem.Clear();
 
         _notEnoughItemQuantity = false;
@@ -186,7 +186,7 @@ public class CraftManager : MonoBehaviour
     //Mark an inventory item to be removed (item is removed in "InventoryUI")
     private void MarkItemForRemoval(int slotIndex)
     {
-        _amountsPerUniqueInventoryItemsToRemove.Add(_amountOfAnInventoryItemNeeded);
+        _amountOfFullStacksPerMaterialToRemove.Add(_amountOfAnInventoryItemNeeded);
         _materialsForCraftableItem.Add(inventoryData.Inventory[slotIndex]);
     }
 
@@ -208,14 +208,14 @@ public class CraftManager : MonoBehaviour
     //Adjust quantity of an inventory item when there's a remainder of quantity for materials (done in InventoryUI)
     private void AdjustInventoryQuantity(int slotIndex)
     {
-        var newQuantity = Mathf.Abs(_remainingQuantity);
+        int newQuantity = Mathf.Abs(_remainingQuantity);
         EventBus.Instance.Publish(new AdjustInventorySlotItemQuantity(newQuantity, slotIndex));
     }
 
     /*
-    "_amountsPerUniqueInventoryItemsToRemove[i]" means the amount of a unique material to be removed. 
+    "_amountOfFullStacksPerMaterialToRemove[i]" means the amount of a unique material to be removed at i
     For example, if I have wood as the material I use for my crafting recipe and I have 3 stacks of 10 of wood in my inventory (30 in total) 
-    and my recipe needed 30 stacks, that value "_amountsPerUniqueInventoryItemsToRemove[i]" would be 3. 
+    and my recipe needed 30 stacks, that value "_amountOfFullStacksPerMaterialToRemove[i]" would be 3 at i
     "_materialsForCraftableItem[i]" represents a unique material's item data. 
     */
 
@@ -223,13 +223,14 @@ public class CraftManager : MonoBehaviour
     {
         ItemData clonedItem = craftableInventoryItem.Clone();
         EventBus.Instance.Publish(new AddItemToInventory(clonedItem));
-        EventBus.Instance.Publish(new RemoveUsedMaterials(_materialsForCraftableItem, _amountsPerUniqueInventoryItemsToRemove));
+        EventBus.Instance.Publish(new RemoveUsedMaterials(_materialsForCraftableItem, _amountOfFullStacksPerMaterialToRemove));
         ResetStatus();
     }
 
     private void DecipherClue()
     {
-        EventBus.Instance.Publish(new RemoveUsedMaterials(_materialsForCraftableItem, _amountsPerUniqueInventoryItemsToRemove));
+        EventBus.Instance.Publish(new RemoveUsedMaterials(_materialsForCraftableItem, _amountOfFullStacksPerMaterialToRemove));
         ResetStatus();
     }
 }
+

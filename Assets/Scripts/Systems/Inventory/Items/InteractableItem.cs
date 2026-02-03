@@ -58,6 +58,10 @@ public class InteractableItem : MonoBehaviour
         {
             //Pass item into inventory system
             ItemData clonedInventoryItem = inventoryItem.Clone();
+
+            if(clonedInventoryItem.IsDroppedItem == true)
+                clonedInventoryItem.IsDroppedItem = false;
+                
             EventBus.Instance.Publish(new AddItemToInventory(clonedInventoryItem)); 
 
             _interactedWithOne = true;
