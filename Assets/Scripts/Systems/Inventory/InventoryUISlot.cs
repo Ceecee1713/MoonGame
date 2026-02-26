@@ -8,12 +8,13 @@ using TMPro;
 public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
 {
     public ItemData InventoryItem;
-    public bool IsEmpty;
-    
-    public GameObject OutlineImage; //Visuals
 
+    [Header ("Inventory Slot Data")]
     [SerializeField]
-    private InventorySlot inventorySlotData; //Visual data for inventory slot
+    private InventorySlot inventorySlotVisuals; 
+    
+    public GameObject OutlineImage; 
+    public bool IsEmpty;
 
     private bool _isAChestOpen = false;
     private bool _allowInput = true;
@@ -30,12 +31,27 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
     {
         IsEmpty = false;
         InventoryItem = newInventoryItem.Clone();
+
+        inventorySlotVisuals.SlotImageObject.SetActive(true);
+        inventorySlotVisuals.SlotImage.sprite = InventoryItem.SlotImageSprite;
+        inventorySlotVisuals.TypeOfItem = InventoryItem.ItemType;
+        inventorySlotVisuals.ItemQuantityText.text = "X " + InventoryItem.Quantity;
+    }
+
+    public void UpdateItemTextQuantity(int newItemQuantity) 
+    {
+        inventorySlotVisuals.ItemQuantityText.text = "X " + newItemQuantity;
     }
 
     public void RemoveItemFromSlot() //Add inventory slot UI visual data (EDITTTT)
     {
         IsEmpty = true;
         InventoryItem = null;
+
+        inventorySlotVisuals.SlotImage.sprite = null;
+        inventorySlotVisuals.TypeOfItem = InventoryItemTypes.None;
+        inventorySlotVisuals.ItemQuantityText.text = " ";
+        inventorySlotVisuals.SlotImageObject.SetActive(false);
     }
 
     public void DropItem()

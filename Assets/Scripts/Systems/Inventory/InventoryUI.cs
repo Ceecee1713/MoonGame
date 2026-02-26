@@ -203,6 +203,7 @@ public class InventoryUI : MonoBehaviour
                 //Add quantity on existing inventory item in inventory slot
                 int amountToAdd = Mathf.Min(availableSpace, _remainingQuantity); 
                 inventorySlots[i].InventoryItem.Quantity += amountToAdd;
+                inventorySlots[i].UpdateItemTextQuantity(inventorySlots[i].InventoryItem.Quantity);
                 
                 //Adding onto quantity of existing inventory item in inventory data
                 UpdateInventoryDataQuantity(itemToCheck.ItemType, amountToAdd);
@@ -300,7 +301,7 @@ public class InventoryUI : MonoBehaviour
             }
 
             else    
-                Debug.Log("Not the same!"); 
+                Debug.Log("Not the same! - Checking remainder for crafting material"); 
         }
     }
 

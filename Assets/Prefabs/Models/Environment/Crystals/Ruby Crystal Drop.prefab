@@ -14,10 +14,9 @@ GameObject:
   - component: {fileID: 1803117666561274091}
   - component: {fileID: 8022570874440763519}
   - component: {fileID: 6442376577884151847}
-  - component: {fileID: 442064153402443755}
   - component: {fileID: 347613908529178590}
   m_Layer: 0
-  m_Name: Ruby Crystal
+  m_Name: Ruby Crystal Drop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,28 +160,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 12.966787
   m_Center: {x: -0.027155876, y: 4.206624, z: -0.75267917}
---- !u!114 &442064153402443755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5694923412531648819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9812631fc05549b44b2c3aaf8782a7a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryItem:
-    SlotImageSprite: {fileID: 21300000, guid: bc8adcc148501bb4b842b2a513bedf8b, type: 3}
-    ItemType: 4
-    ItemObject: {fileID: 5694923412531648819, guid: c6440f7af85cf6549a78974deceb7f7a, type: 3}
-    IsDroppedItem: 0
-    Quantity: 1
-    IsThisAStackableItem: 1
-  gameObjectToSetInactive: {fileID: 0}
-  makeGameObjectInactive: 0
-  DeleteAfterInteraction: 0
 --- !u!114 &347613908529178590
 MonoBehaviour:
   m_ObjectHideFlags: 0

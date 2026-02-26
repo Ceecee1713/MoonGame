@@ -12,7 +12,7 @@ public class InteractableItem : MonoBehaviour
 
     //Game Object's Visibility - Item Drops
     [HideInInspector]
-    public bool DeleteAfterInteraction = false;
+    public bool DeleteAfterInteraction = false; //Accessed by PlayerSpawner
 
     private bool _interactedWithOne = false;
     private bool _allowInput = true;

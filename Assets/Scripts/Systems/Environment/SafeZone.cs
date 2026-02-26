@@ -25,10 +25,7 @@ public class SafeZone : MonoBehaviour
     private void SetNewSafeZoneCollision(NewMoonFragmentObtained newMoonFragmentObtained)
     {
         if(newSafeZoneArea != null)
-        {
             newSafeZoneArea.SetActive(true);
-            Destroy(this.gameObject);
-        } 
     }
 
     private void OnTriggerStay(Collider collider)

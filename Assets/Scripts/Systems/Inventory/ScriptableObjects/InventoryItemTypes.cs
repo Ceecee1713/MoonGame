@@ -54,5 +54,7 @@ public class ItemData
 public struct InventorySlot
 {
     public Image SlotImage;
+    public GameObject SlotImageObject;
     public InventoryItemTypes TypeOfItem; 
+    public TextMeshProUGUI ItemQuantityText; 
 }
