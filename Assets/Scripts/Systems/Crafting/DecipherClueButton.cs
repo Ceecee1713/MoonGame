@@ -37,13 +37,13 @@ public class DecipherClueButton : MonoBehaviour
         if(newMoonPuzzleIndex == 0)
             return;
 
-        if(newMoonPuzzleIndex == 1) //Edit(?)
+        if(newMoonPuzzleIndex == 1) //Edit
         {
             for(int i = 0; i < craftingMaterials.Length; i++)
                 craftingMaterials[i] = craftingMaterialsForAreaTwo[i];
         }
 
-        if(newMoonPuzzleIndex == 2) //Edit(?)
+        if(newMoonPuzzleIndex == 2) //Edit
         {
             for(int i = 0; i < craftingMaterials.Length; i++)
                 craftingMaterials[i] = craftingMaterialsForAreaThree[i];
