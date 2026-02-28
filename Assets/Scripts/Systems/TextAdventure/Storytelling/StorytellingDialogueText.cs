@@ -10,6 +10,9 @@ public class StorytellingDialogueText : MonoBehaviour
     [SerializeField]
     private StorytellingDialogueData tutorialDialogue;
 
+    [SerializeField]
+    private float introductionDelay = 0.25f;
+
     [Header ("Main Dialogues")]
     [SerializeField]
     private StorytellingDialogueData startingGameDialogue;
@@ -63,7 +66,6 @@ public class StorytellingDialogueText : MonoBehaviour
     private const bool STARTING_THE_GAME = true; 
 
     private const float TYPING_SPEED = 0.015f;
-    private const float DELAY = 0.25f;
 
     void Start()
     {
@@ -72,7 +74,7 @@ public class StorytellingDialogueText : MonoBehaviour
         EventBus.Instance.Subscribe<AdvanceTextAdventure>(NextDialogue);
 
         ResetValues();
-        Invoke("StartIntroductoryDialogue", DELAY);
+        Invoke("StartIntroductoryDialogue", introductionDelay);
     }
 
     void OnEnable()

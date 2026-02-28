@@ -229,7 +229,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: f0d4982d18740ba449022a7ae9b42cf1, type: 2}
     - target: {fileID: 6535581254111900172, guid: 71af20f874715374e971a6cc410c9fb1, type: 3}
       propertyPath: m_Name
-      value: Storytelling UI
+      value: Storytelling UI NEW ART
       objectReference: {fileID: 0}
     - target: {fileID: 7851264716219384663, guid: 71af20f874715374e971a6cc410c9fb1, type: 3}
       propertyPath: m_fontSize
@@ -534,7 +534,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 704398145255631540, guid: a05088d322fe336458b0341c2bd424e6, type: 3}
       propertyPath: m_Name
-      value: Moon Fragment UI PopUp
+      value: Moon Fragment UI PopUp NEW ART
       objectReference: {fileID: 0}
     - target: {fileID: 3869627232186114036, guid: a05088d322fe336458b0341c2bd424e6, type: 3}
       propertyPath: m_Pivot.x
@@ -963,6 +963,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8547772433077516878, guid: ff1353f6463fa6741adce0be4501a709, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1802.0165
+      objectReference: {fileID: 0}
+    - target: {fileID: 8547772433077516878, guid: ff1353f6463fa6741adce0be4501a709, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 320.6082
+      objectReference: {fileID: 0}
+    - target: {fileID: 8547772433077516878, guid: ff1353f6463fa6741adce0be4501a709, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.564
+      objectReference: {fileID: 0}
+    - target: {fileID: 8547772433077516878, guid: ff1353f6463fa6741adce0be4501a709, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 32.056793
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -991,6 +1007,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2061546377}
     m_Modifications:
+    - target: {fileID: 3014532544979949401, guid: 784c055fe508fc34e84ffbf8c8bafcec, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 953.2678
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014532544979949401, guid: 784c055fe508fc34e84ffbf8c8bafcec, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 780.146
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014532544979949401, guid: 784c055fe508fc34e84ffbf8c8bafcec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.1547
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014532544979949401, guid: 784c055fe508fc34e84ffbf8c8bafcec, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 119.402466
+      objectReference: {fileID: 0}
+    - target: {fileID: 4429380627611909878, guid: 784c055fe508fc34e84ffbf8c8bafcec, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 145.4525
+      objectReference: {fileID: 0}
+    - target: {fileID: 4429380627611909878, guid: 784c055fe508fc34e84ffbf8c8bafcec, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 133.2496
+      objectReference: {fileID: 0}
+    - target: {fileID: 4429380627611909878, guid: 784c055fe508fc34e84ffbf8c8bafcec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 427.90918
+      objectReference: {fileID: 0}
+    - target: {fileID: 4429380627611909878, guid: 784c055fe508fc34e84ffbf8c8bafcec, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -13.4157715
+      objectReference: {fileID: 0}
     - target: {fileID: 6779398820114958799, guid: 784c055fe508fc34e84ffbf8c8bafcec, type: 3}
       propertyPath: m_Name
       value: Cluebook UI NEW ART
@@ -1478,6 +1526,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2609021416825841248, guid: deccbce9c09dccf4590e91a0d58eea88, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1802.0165
+      objectReference: {fileID: 0}
+    - target: {fileID: 2609021416825841248, guid: deccbce9c09dccf4590e91a0d58eea88, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 320.6082
+      objectReference: {fileID: 0}
+    - target: {fileID: 2609021416825841248, guid: deccbce9c09dccf4590e91a0d58eea88, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.564
+      objectReference: {fileID: 0}
+    - target: {fileID: 2609021416825841248, guid: deccbce9c09dccf4590e91a0d58eea88, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 32.056793
+      objectReference: {fileID: 0}
     - target: {fileID: 4623849327923943257, guid: deccbce9c09dccf4590e91a0d58eea88, type: 3}
       propertyPath: textAdventureUI
       value: 
@@ -1485,6 +1549,10 @@ PrefabInstance:
     - target: {fileID: 7205516822280749619, guid: deccbce9c09dccf4590e91a0d58eea88, type: 3}
       propertyPath: m_Name
       value: Moon Puzzle Warning UI  NEW ART
+      objectReference: {fileID: 0}
+    - target: {fileID: 7205516822280749619, guid: deccbce9c09dccf4590e91a0d58eea88, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2593,7 +2661,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5901374791069522612, guid: aedf2b7b8e3de1f4ebd0fb1c228a9401, type: 3}
       propertyPath: m_Name
-      value: TextAdventureUI
+      value: TextAdventureUI NEW ART
       objectReference: {fileID: 0}
     - target: {fileID: 7651080995915273695, guid: aedf2b7b8e3de1f4ebd0fb1c228a9401, type: 3}
       propertyPath: cluebookUI
@@ -3739,9 +3807,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2061546377}
     m_Modifications:
+    - target: {fileID: 2584059071178507021, guid: e336d44a2f2086e4e8ab6ba54aefb67c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584059071178507021, guid: e336d44a2f2086e4e8ab6ba54aefb67c, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584059071178507021, guid: e336d44a2f2086e4e8ab6ba54aefb67c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584059071178507021, guid: e336d44a2f2086e4e8ab6ba54aefb67c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6359731303731824301, guid: e336d44a2f2086e4e8ab6ba54aefb67c, type: 3}
       propertyPath: m_Name
       value: Crafting UI NEW ART
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359731303731824301, guid: e336d44a2f2086e4e8ab6ba54aefb67c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6511626448063009592, guid: e336d44a2f2086e4e8ab6ba54aefb67c, type: 3}
       propertyPath: m_Pivot.x
@@ -3821,6 +3909,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511626448063009592, guid: e336d44a2f2086e4e8ab6ba54aefb67c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839590855734224466, guid: e336d44a2f2086e4e8ab6ba54aefb67c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839590855734224466, guid: e336d44a2f2086e4e8ab6ba54aefb67c, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839590855734224466, guid: e336d44a2f2086e4e8ab6ba54aefb67c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839590855734224466, guid: e336d44a2f2086e4e8ab6ba54aefb67c, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8292463595728209977, guid: e336d44a2f2086e4e8ab6ba54aefb67c, type: 3}
@@ -5939,7 +6043,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2049854713798948336, guid: 6adbd18ea27271a4fa4ea5fb6f65ae22, type: 3}
       propertyPath: m_Name
-      value: Win Game UI
+      value: Win Game UI NEW ART
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6026,7 +6130,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3121334020881363237, guid: 682e7a2cd0ab06f4ebdcfacacf5ee12b, type: 3}
       propertyPath: m_Name
-      value: Lose Game UI
+      value: Lose Game UI NEW ART
       objectReference: {fileID: 0}
     - target: {fileID: 8057891040618992208, guid: 682e7a2cd0ab06f4ebdcfacacf5ee12b, type: 3}
       propertyPath: m_Pivot.x
@@ -6147,7 +6251,7 @@ PrefabInstance:
       objectReference: {fileID: 412527383}
     - target: {fileID: 3054842460301751112, guid: 9e43b5e1bcede7a46b67d09a950a4e63, type: 3}
       propertyPath: m_Name
-      value: 'Pause Menu UI '
+      value: Pause Menu UI NEW ART
       objectReference: {fileID: 0}
     - target: {fileID: 3054842460301751112, guid: 9e43b5e1bcede7a46b67d09a950a4e63, type: 3}
       propertyPath: m_IsActive

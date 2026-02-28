@@ -33,8 +33,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1699.3505, y: 859.7793}
+  m_AnchoredPosition: {x: -7.9203, y: 144.33899}
+  m_SizeDelta: {x: 1696.1825, y: 634.4631}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2485436534706926658
 GameObject:
@@ -95,14 +95,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.08627451, g: 0.08627451, b: 0.08627451, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 994640f55f10eec4f88a497ed9f74486, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -327,7 +327,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -379,6 +379,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   corriosonValues: {fileID: 11400000, guid: 0c43309b9484a2f4a880d0e8f0a92b86, type: 2}
   tutorialDialogue: {fileID: 0}
+  introductionDelay: 0.25
   startingGameDialogue: {fileID: 11400000, guid: f66bfd8430bda354393085c9b5e83651, type: 2}
   finishedGameDialogue: {fileID: 11400000, guid: a7b17b83e834a8e4e8aefcebaa52053f, type: 2}
   prayerPhaseDialogue: {fileID: 11400000, guid: 8eeeb97570e2b154f962542e09f34fb7, type: 2}
