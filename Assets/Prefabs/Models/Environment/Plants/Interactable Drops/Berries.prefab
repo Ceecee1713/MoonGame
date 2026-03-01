@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryItem:
-    SlotImageSprite: {fileID: 21300000, guid: 8ccf1596e8ff0964b96dbcfe26d1d944, type: 3}
+    SlotImageSprite: {fileID: 21300000, guid: 5983b31257610634ca6cf30de5fe581a, type: 3}
     ItemType: 10
     ItemObject: {fileID: 3299304838343083962, guid: 0185cec2179a77e468a09a852188af6e, type: 3}
     IsDroppedItem: 0

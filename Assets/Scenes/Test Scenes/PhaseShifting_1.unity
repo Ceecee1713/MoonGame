@@ -239,6 +239,10 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 7851264716219384663, guid: 71af20f874715374e971a6cc410c9fb1, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1042,6 +1046,10 @@ PrefabInstance:
     - target: {fileID: 6779398820114958799, guid: 784c055fe508fc34e84ffbf8c8bafcec, type: 3}
       propertyPath: m_Name
       value: Cluebook UI NEW ART
+      objectReference: {fileID: 0}
+    - target: {fileID: 6779398820114958799, guid: 784c055fe508fc34e84ffbf8c8bafcec, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8401658554136556009, guid: 784c055fe508fc34e84ffbf8c8bafcec, type: 3}
       propertyPath: textAdventureUI
@@ -3945,6 +3953,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2061546377}
     m_Modifications:
+    - target: {fileID: 2414230023602743226, guid: e336d44a2f2086e4e8ab6ba54aefb67c, type: 3}
+      propertyPath: m_text
+      value: Berries x3
+      objectReference: {fileID: 0}
     - target: {fileID: 2584059071178507021, guid: e336d44a2f2086e4e8ab6ba54aefb67c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3960,6 +3972,10 @@ PrefabInstance:
     - target: {fileID: 2584059071178507021, guid: e336d44a2f2086e4e8ab6ba54aefb67c, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189877253021321558, guid: e336d44a2f2086e4e8ab6ba54aefb67c, type: 3}
+      propertyPath: m_text
+      value: CHEST
       objectReference: {fileID: 0}
     - target: {fileID: 6359731303731824301, guid: e336d44a2f2086e4e8ab6ba54aefb67c, type: 3}
       propertyPath: m_Name
@@ -4065,10 +4081,50 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7095758862472468762, guid: e336d44a2f2086e4e8ab6ba54aefb67c, type: 3}
+      propertyPath: craftableInventoryItem.ItemType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7095758862472468762, guid: e336d44a2f2086e4e8ab6ba54aefb67c, type: 3}
+      propertyPath: craftableInventoryItem.Quantity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7095758862472468762, guid: e336d44a2f2086e4e8ab6ba54aefb67c, type: 3}
+      propertyPath: craftableInventoryItem.ItemObject
+      value: 
+      objectReference: {fileID: 673514031273012113, guid: f270e084a71d99a4dae744d542d83e4b, type: 3}
+    - target: {fileID: 7095758862472468762, guid: e336d44a2f2086e4e8ab6ba54aefb67c, type: 3}
+      propertyPath: craftableInventoryItem.SlotImageSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c9c79bb42b3de6d4b8bb22aa3145a1e7, type: 3}
+    - target: {fileID: 7095758862472468762, guid: e336d44a2f2086e4e8ab6ba54aefb67c, type: 3}
+      propertyPath: craftingMaterials.Array.data[0].ItemType
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7095758862472468762, guid: e336d44a2f2086e4e8ab6ba54aefb67c, type: 3}
+      propertyPath: craftingMaterials.Array.data[0].Quantity
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7095758862472468762, guid: e336d44a2f2086e4e8ab6ba54aefb67c, type: 3}
+      propertyPath: craftingMaterials.Array.data[0].ItemObject
+      value: 
+      objectReference: {fileID: 3299304838343083962, guid: 9baad26d85a43504ba5980da8e9f95c5, type: 3}
+    - target: {fileID: 7095758862472468762, guid: e336d44a2f2086e4e8ab6ba54aefb67c, type: 3}
+      propertyPath: craftingMaterials.Array.data[0].SlotImageSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5983b31257610634ca6cf30de5fe581a, type: 3}
+    - target: {fileID: 7095758862472468762, guid: e336d44a2f2086e4e8ab6ba54aefb67c, type: 3}
+      propertyPath: craftingMaterials.Array.data[0].IsThisAStackableItem
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8292463595728209977, guid: e336d44a2f2086e4e8ab6ba54aefb67c, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 600728365}
+    - target: {fileID: 9065375030949737773, guid: e336d44a2f2086e4e8ab6ba54aefb67c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c9c79bb42b3de6d4b8bb22aa3145a1e7, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

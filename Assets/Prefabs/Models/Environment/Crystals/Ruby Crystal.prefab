@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryItem:
-    SlotImageSprite: {fileID: 21300000, guid: bc8adcc148501bb4b842b2a513bedf8b, type: 3}
+    SlotImageSprite: {fileID: 21300000, guid: 3e30e058cbb8e1d439b3ca2d44608dfc, type: 3}
     ItemType: 4
     ItemObject: {fileID: 5694923412531648819, guid: c6440f7af85cf6549a78974deceb7f7a, type: 3}
     IsDroppedItem: 0

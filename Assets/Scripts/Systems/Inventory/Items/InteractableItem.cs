@@ -66,6 +66,9 @@ public class InteractableItem : MonoBehaviour
 
             _interactedWithOne = true;
 
+            _playerInCollision = false;
+            EventBus.Instance.Publish(new InCollision(_playerInCollision));
+
             if(makeGameObjectInactive == true && gameObjectToSetInactive != null)
                 gameObjectToSetInactive.SetActive(false);
 

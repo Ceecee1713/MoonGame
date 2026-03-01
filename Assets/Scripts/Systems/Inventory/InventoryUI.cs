@@ -11,9 +11,12 @@ public class InventoryUI : MonoBehaviour
     [SerializeField]
     private InventoryData inventoryData; 
 
+    [SerializeField]
     private ItemData _equipedInventoryItem;
 
+    [SerializeField]
     private InventoryUISlot _selectedInventoryUISlot;
+    [SerializeField]
     private InventoryUISlot _previousInventoryUISlot;
 
     private bool _playerIsInCollision = false;
@@ -412,6 +415,15 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
+    private int FindInventoryDataIndex(InventoryItemTypes itemType)
+    {
+        for(int i = 0; i < inventoryData.Inventory.Count; i++)
+            if(inventoryData.Inventory[i].ItemType == itemType)
+                return i;
+
+        return -1;
+    }
+
     private void CheckToUseInventoryItem(UseInventoryItem useInventoryItem)
     {
         if(_playerIsInCollision == true || _allowInput == false)
@@ -424,8 +436,10 @@ public class InventoryUI : MonoBehaviour
                 //Remove inventory item from inventory and its inventory slot and speed up player
                 if(inventorySlots[i] == _selectedInventoryUISlot && _selectedInventoryUISlot.InventoryItem != null)
                 {
-                    ItemData itemToRemove = inventorySlots[i].InventoryItem;
-                    inventoryData.Inventory.Remove(itemToRemove);
+                    int dataIndex = FindInventoryDataIndex(_selectedInventoryUISlot.InventoryItem.ItemType);
+                    if(dataIndex >= 0)
+                        inventoryData.Inventory.RemoveAt(dataIndex);
+
                     _selectedInventoryUISlot.RemoveItemFromSlot();
 
                     EventBus.Instance.Publish(new SpeedUpPlayer());
@@ -447,15 +461,14 @@ public class InventoryUI : MonoBehaviour
 
         for(int i = 0; i < inventorySlots.Length; i++)
         {
-            //Remove inventory item from inventory and its inventory slot and instiantiate item in world space
             if(inventorySlots[i] == _selectedInventoryUISlot && _selectedInventoryUISlot.InventoryItem != null)
             {
-                ItemData itemToRemove = inventorySlots[i].InventoryItem;
-                inventoryData.Inventory.Remove(itemToRemove);
-                inventorySlots[i].DropItem();
+                int dataIndex = FindInventoryDataIndex(_selectedInventoryUISlot.InventoryItem.ItemType);
+                if(dataIndex >= 0)
+                    inventoryData.Inventory.RemoveAt(dataIndex);
 
-                //Deselect inventory slot
-                _selectedInventoryUISlot.OutlineImage.SetActive(false); 
+                inventorySlots[i].DropItem();
+                _selectedInventoryUISlot.OutlineImage.SetActive(false);
                 _selectedInventoryUISlot = null;
                 _equipedInventoryItem = null;
                 break;
@@ -468,10 +481,12 @@ public class InventoryUI : MonoBehaviour
         for(int i = 0; i < inventorySlots.Length; i++)
         {
             //Remove inventory item from inventory and its inventory slot
-            if(inventorySlots[i] == removeItemFromSlot.InventorySlot)
+            if(inventorySlots[i] == _selectedInventoryUISlot && _selectedInventoryUISlot == removeItemFromSlot.InventorySlot)
             {   
-                ItemData itemToRemove = inventorySlots[i].InventoryItem;
-                inventoryData.Inventory.Remove(itemToRemove);
+                int dataIndex = FindInventoryDataIndex(_selectedInventoryUISlot.InventoryItem.ItemType);
+                if(dataIndex >= 0)
+                    inventoryData.Inventory.RemoveAt(dataIndex);
+
                 inventorySlots[i].RemoveItemFromSlot();
                 break;
             }

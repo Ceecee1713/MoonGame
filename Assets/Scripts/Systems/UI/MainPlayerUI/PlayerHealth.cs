@@ -25,6 +25,8 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
+        health.interactable = false;
+
         EventBus.Instance.Subscribe<AlterPlayerHealth>(ChangeHealthValue);
         EventBus.Instance.Subscribe<MaintainPlayerHealth>(ApplyCorrioson);
         EventBus.Instance.Subscribe<NewExplorationPhase>(StartNewExplorationPhase);

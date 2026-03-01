@@ -146,14 +146,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryItem:
-    SlotImageSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    SlotImageSprite: {fileID: 21300000, guid: 32d992c2f4f2c3a498c012ffc4677abb, type: 3}
     ItemType: 2
     ItemObject: {fileID: 4191454463967650570, guid: d5faa77b51ce2f245a12ed78cd01e80d, type: 3}
+    IsDroppedItem: 0
     Quantity: 1
     IsThisAStackableItem: 1
   gameObjectToSetInactive: {fileID: 5494042238877189202}
   makeGameObjectInactive: 1
-  deleteAfterInteraction: 0
+  DeleteAfterInteraction: 0
 --- !u!1 &3461553780863731315
 GameObject:
   m_ObjectHideFlags: 0
