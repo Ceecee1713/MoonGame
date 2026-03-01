@@ -1,25 +1,26 @@
-Playpen Sans Variable Font
-==========================
+Roboto Slab Variable Font
+=========================
 
-This download contains Playpen Sans as both a variable font and static fonts.
+This download contains Roboto Slab as both a variable font and static fonts.
 
-Playpen Sans is a variable font with this axis:
+Roboto Slab is a variable font with this axis:
   wght
 
 This means all the styles are contained in a single file:
-  Playpen_Sans/PlaypenSans-VariableFont_wght.ttf
+  RobotoSlab-VariableFont_wght.ttf
 
 If your app fully supports variable fonts, you can now pick intermediate styles
 that aren’t available as static fonts. Not all apps support variable fonts, and
-in those cases you can use the static font files for Playpen Sans:
-  Playpen_Sans/static/PlaypenSans-Thin.ttf
-  Playpen_Sans/static/PlaypenSans-ExtraLight.ttf
-  Playpen_Sans/static/PlaypenSans-Light.ttf
-  Playpen_Sans/static/PlaypenSans-Regular.ttf
-  Playpen_Sans/static/PlaypenSans-Medium.ttf
-  Playpen_Sans/static/PlaypenSans-SemiBold.ttf
-  Playpen_Sans/static/PlaypenSans-Bold.ttf
-  Playpen_Sans/static/PlaypenSans-ExtraBold.ttf
+in those cases you can use the static font files for Roboto Slab:
+  static/RobotoSlab-Thin.ttf
+  static/RobotoSlab-ExtraLight.ttf
+  static/RobotoSlab-Light.ttf
+  static/RobotoSlab-Regular.ttf
+  static/RobotoSlab-Medium.ttf
+  static/RobotoSlab-SemiBold.ttf
+  static/RobotoSlab-Bold.ttf
+  static/RobotoSlab-ExtraBold.ttf
+  static/RobotoSlab-Black.ttf
 
 Get started
 -----------
@@ -60,7 +61,7 @@ Android Apps
 
 License
 -------
-Please read the full license text (OFL.txt) to understand the permissions,
+Please read the full license text (LICENSE.txt) to understand the permissions,
 restrictions and requirements for usage, redistribution, and modification.
 
 You can use them in your products & projects – print or digital,

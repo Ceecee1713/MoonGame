@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4f668d744ef161f488db823fc657a5d9
+guid: b5b7907489939a0499faa34ca36f4390
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Playpen Sans
+  - Roboto Slab
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

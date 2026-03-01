@@ -6322,9 +6322,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2061546377}
     m_Modifications:
+    - target: {fileID: 1984364686881581222, guid: 682e7a2cd0ab06f4ebdcfacacf5ee12b, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3121334020881363237, guid: 682e7a2cd0ab06f4ebdcfacacf5ee12b, type: 3}
       propertyPath: m_Name
       value: Lose Game UI NEW ART
+      objectReference: {fileID: 0}
+    - target: {fileID: 7390554718471445257, guid: 682e7a2cd0ab06f4ebdcfacacf5ee12b, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8057891040618992208, guid: 682e7a2cd0ab06f4ebdcfacacf5ee12b, type: 3}
       propertyPath: m_Pivot.x

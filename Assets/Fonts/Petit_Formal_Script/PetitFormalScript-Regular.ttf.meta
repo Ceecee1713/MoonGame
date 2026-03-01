@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5849343170f96094a9aa05314db726a0
+guid: 46ee2a8405a0e084898427965479bfd2
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Playpen Sans
+  - Petit Formal Script
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
