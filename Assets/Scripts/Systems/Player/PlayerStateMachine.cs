@@ -14,19 +14,19 @@ public class PlayerStateMachine : BaseStateMachine
     [SerializeField]
     private float walkingSpeed = 3.0f;
     [SerializeField]
-    private float _defaultDurationOfSpeedChanging = 4.0f; //Time window in order to change speed 
+    private float timeDurationOfSpeedChangingForWalking = 4.0f; //Time duration to change player's speed in "x" amount of seconds, when player's walking
     [SerializeField]
-    private float _defaultSpeedOfMovementChanging = 3.0f; //How fast to change speed
+    private float timeMultiplierForWalking = 3.0f; //How fast to change speed when player's walking
 
     [Header("Speed Up Values")] 
     [SerializeField]
     private float potionSpeed = 7.0f;
     [SerializeField]
-    private float _itemDurationOfSpeedChanging = 4.0f; //Time window in order to change speed for when a speed boost potion is used
+    private float itemTimeDurationOfSpeedChanging = 4.0f; //Time duration to change player's speed in "x" amount of seconds, when player used speed potion 
     [SerializeField]
-    private float _itemSpeedOfMovementChanging = 3.0f; //How fast to change speed for when a speed boost potion is used
-    public float _maxLengthOfTimeForSpeedUp = 7.0f;
-    public float _currentTimeLengthForSpeedUp;
+    private float itemTimeMultiplier = 3.0f; //How fast to change speed when a speed boost potion is used
+    public float MaxLengthOfTimeForSpeedUp = 7.0f;
+    public float CurrentTimeLengthForSpeedUp; //Displaying the time duration for however long the player is sped up, counting down to 0f
 
     [HideInInspector]
     public CharacterController _characterController;
@@ -44,8 +44,8 @@ public class PlayerStateMachine : BaseStateMachine
     private Vector2 _playerMovement; //Grab raw movement inputs
 
     private float maximumSpeed;
-    private float _durationOfSpeedChanging; //Time window in order to change speed 
-    private float _speedOfMovementChanging; //How fast to change speed
+    private float _timeDurationOfSpeedChanging; //Time duration to change player's speed in "x" amount of seconds
+    private float _timeMultiplierForMovementChanging; //How fast to change speed from 0f to "maximumSpeed"
 
     private bool _speedUpPlayer = false;
     private bool _hasPlayerTakenSpeedPotion = false;
@@ -63,20 +63,16 @@ public class PlayerStateMachine : BaseStateMachine
 
     void Awake()
     {
-        //Disabling mouse cursor and locking it in one place
-        //Cursor.visible = false;
-        //Cursor.lockState = CursorLockMode.Locked;
-
         //Instantiating all specific state scripts
         IdleState = new PlayerIdleState(this);
         WanderState = new PlayerWanderState(this);
         PausedState = new PlayerPauseState(this);
 
-        //Setting Speed Values
+        //Setting Speed Values for walking speed
         MovementSpeed = 0.0f;
         maximumSpeed = walkingSpeed;
-        _durationOfSpeedChanging = _defaultDurationOfSpeedChanging;
-        _speedOfMovementChanging = _defaultSpeedOfMovementChanging;
+        _timeDurationOfSpeedChanging = timeDurationOfSpeedChangingForWalking;
+        _timeMultiplierForMovementChanging = timeMultiplierForWalking;
 
         _moonStatuePosition = new Vector3 (this.gameObject.transform.position.x, this.gameObject.transform.position.y, this.gameObject.transform.position.z);
 
@@ -120,7 +116,7 @@ public class PlayerStateMachine : BaseStateMachine
 
     public override void Update()
     {
-        Mathf.Clamp(_currentTimeLengthForSpeedUp, 0.0f, _maxLengthOfTimeForSpeedUp);
+        Mathf.Clamp(CurrentTimeLengthForSpeedUp, 0.0f, MaxLengthOfTimeForSpeedUp);
 
         CheckToSpeedUpPlayer();
 
@@ -133,17 +129,15 @@ public class PlayerStateMachine : BaseStateMachine
 
     private void CheckToSpeedUpPlayer()
     {
-        if(_speedUpPlayer == true && _hasPlayerTakenSpeedPotion == false && _currentTimeLengthForSpeedUp == 0.0f) 
+        if(_speedUpPlayer == true && _hasPlayerTakenSpeedPotion == false && CurrentTimeLengthForSpeedUp == 0.0f) 
         {
-            _currentTimeLengthForSpeedUp = _maxLengthOfTimeForSpeedUp;
+            CurrentTimeLengthForSpeedUp = MaxLengthOfTimeForSpeedUp;
+            _hasPlayerTakenSpeedPotion = true;
 
             //Changing values for speed up coroutine
-            _durationOfSpeedChanging = _itemDurationOfSpeedChanging;
-            _speedOfMovementChanging = _itemSpeedOfMovementChanging;
+            _timeDurationOfSpeedChanging = itemTimeDurationOfSpeedChanging;
+            _timeMultiplierForMovementChanging = itemTimeMultiplier;
             maximumSpeed = potionSpeed;
-
-            _speedUpPlayer = false;
-            _hasPlayerTakenSpeedPotion = true;
 
             if(currentState == WanderState)
                 StartSpeedChange();
@@ -152,16 +146,17 @@ public class PlayerStateMachine : BaseStateMachine
 
     public void SpeedUpPlayer()
     {
-        if (_hasPlayerTakenSpeedPotion == true && _currentTimeLengthForSpeedUp > 0)
-            _currentTimeLengthForSpeedUp -= Time.deltaTime;
+        if (_hasPlayerTakenSpeedPotion == true && CurrentTimeLengthForSpeedUp > 0)
+            CurrentTimeLengthForSpeedUp -= Time.deltaTime;
 
         else 
         {
-            //Reset to default values
-            _currentTimeLengthForSpeedUp = 0.0f;
+            //Reset to default values (walking speed)
+            CurrentTimeLengthForSpeedUp = 0.0f;
+            _speedUpPlayer = false;
             _hasPlayerTakenSpeedPotion = false;
-            _durationOfSpeedChanging = _defaultDurationOfSpeedChanging;
-            _speedOfMovementChanging = _defaultSpeedOfMovementChanging;
+            _timeDurationOfSpeedChanging = timeDurationOfSpeedChangingForWalking;
+            _timeMultiplierForMovementChanging = timeMultiplierForWalking;
             maximumSpeed = walkingSpeed;
 
             if(currentState == WanderState)
@@ -196,12 +191,12 @@ public class PlayerStateMachine : BaseStateMachine
     {
         float elapsedTime = 0;
 
-        while(elapsedTime < _durationOfSpeedChanging)
+        while(elapsedTime < _timeDurationOfSpeedChanging)
         {
-            float timer = elapsedTime * _durationOfSpeedChanging;
+            float timer = elapsedTime * _timeDurationOfSpeedChanging;
 
-            //Using Mathf.Towards here to reach the exact value of targetSpeed as lerp doesn't get the exact value
-            MovementSpeed = Mathf.MoveTowards(MovementSpeed, targetSpeed, _speedOfMovementChanging  * elapsedTime); //Smoothly changing value of "MovementSpeed" to targetSpeed
+            //Using Mathf.Towards to get exact value of targetSpeed as lerp doesn't get the exact value
+            MovementSpeed = Mathf.MoveTowards(MovementSpeed, targetSpeed, _timeMultiplierForMovementChanging  * elapsedTime); //Smoothly change value of "MovementSpeed" to targetSpeed
             elapsedTime += Time.deltaTime;
 
             yield return null;

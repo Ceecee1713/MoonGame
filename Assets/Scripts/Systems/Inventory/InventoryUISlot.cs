@@ -26,14 +26,14 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
         EventBus.Instance.Subscribe<ChestIsOpen>(ChangeInput);
         EventBus.Instance.Subscribe<ActivatePlayerInputs>(AllowPlayerInput);
     }
-
-    public void AddItemToSlot(ItemData newInventoryItem) //Add inventory slot UI visual data (EDITTTT)
+    
+    public void AddItemToSlot(ItemData newInventoryItem) 
     {
         IsEmpty = false;
         InventoryItem = newInventoryItem.Clone();
 
-        inventorySlotVisuals.SlotImageObject.SetActive(true);
-        inventorySlotVisuals.SlotImage.sprite = InventoryItem.SlotImageSprite;
+        inventorySlotVisuals.ItemImageObject.SetActive(true);
+        inventorySlotVisuals.ItemImage.sprite = InventoryItem.SlotImageSprite;
         inventorySlotVisuals.TypeOfItem = InventoryItem.ItemType;
         inventorySlotVisuals.ItemQuantityText.text = "X " + InventoryItem.Quantity;
     }
@@ -43,20 +43,20 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
         inventorySlotVisuals.ItemQuantityText.text = "X " + newItemQuantity;
     }
 
-    public void RemoveItemFromSlot() //Add inventory slot UI visual data (EDITTTT)
+    public void RemoveItemFromSlot() 
     {
         IsEmpty = true;
         InventoryItem = null;
 
-        inventorySlotVisuals.SlotImage.sprite = null;
+        inventorySlotVisuals.ItemImage.sprite = null;
         inventorySlotVisuals.TypeOfItem = InventoryItemTypes.None;
         inventorySlotVisuals.ItemQuantityText.text = " ";
-        inventorySlotVisuals.SlotImageObject.SetActive(false);
+        inventorySlotVisuals.ItemImageObject.SetActive(false);
     }
 
     public void DropItem()
     {
-        if(InventoryItem.ItemObject != null)
+        if(InventoryItem != null && InventoryItem.ItemObject != null)
         {
             EventBus.Instance.Publish(new SpawnDroppedInventoryItem(InventoryItem));
             RemoveItemFromSlot();
@@ -81,11 +81,11 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
         if(_isAChestOpen == false)
             EventBus.Instance.Publish(new SelectInventoryItem(InventoryItem, this));
 
-        else
+        if(InventoryItem != null && _isAChestOpen == true)
         {
             ItemData clonedInventoryItem = InventoryItem.Clone();
             EventBus.Instance.Publish(new CheckToAddItemToChest(clonedInventoryItem));
-            EventBus.Instance.Publish(new RemoveItemFromSlot(this)); //Removing this slot's inventory item from inventory (in InventoryUI)
+            EventBus.Instance.Publish(new RemoveItemFromSlot(this)); //Removing this slot's inventory item (in InventoryUI)
         }
     }
 }

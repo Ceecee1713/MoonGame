@@ -53,8 +53,8 @@ public class ItemData
 [Serializable]
 public struct InventorySlot
 {
-    public Image SlotImage;
-    public GameObject SlotImageObject;
+    public Image ItemImage;
+    public GameObject ItemImageObject;
     public InventoryItemTypes TypeOfItem; 
     public TextMeshProUGUI ItemQuantityText; 
 }

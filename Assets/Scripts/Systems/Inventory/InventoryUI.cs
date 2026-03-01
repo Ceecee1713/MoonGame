@@ -58,15 +58,6 @@ public class InventoryUI : MonoBehaviour
     {
         if(_selectedInventoryUISlot != null) 
             _equipedInventoryItem = _selectedInventoryUISlot.InventoryItem;
-
-        if (Input.GetKeyDown(KeyCode.Space) && inventoryData.Inventory.Count >= 1) //Testing
-        {
-            Debug.Log(inventoryData.Inventory[0].Quantity + " " + inventoryData.Inventory[0].ItemType);
-
-            if(inventoryData.Inventory.Count >= 2)
-                Debug.Log(inventoryData.Inventory[1].Quantity + " " + inventoryData.Inventory[1].ItemType);
-        }
-            
     }
 
     private void CheckIfPlayerIsInACollision(InCollision inCollision)
@@ -411,10 +402,9 @@ public class InventoryUI : MonoBehaviour
                     _previousInventoryUISlot = _selectedInventoryUISlot;
                     _previousInventoryUISlot.OutlineImage.SetActive(false);
                 }
-
-                _selectedInventoryUISlot = selectInventoryItem.InventoryUISlot; 
                 
-                //Enable visuals of selected inventory slot
+                //Enable visuals of new selected inventory slot
+                _selectedInventoryUISlot = selectInventoryItem.InventoryUISlot; 
                 _selectedInventoryUISlot.OutlineImage.SetActive(true); 
                 _equipedInventoryItem = selectInventoryItem.InventoryUISlot.InventoryItem;
                 break;
@@ -431,11 +421,13 @@ public class InventoryUI : MonoBehaviour
         {
             for(int i = 0; i < inventorySlots.Length; i++)
             {
-                //If selected UI slot is within the "inventorySlots" array
-                if(inventorySlots[i] == _selectedInventoryUISlot)
+                //Remove inventory item from inventory and its inventory slot and speed up player
+                if(inventorySlots[i] == _selectedInventoryUISlot && _selectedInventoryUISlot.InventoryItem != null)
                 {
-                    inventoryData.Inventory.RemoveAt(i); //Before was Remove(inventorySlot item)
+                    ItemData itemToRemove = inventorySlots[i].InventoryItem;
+                    inventoryData.Inventory.Remove(itemToRemove);
                     _selectedInventoryUISlot.RemoveItemFromSlot();
+
                     EventBus.Instance.Publish(new SpeedUpPlayer());
 
                     //Deselect inventory slot
@@ -450,15 +442,16 @@ public class InventoryUI : MonoBehaviour
 
     private void DropEquipedInventoryItem(DropEquipedInventoryItem dropEquipedInventoryItem)
     {
-        if(_allowInput == false)
+        if(_playerIsInCollision || _allowInput == false)
             return;
 
         for(int i = 0; i < inventorySlots.Length; i++)
         {
-            if(inventorySlots[i] == _selectedInventoryUISlot)
+            //Remove inventory item from inventory and its inventory slot and instiantiate item in world space
+            if(inventorySlots[i] == _selectedInventoryUISlot && _selectedInventoryUISlot.InventoryItem != null)
             {
-                //Remove inventory item from inventory, its inventory slot and instiantiate item in world space
-                inventoryData.Inventory.RemoveAt(i); //Before was Remove(inventorySlot item)
+                ItemData itemToRemove = inventorySlots[i].InventoryItem;
+                inventoryData.Inventory.Remove(itemToRemove);
                 inventorySlots[i].DropItem();
 
                 //Deselect inventory slot
@@ -470,20 +463,16 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    private void RemoveItemFromInventory(RemoveItemFromSlot removeItemFromSlot)
+    private void RemoveItemFromInventory(RemoveItemFromSlot removeItemFromSlot) //Called by InventoryUISlot to remove its item when item moves into a chest
     {
         for(int i = 0; i < inventorySlots.Length; i++)
         {
+            //Remove inventory item from inventory and its inventory slot
             if(inventorySlots[i] == removeItemFromSlot.InventorySlot)
-            {
-                //Remove inventory item from inventory, its inventory slot and instiantiate item in world space
-                inventoryData.Inventory.RemoveAt(i); //Before was Remove(inventorySlot item)
+            {   
+                ItemData itemToRemove = inventorySlots[i].InventoryItem;
+                inventoryData.Inventory.Remove(itemToRemove);
                 inventorySlots[i].RemoveItemFromSlot();
-
-                //Deselect inventory slot
-                //_selectedInventoryUISlot.OutlineImage.SetActive(false); 
-                //_selectedInventoryUISlot = null;
-                //_equipedInventoryItem = null;
                 break;
             }
         }

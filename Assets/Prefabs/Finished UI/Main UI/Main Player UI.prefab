@@ -60,8 +60,8 @@ MonoBehaviour:
     Quantity: 0
     IsThisAStackableItem: 0
   inventorySlotVisuals:
-    SlotImage: {fileID: 2098839535908472615}
-    SlotImageObject: {fileID: 3762691044796040541}
+    ItemImage: {fileID: 2098839535908472615}
+    ItemImageObject: {fileID: 3762691044796040541}
     TypeOfItem: 0
     ItemQuantityText: {fileID: 6125278801679055861}
   OutlineImage: {fileID: 8026439269630509734}
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0.121568635, g: 0.098039225, b: 0.14901961, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -459,7 +459,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0.121568635, g: 0.098039225, b: 0.14901961, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2195,7 +2195,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0.121568635, g: 0.098039225, b: 0.14901961, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2392,8 +2392,8 @@ MonoBehaviour:
     Quantity: 0
     IsThisAStackableItem: 0
   inventorySlotVisuals:
-    SlotImage: {fileID: 5330072610631388833}
-    SlotImageObject: {fileID: 6229604936734104864}
+    ItemImage: {fileID: 5330072610631388833}
+    ItemImageObject: {fileID: 6229604936734104864}
     TypeOfItem: 0
     ItemQuantityText: {fileID: 4459396480983836214}
   OutlineImage: {fileID: 4642981428773837671}
@@ -2473,7 +2473,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0.121568635, g: 0.098039225, b: 0.14901961, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2820,8 +2820,8 @@ MonoBehaviour:
     Quantity: 0
     IsThisAStackableItem: 0
   inventorySlotVisuals:
-    SlotImage: {fileID: 4765133300010672177}
-    SlotImageObject: {fileID: 2012767563524296906}
+    ItemImage: {fileID: 4765133300010672177}
+    ItemImageObject: {fileID: 2012767563524296906}
     TypeOfItem: 0
     ItemQuantityText: {fileID: 7647616555731722909}
   OutlineImage: {fileID: 1277719553503212762}
@@ -2901,7 +2901,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0.121568635, g: 0.098039225, b: 0.14901961, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3188,7 +3188,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0.121568635, g: 0.098039225, b: 0.14901961, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3325,7 +3325,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0.121568635, g: 0.098039225, b: 0.14901961, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3822,8 +3822,8 @@ MonoBehaviour:
     Quantity: 0
     IsThisAStackableItem: 0
   inventorySlotVisuals:
-    SlotImage: {fileID: 4509127314219602589}
-    SlotImageObject: {fileID: 1327536324350105838}
+    ItemImage: {fileID: 4509127314219602589}
+    ItemImageObject: {fileID: 1327536324350105838}
     TypeOfItem: 0
     ItemQuantityText: {fileID: 787271551298719887}
   OutlineImage: {fileID: 1451844202641848907}
@@ -4380,8 +4380,8 @@ MonoBehaviour:
     Quantity: 0
     IsThisAStackableItem: 0
   inventorySlotVisuals:
-    SlotImage: {fileID: 1861480294336615056}
-    SlotImageObject: {fileID: 1957258190106004402}
+    ItemImage: {fileID: 1861480294336615056}
+    ItemImageObject: {fileID: 1957258190106004402}
     TypeOfItem: 0
     ItemQuantityText: {fileID: 7749221529841016219}
   OutlineImage: {fileID: 3189041024101416358}
@@ -4708,8 +4708,8 @@ MonoBehaviour:
     Quantity: 0
     IsThisAStackableItem: 0
   inventorySlotVisuals:
-    SlotImage: {fileID: 2878775508399661109}
-    SlotImageObject: {fileID: 5291840063743437839}
+    ItemImage: {fileID: 2878775508399661109}
+    ItemImageObject: {fileID: 5291840063743437839}
     TypeOfItem: 0
     ItemQuantityText: {fileID: 1670465674886807455}
   OutlineImage: {fileID: 1363645558246310593}
@@ -4789,7 +4789,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0.121568635, g: 0.098039225, b: 0.14901961, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5205,8 +5205,8 @@ MonoBehaviour:
     Quantity: 0
     IsThisAStackableItem: 0
   inventorySlotVisuals:
-    SlotImage: {fileID: 2973533322595440776}
-    SlotImageObject: {fileID: 976664852296378151}
+    ItemImage: {fileID: 2973533322595440776}
+    ItemImageObject: {fileID: 976664852296378151}
     TypeOfItem: 0
     ItemQuantityText: {fileID: 5722442489373277059}
   OutlineImage: {fileID: 6668043486309422497}
@@ -5497,8 +5497,8 @@ MonoBehaviour:
     Quantity: 0
     IsThisAStackableItem: 0
   inventorySlotVisuals:
-    SlotImage: {fileID: 5125905230703878937}
-    SlotImageObject: {fileID: 7371531618348501779}
+    ItemImage: {fileID: 5125905230703878937}
+    ItemImageObject: {fileID: 7371531618348501779}
     TypeOfItem: 0
     ItemQuantityText: {fileID: 4859768205896179462}
   OutlineImage: {fileID: 1814666832936516087}
