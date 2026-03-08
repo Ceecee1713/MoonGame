@@ -6,17 +6,25 @@ public class StreetLamps : MonoBehaviour
     private GameManager gameManager;
 
     [SerializeField]
-    private GameObject lights;
+    private Light light;
 
     [SerializeField]
     [Range(1, 2)]
     private int areaNumber;
 
+    private float startingIntensity;
+
+    void Start()
+    {
+        startingIntensity = light.intensity;
+        light.intensity = 0f;
+    }
+
     void Update()
     {
         if(gameManager.areaChangesCount == areaNumber)
         {
-            lights.SetActive(true);
+            light.intensity = startingIntensity;
             enabled = false; 
         }  
     }

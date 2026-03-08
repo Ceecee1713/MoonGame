@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Three
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fb64976cf747bc847af40642a033d224, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

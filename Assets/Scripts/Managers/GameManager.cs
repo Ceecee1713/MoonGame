@@ -32,6 +32,9 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         Mathf.Clamp(areaChangesCount, 0, MAX_NUMBER_OF_AREA_CHANGES);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+            areaChangesCount++;
     }
 
     //Changes materials for deciphering clues in the crafting table UI
