@@ -125,6 +125,8 @@ public class PlayerStateMachine : BaseStateMachine
 
         if(_hasPlayerTakenSpeedPotion == true)
             SpeedUpPlayer();
+
+        base.Update();
     }
 
     private void CheckToSpeedUpPlayer()

@@ -12,7 +12,7 @@ public class PlayerWanderState : PlayerState
 
     }
 
-    public override void FixedUpdate()
+    public override void Update()
     {
         //StateMachine._playerDirection = new Vector3(StateMachine._playerMovement.x, 0f, StateMachine._playerMovement.y).normalized;
 

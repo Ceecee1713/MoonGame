@@ -611,7 +611,7 @@ MonoBehaviour:
   - {fileID: 3589470802588919721}
   - {fileID: 253788468115033241}
   - {fileID: 1286916581378711461}
-  litUpMoonMaterial: {fileID: 2100000, guid: 4a13b392d5c155e4e924674f4c260303, type: 2}
+  litUpMoonMaterial: {fileID: 2100000, guid: 25f6adfc9d489ec458b0f584322af6fd, type: 2}
   darkMoonMaterial: {fileID: 2100000, guid: f20d90e629dd8d544acf91a0d575692c, type: 2}
 --- !u!4 &2945320635670146213 stripped
 Transform:
