@@ -257,6 +257,11 @@ public class ResetExplorationTimer : IEvent
 }
 
 
+public class StartBeginnerTutorial : IEvent
+{
+}
+
+
 public class PauseExplorationTimer : IEvent
 {
     public bool AllowCountdown;

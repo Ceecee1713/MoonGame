@@ -48,7 +48,7 @@ public class MoonPuzzleDialogueText : MonoBehaviour
     private int _messageLength;
     private int _index = 0; //Index to go through the dialogue message array (individual messages) from "_currentQuestionDialogue" 
     private int _textBranchIndex = -1;
-    private int _currentLineCount = 0;
+    private int _currentLineCount = 0; //For typing out dialogue to mimick paragraph look, dependent on "MAX_LINES"
     private int _completedMoonPuzzlesCounter = 0;
 
     private bool _fadeOutCanvas = false;
@@ -64,7 +64,7 @@ public class MoonPuzzleDialogueText : MonoBehaviour
 
     private const int TOTAL_NUMBER_OF_MOON_PUZZLES = 3;
     private const int MAX_COUNTER_AMOUNT_FOR_WRONG_BUTTON_CHOICES = 2;
-    private const int MAX_LINES = 3; 
+    private const int MAX_LINES = 3; //For typing out dialogue to mimick paragraph look
 
     private const float TIME_TO_WAIT_FOR_FADING_CANVASES = 1.5f;
     private const float TYPING_SPEED = 0.015f;

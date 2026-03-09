@@ -1,9 +1,11 @@
 using UnityEngine;
-
-//Change the material text and crafting materials for each new area that has been unlocked
+using TMPro;
 
 public class DecipherClueButton : MonoBehaviour
 {
+    [SerializeField]
+    private TextMeshProUGUI materialDescriptionText;
+
     [Header ("Script References")]
     [SerializeField]
     private GameManager gameManager;
@@ -13,14 +15,23 @@ public class DecipherClueButton : MonoBehaviour
     [Header ("Materials")]
     [SerializeField]
     private ItemData [] craftingMaterials = new ItemData[2];
+
+    //All material arrays MUST be the same length as "craftingMaterials"
     [SerializeField]
     private ItemData [] craftingMaterialsForAreaTwo = new ItemData[2];
     [SerializeField]
     private ItemData [] craftingMaterialsForAreaThree = new ItemData[2];
 
+    private string [] _craftingMaterialsNames = new string[2];
+
     private bool _craftingAClue = false;
 
     private int newMoonPuzzleIndex;
+
+    void Start()
+    {
+        UpdateMaterialDescriptionText(); 
+    }
 
     void OnEnable()
     {
@@ -37,16 +48,23 @@ public class DecipherClueButton : MonoBehaviour
         if(newMoonPuzzleIndex == 0)
             return;
 
-        if(newMoonPuzzleIndex == 1) //Edit
+        if(newMoonPuzzleIndex == 1) 
         {
-            for(int i = 0; i < craftingMaterials.Length; i++)
+            //Changing the crafting materials
+            for(int i = 0; i < craftingMaterials.Length; i++) 
                 craftingMaterials[i] = craftingMaterialsForAreaTwo[i];
+
+            UpdateMaterialDescriptionText();
+            return;
         }
 
-        if(newMoonPuzzleIndex == 2) //Edit
+        if(newMoonPuzzleIndex == 2) 
         {
-            for(int i = 0; i < craftingMaterials.Length; i++)
+            //Changing the crafting materials
+            for(int i = 0; i < craftingMaterials.Length; i++) 
                 craftingMaterials[i] = craftingMaterialsForAreaThree[i];
+
+            UpdateMaterialDescriptionText();
         }
     }
 
@@ -59,5 +77,17 @@ public class DecipherClueButton : MonoBehaviour
 
         for(int i = 0; i < craftingMaterials.Length; i++)
             craftManager.CheckInventoryForCraftingMaterials(craftingMaterials[i], craftingMaterials.Length, _craftingAClue);
+    }
+
+    private void UpdateMaterialDescriptionText()
+    {
+        for(int i = 0; i < craftingMaterials.Length; i++)
+        {
+            string craftingMaterialName = craftingMaterials[i].ItemType.ToDisplayName(); //Method extension to InventoryItemTypes Enums
+            string craftinMaterialQuantity = craftingMaterials[i].Quantity.ToString();
+            _craftingMaterialsNames[i] = craftingMaterialName + " x" + craftinMaterialQuantity;
+        }
+            
+        materialDescriptionText.text = string.Join("\n", _craftingMaterialsNames);
     }
 }

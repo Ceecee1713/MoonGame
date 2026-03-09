@@ -16,8 +16,8 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
     public GameObject OutlineImage; 
     public bool IsEmpty;
 
-    private bool _isAChestOpen = false;
     private bool _allowInput = true;
+    private bool _isAChestOpen = false;
 
     void Start()
     {
@@ -80,8 +80,7 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
         if(_allowInput == false)
             return;
 
-        if(_isAChestOpen == false)
-            EventBus.Instance.Publish(new SelectInventoryItem(InventoryItem, this));
+        EventBus.Instance.Publish(new SelectInventoryItem(InventoryItem, this));
 
         if(InventoryItem != null && _isAChestOpen == true)
         {

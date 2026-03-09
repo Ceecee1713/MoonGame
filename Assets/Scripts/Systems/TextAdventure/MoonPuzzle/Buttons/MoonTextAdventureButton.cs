@@ -21,6 +21,7 @@ public class MoonTextAdventureButton : MonoBehaviour
 
     private bool _allowPlayerToInteract = false;
     private bool _concludeMoonPuzzle;
+    
     private int _branchIndex;
 
     void Awake()

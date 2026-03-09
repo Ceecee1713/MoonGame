@@ -30,6 +30,11 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler
         inventorySlotVisuals.ItemQuantityText.text = "X " + InventoryItem.Quantity;
     }
 
+    public void UpdateItemTextQuantity(int newItemQuantity) 
+    {
+        inventorySlotVisuals.ItemQuantityText.text = "X " + newItemQuantity;
+    }
+
     public void RemoveItemFromSlot() 
     {
         IsEmpty = true;

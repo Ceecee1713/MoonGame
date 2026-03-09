@@ -2,15 +2,10 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 
-//Look at NextDialogue method
-
 public class StorytellingDialogueText : MonoBehaviour
 {
     [SerializeField]
     private CorriosonValues corriosonValues;
-
-    [SerializeField]
-    private StorytellingDialogueData tutorialDialogue;
 
     [SerializeField]
     private float introductionDelay = 0.25f;
@@ -33,8 +28,6 @@ public class StorytellingDialogueText : MonoBehaviour
 
     [Header ("UI Information")]
     [SerializeField]
-    private GameObject dialogueCanvas;
-    [SerializeField]
     private GameObject mainPlayerUI;
     [SerializeField]
     private GameObject winGameUI;
@@ -48,7 +41,7 @@ public class StorytellingDialogueText : MonoBehaviour
     private int _randomPrayerNumber = 0;
     private int _messageLength;
     private int _index = 0; //Index to go through the dialogue message array (individual messages) from "_currentDialogue" 
-    private int _currentLineCount = 0;
+    private int _currentLineCount = 0; //For typing out dialogue to mimick paragraph look, dependent on "MAX_LINES"
 
     private bool _finishedTypingMessage = false; //Prevent or allow going through individual messages when they're not fully typed out
     private bool _stopProgressingThroughDialogue = false;
@@ -61,11 +54,12 @@ public class StorytellingDialogueText : MonoBehaviour
     private const int FIRST_MOON_PUZZLE_AREA_NUMBER = 1;
     private const int SECOND_MOON_PUZZLE_AREA_NUMBER = 2;
     private const int THIRD_MOON_PUZZLE_AREA_NUMBER = 3;
-    private const int MAX_LINES = 3; 
+    private const int MAX_LINES = 3; //For typing out dialogue to mimick paragraph look
+
+    private const bool STARTING_THE_GAME = true; 
 
     private const bool START_MOON_PUZZLE = false;
     private const bool START_PRAYER_PHASE = false; 
-    private const bool STARTING_THE_GAME = true; 
 
     private const float TYPING_SPEED = 0.015f;
 
@@ -164,14 +158,11 @@ public class StorytellingDialogueText : MonoBehaviour
             return;
         }
 
-        if(_index+1 == _messageLength && _startIntroductoryDialogue == true) //Edit for tutorial, add delay before shwoing dialogue
+        if(_index+1 == _messageLength && _startIntroductoryDialogue == true) //Show beginning tutorial for the start of the game
         {
             _stopProgressingThroughDialogue = true;
             EventBus.Instance.Publish(new ChangeCanvases(mainPlayerUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
-
-            //Add delay
-            dialogueCanvas.SetActive(true);
-            EventBus.Instance.Publish(new TypeDialogueOnMainUI(tutorialDialogue, false, STARTING_THE_GAME));
+            EventBus.Instance.Publish(new StartBeginnerTutorial()); //Publish to GameManager
             return;
         }
 

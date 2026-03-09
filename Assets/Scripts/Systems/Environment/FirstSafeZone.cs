@@ -15,9 +15,10 @@ public class FirstSafeZone : MonoBehaviour
     private float speedToIncraseHealth = 1.2f;
 
     private bool _showMoonTutorial = false;
-    private bool _recoverHealth = true;
     private bool _playerCollisionDetected = false; 
 
+    private const bool RECOVER_HEALTH = true;
+    
     private const bool NEW_EXPLORATION_PHASE = false;
     private const bool STARTING_THE_GAME = false; 
 
@@ -44,7 +45,7 @@ public class FirstSafeZone : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Player") && _playerCollisionDetected == false)
         {
-            EventBus.Instance.Publish(new AlterPlayerHealth(_recoverHealth, speedToIncraseHealth));
+            EventBus.Instance.Publish(new AlterPlayerHealth(RECOVER_HEALTH, speedToIncraseHealth));
             _playerCollisionDetected = true;
         }
     }

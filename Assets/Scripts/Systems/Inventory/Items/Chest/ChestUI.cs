@@ -1,13 +1,13 @@
 using UnityEngine;
 
-//Refactor AddInventoryItem method to be like InventoryUI with the methods
-
 public class ChestUI : MonoBehaviour
 {
     [SerializeField]
     private ChestSlot[] chestSlots;
 
-    private const int MAX_STACK_AMOUNT = 9;
+    private int _remainingQuantity;
+
+    private const int MAX_STACK_AMOUNT = 9; //Make sure this value is the same as the MAX_STACK_AMOUNT for InventoryUI
 
     void Start()
     {
@@ -33,75 +33,100 @@ public class ChestUI : MonoBehaviour
         AddInventoryItem(checkToAddItemToChest.InventoryItem);
     }
 
-    private void AddInventoryItem(ItemData itemToCheck)
+    #region Adding Inventory Item
+
+    private void AddInventoryItem(ItemData itemToCheck) // Step One
     {
-        int remainingQuantity = itemToCheck.Quantity;
-
         itemToCheck.IsDroppedItem = false;
+        _remainingQuantity = itemToCheck.Quantity;
 
-        //Add quantity to existing stacks
-        if(itemToCheck.IsThisAStackableItem == true)
+        if(itemToCheck.IsThisAStackableItem)
+            _remainingQuantity = AddToExistingStacks(itemToCheck); // Step Two
+
+        if(_remainingQuantity > 0)
+            _remainingQuantity = CreateNewStack(itemToCheck); // Step Two
+
+        if(_remainingQuantity > 0)
+            CreateOverflowStacks(itemToCheck); // Step Two
+    }
+
+    //Adding onto quantity to an existing inventory item with new "itemToCheck" quantity
+    private int AddToExistingStacks(ItemData itemToCheck) // Step Two
+    {
+        for(int i = 0; i < chestSlots.Length; i++)
         {
-            for(int i = 0; i < chestSlots.Length; i++) 
-            {
-                if(remainingQuantity <= 0)
-                    break;
+            if(_remainingQuantity <= 0)
+                break;
 
-                //If chest slot isn't null, if chest slot is stackable and if the chest slot's item type and new item type match
-                if(chestSlots[i].InventoryItem != null && chestSlots[i].InventoryItem.IsThisAStackableItem == true && chestSlots[i].InventoryItem.ItemType == itemToCheck.ItemType)
-                {
-                    int currentQuantity = chestSlots[i].InventoryItem.Quantity;
-                    int availableSpace = MAX_STACK_AMOUNT - currentQuantity;
-                    
-                    if(availableSpace > 0)
-                    {
-                        int amountToAdd = Mathf.Min(availableSpace, remainingQuantity);
-                        chestSlots[i].InventoryItem.Quantity += amountToAdd;
-                        remainingQuantity -= amountToAdd;
-                    }
-                }
+            if(!IsMatchingStackableSlot(i, itemToCheck))
+                continue;
+
+            int currentQuantity = chestSlots[i].InventoryItem.Quantity;
+            int availableSpace = MAX_STACK_AMOUNT - currentQuantity;
+
+            if(availableSpace > 0)
+            {
+                int amountToAdd = Mathf.Min(availableSpace, _remainingQuantity);
+                chestSlots[i].InventoryItem.Quantity += amountToAdd;
+                chestSlots[i].UpdateItemTextQuantity(chestSlots[i].InventoryItem.Quantity);
+
+                _remainingQuantity -= amountToAdd;
             }
         }
 
-        //Create a new stack for the same inventory type
-        if(remainingQuantity > 0)
+        return _remainingQuantity;
+    }
+
+    //Check if chest slot item is stackable, not null, and shares same item type as itemToCheck
+    private bool IsMatchingStackableSlot(int slotIndex, ItemData itemToCheck) //Step Three
+    {
+        return chestSlots[slotIndex].InventoryItem != null &&
+            chestSlots[slotIndex].InventoryItem.IsThisAStackableItem &&
+            chestSlots[slotIndex].InventoryItem.ItemType == itemToCheck.ItemType;
+    }
+
+    //Create new chest item stack for itemToCheck in chest slot
+    private int CreateNewStack(ItemData itemToCheck) //Step Two
+    {
+        itemToCheck.Quantity = Mathf.Min(_remainingQuantity, MAX_STACK_AMOUNT);
+
+        for(int i = 0; i < chestSlots.Length; i++)
         {
-            itemToCheck.Quantity = Mathf.Min(remainingQuantity, MAX_STACK_AMOUNT);
-            
-            for(int i = 0; i < chestSlots.Length; i++) 
+            if(chestSlots[i].IsEmpty)
             {
-                if(chestSlots[i].IsEmpty == true)
-                {
-                    chestSlots[i].AddItemToSlot(itemToCheck);
-                    remainingQuantity -= itemToCheck.Quantity;
-                    break;
-                }
+                chestSlots[i].AddItemToSlot(itemToCheck);
+                _remainingQuantity -= itemToCheck.Quantity;
+                break;
             }
         }
-        
-        //Handling subsequent overflow of quantity stacking with clones 
-        while(remainingQuantity > 0)
+
+        return _remainingQuantity;
+    }
+
+    //Create new chest item overflow stacks for itemToCheck in chest slots
+    private void CreateOverflowStacks(ItemData itemToCheck) //Step Two
+    {
+        while(_remainingQuantity > 0)
         {
             bool foundEmptySlot = false;
-            
-            for(int i = 0; i < chestSlots.Length; i++) 
+
+            for(int i = 0; i < chestSlots.Length; i++)
             {
-                if(chestSlots[i].IsEmpty == true)
+                if(chestSlots[i].IsEmpty)
                 {
                     ItemData clonedItem = itemToCheck.Clone();
-                    clonedItem.Quantity = Mathf.Min(remainingQuantity, MAX_STACK_AMOUNT);
-                    clonedItem.IsDroppedItem = false; 
-                    
+                    clonedItem.Quantity = Mathf.Min(_remainingQuantity, MAX_STACK_AMOUNT);
+
                     chestSlots[i].AddItemToSlot(clonedItem);
-                    remainingQuantity -= clonedItem.Quantity;
-                    
+                    _remainingQuantity -= clonedItem.Quantity;
                     foundEmptySlot = true;
                     break;
                 }
             }
-            
+
             if(!foundEmptySlot)
                 break;
         }
     }
+    #endregion
 }

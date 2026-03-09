@@ -6,7 +6,9 @@ using DG.Tweening;
 public class LoadStartUI : MonoBehaviour
 {
     private CanvasGroup _canvasGroup;
+
     private float _durationOfFade = 1.5f;
+    
     private const float DELAY = 0.25f;
 
     void Start()

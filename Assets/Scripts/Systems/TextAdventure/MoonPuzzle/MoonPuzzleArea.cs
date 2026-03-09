@@ -14,6 +14,7 @@ public class MoonPuzzleArea : MonoBehaviour
     private bool _playerCollisionDetected = false;
 
     private const bool START_MOON_PUZZLE = true;
+    
     private const bool START_PRAYER_PHASE = false;
 
     void Start()

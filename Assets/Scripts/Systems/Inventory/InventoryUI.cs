@@ -19,8 +19,8 @@ public class InventoryUI : MonoBehaviour
     [SerializeField]
     private InventoryUISlot _previousInventoryUISlot;
 
-    private bool _playerIsInCollision = false;
     private bool _allowInput = true;
+    private bool _playerIsInCollision = false;
 
     //Removes inventory items consumed during crafting
     private int _amountOfFullStacksPerMaterialConsumed;
@@ -161,7 +161,8 @@ public class InventoryUI : MonoBehaviour
     }
     */
 
-    //Refactored version of AddItemToInventory
+    #region Adding Inventory Item
+
     private void AddInventoryItem(AddItemToInventory addItemToInventory) //Step One
     {
         ItemData itemToCheck = addItemToInventory.InventoryItem;
@@ -293,11 +294,9 @@ public class InventoryUI : MonoBehaviour
                 inventoryData.Inventory[_inventoryDataIndex].Quantity = _newQuantity; 
                 break;
             }
-
-            else    
-                Debug.Log("Not the same! - Checking remainder for crafting material"); 
         }
     }
+    #endregion
 
     /*
     private void RemoveConsumedMaterials(RemoveUsedMaterials removeUsedMaterials) //Feb 2
@@ -341,7 +340,8 @@ public class InventoryUI : MonoBehaviour
     }
     */
 
-    //Refactored version of RemoveConsumedMaterials
+    #region Removing Consumed Inventory Items That Were Used As Materials
+
     private void RemoveConsumedMaterials(RemoveUsedMaterials removeUsedMaterials) //Step One
     {
         //Removal of inventory items that were used as crafting materials (by CraftManager) for FULL STACK materials 
@@ -391,6 +391,7 @@ public class InventoryUI : MonoBehaviour
             }
         }
     }
+    #endregion
 
     private void EquipInventoryItem(SelectInventoryItem selectInventoryItem) //When selecting on an inventory slot
     {
@@ -470,6 +471,8 @@ public class InventoryUI : MonoBehaviour
                     inventoryData.Inventory.RemoveAt(dataIndex);
 
                 inventorySlots[i].DropItem();
+
+                //Deselect inventory slot
                 _selectedInventoryUISlot.OutlineImage.SetActive(false);
                 _selectedInventoryUISlot = null;
                 _equipedInventoryItem = null;

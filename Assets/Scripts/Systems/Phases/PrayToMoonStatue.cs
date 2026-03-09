@@ -11,12 +11,13 @@ public class PrayToMoonStatue : MonoBehaviour
     [SerializeField]
     private StorytellingDialogueData moonStatueTutorialDialogue;
 
-    private bool _showMoonTutorial = false;
     private bool _allowInput = true;
+    private bool _showMoonTutorial = false;
     private bool _playerCollisionDetected = false;
     private bool _interactedOnce = false;
 
     private const bool START_PRAYER_PHASE = true;
+
     private const bool START_MOON_PUZZLE = false;
     private const bool NEW_EXPLORATION_PHASE = false;
     private const bool STARTING_THE_GAME = false; 

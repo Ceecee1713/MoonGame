@@ -22,7 +22,7 @@ public class CluebookManager : MonoBehaviour
     [SerializeField]
     private Clue [] clueIndexes = new Clue [9];
 
-    private List <int> _clueIndexesDeciphered = new List <int>(); 
+    private List <int> _clueIndexesDeciphered = new List <int>(); //Prevent deciphered clues (indexes from "clueIndexes") from being solved/look at again
 
     private string _clueDialogue;
     private string _incompleteMessage = " (Search for the other clue fragment).";
@@ -89,7 +89,7 @@ public class CluebookManager : MonoBehaviour
             if(clueIndexes[i].ClueText.text == clueIndexes[i].FullCodedClue && !_clueIndexesDeciphered.Contains(i))
             {
                 clueIndexes[i].ClueText.text = clueIndexes[i].FullDecipheredClue;
-                _clueIndexesDeciphered.Add(i);
+                _clueIndexesDeciphered.Add(i); //Don't look at this clue again now that it's been solved
                 break;
             }
         }

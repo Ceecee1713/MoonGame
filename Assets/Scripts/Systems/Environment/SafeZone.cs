@@ -8,8 +8,9 @@ public class SafeZone : MonoBehaviour
     [SerializeField]
     private float speedToIncraseHealth = 1.2f;
 
-    private bool _recoverHealth = true;
     private bool _playerCollisionDetected = false; 
+
+    private const bool RECOVER_HEALTH = true;
 
     void Start()
     {
@@ -32,7 +33,7 @@ public class SafeZone : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Player") && _playerCollisionDetected == false)
         {
-            EventBus.Instance.Publish(new AlterPlayerHealth(_recoverHealth, speedToIncraseHealth));
+            EventBus.Instance.Publish(new AlterPlayerHealth(RECOVER_HEALTH, speedToIncraseHealth));
             _playerCollisionDetected = true;
         }
     }

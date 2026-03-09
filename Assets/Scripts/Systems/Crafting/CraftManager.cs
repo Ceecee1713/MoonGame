@@ -57,7 +57,7 @@ public class CraftManager : MonoBehaviour
         _amountOfAnInventoryItemNeeded = 0;
     }
 
-    private void CheckToMakeClue(AllowToCraftClue allowToCraftClue) //Published from CluebookManager
+    private void CheckToMakeClue(AllowToCraftClue allowToCraftClue) //Published from CluebookManager. Step Zero
     {
         _allowCraftingForClue = allowToCraftClue.AvaliableClueToDecipher;
     }
@@ -85,7 +85,6 @@ public class CraftManager : MonoBehaviour
             return;
         }
 
-        _amountOfAnInventoryItemNeeded = 0;
         SearchInventoryForItemMaterial(craftingMaterial); //Step Two
 
         if(craftingAClue == true) //Deciphering clue
@@ -111,7 +110,7 @@ public class CraftManager : MonoBehaviour
             if(_moveToNextMaterial == true) 
                 break;
 
-            //Skip inventory slots that don't match "craftingMaterial"
+            //Skip over inventory indexes at "j" that don't match "craftingMaterial"
             if(!IsMatchingInventoryItemMaterial(j, craftingMaterial)) //Step Three.Five
                 continue;
 
@@ -119,7 +118,7 @@ public class CraftManager : MonoBehaviour
         }
     }
 
-    //Check if inventory slot's item matches "craftingMaterial"'s item type 
+    //Check if inventory's indexeses at "slotIndex" item matches "craftingMaterial"'s item type 
     private bool IsMatchingInventoryItemMaterial(int slotIndex, ItemData craftingMaterial) //Step Three.Five
     {
         //Checks both stackable and non-stackable items
@@ -188,24 +187,24 @@ public class CraftManager : MonoBehaviour
         for(int i = 0; i < inventoryData.Inventory.Count; i++)
         {
             if(inventoryData.Inventory[i].ItemType == craftingMaterial.ItemType)
-                _amountOfAnInventoryItemNeeded--;
+                _amountOfAnInventoryItemNeeded--; //Decrease to indicate that a matching material has been found (which is good)
 
             if(_amountOfAnInventoryItemNeeded == 0)
             {
-                _amountOfMatchingCraftingMaterials++;
+                _amountOfMatchingCraftingMaterials++; //Increasing to get closer to the same value as the needed amount of materials 
                 break;
             }
         }
     }
 
-    //Adjust quantity of an inventory item when there's a remainder of quantity for materials (done in InventoryUI)
+    //Adjust quantity of an inventory item when there's a remainder of quantity for materials 
     private void AdjustInventoryQuantity(int slotIndex)
     {
         int newQuantity = Mathf.Abs(_remainingQuantity);
-        EventBus.Instance.Publish(new AdjustInventorySlotItemQuantity(newQuantity, slotIndex));
+        EventBus.Instance.Publish(new AdjustInventorySlotItemQuantity(newQuantity, slotIndex)); //Publish to InventoryUI
     }
 
-    private void CraftInventoryItem(ItemData craftableInventoryItem)
+    private void CraftInventoryItem(ItemData craftableInventoryItem) 
     {
         ItemData clonedItem = craftableInventoryItem.Clone();
         EventBus.Instance.Publish(new AddItemToInventory(clonedItem));

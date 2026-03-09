@@ -13,8 +13,8 @@ public class InteractableItem : MonoBehaviour
     [HideInInspector]
     public bool DeleteAfterInteraction = false; //Accessed by PlayerSpawner
 
-    private bool _interactedByPlayerOnce = false;
     private bool _allowInput = true;
+    private bool _interactedByPlayerOnce = false;
     private bool _playerStayingInCollision = false; 
     private bool _playerInCollision = false;
 
@@ -89,9 +89,7 @@ public class InteractableItem : MonoBehaviour
     private void OnTriggerStay(Collider collider)
     {
         if (collider.gameObject.CompareTag("Player"))
-        {
             _playerStayingInCollision = true;
-        }
     }
 
     private void OnTriggerExit(Collider collider)

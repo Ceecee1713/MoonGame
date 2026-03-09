@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
@@ -22,6 +23,22 @@ public enum InventoryItemTypes
     UsedDictionary,
     SophisticatedDictionary
 }
+
+public static class EnumExtensions
+{
+    public static string ToDisplayName(this Enum value)
+    {
+        return Regex.Replace(value.ToString(), "(?<!^)([A-Z])", " $1");
+    }
+}
+
+/*
+The regex (?<!^)([A-Z]) means:
+
+(?<!^) — not at the start of the string
+([A-Z]) — find any uppercase letter
+" $1" — insert a space before it
+*/
 
 //Data of every inventory item
 [Serializable]
