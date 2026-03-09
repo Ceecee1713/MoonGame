@@ -22,7 +22,7 @@ public class StreetLamps : MonoBehaviour
 
     void Update()
     {
-        if(gameManager.areaChangesCount == areaNumber)
+        if(gameManager.AreaChangesCount == areaNumber)
         {
             light.intensity = startingIntensity;
             enabled = false; 

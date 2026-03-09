@@ -10,7 +10,7 @@ public struct Clue
     public string FirstClueFragment; //Assign in inspector
     public string SecondClueFragment; //Assign in inspector
 
-    public string FullCodedClue; 
+    public string FullCodedClue; //Don't assign in inspector
     public string FullDecipheredClue; //Assign in inspector
 
     public bool FoundFirstClueFragment;
@@ -25,10 +25,10 @@ public class CluebookManager : MonoBehaviour
     private List <int> _clueIndexesDeciphered = new List <int>(); 
 
     private string _clueDialogue;
-
-    private bool _resolvedClue = false; //Clue that's complete but hasn't been deciphered
     private string _incompleteMessage = " (Search for the other clue fragment).";
 
+    private bool _resolvedClue = false; //Bool to represent a clue that's complete but hasn't been deciphered
+    
     void Start()
     {
         for(int i = 0; i < clueIndexes.Length; i++)
@@ -39,7 +39,7 @@ public class CluebookManager : MonoBehaviour
         EventBus.Instance.Subscribe<DecipherClue>(DecipherSingleClue);
     }
 
-    private void CheckForMatchingClueFragments(FoundClueFragment foundClueFragment) //Event call passed from NPC
+    private void CheckForMatchingClueFragments(FoundClueFragment foundClueFragment) //Published by NPC
     {
         _clueDialogue = foundClueFragment.ClueDialogue;
 
@@ -65,8 +65,7 @@ public class CluebookManager : MonoBehaviour
         }
     }
 
-    //Checking for a complete code that's not deciphered yet, called by DecipherClueButton
-    private void CheckForACompleteClue(CheckForCompleteClues checkForCompleteClues)
+    private void CheckForACompleteClue(CheckForCompleteClues checkForCompleteClues) //Published by DecipherClueButton
     {
         for(int i = 0; i < clueIndexes.Length; i++)
         {

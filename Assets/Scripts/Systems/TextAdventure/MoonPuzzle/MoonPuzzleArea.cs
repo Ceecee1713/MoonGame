@@ -7,11 +7,11 @@ public class MoonPuzzleArea : MonoBehaviour
     [SerializeField]
     private WarningMoonPuzzleUI warningMoonPuzzleUIScript;
 
-    private bool _allowInput = true;
-    private bool _playerCollisionDetected = false;
-
     [HideInInspector]
     public bool InteractedOnce = false; //Influenced by "WarningMoonPuzzleUI" script
+
+    private bool _allowInput = true;
+    private bool _playerCollisionDetected = false;
 
     private const bool START_MOON_PUZZLE = true;
     private const bool START_PRAYER_PHASE = false;
@@ -46,16 +46,12 @@ public class MoonPuzzleArea : MonoBehaviour
     private void OnTriggerStay(Collider collider)
     {
         if (collider.gameObject.CompareTag("Player"))
-        {
             _playerCollisionDetected = true;
-        }
     }
 
     private void OnTriggerExit(Collider collider)
     {
         if (collider.gameObject.CompareTag("Player"))
-        {
             _playerCollisionDetected = false; 
-        }
     }
 }

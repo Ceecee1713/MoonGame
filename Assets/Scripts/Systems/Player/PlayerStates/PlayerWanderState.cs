@@ -14,9 +14,9 @@ public class PlayerWanderState : PlayerState
 
     public override void Update()
     {
-        //StateMachine._playerDirection = new Vector3(StateMachine._playerMovement.x, 0f, StateMachine._playerMovement.y).normalized;
+        //StateMachine.PlayerDirection = new Vector3(StateMachine._playerMovement.x, 0f, StateMachine._playerMovement.y).normalized;
 
-        if(StateMachine._playerDirection.magnitude >= StateMachine._minimumMovementDistance)
+        if(StateMachine.PlayerDirection.magnitude >= StateMachine.MinimumMovementDistance)
         {
             //Movement relative to camera
             Vector3 cameraForward = StateMachine.mainCamera.forward;
@@ -27,16 +27,16 @@ public class PlayerWanderState : PlayerState
             cameraForward.Normalize();
             cameraRight.Normalize();
             
-            StateMachine._movementDirection = cameraForward * StateMachine._playerDirection.z + cameraRight * StateMachine._playerDirection.x;
-            StateMachine._characterController.Move(StateMachine._movementDirection.normalized * StateMachine.MovementSpeed * Time.deltaTime);
+            StateMachine.MovementDirection = cameraForward * StateMachine.PlayerDirection.z + cameraRight * StateMachine.PlayerDirection.x;
+            StateMachine.CharacterController.Move(StateMachine.MovementDirection.normalized * StateMachine.MovementSpeed * Time.deltaTime);
 
             //Player Rotation
-            StateMachine._targetRotationDirection = StateMachine.mainCamera.forward * StateMachine._playerDirection.z;
-            StateMachine._targetRotationDirection = StateMachine._targetRotationDirection + StateMachine.mainCamera.right * StateMachine._playerDirection.x;
-            StateMachine._targetRotationDirection.Normalize();
-            StateMachine._targetRotationDirection.y = 0f;
+            StateMachine.TargetRotationDirection = StateMachine.mainCamera.forward * StateMachine.PlayerDirection.z;
+            StateMachine.TargetRotationDirection = StateMachine.TargetRotationDirection + StateMachine.mainCamera.right * StateMachine.PlayerDirection.x;
+            StateMachine.TargetRotationDirection.Normalize();
+            StateMachine.TargetRotationDirection.y = 0f;
 
-            Quaternion targetRotation = Quaternion.LookRotation(StateMachine._targetRotationDirection);
+            Quaternion targetRotation = Quaternion.LookRotation(StateMachine.TargetRotationDirection);
             Quaternion playerRotation = Quaternion.Slerp(StateMachine.transform.rotation, targetRotation, StateMachine.RotationSpeed * Time.deltaTime);
 
             StateMachine.transform.rotation = playerRotation;
@@ -48,6 +48,6 @@ public class PlayerWanderState : PlayerState
 }
 
 //Movement using Math and Angles
-//float targetAngle = Mathf.Atan2(StateMachine._playerDirection.x, StateMachine._playerDirection.z) * Mathf.Rad2Deg + StateMachine.mainCamera.eulerAngles.y;
-//StateMachine._movementDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-//StateMachine._characterController.Move(StateMachine._movementDirection.normalized * StateMachine.MovementSpeed * Time.deltaTime);
+//float targetAngle = Mathf.Atan2(StateMachine.PlayerDirection.x, StateMachine.PlayerDirection.z) * Mathf.Rad2Deg + StateMachine.mainCamera.eulerAngles.y;
+//StateMachine.MovementDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+//StateMachine._characterController.Move(StateMachine.MovementDirection.normalized * StateMachine.MovementSpeed * Time.deltaTime);

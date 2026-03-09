@@ -46,7 +46,7 @@ public class MoonPuzzleDialogueText : MonoBehaviour
     private Sprite _fullHeartSprite;
 
     private int _messageLength;
-    private int _index = 0; //Index to go through the dialogue message array (individual messages) from "dialogueData" 
+    private int _index = 0; //Index to go through the dialogue message array (individual messages) from "_currentQuestionDialogue" 
     private int _textBranchIndex = -1;
     private int _currentLineCount = 0;
     private int _completedMoonPuzzlesCounter = 0;
@@ -72,7 +72,7 @@ public class MoonPuzzleDialogueText : MonoBehaviour
     void Start()
     {
         EventBus.Instance.Subscribe<StartNewTextAdventure>(StartNewTextAdventure);
-        EventBus.Instance.Subscribe<AdvanceTextAdventure>(NextTextAdvetureDialogue);
+        EventBus.Instance.Subscribe<AdvanceThroughTextAdventure>(NextTextAdvetureDialogue);
 
         _fullHeartSprite = heartImage.sprite;
 
@@ -129,20 +129,19 @@ public class MoonPuzzleDialogueText : MonoBehaviour
         EventBus.Instance.Publish(new ChangeCanvases(failedGameUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
     }
 
-    public void DisableButtonOptions() //Caled when having clicked on an incorrect button
+    public void DisableButtonOptions() //Caled by MoonTextAdventureButton
     {
         WrongButtonChoicesCounter++;
         returnButton.SetActive(true); 
         ButtonOptions.SetActive(false); 
     }
 
-    public void FinishTextAdventure() //Caled by "TextAdventureButton" (Dialogue Buttons) 
+    public void FinishTextAdventure() //Called by MoonTextAdventureButton
     {
         _concludeMoonPuzzle = true;
     }
 
-    //Called when you choose a wrong button to advance further into moon puzzle 
-    public void RestartTextAdventureDialogue() //Called by "ReturnTextAdventureButton" (Dialogue Button)  
+    public void RestartTextAdventureDialogue() //Called by ReturnMoonTextAdventureButton 
     {
         if(WrongButtonChoicesCounter == MAX_COUNTER_AMOUNT_FOR_WRONG_BUTTON_CHOICES)
             return;
@@ -167,7 +166,7 @@ public class MoonPuzzleDialogueText : MonoBehaviour
         StartCoroutine(TypeMessage(_currentQuestionDialogue.Messages[_index]));
     }
 
-    private void NextTextAdvetureDialogue(AdvanceTextAdventure advanceTextAdventure) //Called by "PlayerInputController" (keybind Enter/left mouse click)
+    private void NextTextAdvetureDialogue(AdvanceThroughTextAdventure advanceThroughTextAdventure)
     {
         if(_finishedTypingMessage != true || _doNotRepeat == true || _failedMoonPuzzle == true)
             return;
@@ -194,7 +193,7 @@ public class MoonPuzzleDialogueText : MonoBehaviour
         }
     }
 
-    public void PromptDialogueFromButton(MoonPuzzleDialogueData dialogueData) //Caled by "TextAdventureButton" (Dialogue Buttons) when having chosen correct button choice
+    public void PromptDialogueFromButton(MoonPuzzleDialogueData dialogueData) //Called by MoonTextAdventureButton
     {
         //Resetting values
         _index = 0;
@@ -270,7 +269,7 @@ public class MoonPuzzleDialogueText : MonoBehaviour
             buttonTwoText.text = _currentQuestionDialogue.ButtonTwoText;
             buttonThreeText.text = _currentQuestionDialogue.ButtonThreeText;
 
-            EventBus.Instance.Publish(new SetTextAdventureQuestion(_currentQuestionDialogue, _textBranchIndex));
+            EventBus.Instance.Publish(new SetMoonPuzzleQuestions(_currentQuestionDialogue, _textBranchIndex));
 
             _hasActivatedButtonOptions = true; //Prevent looping of "if" statement being called
             _allowGoingThroughMessages = false; //Prevent going through dialogue entirely

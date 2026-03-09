@@ -27,7 +27,7 @@ public enum InventoryItemTypes
 [Serializable]
 public class ItemData
 {
-    public Sprite SlotImageSprite; //Changes the sprite of "SlotImage"
+    public Sprite SlotImageSprite; //Changes the sprite of "ItemImage"
     public InventoryItemTypes ItemType; //Changes the value of "TypeOfItem"
     public GameObject ItemObject; //Object to instantiate by the player
     public bool IsDroppedItem = false; //Tracking if this inventory item was dropped by player

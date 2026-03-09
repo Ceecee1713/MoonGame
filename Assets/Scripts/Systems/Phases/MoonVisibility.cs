@@ -30,7 +30,6 @@ public class MoonVisibility : MonoBehaviour
         EventBus.Instance.Subscribe<NewMoonFragmentObtained>(ObtainedNewMoonFragment);
     }
 
-    //Called when starting new exploration phase after completing a moon puzzle text adventure
     private void ObtainedNewMoonFragment(NewMoonFragmentObtained newMoonFragmentObtained)
     {
         if(moonCounter >= moonFragments.Length)

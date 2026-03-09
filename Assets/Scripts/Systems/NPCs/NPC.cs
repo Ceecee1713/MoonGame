@@ -12,7 +12,7 @@ public class NPC : MonoBehaviour
     [Range(1, 3)]
     private int areaNumberForNPC;
 
-    private int numberOfMoonPuzzlesCompleted = 0;
+    private int _numberOfMoonPuzzlesCompleted = 0;
 
     private string _npcMessage;
 
@@ -44,9 +44,9 @@ public class NPC : MonoBehaviour
 
     private void DestroyAfterMoonPuzzleCompletion(NewMoonFragmentObtained newMoonFragmentObtained)
     {
-        numberOfMoonPuzzlesCompleted++;
+        _numberOfMoonPuzzlesCompleted++;
 
-        if(areaNumberForNPC == numberOfMoonPuzzlesCompleted)
+        if(areaNumberForNPC == _numberOfMoonPuzzlesCompleted)
             Destroy(this.gameObject);
     }
 
@@ -83,9 +83,7 @@ public class NPC : MonoBehaviour
     private void OnTriggerStay(Collider collider)
     {
         if (collider.gameObject.CompareTag("Player"))
-        {
             _playerStayingInCollision = true;
-        }
     }
 
     private void OnTriggerExit(Collider collider)

@@ -46,9 +46,7 @@ public class CraftingTable : MonoBehaviour
     private void OnTriggerStay(Collider collider)
     {
         if (collider.gameObject.CompareTag("Player"))
-        {
             _playerStayingInCollision = true;
-        }
     }
 
     private void OnTriggerExit(Collider collider)

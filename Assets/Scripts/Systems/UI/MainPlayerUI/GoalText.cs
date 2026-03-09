@@ -15,18 +15,10 @@ public class GoalText : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI goalText;
-
-    [SerializeField]
-    private float timerValueToChangeToRetreatGoal; 
     
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
-        if(explorationTimer.RemainingTime < timerValueToChangeToRetreatGoal)
+        if(explorationTimer.RemainingTime < explorationTimer.TimerValueToChangeToRetreatGoal)
             goalText.text = retreatGoal;
 
         else

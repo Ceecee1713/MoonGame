@@ -3,9 +3,6 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 
-//This is for the dialogue canvas for the NPCs and tutorials to use 
-//It's the dialogue box that's laid on top of the main player UI 
-
 public class DialogueCanvas : MonoBehaviour
 {
     [SerializeField]

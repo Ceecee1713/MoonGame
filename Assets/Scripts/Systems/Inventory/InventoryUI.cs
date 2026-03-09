@@ -278,7 +278,7 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    //Called by CraftManager if there's remainder for a crafting material
+    //Published by CraftManager if there's remainder for a crafting material
     private void AdjustInventoryQuantity(AdjustInventorySlotItemQuantity adjustInventorySlotItemQuantity)
     {
         _inventoryDataIndex = adjustInventorySlotItemQuantity.InventoryIndex;
@@ -391,7 +391,6 @@ public class InventoryUI : MonoBehaviour
             }
         }
     }
-    
 
     private void EquipInventoryItem(SelectInventoryItem selectInventoryItem) //When selecting on an inventory slot
     {
@@ -415,6 +414,7 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
+    //Method for Inventory Data as inventorySlots length and inventoryData length can become out of sync
     private int FindInventoryDataIndex(InventoryItemTypes itemType)
     {
         for(int i = 0; i < inventoryData.Inventory.Count; i++)
@@ -437,6 +437,7 @@ public class InventoryUI : MonoBehaviour
                 if(inventorySlots[i] == _selectedInventoryUISlot && _selectedInventoryUISlot.InventoryItem != null)
                 {
                     int dataIndex = FindInventoryDataIndex(_selectedInventoryUISlot.InventoryItem.ItemType);
+
                     if(dataIndex >= 0)
                         inventoryData.Inventory.RemoveAt(dataIndex);
 
@@ -464,6 +465,7 @@ public class InventoryUI : MonoBehaviour
             if(inventorySlots[i] == _selectedInventoryUISlot && _selectedInventoryUISlot.InventoryItem != null)
             {
                 int dataIndex = FindInventoryDataIndex(_selectedInventoryUISlot.InventoryItem.ItemType);
+
                 if(dataIndex >= 0)
                     inventoryData.Inventory.RemoveAt(dataIndex);
 
@@ -476,7 +478,7 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    private void RemoveItemFromInventory(RemoveItemFromSlot removeItemFromSlot) //Called by InventoryUISlot to remove its item when item moves into a chest
+    private void RemoveItemFromInventory(RemoveItemFromSlot removeItemFromSlot) //Published by InventoryUISlot to remove its item when item moves into a chest
     {
         for(int i = 0; i < inventorySlots.Length; i++)
         {
@@ -484,6 +486,7 @@ public class InventoryUI : MonoBehaviour
             if(inventorySlots[i] == _selectedInventoryUISlot && _selectedInventoryUISlot == removeItemFromSlot.InventorySlot)
             {   
                 int dataIndex = FindInventoryDataIndex(_selectedInventoryUISlot.InventoryItem.ItemType);
+
                 if(dataIndex >= 0)
                     inventoryData.Inventory.RemoveAt(dataIndex);
 

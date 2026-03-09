@@ -12,7 +12,7 @@ public class AcceptButton : MonoBehaviour
     private const bool START_MOON_PUZZLE = true;
     private const bool START_PRAYER_PHASE = false;
 
-    public void OnAcceptClick()
+    public void OnAcceptClick() //Start Moon Puzzle Text Adventure
     {
         EventBus.Instance.Publish(new ChangeCanvases(textAdventureUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
         warningMoonPuzzleUIScript.MarkMoonAreaAsBeenExplored();

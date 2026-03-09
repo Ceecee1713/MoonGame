@@ -47,7 +47,6 @@ public class QuitButton : MonoBehaviour
             _dontRepeat = true;
             _preventInput = true;
             sceneButton.PreventInput();
-            //Play sound here
             Invoke("Quit", QUIT_DELAY);
         }
     }

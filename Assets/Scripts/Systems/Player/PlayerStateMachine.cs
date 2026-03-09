@@ -25,27 +25,27 @@ public class PlayerStateMachine : BaseStateMachine
     private float itemTimeDurationOfSpeedChanging = 4.0f; //Time duration to change player's speed in "x" amount of seconds, when player used speed potion 
     [SerializeField]
     private float itemTimeMultiplier = 3.0f; //How fast to change speed when a speed boost potion is used
-    public float MaxLengthOfTimeForSpeedUp = 7.0f;
+    public float MaxDurationForSpeedUp = 7.0f;
     public float CurrentTimeLengthForSpeedUp; //Displaying the time duration for however long the player is sped up, counting down to 0f
 
     [HideInInspector]
-    public CharacterController _characterController;
+    public CharacterController CharacterController;
     
     [HideInInspector]
-    public Vector3 _playerDirection;
+    public Vector3 PlayerDirection;
     [HideInInspector]
-    public Vector3 _movementDirection; 
+    public Vector3 MovementDirection; 
     [HideInInspector]
-    public Vector3 _targetRotationDirection;
+    public Vector3 TargetRotationDirection;
 
     [HideInInspector]
-    public float _minimumMovementDistance = 0.1f;
+    public float MinimumMovementDistance = 0.1f;
 
     private Vector2 _playerMovement; //Grab raw movement inputs
 
-    private float maximumSpeed;
+    private float _maximumSpeed;
     private float _timeDurationOfSpeedChanging; //Time duration to change player's speed in "x" amount of seconds
-    private float _timeMultiplierForMovementChanging; //How fast to change speed from 0f to "maximumSpeed"
+    private float _timeMultiplierForMovementChanging; //How fast to change speed from 0f to "_maximumSpeed"
 
     private bool _speedUpPlayer = false;
     private bool _hasPlayerTakenSpeedPotion = false;
@@ -70,13 +70,13 @@ public class PlayerStateMachine : BaseStateMachine
 
         //Setting Speed Values for walking speed
         MovementSpeed = 0.0f;
-        maximumSpeed = walkingSpeed;
+        _maximumSpeed = walkingSpeed;
         _timeDurationOfSpeedChanging = timeDurationOfSpeedChangingForWalking;
         _timeMultiplierForMovementChanging = timeMultiplierForWalking;
 
         _moonStatuePosition = new Vector3 (this.gameObject.transform.position.x, this.gameObject.transform.position.y, this.gameObject.transform.position.z);
 
-        _characterController = GetComponent<CharacterController>();
+        CharacterController = GetComponent<CharacterController>();
     }
 
     void Start()
@@ -98,7 +98,7 @@ public class PlayerStateMachine : BaseStateMachine
     {
         _playerMovement.x = movement.x;
         _playerMovement.y = movement.y;
-        _playerDirection = new Vector3(_playerMovement.x, 0f, _playerMovement.y).normalized;
+        PlayerDirection = new Vector3(_playerMovement.x, 0f, _playerMovement.y).normalized;
     }
 
     private void FreezePlayer(FreezePlayer freezePlayer)
@@ -116,11 +116,11 @@ public class PlayerStateMachine : BaseStateMachine
 
     public override void Update()
     {
-        Mathf.Clamp(CurrentTimeLengthForSpeedUp, 0.0f, MaxLengthOfTimeForSpeedUp);
+        Mathf.Clamp(CurrentTimeLengthForSpeedUp, 0.0f, MaxDurationForSpeedUp);
 
         CheckToSpeedUpPlayer();
 
-        if(currentState == IdleState && _playerDirection.magnitude >= _minimumMovementDistance)
+        if(currentState == IdleState && PlayerDirection.magnitude >= MinimumMovementDistance)
             StateChange(WanderState);
 
         if(_hasPlayerTakenSpeedPotion == true)
@@ -133,13 +133,13 @@ public class PlayerStateMachine : BaseStateMachine
     {
         if(_speedUpPlayer == true && _hasPlayerTakenSpeedPotion == false && CurrentTimeLengthForSpeedUp == 0.0f) 
         {
-            CurrentTimeLengthForSpeedUp = MaxLengthOfTimeForSpeedUp;
+            CurrentTimeLengthForSpeedUp = MaxDurationForSpeedUp;
             _hasPlayerTakenSpeedPotion = true;
 
             //Changing values for speed up coroutine
             _timeDurationOfSpeedChanging = itemTimeDurationOfSpeedChanging;
             _timeMultiplierForMovementChanging = itemTimeMultiplier;
-            maximumSpeed = potionSpeed;
+            _maximumSpeed = potionSpeed;
 
             if(currentState == WanderState)
                 StartSpeedChange();
@@ -159,7 +159,7 @@ public class PlayerStateMachine : BaseStateMachine
             _hasPlayerTakenSpeedPotion = false;
             _timeDurationOfSpeedChanging = timeDurationOfSpeedChangingForWalking;
             _timeMultiplierForMovementChanging = timeMultiplierForWalking;
-            maximumSpeed = walkingSpeed;
+            _maximumSpeed = walkingSpeed;
 
             if(currentState == WanderState)
                 StartSpeedChange();
@@ -180,7 +180,7 @@ public class PlayerStateMachine : BaseStateMachine
         StopAllCoroutines();
         
         if(PreviousState == IdleState && currentState == WanderState)
-            StartCoroutine(SpeedChange(maximumSpeed));
+            StartCoroutine(SpeedChange(_maximumSpeed));
 
         if(PreviousState == WanderState && currentState == IdleState)
             StartCoroutine(SpeedChange(0.0f));

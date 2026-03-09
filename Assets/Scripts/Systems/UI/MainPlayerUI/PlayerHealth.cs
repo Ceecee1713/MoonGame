@@ -38,14 +38,10 @@ public class PlayerHealth : MonoBehaviour
             return;
 
         if(_recoverHealth == false && health.value != 0.0f)
-        {
             health.value -= Time.deltaTime * _speedToChangeHealth;
-        }
 
         if(_recoverHealth == true && health.value != 1.0f)
-        {
             health.value += Time.deltaTime * _speedToChangeHealth;
-        }
 
         if(health.value == 0.0f) 
         {

@@ -5,16 +5,15 @@ public class InteractableItem : MonoBehaviour
     [SerializeField]
     public ItemData inventoryItem; 
 
-    [Header ("Game Object's Visibility - Envrionment")]
+    [Header ("Game Object's Visibility - Environment")]
     public GameObject gameObjectToSetInactive;
     [SerializeField]
     private bool makeGameObjectInactive = false;
 
-    //Game Object's Visibility - Item Drops
     [HideInInspector]
     public bool DeleteAfterInteraction = false; //Accessed by PlayerSpawner
 
-    private bool _interactedWithOne = false;
+    private bool _interactedByPlayerOnce = false;
     private bool _allowInput = true;
     private bool _playerStayingInCollision = false; 
     private bool _playerInCollision = false;
@@ -43,7 +42,7 @@ public class InteractableItem : MonoBehaviour
 
     private void ResetVisibilityOfGameObject(ResetWorldItems resetWorldItems)
     {
-        _interactedWithOne = false;
+        _interactedByPlayerOnce = false;
 
         if(makeGameObjectInactive == true && gameObjectToSetInactive != null)
             gameObjectToSetInactive.SetActive(true);
@@ -51,10 +50,10 @@ public class InteractableItem : MonoBehaviour
 
     private void CheckIfItemIsPickedUp(Interact pickingUpItem) //When player "interacts" with this game object (keybind E)
     {
-        if(_allowInput == false)
+        if(_allowInput == false || _interactedByPlayerOnce == true)
             return;
 
-        if(_playerStayingInCollision == true && _interactedWithOne == false)
+        if(_playerStayingInCollision == true && _interactedByPlayerOnce == false)
         {
             //Pass item into inventory system
             ItemData clonedInventoryItem = inventoryItem.Clone();
@@ -64,8 +63,9 @@ public class InteractableItem : MonoBehaviour
                 
             EventBus.Instance.Publish(new AddItemToInventory(clonedInventoryItem)); 
 
-            _interactedWithOne = true;
+            _interactedByPlayerOnce = true;
 
+            //Mark player no longer in collision with this interactable object
             _playerInCollision = false;
             EventBus.Instance.Publish(new InCollision(_playerInCollision));
 

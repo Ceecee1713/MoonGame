@@ -16,7 +16,7 @@ public class CorriosonZone : MonoBehaviour
     public float CurrentSpeedToLowerHealth;
 
     [HideInInspector]
-    public int counter;
+    public int Counter;
 
     private bool _recoverHealth = false;
     private bool _playerCollisionDetected = false; 
@@ -42,15 +42,17 @@ public class CorriosonZone : MonoBehaviour
 
     private void SetNewCorriosonZone(NewMoonFragmentObtained newMoonFragmentObtained)
     {
-        counter++;
+        Counter++;
 
-        if(counter == areaNumber && otherAreaCollision != null)
+        if(Counter == areaNumber && otherAreaCollision != null)
         {
             otherAreaCollision.SetActive(true);
+
+            //Setting variables for new corrison area script
             CorriosonZone corriosonScript = otherAreaCollision.GetComponent<CorriosonZone>();
             corriosonScript.DefaultSpeedToLowerHealth = DefaultSpeedToLowerHealth;
             corriosonScript.CurrentSpeedToLowerHealth = corriosonScript.DefaultSpeedToLowerHealth;
-            corriosonScript.counter = counter;
+            corriosonScript.Counter = Counter;
 
             Destroy(this.gameObject);
         }
@@ -68,9 +70,7 @@ public class CorriosonZone : MonoBehaviour
     private void OnTriggerExit(Collider collider)
     {
         if (collider.gameObject.CompareTag("Player"))
-        {
             _playerCollisionDetected = false; 
-        }
     }
 
     private void ChangeSpeedToLowerHealth(ChangeCorriosonValue changeCorriosonValue)

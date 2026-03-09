@@ -3,7 +3,8 @@ using UnityEngine;
 
 //This contains all the events (data types) that the game uses
 
-//Inventory and Crafting System Events below:
+#region Inventory and Crafting System Events
+
 public class AddItemToInventory : IEvent
 {
     public ItemData InventoryItem;
@@ -14,7 +15,9 @@ public class AddItemToInventory : IEvent
     }
 }
 
-public class RemoveUsedMaterials : IEvent
+
+//Remove inventory items from inventory that were used as materials for crafting
+public class RemoveUsedMaterials : IEvent 
 {
     public List <ItemData> CraftingMaterialItems;
     public List <int> AmountsPerStackableItemToRemove;
@@ -26,8 +29,8 @@ public class RemoveUsedMaterials : IEvent
     }
 }
 
-//For selecting on an inventory slot on the inventory UI 
-//and equip the item in that selected inventory slot
+
+//Selecting on an inventory slot on inventory UI and equiping that selected inventory slot's item 
 public class SelectInventoryItem : IEvent 
 {
     public ItemData InventoryItem;
@@ -40,20 +43,22 @@ public class SelectInventoryItem : IEvent
     }
 }
 
+
 //To use an inventory item (the equipped inventory item) on the selected inventory slot,
-//clear the selected inventory slot and remove that item from the inventory data
+//clear the selected inventory slot and remove that item from inventory (DELETE COMMENT AFTER WRITING FULL DOCUMENTATION)
 public class UseInventoryItem : IEvent
 {
 }
 
+
 //To drop the currently equipped inventory item from the selected inventory slot,
-//clear the selected inventory slot and remove that item from the inventory data
+//clear the selected inventory slot and remove that item from inventory (DELETE COMMENT AFTER WRITING FULL DOCUMENTATION)
 public class DropEquipedInventoryItem : IEvent 
 {
 }
 
-//Clear the selected inventory slot and remove that item from the inventory data
-//This is used for adding an item to a chest but removing it from the inventory data and player's inventory
+
+//Clear the selected inventory slot and remove that item from the inventory when adding an item to a chest 
 public class RemoveItemFromSlot : IEvent 
 {
     public InventoryUISlot InventorySlot;
@@ -64,9 +69,9 @@ public class RemoveItemFromSlot : IEvent
     }
 }
 
-//Adjusting an inventory item's quantity in an inventory UI slot and in the
-//inventory data. This is used by the Craft Manager to manage remaining quantities with comparing crafting
-//materials' quantities and quantities in the inventory data
+
+//Adjusting an inventory item's quantity in an inventory UI slot and in inventory.
+//Manage quantities between what's in inventory and what will be used as crafting materials 
 public class AdjustInventorySlotItemQuantity : IEvent 
 {
     public int NewQuantity;
@@ -80,7 +85,7 @@ public class AdjustInventorySlotItemQuantity : IEvent
 }
 
 
-//To instantiate an inventory item into the world after dropping it from the inventory 
+//Instantiate an inventory item into the world after dropping it from the inventory slot
 public class SpawnDroppedInventoryItem : IEvent
 {
     public ItemData InventoryItem;
@@ -91,8 +96,8 @@ public class SpawnDroppedInventoryItem : IEvent
     }
 }
 
-//Checking if a clue has been resolved from the clue book 
-//before being able to decipher it on the crafting table
+
+//Checking if a clue has been resolved from the clue book BEFORE permitting to decipher clue at crafting table
 public class AllowToCraftClue : IEvent
 {
     public bool AvaliableClueToDecipher;
@@ -102,23 +107,24 @@ public class AllowToCraftClue : IEvent
         AvaliableClueToDecipher = avaliableClueToDecipher;
     }
 }
+#endregion
 
 
+#region Text System Events 
 
-
-
-//Text System events below:
-//Starting a Moon Puzzle Text Adventure (prepare the first dialogue)
+//Starting a Moon Puzzle Text Adventure (prepare first dialogue for any moon puzzle)
 public class StartNewTextAdventure : IEvent
 {
 }
 
-//Progressing through dialogue in the Moon Puzzle Text Adventure
-public class AdvanceTextAdventure : IEvent
+
+//Progressing through dialogue for both Moon Puzzle and Storytelling
+public class AdvanceThroughTextAdventure : IEvent
 {
 }
 
-//Showing a moon fragment UI with a changing sprite based on the Moon Puzzle
+
+//Show a moon fragment UI after successfully completing moon puzzle 
 public class DisplayMoonFragmentImage : IEvent
 {
     public Sprite MoonFragmentSprite;
@@ -129,37 +135,36 @@ public class DisplayMoonFragmentImage : IEvent
     }
 }
 
+
+//Interacting with moon statue 
 public class StartPrayerPhase : IEvent
 {
 }
 
-public class StartEndGameDialogue : IEvent //Not published by any script. Only inside StorytellingDialogueText  - Nov 25
+
+public class StartEndGameDialogue : IEvent
 {
 }
 
+
 //Tracking the current dialogue in the Moon Puzzle Text Adventure
 //To determine the next dialogue to say if the player guesses correctly
-public class SetTextAdventureQuestion : IEvent
+public class SetMoonPuzzleQuestions : IEvent
 {
     public MoonPuzzleDialogueData QuestionDialogue;
     public int TextBranchIndex;
 
-    public SetTextAdventureQuestion(MoonPuzzleDialogueData questionDialogue, int textBranchIndex)
+    public SetMoonPuzzleQuestions(MoonPuzzleDialogueData questionDialogue, int textBranchIndex)
     {
         QuestionDialogue = questionDialogue;
         TextBranchIndex = textBranchIndex;
     }
 }
+#endregion
 
 
+#region Cluebook Events
 
-
-
-
-
-
-//Cluebook Events below:
-//To add a clue fragment into the cluebook after interacting with an NPC that gives a clue fragment
 public class FoundClueFragment : IEvent
 {
     public string ClueDialogue;
@@ -170,26 +175,23 @@ public class FoundClueFragment : IEvent
     }
 }
 
-//To decipher a clue in the cluebook 
-//when the crafting table has checked it has enough crafting materials in the inventory 
+
 public class DecipherClue : IEvent
 {
 }
 
+
 //To check if any of the clues are complete 
-//to allow for decipher (crafting) of the clue to happen
+//Permitting whether decipering a clue can be done or not 
 public class CheckForCompleteClues : IEvent
 {
 }
+#endregion
 
 
+#region UI Events
 
-
-
-
-
-//UI events below:
-//Change the current active canvas to "NewCanvas" with a fading black screen for a transistion
+//Alternate between canvases through a transistion
 public class ChangeCanvases : IEvent
 {
     public GameObject NewCanvas;
@@ -204,7 +206,8 @@ public class ChangeCanvases : IEvent
     }
 }
 
-//Fade "CurrentCanvas" with a black screen for a transistion
+
+//Fade the current active canvas with a black screen for a transistion
 public class FadeSingleCanvas : IEvent
 {
     public GameObject CurrentCanvas;
@@ -216,6 +219,7 @@ public class FadeSingleCanvas : IEvent
         FadeOutUI = fadeOutUI;
     }
 }
+
 
 //Assign a single dialogue to the UI responsible for handling single dialogues 
 public class TypeDialogueOnMainUI : IEvent
@@ -232,11 +236,14 @@ public class TypeDialogueOnMainUI : IEvent
     }
 } 
 
+
 //Advance through the single dialogue to the UI responsible for handling single dialogues
 public class AdvanceDialogueOnMainUI : IEvent
 {
 }
 
+
+//(DELETE COMMENT AFTER WRITING FULL DOCUMENTATION)
 //For a new exploration phase ONLY AFTER completing a moon puzzle text adventure:
 //Show dialogue from the moon statue, change materials for deciphering clue on craft manager,
 //destroy NPCs in that completed puzzle area AND change collisions (safe zone and corrioson areas)
@@ -244,10 +251,11 @@ public class NewMoonFragmentObtained : IEvent
 {
 }
 
-//For a new exploration phase
+
 public class ResetExplorationTimer : IEvent
 {
 }
+
 
 public class PauseExplorationTimer : IEvent
 {
@@ -258,13 +266,11 @@ public class PauseExplorationTimer : IEvent
         AllowCountdown = allowCountdown;
     }
 }
+#endregion
 
 
+#region Player Events
 
-
-
-
-//Player events below:
 //Prevent player interactions with specific UI/object interactions
 public class ActivatePlayerInputs : IEvent
 {
@@ -276,7 +282,8 @@ public class ActivatePlayerInputs : IEvent
     }
 }
 
-//To either or lower the player's health based on environment collisions
+
+//Either incrase or lower the player's health based on environment collisions
 public class AlterPlayerHealth : IEvent
 {
     public bool RecoverHealth;
@@ -289,7 +296,7 @@ public class AlterPlayerHealth : IEvent
     }
 }
 
-//To stop the player from moving
+
 public class FreezePlayer : IEvent
 {
     public bool PausePlayerMovement;
@@ -300,22 +307,22 @@ public class FreezePlayer : IEvent
     }
 }
 
-//To increase the speed of the player after using a speed-up item in the inventory
+
+//Increase the speed of the player after using a speed-up item from inventory slot
 public class SpeedUpPlayer : IEvent
 {
 }
+#endregion
 
 
+#region Player Input Events
 
-
-
-//Player input events below:
-//Interacting with objects in world space
 public class Interact : IEvent 
 {
 }
 
-//To prevent the player from using an equpped inventory item when in collision with an object
+
+//Prevent the player from using an equpped inventory item when in collision with an object
 public class InCollision : IEvent
 {
     public bool PlayerInCollision;
@@ -326,7 +333,8 @@ public class InCollision : IEvent
     }
 }
 
-//To momentarily pause the dropping of the player's health
+
+//Either momentarily pause the dropping of the player's health or not
 public class MaintainPlayerHealth : IEvent
 {
     public bool PauseCorrioson;
@@ -337,15 +345,14 @@ public class MaintainPlayerHealth : IEvent
     }
 }
 
-//Open the Pause Menu UI
+
 public class PauseGame : IEvent
 {
 }
+#endregion
 
 
-
-
-//Chest Interaction Events Below:
+#region Chest Interaction Events
 public class ChestIsOpen : IEvent
 {
     public bool IsAChestOpen;
@@ -365,11 +372,11 @@ public class CheckToAddItemToChest : IEvent
         InventoryItem = inventoryItem;
     }
 }
+#endregion
 
 
+#region Environment Events
 
-
-//Environment Events Below:
 public class ChangeCorriosonValue : IEvent
 {
     public float CorriosonValue;
@@ -386,6 +393,7 @@ public class RestoreCorriosonValue : IEvent
 {
 }
 
+//(DELETE COMMENT AFTER WRITING FULL DOCUMENTATION)
 //Teleport player back to moon puzzle, reset player health to full AND delete item drops
 //Published for EACH new exploration phase, not just for finishing a moon puzzle
 public class NewExplorationPhase : IEvent
@@ -399,3 +407,4 @@ public class CompletedAllMoonPuzzles : IEvent
 public class ResetWorldItems : IEvent
 {
 }
+#endregion

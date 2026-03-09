@@ -6,13 +6,13 @@ public class ReturnMoonTextAdventureButton : MonoBehaviour
     private GameObject cluebookUI;
 
     [SerializeField]
-    private MoonPuzzleDialogueText moonPuzzleText;
+    private MoonPuzzleDialogueText moonPuzzleDialogueText;
 
     public void OnRestartTextAdventureClick()
     {
         if(cluebookUI.activeSelf == true)
             return;
 
-        moonPuzzleText.RestartTextAdventureDialogue();
+        moonPuzzleDialogueText.RestartTextAdventureDialogue();
     }
 }

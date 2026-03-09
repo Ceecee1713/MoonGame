@@ -2,6 +2,8 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 
+//Look at NextDialogue method
+
 public class StorytellingDialogueText : MonoBehaviour
 {
     [SerializeField]
@@ -35,7 +37,7 @@ public class StorytellingDialogueText : MonoBehaviour
     [SerializeField]
     private GameObject mainPlayerUI;
     [SerializeField]
-    private GameObject endScreenUI;
+    private GameObject winGameUI;
     [SerializeField]
     private GameObject storytellingUI;
     [SerializeField]
@@ -45,11 +47,11 @@ public class StorytellingDialogueText : MonoBehaviour
 
     private int _randomPrayerNumber = 0;
     private int _messageLength;
-    private int _index = 0; //Index to go through the dialogue message array (individual messages) from "dialogueData" 
+    private int _index = 0; //Index to go through the dialogue message array (individual messages) from "_currentDialogue" 
     private int _currentLineCount = 0;
 
     private bool _finishedTypingMessage = false; //Prevent or allow going through individual messages when they're not fully typed out
-    private bool _doNotRepeat = false;
+    private bool _stopProgressingThroughDialogue = false;
 
     private bool _beginPrayerPhase = false;
     private bool _finishPrayerPhase = false;
@@ -71,7 +73,7 @@ public class StorytellingDialogueText : MonoBehaviour
     {
         EventBus.Instance.Subscribe<StartPrayerPhase>(StartPrayerPhaseAdventure);
         EventBus.Instance.Subscribe<StartEndGameDialogue>(StartEndGameDialogueAdventure);
-        EventBus.Instance.Subscribe<AdvanceTextAdventure>(NextDialogue);
+        EventBus.Instance.Subscribe<AdvanceThroughTextAdventure>(NextDialogue);
 
         ResetValues();
         Invoke("StartIntroductoryDialogue", introductionDelay);
@@ -79,7 +81,7 @@ public class StorytellingDialogueText : MonoBehaviour
 
     void OnEnable()
     {
-        _doNotRepeat = false;
+        _stopProgressingThroughDialogue = false;
     }
 
     void OnDisable()
@@ -133,9 +135,9 @@ public class StorytellingDialogueText : MonoBehaviour
         StartCoroutine(TypeMessage(_currentDialogue.Messages[_index]));
     }
 
-    private void NextDialogue(AdvanceTextAdventure advanceTextAdventure) //Called by "PlayerInputController" (keybind Enter/left mouse click)
+    private void NextDialogue(AdvanceThroughTextAdventure advanceTextAdventure) 
     {
-        if(_finishedTypingMessage != true || _doNotRepeat == true)
+        if(_finishedTypingMessage != true || _stopProgressingThroughDialogue == true)
             return;
 
         if(_index+1 == _messageLength && _beginPrayerPhase == true)
@@ -144,16 +146,16 @@ public class StorytellingDialogueText : MonoBehaviour
             return;
         }
 
-        if(_index+1 == _messageLength && _finishGame == true) //Show winning end game screen
+        if(_index+1 == _messageLength && _finishGame == true) //Show win game screen
         {
-            _doNotRepeat = true;
-            EventBus.Instance.Publish(new ChangeCanvases(endScreenUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
+            _stopProgressingThroughDialogue = true;
+            EventBus.Instance.Publish(new ChangeCanvases(winGameUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
             return;
         }
 
-        if(_index+1 == _messageLength && _finishPrayerPhase == true)
+        if(_index+1 == _messageLength && _finishPrayerPhase == true) //Return to Exploration Phase with Main Player UI
         {
-            _doNotRepeat = true;
+            _stopProgressingThroughDialogue = true;
             EventBus.Instance.Publish(new FreezePlayer(false));
             EventBus.Instance.Publish(new ChangeCanvases(mainPlayerUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
             EventBus.Instance.Publish(new NewExplorationPhase());
@@ -162,11 +164,12 @@ public class StorytellingDialogueText : MonoBehaviour
             return;
         }
 
-        if(_index+1 == _messageLength && _startIntroductoryDialogue == true) //Edit for tutorial
+        if(_index+1 == _messageLength && _startIntroductoryDialogue == true) //Edit for tutorial, add delay before shwoing dialogue
         {
-            _doNotRepeat = true;
+            _stopProgressingThroughDialogue = true;
             EventBus.Instance.Publish(new ChangeCanvases(mainPlayerUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
 
+            //Add delay
             dialogueCanvas.SetActive(true);
             EventBus.Instance.Publish(new TypeDialogueOnMainUI(tutorialDialogue, false, STARTING_THE_GAME));
             return;

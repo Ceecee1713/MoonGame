@@ -25,14 +25,14 @@ public class WarningMoonPuzzleUI : MonoBehaviour
         acceptButton.SetActive(false);
     }
 
-    public void ShowWarningMessage(MoonPuzzleArea moonPuzzleArea)
+    public void ShowWarningMessage(MoonPuzzleArea moonPuzzleArea) //Called by MoonPuzzleArea
     {
         moonPuzzleAreaInteractedWith = moonPuzzleArea;
         declineButton.SetActive(true);
         acceptButton.SetActive(true);
     }
 
-    public void MarkMoonAreaAsBeenExplored()
+    public void MarkMoonAreaAsBeenExplored() //Called by AcceptButton
     {
         moonPuzzleAreaInteractedWith.InteractedOnce = true;
     }

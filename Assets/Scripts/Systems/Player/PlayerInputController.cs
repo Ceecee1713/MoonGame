@@ -51,7 +51,7 @@ public class PlayerInputController : MonoBehaviour
 
     void NextMessagePerformed(InputAction.CallbackContext val)
     {
-        EventBus.Instance.Publish(new AdvanceTextAdventure());
+        EventBus.Instance.Publish(new AdvanceThroughTextAdventure());
         EventBus.Instance.Publish(new AdvanceDialogueOnMainUI());
     }
 

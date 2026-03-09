@@ -40,8 +40,6 @@ public class SafeZone : MonoBehaviour
     private void OnTriggerExit(Collider collider)
     {
         if (collider.gameObject.CompareTag("Player"))
-        {
             _playerCollisionDetected = false; 
-        }
     }
 }

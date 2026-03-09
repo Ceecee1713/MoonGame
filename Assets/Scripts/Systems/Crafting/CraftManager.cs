@@ -14,21 +14,17 @@ public class CraftManager : MonoBehaviour
 
     private bool _allowCraftingForClue = false;
     private bool _quantityRemaining = false;
-    private bool _breakLoop = false;
+    private bool _moveToNextMaterial = false;
     private bool _notEnoughItemQuantity = false;
     private bool _allowPlayerInputs = false;
 
     private int _amountOfMatchingCraftingMaterials = 0; //To be compared to the needed amount of unique materials for craftable item's recipe
     private int _remainingQuantity; 
     private int _amountOfAnInventoryItemNeeded; //Int to be added into "_amountOfFullStacksPerMaterialToRemove" list 
-    //Counts the number of FULL STACKS of a single unique inventory item to be removed
 
-    /*
-    "_amountOfFullStacksPerMaterialToRemove[i]" means the amount of a unique material to be removed. 
-    For example, if I have wood as the material I use for my crafting recipe and I have 3 stacks of 10 of wood in my inventory (30 in total) 
-    and my recipe needed 30 stacks, that value "_amountOfFullStacksPerMaterialToRemove[i]" would be 3. 
-    "_materialsForCraftableItem[i]" represents a unique material's item data. 
-    */
+    //"_amountOfAnInventoryItemNeeded" counts the number of FULL STACKS (maxed quantity) of a single unique inventory item to be removed
+    //"_amountOfFullStacksPerMaterialToRemove[i]" represents the amount of a unique material to be removed that have maxed quantity
+    //"_materialsForCraftableItem[i]" represents a unique material's item data. 
 
     void Start()
     {
@@ -37,14 +33,12 @@ public class CraftManager : MonoBehaviour
 
     void OnEnable()
     {
-        //Prevent Player Inputs
         _allowPlayerInputs = false;
         EventBus.Instance.Publish(new ActivatePlayerInputs(_allowPlayerInputs));
     }
 
     void OnDisable()
     {
-        //Allow Player Inputs
         _allowPlayerInputs = true;
         EventBus.Instance.Publish(new ActivatePlayerInputs(_allowPlayerInputs));
     }
@@ -56,24 +50,24 @@ public class CraftManager : MonoBehaviour
 
         _notEnoughItemQuantity = false;
         _quantityRemaining = false;
-        _breakLoop = false;
+        _moveToNextMaterial = false;
 
         _amountOfMatchingCraftingMaterials = 0;
         _remainingQuantity = 0;
         _amountOfAnInventoryItemNeeded = 0;
     }
 
-    private void CheckToMakeClue(AllowToCraftClue allowToCraftClue) //Event call passed from CluebookManager
+    private void CheckToMakeClue(AllowToCraftClue allowToCraftClue) //Published from CluebookManager
     {
         _allowCraftingForClue = allowToCraftClue.AvaliableClueToDecipher;
     }
 
-    public void SetInventoryItemToCraft(ItemData craftableInventoryItem) //Called by CraftButton. Step Zero
+    public void SetInventoryItemToCraft(ItemData craftableInventoryItem) //Published by CraftButton. Step Zero
     {
         _itemToCraft = craftableInventoryItem;
     }
 
-    //All parameters passed from CraftButton and DecipherClueButton. This method is repeatedly called from both scripts for each new crafting material
+    //Published by CraftButton and DecipherClueButton. Method repeatedly called from both scripts for each new crafting material
     public void CheckInventoryForCraftingMaterials(ItemData craftingMaterial, int maxAmountOfCraftingMaterialTypes, bool craftingAClue) //Step One
     {
         if(_notEnoughItemQuantity == true)
@@ -83,7 +77,7 @@ public class CraftManager : MonoBehaviour
         _quantityRemaining = false;
         _remainingQuantity = 0;
         _amountOfAnInventoryItemNeeded = 0;
-        _breakLoop = false;
+        _moveToNextMaterial = false;
 
         if(_remainingQuantity > 0) //Exit method if there's not enough quantity for a material in inventory
         {
@@ -99,7 +93,7 @@ public class CraftManager : MonoBehaviour
             if(_amountOfMatchingCraftingMaterials >= maxAmountOfCraftingMaterialTypes && _allowCraftingForClue != false)
             {
                 DecipherClue();
-                EventBus.Instance.Publish(new DecipherClue()); //Calling CluebookManager
+                EventBus.Instance.Publish(new DecipherClue()); //Publish to CluebookManager
             }
         }
 
@@ -114,7 +108,7 @@ public class CraftManager : MonoBehaviour
     {
         for(int j = 0; j < inventoryData.Inventory.Count; j++) 
         {
-            if(_breakLoop == true) //Move onto next crafting material 
+            if(_moveToNextMaterial == true) 
                 break;
 
             //Skip inventory slots that don't match "craftingMaterial"
@@ -125,14 +119,13 @@ public class CraftManager : MonoBehaviour
         }
     }
 
-    //Check if inventory slot's item matches "craftingMaterial" (same type)
+    //Check if inventory slot's item matches "craftingMaterial"'s item type 
     private bool IsMatchingInventoryItemMaterial(int slotIndex, ItemData craftingMaterial) //Step Three.Five
     {
         //Checks both stackable and non-stackable items
         return inventoryData.Inventory[slotIndex].ItemType == craftingMaterial.ItemType;
     }
 
-    //Determine the inventory item's quantity 
     private void DetermineInventoryItemQuantity(int slotIndex, ItemData craftingMaterial) //Step Four
     {
         CalculateRemainingQuantity(slotIndex, craftingMaterial); //Step Five
@@ -171,7 +164,7 @@ public class CraftManager : MonoBehaviour
         _amountOfAnInventoryItemNeeded++; 
         MarkItemForRemoval(slotIndex);
         CountMatchingInventoryItemMaterials(craftingMaterial);
-        _breakLoop = true; //Move onto next crafting material 
+        _moveToNextMaterial = true; //Move onto next crafting material 
     }
 
     //Leftover quantity, adjust inventory item's quantity
@@ -180,7 +173,7 @@ public class CraftManager : MonoBehaviour
         _quantityRemaining = false;
         AdjustInventoryQuantity(slotIndex);
         _amountOfMatchingCraftingMaterials++; //Count for one material for craftable item's recipe found
-        _breakLoop = true; //Move onto next crafting material 
+        _moveToNextMaterial = true; //Move onto next crafting material 
     }
 
     //Mark an inventory item to be removed (item is removed in "InventoryUI")
@@ -211,13 +204,6 @@ public class CraftManager : MonoBehaviour
         int newQuantity = Mathf.Abs(_remainingQuantity);
         EventBus.Instance.Publish(new AdjustInventorySlotItemQuantity(newQuantity, slotIndex));
     }
-
-    /*
-    "_amountOfFullStacksPerMaterialToRemove[i]" means the amount of a unique material to be removed at i
-    For example, if I have wood as the material I use for my crafting recipe and I have 3 stacks of 10 of wood in my inventory (30 in total) 
-    and my recipe needed 30 stacks, that value "_amountOfFullStacksPerMaterialToRemove[i]" would be 3 at i
-    "_materialsForCraftableItem[i]" represents a unique material's item data. 
-    */
 
     private void CraftInventoryItem(ItemData craftableInventoryItem)
     {

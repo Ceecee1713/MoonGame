@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     private float timeDelayBeforeShowingEndGameDialogue = 2.0f;
 
     [HideInInspector]
-    public int areaChangesCount = 0; //Accessed by "DecipherClueButton" and "StreetLamps" script
+    public int AreaChangesCount = 0; 
 
     private const int MAX_NUMBER_OF_AREA_CHANGES = 2; 
 
@@ -26,18 +26,18 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         EventBus.Instance.Subscribe<CompletedAllMoonPuzzles>(CompletedMoonPuzzle);
-        EventBus.Instance.Subscribe<NewMoonFragmentObtained>(ChangeMaterialsForDecipheringClues);
+        EventBus.Instance.Subscribe<NewMoonFragmentObtained>(MaterialsAndStreetlightChange);
     }
 
     void Update()
     {
-        Mathf.Clamp(areaChangesCount, 0, MAX_NUMBER_OF_AREA_CHANGES);
+        Mathf.Clamp(AreaChangesCount, 0, MAX_NUMBER_OF_AREA_CHANGES);
     }
 
-    //Changes materials for deciphering clues in the crafting table UI
-    private void ChangeMaterialsForDecipheringClues(NewMoonFragmentObtained newMoonFragmentObtained)
+    //Changes materials for deciphering a clue at crafting table and turn on street lamp lights
+    private void MaterialsAndStreetlightChange(NewMoonFragmentObtained newMoonFragmentObtained)
     {
-        areaChangesCount++;
+        AreaChangesCount++;
     }
 
     //Called BEFORE moon text adventure UI has been disabled, keep in mind

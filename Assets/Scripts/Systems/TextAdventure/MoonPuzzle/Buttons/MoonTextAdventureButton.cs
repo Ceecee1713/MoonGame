@@ -15,62 +15,62 @@ public class MoonTextAdventureButton : MonoBehaviour
     private MoonPuzzleDialogueData _nextQuestionDialogue;
     private MoonPuzzleDialogueData _currentQuestionDialogue;
 
+    private MoonPuzzleDialogueData _secondQuestionDialogue;
+    private MoonPuzzleDialogueData _thirdQuestionDialogue;
+    private MoonPuzzleDialogueData _finishedTextAdventureDialogue;
+
     private bool _allowPlayerToInteract = false;
     private bool _concludeMoonPuzzle;
     private int _branchIndex;
 
     void Awake()
     {
-        EventBus.Instance.Subscribe<SetTextAdventureQuestion>(SetNextQuestionDialogue);
+        EventBus.Instance.Subscribe<SetMoonPuzzleQuestions>(SetNextQuestionDialogue);
     }
 
     void OnDestroy()
     {
         if (EventBus.Instance != null)
-            EventBus.Instance.Unsubscribe<SetTextAdventureQuestion>(SetNextQuestionDialogue);
+            EventBus.Instance.Unsubscribe<SetMoonPuzzleQuestions>(SetNextQuestionDialogue);
     }
 
-    private void SetNextQuestionDialogue(SetTextAdventureQuestion setTextAdventureQuestion) 
+    private void SetNextQuestionDialogue(SetMoonPuzzleQuestions setMoonPuzzleQuestions) 
     {
         _allowPlayerToInteract = true;
-        _branchIndex = setTextAdventureQuestion.TextBranchIndex;
-        _currentQuestionDialogue = setTextAdventureQuestion.QuestionDialogue;
 
-        if(buttonNumber == _currentQuestionDialogue.correctButtonNumber) 
+        _branchIndex = setMoonPuzzleQuestions.TextBranchIndex;
+        _currentQuestionDialogue = setMoonPuzzleQuestions.QuestionDialogue;
+
+        _secondQuestionDialogue = moonPuzzleText.TextAdventureDialogue.TextBranches[_branchIndex].SecondQuestionDialogue;
+        _thirdQuestionDialogue = moonPuzzleText.TextAdventureDialogue.TextBranches[_branchIndex].ThirdQuestionDialogue;
+        _finishedTextAdventureDialogue = moonPuzzleText.TextAdventureDialogue.TextBranches[_branchIndex].FinishTextAdventureDialogue;
+        
+        //Setting new dialogue for moon puzzle text adventure based on "_branchIndex"
+        if(buttonNumber == _currentQuestionDialogue.correctButtonNumber)  
         {
             if(_currentQuestionDialogue == moonPuzzleText.TextAdventureDialogue.TextBranches[_branchIndex].FirstQuestionDialogue) 
-                _nextQuestionDialogue = moonPuzzleText.TextAdventureDialogue.TextBranches[_branchIndex].SecondQuestionDialogue;
+                _nextQuestionDialogue = _secondQuestionDialogue;
 
             else if(_currentQuestionDialogue == moonPuzzleText.TextAdventureDialogue.TextBranches[_branchIndex].SecondQuestionDialogue)
-                _nextQuestionDialogue = moonPuzzleText.TextAdventureDialogue.TextBranches[_branchIndex].ThirdQuestionDialogue;
+                _nextQuestionDialogue = _thirdQuestionDialogue;
 
             else if(_currentQuestionDialogue == moonPuzzleText.TextAdventureDialogue.TextBranches[_branchIndex].ThirdQuestionDialogue)
             {
-                _nextQuestionDialogue = moonPuzzleText.TextAdventureDialogue.TextBranches[_branchIndex].FinishTextAdventureDialogue;
+                _nextQuestionDialogue = _finishedTextAdventureDialogue;
                 _concludeMoonPuzzle = true;
             }
-                
         }
     }
 
     public void OnDialogueButtonClick()
     {
-        if(_allowPlayerToInteract == false || cluebookUI.activeSelf == true)
+        if(_allowPlayerToInteract == false || cluebookUI.activeSelf == true || _currentQuestionDialogue == null)
             return; 
-
-        if (_currentQuestionDialogue == null)
-        {
-            Debug.LogError($"Button {buttonNumber}: No current dialogue set!");
-            return;
-        }
 
         if (buttonNumber == _currentQuestionDialogue.correctButtonNumber)
         {
             if (_nextQuestionDialogue == null)
-            {
-                Debug.LogError($"Button {buttonNumber}: _nextQuestionDialogue is null!");
                 return;
-            }
 
             if(_concludeMoonPuzzle == true)
             {

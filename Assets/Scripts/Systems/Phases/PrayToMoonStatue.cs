@@ -39,7 +39,7 @@ public class PrayToMoonStatue : MonoBehaviour
 
         if(_playerCollisionDetected == true)
         {
-            if(_showMoonTutorial == false)
+            if(_showMoonTutorial == false) //Show moon tutorial dialogue
             {
                 _showMoonTutorial = true;
                 dialogueUI.SetActive(true);
@@ -58,9 +58,7 @@ public class PrayToMoonStatue : MonoBehaviour
     private void OnTriggerStay(Collider collider)
     {
         if (collider.gameObject.CompareTag("Player"))
-        {
             _playerCollisionDetected = true;
-        }
     }
 
     private void OnTriggerExit(Collider collider)

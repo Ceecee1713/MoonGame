@@ -1,5 +1,7 @@
 using UnityEngine;
 
+//Refactor AddInventoryItem method to be like InventoryUI with the methods
+
 public class ChestUI : MonoBehaviour
 {
     [SerializeField]

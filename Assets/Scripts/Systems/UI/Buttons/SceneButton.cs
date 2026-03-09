@@ -58,7 +58,6 @@ public class SceneButton : MonoBehaviour
             _hasBeenClicked = true;
             _preventInput = true;
             quitButton.PreventInput();
-            //Play sound here
             Invoke("ChangeScene", CHANGE_SCENE_DELAY);
         }
     }
@@ -73,7 +72,6 @@ public class SceneButton : MonoBehaviour
             _hasBeenClicked = true;
             _preventInput = true;
             quitButton.PreventInput();
-            //Play sound here
             Invoke("LoadCurrentScene", CHANGE_SCENE_DELAY);
         }
     }

@@ -32,6 +32,7 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
         IsEmpty = false;
         InventoryItem = newInventoryItem.Clone();
 
+        //Setting inventory slot visuals
         inventorySlotVisuals.ItemImageObject.SetActive(true);
         inventorySlotVisuals.ItemImage.sprite = InventoryItem.SlotImageSprite;
         inventorySlotVisuals.TypeOfItem = InventoryItem.ItemType;
@@ -48,6 +49,7 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
         IsEmpty = true;
         InventoryItem = null;
 
+        //Resetting inventory slot visuals
         inventorySlotVisuals.ItemImage.sprite = null;
         inventorySlotVisuals.TypeOfItem = InventoryItemTypes.None;
         inventorySlotVisuals.ItemQuantityText.text = " ";

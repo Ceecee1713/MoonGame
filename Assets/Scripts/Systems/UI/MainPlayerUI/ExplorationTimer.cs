@@ -5,6 +5,7 @@ using TMPro;
 public class ExplorationTimer : MonoBehaviour
 {
     public float RemainingTime; 
+    public float TimerValueToChangeToRetreatGoal; 
 
     [SerializeField]
     private CorriosonValues corriosonValues;

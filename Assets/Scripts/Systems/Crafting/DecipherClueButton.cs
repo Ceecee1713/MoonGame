@@ -1,6 +1,6 @@
 using UnityEngine;
 
-//Edit to add the changing of the material text on UI
+//Change the material text and crafting materials for each new area that has been unlocked
 
 public class DecipherClueButton : MonoBehaviour
 {
@@ -24,7 +24,7 @@ public class DecipherClueButton : MonoBehaviour
 
     void OnEnable()
     {
-        newMoonPuzzleIndex = gameManager.areaChangesCount;
+        newMoonPuzzleIndex = gameManager.AreaChangesCount;
         CheckToSwitchMaterials();
     }
 
@@ -52,7 +52,7 @@ public class DecipherClueButton : MonoBehaviour
 
     public void OnDecipherClueClick()
     {
-        EventBus.Instance.Publish(new CheckForCompleteClues()); //Calls CluebookManager
+        EventBus.Instance.Publish(new CheckForCompleteClues()); //Publish to CluebookManager
         craftManager.ResetStatus();
 
         _craftingAClue = true;

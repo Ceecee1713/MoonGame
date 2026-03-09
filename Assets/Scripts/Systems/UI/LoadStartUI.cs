@@ -3,8 +3,6 @@ using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 
-//This script is to be attached only to the start menu UI screen
-
 public class LoadStartUI : MonoBehaviour
 {
     private CanvasGroup _canvasGroup;
@@ -20,7 +18,6 @@ public class LoadStartUI : MonoBehaviour
     IEnumerator ShowCanvas()
     {
         yield return new WaitForSeconds(DELAY);
-        //Play audio here
         Tween firstTween = _canvasGroup.DOFade(1f, _durationOfFade);
         yield return firstTween.WaitForCompletion();
     }
