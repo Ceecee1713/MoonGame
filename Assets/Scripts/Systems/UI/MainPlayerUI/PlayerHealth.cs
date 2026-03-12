@@ -64,6 +64,7 @@ public class PlayerHealth : MonoBehaviour
     private void StartNewExplorationPhase(NewExplorationPhase newExplorationPhase)
     {
         health.value = 1.0f; //Reset health to full
+        _recoverHealth = true;
     }
 
     IEnumerator ShowFailedGameScreen()

@@ -6,24 +6,24 @@ public class CorriosonZone : MonoBehaviour
     private CorriosonValues corriosonValues;
 
     [SerializeField]
-    private GameObject otherAreaCollision;
+    private GameObject nextCorriosonZone;
 
     [SerializeField]
     [Range(1, 3)]
-    private int areaNumber;
+    private int moonPuzzleZoneIndex; //The moon puzzle area index to be completed in order to swap corrioson zones
 
-    public float DefaultSpeedToLowerHealth;
-    public float CurrentSpeedToLowerHealth;
+    [SerializeField]
+    private float CurrentSpeedToLowerHealth;
 
-    [HideInInspector]
-    public int Counter;
+    private int counter;
 
-    private bool _recoverHealth = false;
     private bool _playerCollisionDetected = false; 
+
+    private const bool RECOVER_HEALTH = false;
 
     void Start()
     {
-        CurrentSpeedToLowerHealth = DefaultSpeedToLowerHealth; 
+        CurrentSpeedToLowerHealth = corriosonValues.DefaultStartingSpeed; 
 
         EventBus.Instance.Subscribe<ChangeCorriosonValue>(ChangeSpeedToLowerHealth);
         EventBus.Instance.Subscribe<RestoreCorriosonValue>(ReturnToDefaultSpeed);
@@ -42,19 +42,15 @@ public class CorriosonZone : MonoBehaviour
 
     private void SetNewCorriosonZone(NewMoonFragmentObtained newMoonFragmentObtained)
     {
-        Counter++;
-
-        if(Counter == areaNumber && otherAreaCollision != null)
+        if(nextCorriosonZone != null)
         {
-            otherAreaCollision.SetActive(true);
+            counter++;
 
-            //Setting variables for new corrison area script
-            CorriosonZone corriosonScript = otherAreaCollision.GetComponent<CorriosonZone>();
-            corriosonScript.DefaultSpeedToLowerHealth = DefaultSpeedToLowerHealth;
-            corriosonScript.CurrentSpeedToLowerHealth = corriosonScript.DefaultSpeedToLowerHealth;
-            corriosonScript.Counter = Counter;
-
-            Destroy(this.gameObject);
+            if(counter == moonPuzzleZoneIndex)
+            {
+                nextCorriosonZone.SetActive(true);
+                Destroy(this.gameObject);
+            }
         }
     }
 
@@ -62,7 +58,7 @@ public class CorriosonZone : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Player") && _playerCollisionDetected == false)
         {
-            EventBus.Instance.Publish(new AlterPlayerHealth(_recoverHealth, CurrentSpeedToLowerHealth));
+            EventBus.Instance.Publish(new AlterPlayerHealth(RECOVER_HEALTH, CurrentSpeedToLowerHealth));
             _playerCollisionDetected = true;
         }
     }
@@ -73,9 +69,9 @@ public class CorriosonZone : MonoBehaviour
             _playerCollisionDetected = false; 
     }
 
-    private void ChangeSpeedToLowerHealth(ChangeCorriosonValue changeCorriosonValue)
+    private void ChangeSpeedToLowerHealth(ChangeCorriosonValue changeCorriosonValue) //Published by StorytellingDialogueText and ExplorationTimer
     {
-        if(areaNumber != changeCorriosonValue.CorriosonAreaNumber)
+        if(moonPuzzleZoneIndex != changeCorriosonValue.CorriosonAreaNumber)
             return;
 
         CurrentSpeedToLowerHealth = changeCorriosonValue.CorriosonValue;
@@ -83,6 +79,6 @@ public class CorriosonZone : MonoBehaviour
 
     private void ReturnToDefaultSpeed(RestoreCorriosonValue restoreCorriosonValue)
     {
-        CurrentSpeedToLowerHealth = DefaultSpeedToLowerHealth;
+        CurrentSpeedToLowerHealth = corriosonValues.DefaultStartingSpeed; 
     }
 }

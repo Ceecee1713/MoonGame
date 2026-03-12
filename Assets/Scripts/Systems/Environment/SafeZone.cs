@@ -3,7 +3,7 @@ using UnityEngine;
 public class SafeZone : MonoBehaviour
 {
     [SerializeField]
-    private GameObject newSafeZoneArea;
+    private GameObject nextSafeZoneArea;
     
     [SerializeField]
     private float speedToIncraseHealth = 1.2f;
@@ -25,8 +25,11 @@ public class SafeZone : MonoBehaviour
 
     private void SetNewSafeZoneCollision(NewMoonFragmentObtained newMoonFragmentObtained)
     {
-        if(newSafeZoneArea != null)
-            newSafeZoneArea.SetActive(true);
+        if(nextSafeZoneArea != null)
+        {
+            nextSafeZoneArea.SetActive(true);
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnTriggerStay(Collider collider)

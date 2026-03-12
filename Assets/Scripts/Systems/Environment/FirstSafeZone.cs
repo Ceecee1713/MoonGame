@@ -3,7 +3,7 @@ using UnityEngine;
 public class FirstSafeZone : MonoBehaviour
 {
     [SerializeField]
-    private GameObject newSafeZoneArea;
+    private GameObject nextSafeZoneArea;
 
     [Header ("For Tutorial Dialogue Message")]
     [SerializeField]
@@ -22,7 +22,7 @@ public class FirstSafeZone : MonoBehaviour
     private const bool NEW_EXPLORATION_PHASE = false;
     private const bool STARTING_THE_GAME = false; 
 
-    private const float DELAY = 0.5f;
+    private const float DELAY = 0.25f;
 
     void Start()
     {
@@ -37,8 +37,11 @@ public class FirstSafeZone : MonoBehaviour
 
     private void SetNewSafeZoneCollision(NewMoonFragmentObtained newMoonFragmentObtained)
     {
-        newSafeZoneArea.SetActive(true);
-        Destroy(this.gameObject);
+        if(nextSafeZoneArea != null)
+        {
+            nextSafeZoneArea.SetActive(true);
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnTriggerStay(Collider collider)

@@ -212,13 +212,13 @@ public class MoonPuzzleDialogueText : MonoBehaviour
 
     IEnumerator ShowMoonPuzzleFragmentUIPopUp()
     {
-        //Show moon fragment UI Pop Up and start a new exploration phase
+        //Show moon fragment UI Pop Up, change corrioson areas and start a new exploration phase
         _fadeOutCanvas = false;
         moonPuzzleUIPopUp.SetActive(true);
         EventBus.Instance.Publish(new NewExplorationPhase());
         EventBus.Instance.Publish(new ResetWorldItems());
         EventBus.Instance.Publish(new PauseExplorationTimer(true));
-        EventBus.Instance.Publish(new NewMoonFragmentObtained()); //Show a dialogue message from moon statue
+        EventBus.Instance.Publish(new NewMoonFragmentObtained()); 
         EventBus.Instance.Publish(new DisplayMoonFragmentImage(TextAdventureDialogue.TextBranches[_textBranchIndex].MoonFragmentSprite));
         EventBus.Instance.Publish(new FadeSingleCanvas(moonPuzzleUIPopUp, _fadeOutCanvas));
 

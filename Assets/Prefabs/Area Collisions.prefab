@@ -67,11 +67,79 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   corriosonValues: {fileID: 11400000, guid: 0c43309b9484a2f4a880d0e8f0a92b86, type: 2}
-  otherAreaCollision: {fileID: 0}
-  areaNumber: 3
-  DefaultSpeedToLowerHealth: 0
+  nextCorriosonZone: {fileID: 0}
+  moonPuzzleZoneIndex: 1
   CurrentSpeedToLowerHealth: 0
-  counter: 0
+--- !u!1 &1048283509909654208
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1353280846309199364}
+  - component: {fileID: 1259653141878661566}
+  - component: {fileID: 6990835674678836107}
+  m_Layer: 0
+  m_Name: Moon Fragment Area One (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1353280846309199364
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048283509909654208}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.96, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3497925791397990806}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1259653141878661566
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048283509909654208}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.5716102, y: 3.07203, z: 3.6045735}
+  m_Center: {x: 0.00000011920929, y: 1.036015, z: 0.014304042}
+--- !u!114 &6990835674678836107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048283509909654208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 071fbcecf078a3e4ca492acca239a277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  corriosonValues: {fileID: 11400000, guid: 0c43309b9484a2f4a880d0e8f0a92b86, type: 2}
+  nextCorriosonZone: {fileID: 0}
+  moonPuzzleZoneIndex: 1
+  CurrentSpeedToLowerHealth: 0
 --- !u!1 &1250870041479745809
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,11 +207,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   corriosonValues: {fileID: 11400000, guid: 0c43309b9484a2f4a880d0e8f0a92b86, type: 2}
-  otherAreaCollision: {fileID: 2483839844155720236}
-  areaNumber: 2
-  DefaultSpeedToLowerHealth: 0.3
+  nextCorriosonZone: {fileID: 2483839844155720236}
+  moonPuzzleZoneIndex: 1
   CurrentSpeedToLowerHealth: 0
-  counter: 0
 --- !u!1 &2483839844155720236
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,11 +277,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   corriosonValues: {fileID: 11400000, guid: 0c43309b9484a2f4a880d0e8f0a92b86, type: 2}
-  otherAreaCollision: {fileID: 0}
-  areaNumber: 2
-  DefaultSpeedToLowerHealth: 1
+  nextCorriosonZone: {fileID: 4537977623438103593}
+  moonPuzzleZoneIndex: 2
   CurrentSpeedToLowerHealth: 0
-  counter: 0
 --- !u!1 &3186354443612990807
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,7 +346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9257f4d4940f4324ab64c865fe3d8d14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newSafeZoneArea: {fileID: 3186354443612990807}
+  nextSafeZoneArea: {fileID: 4089792901666932433}
   speedToIncraseHealth: 1.2
 --- !u!1 &4059097111974093791
 GameObject:
@@ -351,11 +415,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   corriosonValues: {fileID: 11400000, guid: 0c43309b9484a2f4a880d0e8f0a92b86, type: 2}
-  otherAreaCollision: {fileID: 6702080772393797434}
-  areaNumber: 1
-  DefaultSpeedToLowerHealth: 0.3
+  nextCorriosonZone: {fileID: 6702080772393797434}
+  moonPuzzleZoneIndex: 1
   CurrentSpeedToLowerHealth: 0
-  counter: 0
 --- !u!1 &4089792901666932433
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,8 +484,78 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9257f4d4940f4324ab64c865fe3d8d14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newSafeZoneArea: {fileID: 0}
+  nextSafeZoneArea: {fileID: 0}
   speedToIncraseHealth: 1.2
+--- !u!1 &4537977623438103593
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6332143498218755754}
+  - component: {fileID: 658024753442363735}
+  - component: {fileID: 3979713193253527003}
+  m_Layer: 0
+  m_Name: Moon Fragment Area Two (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &6332143498218755754
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4537977623438103593}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.93, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3497925791397990806}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &658024753442363735
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4537977623438103593}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.5716102, y: 3.07203, z: 3.6045735}
+  m_Center: {x: 0.00000011920929, y: 1.036015, z: 0.014304042}
+--- !u!114 &3979713193253527003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4537977623438103593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 071fbcecf078a3e4ca492acca239a277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  corriosonValues: {fileID: 11400000, guid: 0c43309b9484a2f4a880d0e8f0a92b86, type: 2}
+  nextCorriosonZone: {fileID: 0}
+  moonPuzzleZoneIndex: 1
+  CurrentSpeedToLowerHealth: 0
 --- !u!1 &5339635152527515304
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,8 +590,10 @@ Transform:
   - {fileID: 6086437322333866876}
   - {fileID: 7205013701281643526}
   - {fileID: 7503720371400322017}
+  - {fileID: 1353280846309199364}
   - {fileID: 5308114845546340051}
   - {fileID: 965711635165345276}
+  - {fileID: 6332143498218755754}
   - {fileID: 1557019329558667939}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -530,11 +664,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   corriosonValues: {fileID: 11400000, guid: 0c43309b9484a2f4a880d0e8f0a92b86, type: 2}
-  otherAreaCollision: {fileID: 0}
-  areaNumber: 1
-  DefaultSpeedToLowerHealth: 1
+  nextCorriosonZone: {fileID: 1048283509909654208}
+  moonPuzzleZoneIndex: 2
   CurrentSpeedToLowerHealth: 0
-  counter: 0
 --- !u!1 &7924914294772372121
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,7 +733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06970ad2c1d82f1458191862066e0634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newSafeZoneArea: {fileID: 3186354443612990807}
+  nextSafeZoneArea: {fileID: 3186354443612990807}
   dialogueUI: {fileID: 0}
   corriosonZoneTutorial: {fileID: 0}
   speedToIncraseHealth: 1.2
