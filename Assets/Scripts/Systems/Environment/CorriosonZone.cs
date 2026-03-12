@@ -3,9 +3,6 @@ using UnityEngine;
 public class CorriosonZone : MonoBehaviour
 {
     [SerializeField]
-    private CorriosonValues corriosonValues;
-
-    [SerializeField]
     private GameObject nextCorriosonZone;
 
     [SerializeField]
@@ -15,6 +12,12 @@ public class CorriosonZone : MonoBehaviour
     [SerializeField]
     private float CurrentSpeedToLowerHealth;
 
+    [SerializeField]
+    private float DefaultStartingSpeed;
+
+    [SerializeField]
+    private bool lastMoonPuzzleCorriosonZone = false; 
+
     private int counter;
 
     private bool _playerCollisionDetected = false; 
@@ -23,7 +26,7 @@ public class CorriosonZone : MonoBehaviour
 
     void Start()
     {
-        CurrentSpeedToLowerHealth = corriosonValues.DefaultStartingSpeed; 
+        CurrentSpeedToLowerHealth = DefaultStartingSpeed; 
 
         EventBus.Instance.Subscribe<ChangeCorriosonValue>(ChangeSpeedToLowerHealth);
         EventBus.Instance.Subscribe<RestoreCorriosonValue>(ReturnToDefaultSpeed);
@@ -42,6 +45,9 @@ public class CorriosonZone : MonoBehaviour
 
     private void SetNewCorriosonZone(NewMoonFragmentObtained newMoonFragmentObtained)
     {
+        if(lastMoonPuzzleCorriosonZone == true)
+            return;
+
         if(nextCorriosonZone != null)
         {
             counter++;
@@ -71,7 +77,7 @@ public class CorriosonZone : MonoBehaviour
 
     private void ChangeSpeedToLowerHealth(ChangeCorriosonValue changeCorriosonValue) //Published by StorytellingDialogueText and ExplorationTimer
     {
-        if(moonPuzzleZoneIndex != changeCorriosonValue.CorriosonAreaNumber)
+        if(moonPuzzleZoneIndex != changeCorriosonValue.CorriosonAreaNumber || lastMoonPuzzleCorriosonZone == true)
             return;
 
         CurrentSpeedToLowerHealth = changeCorriosonValue.CorriosonValue;
@@ -79,6 +85,9 @@ public class CorriosonZone : MonoBehaviour
 
     private void ReturnToDefaultSpeed(RestoreCorriosonValue restoreCorriosonValue)
     {
-        CurrentSpeedToLowerHealth = corriosonValues.DefaultStartingSpeed; 
+        if(lastMoonPuzzleCorriosonZone == true)
+            return;
+
+        CurrentSpeedToLowerHealth = DefaultStartingSpeed;
     }
 }

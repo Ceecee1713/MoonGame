@@ -66,10 +66,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071fbcecf078a3e4ca492acca239a277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  corriosonValues: {fileID: 11400000, guid: 0c43309b9484a2f4a880d0e8f0a92b86, type: 2}
   nextCorriosonZone: {fileID: 0}
   moonPuzzleZoneIndex: 1
   CurrentSpeedToLowerHealth: 0
+  DefaultStartingSpeed: 0.65
+  lastMoonPuzzleCorriosonZone: 1
 --- !u!1 &1048283509909654208
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,10 +137,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071fbcecf078a3e4ca492acca239a277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  corriosonValues: {fileID: 11400000, guid: 0c43309b9484a2f4a880d0e8f0a92b86, type: 2}
   nextCorriosonZone: {fileID: 0}
   moonPuzzleZoneIndex: 1
   CurrentSpeedToLowerHealth: 0
+  DefaultStartingSpeed: 0.3
+  lastMoonPuzzleCorriosonZone: 0
 --- !u!1 &1250870041479745809
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,10 +208,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071fbcecf078a3e4ca492acca239a277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  corriosonValues: {fileID: 11400000, guid: 0c43309b9484a2f4a880d0e8f0a92b86, type: 2}
   nextCorriosonZone: {fileID: 2483839844155720236}
   moonPuzzleZoneIndex: 1
   CurrentSpeedToLowerHealth: 0
+  DefaultStartingSpeed: 0.3
+  lastMoonPuzzleCorriosonZone: 0
 --- !u!1 &2483839844155720236
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,10 +279,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071fbcecf078a3e4ca492acca239a277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  corriosonValues: {fileID: 11400000, guid: 0c43309b9484a2f4a880d0e8f0a92b86, type: 2}
   nextCorriosonZone: {fileID: 4537977623438103593}
   moonPuzzleZoneIndex: 2
   CurrentSpeedToLowerHealth: 0
+  DefaultStartingSpeed: 0.3
+  lastMoonPuzzleCorriosonZone: 0
 --- !u!1 &3186354443612990807
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,10 +418,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071fbcecf078a3e4ca492acca239a277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  corriosonValues: {fileID: 11400000, guid: 0c43309b9484a2f4a880d0e8f0a92b86, type: 2}
   nextCorriosonZone: {fileID: 6702080772393797434}
   moonPuzzleZoneIndex: 1
   CurrentSpeedToLowerHealth: 0
+  DefaultStartingSpeed: 0.3
+  lastMoonPuzzleCorriosonZone: 0
 --- !u!1 &4089792901666932433
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,10 +557,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071fbcecf078a3e4ca492acca239a277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  corriosonValues: {fileID: 11400000, guid: 0c43309b9484a2f4a880d0e8f0a92b86, type: 2}
   nextCorriosonZone: {fileID: 0}
   moonPuzzleZoneIndex: 1
   CurrentSpeedToLowerHealth: 0
+  DefaultStartingSpeed: 0.3
+  lastMoonPuzzleCorriosonZone: 0
 --- !u!1 &5339635152527515304
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,10 +669,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071fbcecf078a3e4ca492acca239a277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  corriosonValues: {fileID: 11400000, guid: 0c43309b9484a2f4a880d0e8f0a92b86, type: 2}
   nextCorriosonZone: {fileID: 1048283509909654208}
   moonPuzzleZoneIndex: 2
   CurrentSpeedToLowerHealth: 0
+  DefaultStartingSpeed: 0.3
+  lastMoonPuzzleCorriosonZone: 0
 --- !u!1 &7924914294772372121
 GameObject:
   m_ObjectHideFlags: 0

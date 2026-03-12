@@ -14,7 +14,7 @@ public class ExplorationTimer : MonoBehaviour
     private TextMeshProUGUI timerText;
 
     [SerializeField]
-    private float maxDurationOfExplorationPhase; 
+    private float maxDurationOfExplorationPhaseInSeconds; 
 
     private bool _doNotAllowTimerToCountDown = false; 
 
@@ -27,7 +27,7 @@ public class ExplorationTimer : MonoBehaviour
 
     void Start()
     {
-        RemainingTime = maxDurationOfExplorationPhase;
+        RemainingTime = maxDurationOfExplorationPhaseInSeconds;
 
         EventBus.Instance.Subscribe<PauseExplorationTimer>(PauseTimerCountdown);
         EventBus.Instance.Subscribe<ResetExplorationTimer>(ResetTimer);
@@ -66,7 +66,7 @@ public class ExplorationTimer : MonoBehaviour
 
     private void ResetTimer(ResetExplorationTimer resetExplorationTimer)
     {
-        RemainingTime = maxDurationOfExplorationPhase;
+        RemainingTime = maxDurationOfExplorationPhaseInSeconds;
         _doNotAllowTimerToCountDown = false;
     }
 }
