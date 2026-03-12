@@ -12,6 +12,9 @@ public class PlayerSpawner : MonoBehaviour
         Quaternion prefabRotation = spawnDroppedInventoryItem.InventoryItem.ItemObject.transform.rotation;
         GameObject instance = Instantiate(spawnDroppedInventoryItem.InventoryItem.ItemObject, this.gameObject.transform.position, prefabRotation);
 
+        if(spawnDroppedInventoryItem.InventoryItem.ItemType == InventoryItemTypes.Chest)
+            return;
+
         InteractableItem instanceScript = instance.GetComponent<InteractableItem>();
 
         if (instanceScript == null)
