@@ -158,8 +158,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 13.211976
-  m_Center: {x: -0.1512897, y: 4.7669754, z: -0.7526791}
+  m_Radius: 15.413391
+  m_Center: {x: -0.04646063, y: 4.7669744, z: -0.7526791}
 --- !u!114 &9143846926794239863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +235,20 @@ PrefabInstance:
     - target: {fileID: 6611202281652330841, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
       propertyPath: m_Center.z
       value: -0.71666956
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597273152441028554, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
+      propertyPath: m_text
+      value: 'Sapphire
+
+        Crystal'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597273152441028554, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -2307556845382827942, guid: af58e12efbcd61d43b98901e47d325fd, type: 2}
+    - target: {fileID: 7597273152441028554, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4283146703
       objectReference: {fileID: 0}
     - target: {fileID: 8503675942352970339, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
       propertyPath: m_IsActive

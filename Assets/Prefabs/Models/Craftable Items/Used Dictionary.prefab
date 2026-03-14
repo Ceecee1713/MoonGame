@@ -147,8 +147,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.009951482
-  m_Center: {x: -0.0012596488, y: -0.00018966793, z: 0.00003864646}
+  m_Radius: 0.011583029
+  m_Center: {x: -0.0012596488, y: -0.0001498735, z: 0.00003864646}
 --- !u!114 &8792177580175587904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,6 +251,18 @@ PrefabInstance:
     - target: {fileID: 6611202281652330841, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
       propertyPath: m_Center.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597273152441028554, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
+      propertyPath: m_text
+      value: Used Dictionary
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597273152441028554, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
+      propertyPath: m_fontSize
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597273152441028554, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 85
       objectReference: {fileID: 0}
     - target: {fileID: 8503675942352970339, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
       propertyPath: m_IsActive

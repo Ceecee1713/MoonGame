@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.005370264
       objectReference: {fileID: 0}
+    - target: {fileID: 7597273152441028554, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
+      propertyPath: m_text
+      value: Fern
+      objectReference: {fileID: 0}
     - target: {fileID: 8503675942352970339, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -287,8 +291,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.019045347
-  m_Center: {x: 0.0000635004, y: 1.2513668e-17, z: 0.00527287}
+  m_Radius: 0.022123303
+  m_Center: {x: 0.0000635004, y: -0.00007507324, z: 0.0052728723}
 --- !u!114 &9083880317895185783
 MonoBehaviour:
   m_ObjectHideFlags: 0

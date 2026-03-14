@@ -2358,7 +2358,7 @@ GameObject:
   - component: {fileID: 9204802135891279150}
   - component: {fileID: 1652580381196206388}
   m_Layer: 0
-  m_Name: Interactability
+  m_Name: Interactability Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2398,7 +2398,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.2987313
+  m_Radius: 1.5718288
   m_Center: {x: 0, y: 1.0215256, z: 0.0075626373}
 --- !u!114 &1652580381196206388
 MonoBehaviour:
@@ -7128,15 +7128,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6611202281652330841, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
       propertyPath: m_Radius
-      value: 1.295752
+      value: 1.5732551
       objectReference: {fileID: 0}
     - target: {fileID: 6611202281652330841, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
       propertyPath: m_Center.x
-      value: 0.003189087
+      value: -0.0012152195
       objectReference: {fileID: 0}
     - target: {fileID: 6611202281652330841, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
       propertyPath: m_Center.y
       value: 1.0211527
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597273152441028554, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
+      propertyPath: m_text
+      value: Open Chest
       objectReference: {fileID: 0}
     - target: {fileID: 8503675942352970339, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
       propertyPath: m_IsActive
