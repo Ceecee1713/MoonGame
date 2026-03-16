@@ -4,6 +4,9 @@ using TMPro;
 public class DecipherClueButton : MonoBehaviour
 {
     [SerializeField]
+    private AudioClip buttonClickSFX;
+
+    [SerializeField]
     private TextMeshProUGUI materialDescriptionText;
 
     [Header ("Script References")]
@@ -70,6 +73,8 @@ public class DecipherClueButton : MonoBehaviour
 
     public void OnDecipherClueClick()
     {
+        AudioManager.Instance.PlaySoundEffect(buttonClickSFX);
+        
         EventBus.Instance.Publish(new CheckForCompleteClues()); //Publish to CluebookManager
         craftManager.ResetStatus();
 

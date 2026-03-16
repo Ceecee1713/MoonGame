@@ -3,6 +3,9 @@ using UnityEngine;
 public class InteractableItem : MonoBehaviour
 {
     [SerializeField]
+    private AudioClip interactionSFX;
+
+    [SerializeField]
     public ItemData inventoryItem; 
 
     [Header ("Game Object's Visibility - Environment")]
@@ -55,6 +58,8 @@ public class InteractableItem : MonoBehaviour
 
         if(_playerStayingInCollision == true && _interactedByPlayerOnce == false)
         {
+            AudioManager.Instance.PlaySoundEffect(interactionSFX);
+
             //Pass item into inventory system
             ItemData clonedInventoryItem = inventoryItem.Clone();
 

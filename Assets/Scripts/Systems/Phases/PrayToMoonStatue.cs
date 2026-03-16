@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class PrayToMoonStatue : MonoBehaviour
 {
+    [SerializeField]
+    private AudioClip prayingSFX;
+
     [Header ("UI Information")]
     [SerializeField]
     private GameObject storytellingUI;
@@ -40,6 +43,8 @@ public class PrayToMoonStatue : MonoBehaviour
 
         if(_playerCollisionDetected == true)
         {
+            AudioManager.Instance.PlayEnvironmentNoise(prayingSFX);
+
             if(_showMoonTutorial == false) //Show moon tutorial dialogue
             {
                 _showMoonTutorial = true;

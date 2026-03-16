@@ -3,6 +3,9 @@ using UnityEngine;
 public class ChestInteraction : MonoBehaviour
 {
     [SerializeField]
+    private AudioClip openChestSFX;
+
+    [SerializeField]
     private GameObject chestUI;
 
     private bool _playerStayingInCollision = false; 
@@ -17,6 +20,7 @@ public class ChestInteraction : MonoBehaviour
     {
         if(_playerStayingInCollision == true)
         {
+            AudioManager.Instance.PlaySoundEffect(openChestSFX);
             chestUI.SetActive(true);
             EventBus.Instance.Publish(new ChestIsOpen(true));
         }

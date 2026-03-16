@@ -1,0 +1,30 @@
+fileFormatVersion: 2
+guid: a992f2ea729359848808182530c481b6
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - ButtonSoftSFX: {instanceID: 0}
+  - ChoiceButtonSFX: {instanceID: 0}
+  - NextMessageSFX: {instanceID: 0}
+  - TextAdventurePaperFlipSFX: {instanceID: 0}
+  - MoonFragmentFoundSFX: {instanceID: 0}
+  - PrayingToMoonStatueSFX: {instanceID: 0}
+  - MoonPuzzleAreaSFX: {instanceID: 0}
+  - PickUpBerriesSFX: {instanceID: 0}
+  - PickUpBookSFX: {instanceID: 0}
+  - PickUpSpeedPotionSFX: {instanceID: 0}
+  - PickUpFernSFX: {instanceID: 0}
+  - OpenChestSFX: {instanceID: 0}
+  - WoodSFX: {instanceID: 0}
+  - SpecialRockSFX: {instanceID: 0}
+  - RockSFX: {instanceID: 0}
+  - DroppingBookSFX: {fileID: 5661122387479370990, guid: 4c5fc3813554e8a478c2acdf59198eb1, type: 3}
+  - DroppingChestSFX: {instanceID: 0}
+  - DroppingFernSFX: {instanceID: 0}
+  - DroppingSpeedPotionSFX: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

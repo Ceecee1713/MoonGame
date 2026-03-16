@@ -3,6 +3,9 @@ using UnityEngine;
 public class OpenCluebookMainUI : MonoBehaviour
 {
     [SerializeField]
+    private AudioClip buttonClickSFX;
+
+    [SerializeField]
     private GameObject cluebookUI;
 
     [SerializeField]
@@ -23,6 +26,7 @@ public class OpenCluebookMainUI : MonoBehaviour
         if(craftingUI.activeSelf == true || pauseMenuUI.activeSelf == true || _isAChestOpen == true)
             return;
 
+        AudioManager.Instance.PlaySoundEffect(buttonClickSFX);
         cluebookUI.SetActive(true);
     }
 

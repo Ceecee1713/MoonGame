@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class ItemDrop : MonoBehaviour
 {
+    [SerializeField]
+    private AudioClip itemDropSFX;
+
     void Start()
     {
         EventBus.Instance.Subscribe<NewExplorationPhase>(DeleteSelfOnNewExplorationPhase);
@@ -16,5 +19,11 @@ public class ItemDrop : MonoBehaviour
     private void DeleteSelfOnNewExplorationPhase(NewExplorationPhase newExplorationPhase)
     {
         Destroy(this.gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+            AudioManager.Instance.PlaySoundEffect(itemDropSFX);
     }
 }

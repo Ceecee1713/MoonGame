@@ -4,6 +4,9 @@ using UnityEngine;
 public class CraftButton : MonoBehaviour
 {
     [SerializeField]
+    private AudioClip buttonClickSFX;
+
+    [SerializeField]
     private CraftManager craftManager;
 
     [SerializeField]
@@ -16,6 +19,8 @@ public class CraftButton : MonoBehaviour
 
     public void OnCraftInventoryItemClick()
     {
+        AudioManager.Instance.PlaySoundEffect(buttonClickSFX);
+        
         craftManager.ResetStatus();
         craftManager.SetInventoryItemToCraft(craftableInventoryItem);
 

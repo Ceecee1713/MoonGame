@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 public class SceneButton : MonoBehaviour
 {
     [SerializeField]
+    private AudioClip buttonClickSFX;
+
+    [SerializeField]
     private CanvasGroup currentCanvasGroup;
 
     [SerializeField]
@@ -55,6 +58,8 @@ public class SceneButton : MonoBehaviour
 
         if(_allowClicking == true)
         {
+            AudioManager.Instance.PlaySoundEffect(buttonClickSFX);
+            
             _hasBeenClicked = true;
             _preventInput = true;
             quitButton.PreventInput();

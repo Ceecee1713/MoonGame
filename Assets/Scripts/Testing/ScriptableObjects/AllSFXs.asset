@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a992f2ea729359848808182530c481b6, type: 3}
+  m_Name: AllSFXs
+  m_EditorClassIdentifier: 
+  ButtonSoftSFX: {fileID: 8300000, guid: 92c90fba82368a444ab6ec5a9b704298, type: 3}
+  ChoiceButtonSFX: {fileID: 8300000, guid: b964cbd8b4680714284e13baf4334706, type: 3}
+  NextMessageSFX: {fileID: 8300000, guid: 1f070a9c8b76bee43997205abc4fd8e5, type: 3}
+  TextAdventurePaperFlipSFX: {fileID: 8300000, guid: 692fe1723bc84c94aa4a01bfed9d902f, type: 3}
+  MoonFragmentFoundSFX: {fileID: 8300000, guid: 42b0c068800b4594caee2eba94aa5eaf, type: 3}
+  PrayingToMoonStatueSFX: {fileID: 8300000, guid: 9512eb890aa43b244bfb9c4c62960aaf, type: 3}
+  MoonPuzzleAreaSFX: {fileID: 8300000, guid: 744d31e8434acf041bd31e64acf6b895, type: 3}
+  PickUpBerriesSFX: {fileID: 8300000, guid: 30425732cc7111a4a940ef97a4ce943b, type: 3}
+  PickUpBookSFX: {fileID: 8300000, guid: e33f3dd9e74656148868342f7eaf9f55, type: 3}
+  PickUpSpeedPotionSFX: {fileID: 8300000, guid: 7a44bb3c31a602c448be3ba6255fa117, type: 3}
+  PickUpFernSFX: {fileID: 8300000, guid: 513621c747d610146a8dabebdd3fce28, type: 3}
+  OpenChestSFX: {fileID: 8300000, guid: fe0c6e9d1f651b14fa9d0e99a3baf3a4, type: 3}
+  WoodSFX: {fileID: 8300000, guid: b845bb2a58c0fc64599b9d75f87fcd76, type: 3}
+  SpecialRockSFX: {fileID: 8300000, guid: fce52dd1913537c47ac0d7d32ed2ad8c, type: 3}
+  RockSFX: {fileID: 8300000, guid: 9e9b144f9afe5674a9446cc725e40689, type: 3}
+  DroppingBookSFX: {fileID: 8300000, guid: 97fe66fa772d4584aa7755f36569b363, type: 3}
+  DroppingChestSFX: {fileID: 8300000, guid: 948cf545c51ba5e479bf098e233f395f, type: 3}
+  DroppingFernSFX: {fileID: 8300000, guid: 632e41eebceba994da4748dc8b752abe, type: 3}
+  DroppingSpeedPotionSFX: {fileID: 8300000, guid: caef1900a66bf0f448025ebdfe6b21d9, type: 3}

@@ -7,12 +7,15 @@ using UnityEngine;
 public class QuitButton : MonoBehaviour
 {
     [SerializeField]
+    private AudioClip buttonClickSFX;
+
+    [SerializeField]
     private CanvasGroup currentCanvasGroup;
 
     [SerializeField]
     private SceneButton sceneButton;
 
-    private bool _dontRepeat = false;
+    private bool _hasBeenClicked = false;
     private bool _calledCoroutine = false;
     private bool _allowClicking = false;
     private bool _preventInput = false;
@@ -39,12 +42,14 @@ public class QuitButton : MonoBehaviour
 
     public void OnQuitClick()
     {
-        if(_dontRepeat || _preventInput == true)
+        if(_hasBeenClicked == true|| _preventInput == true)
             return;
 
         if(_allowClicking == true)
         {
-            _dontRepeat = true;
+            AudioManager.Instance.PlaySoundEffect(buttonClickSFX);
+            
+            _hasBeenClicked = true;
             _preventInput = true;
             sceneButton.PreventInput();
             Invoke("Quit", QUIT_DELAY);

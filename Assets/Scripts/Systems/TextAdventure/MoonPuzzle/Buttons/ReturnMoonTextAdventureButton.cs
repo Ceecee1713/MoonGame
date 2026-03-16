@@ -3,6 +3,9 @@ using UnityEngine;
 public class ReturnMoonTextAdventureButton : MonoBehaviour
 {
     [SerializeField]
+    private AudioClip buttonClickSFX;
+
+    [SerializeField]
     private GameObject cluebookUI;
 
     [SerializeField]
@@ -13,6 +16,7 @@ public class ReturnMoonTextAdventureButton : MonoBehaviour
         if(cluebookUI.activeSelf == true)
             return;
 
+        AudioManager.Instance.PlaySoundEffect(buttonClickSFX);
         moonPuzzleDialogueText.RestartTextAdventureDialogue();
     }
 }

@@ -3,6 +3,9 @@ using UnityEngine;
 public class AcceptButton : MonoBehaviour
 {
     [SerializeField]
+    private AudioClip buttonClickSFX;
+
+    [SerializeField]
     private GameObject textAdventureUI;
     [SerializeField]
     private GameObject warningMoonPuzzleUI;
@@ -14,6 +17,8 @@ public class AcceptButton : MonoBehaviour
 
     public void OnAcceptClick() //Start Moon Puzzle Text Adventure
     {
+        AudioManager.Instance.PlaySoundEffect(buttonClickSFX);
+        
         EventBus.Instance.Publish(new ChangeCanvases(textAdventureUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
         warningMoonPuzzleUIScript.MarkMoonAreaAsBeenExplored();
         warningMoonPuzzleUI.SetActive(false);

@@ -3,6 +3,9 @@ using UnityEngine;
 public class MoonTextAdventureButton : MonoBehaviour
 {
     [SerializeField]
+    private AudioClip buttonClickSFX;
+
+    [SerializeField]
     private GameObject cluebookUI;
 
     [SerializeField]
@@ -67,6 +70,8 @@ public class MoonTextAdventureButton : MonoBehaviour
     {
         if(_allowPlayerToInteract == false || cluebookUI.activeSelf == true || _currentQuestionDialogue == null)
             return; 
+
+        AudioManager.Instance.PlaySoundEffect(buttonClickSFX);
 
         if (buttonNumber == _currentQuestionDialogue.correctButtonNumber)
         {

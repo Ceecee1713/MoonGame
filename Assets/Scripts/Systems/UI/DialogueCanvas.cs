@@ -6,6 +6,9 @@ using TMPro;
 public class DialogueCanvas : MonoBehaviour
 {
     [SerializeField]
+    private AudioClip nextMessageSFX;
+
+    [SerializeField]
     private TextMeshProUGUI dialogueText;
 
     private StorytellingDialogueData _currentDialogue;
@@ -67,6 +70,7 @@ public class DialogueCanvas : MonoBehaviour
         }
 
         _index++;
+        AudioManager.Instance.PlaySoundEffect(nextMessageSFX);
         StopAllCoroutines();
         StartCoroutine(TypeMessage(_currentDialogue.Messages[_index]));
     }
