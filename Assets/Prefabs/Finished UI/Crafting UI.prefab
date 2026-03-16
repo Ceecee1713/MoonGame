@@ -711,6 +711,7 @@ GameObject:
   - component: {fileID: 4083670621049898120}
   - component: {fileID: 1083789982023931559}
   - component: {fileID: 4700591557656576822}
+  - component: {fileID: 5839594701270051986}
   m_Layer: 5
   m_Name: Left Arrow Button
   m_TagString: Untagged
@@ -843,6 +844,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5839594701270051986}
+        m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
+        m_MethodName: PlaySoundEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5839594701270051986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026535084118352070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee6ded24763d7714097de504f01a21d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 8300000, guid: 92c90fba82368a444ab6ec5a9b704298, type: 3}
 --- !u!1 &1054886389413324322
 GameObject:
   m_ObjectHideFlags: 0
@@ -1064,6 +1090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3f7b81541482a458ababd3e8ba0729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonClickSFX: {fileID: 8300000, guid: b964cbd8b4680714284e13baf4334706, type: 3}
   craftManager: {fileID: 3627044170809359171}
   craftableInventoryItem:
     SlotImageSprite: {fileID: 0}
@@ -1539,6 +1566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3f7b81541482a458ababd3e8ba0729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonClickSFX: {fileID: 8300000, guid: b964cbd8b4680714284e13baf4334706, type: 3}
   craftManager: {fileID: 3627044170809359171}
   craftableInventoryItem:
     SlotImageSprite: {fileID: 0}
@@ -1839,7 +1867,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffcdf4ab28596d84e9de4c77be99813f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materialDescriptionText: {fileID: 0}
+  buttonClickSFX: {fileID: 8300000, guid: b964cbd8b4680714284e13baf4334706, type: 3}
+  materialDescriptionText: {fileID: 4249904286440855654}
   gameManager: {fileID: 0}
   craftManager: {fileID: 3627044170809359171}
   craftingMaterials:
@@ -2111,6 +2140,7 @@ GameObject:
   - component: {fileID: 6475475725142755808}
   - component: {fileID: 2323539519200350271}
   - component: {fileID: 8861510081713368398}
+  - component: {fileID: 519755990614041652}
   m_Layer: 5
   m_Name: Right Arrow Button
   m_TagString: Untagged
@@ -2243,6 +2273,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 519755990614041652}
+        m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
+        m_MethodName: PlaySoundEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &519755990614041652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3507635737244095554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee6ded24763d7714097de504f01a21d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 8300000, guid: 92c90fba82368a444ab6ec5a9b704298, type: 3}
 --- !u!1 &3671963105160785400
 GameObject:
   m_ObjectHideFlags: 0
@@ -2428,6 +2483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6526c53d1da27d6478221cb592ec3295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonClickSFX: {fileID: 8300000, guid: 92c90fba82368a444ab6ec5a9b704298, type: 3}
   craftingUI: {fileID: 6359731303731824301}
 --- !u!1 &3797289840801897926
 GameObject:
@@ -2998,6 +3054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3f7b81541482a458ababd3e8ba0729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonClickSFX: {fileID: 8300000, guid: b964cbd8b4680714284e13baf4334706, type: 3}
   craftManager: {fileID: 3627044170809359171}
   craftableInventoryItem:
     SlotImageSprite: {fileID: 0}
@@ -3234,6 +3291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3f7b81541482a458ababd3e8ba0729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonClickSFX: {fileID: 8300000, guid: b964cbd8b4680714284e13baf4334706, type: 3}
   craftManager: {fileID: 3627044170809359171}
   craftableInventoryItem:
     SlotImageSprite: {fileID: 0}
@@ -4758,6 +4816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3f7b81541482a458ababd3e8ba0729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonClickSFX: {fileID: 8300000, guid: b964cbd8b4680714284e13baf4334706, type: 3}
   craftManager: {fileID: 3627044170809359171}
   craftableInventoryItem:
     SlotImageSprite: {fileID: 0}
@@ -4822,6 +4881,7 @@ GameObject:
   - component: {fileID: 1845023707836279219}
   - component: {fileID: 6304152483332858257}
   - component: {fileID: 3250492933226920696}
+  - component: {fileID: 6208877513941158209}
   m_Layer: 5
   m_Name: Left Arrow Button
   m_TagString: Untagged
@@ -4954,6 +5014,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6208877513941158209}
+        m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
+        m_MethodName: PlaySoundEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6208877513941158209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7039274509766206533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee6ded24763d7714097de504f01a21d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 8300000, guid: 92c90fba82368a444ab6ec5a9b704298, type: 3}
 --- !u!1 &7040772301896442233
 GameObject:
   m_ObjectHideFlags: 0
@@ -6095,6 +6180,7 @@ GameObject:
   - component: {fileID: 2660495522087354379}
   - component: {fileID: 6204521499905491272}
   - component: {fileID: 1756519176802302845}
+  - component: {fileID: 4136637270798139102}
   m_Layer: 5
   m_Name: Right Arrow Button
   m_TagString: Untagged
@@ -6227,6 +6313,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4136637270798139102}
+        m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
+        m_MethodName: PlaySoundEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4136637270798139102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8894208128763214243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee6ded24763d7714097de504f01a21d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 8300000, guid: 92c90fba82368a444ab6ec5a9b704298, type: 3}
 --- !u!1 &8928121710653642668
 GameObject:
   m_ObjectHideFlags: 0

@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe8c957b99ff9648a7f5456fd0a3d32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemDropSFX: {fileID: 8300000, guid: b845bb2a58c0fc64599b9d75f87fcd76, type: 3}
 --- !u!4 &1038690831803647853 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 91d516e088dba0444b1421531d7a15a8, type: 3}

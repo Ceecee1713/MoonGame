@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be7531248073a314185e5c8410301cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonClickSFX: {fileID: 8300000, guid: b964cbd8b4680714284e13baf4334706, type: 3}
   currentCanvasGroup: {fileID: 9081252054241002525}
   sceneButton: {fileID: 3562097392555047460}
 --- !u!1 &2067855257611307422
@@ -160,6 +161,7 @@ GameObject:
   - component: {fileID: 1155787820972294400}
   - component: {fileID: 7402233713956816562}
   - component: {fileID: 6479947933299860140}
+  - component: {fileID: 4721923715201252639}
   m_Layer: 5
   m_Name: Exit Button
   m_TagString: Untagged
@@ -280,6 +282,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4721923715201252639}
+        m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
+        m_MethodName: PlaySoundEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4721923715201252639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067855257611307422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee6ded24763d7714097de504f01a21d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 8300000, guid: 92c90fba82368a444ab6ec5a9b704298, type: 3}
 --- !u!1 &2145189879017937998
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,6 +453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 001f2c10e9f9a6e41b3747f112f75e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonClickSFX: {fileID: 8300000, guid: b964cbd8b4680714284e13baf4334706, type: 3}
   currentCanvasGroup: {fileID: 9081252054241002525}
   quitButton: {fileID: 4997650792005865968}
   mainMenuSceneName: 

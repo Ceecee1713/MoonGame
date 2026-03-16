@@ -305,3 +305,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe8c957b99ff9648a7f5456fd0a3d32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemDropSFX: {fileID: 8300000, guid: 513621c747d610146a8dabebdd3fce28, type: 3}

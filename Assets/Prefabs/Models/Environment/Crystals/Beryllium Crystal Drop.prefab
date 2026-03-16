@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe8c957b99ff9648a7f5456fd0a3d32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemDropSFX: {fileID: 8300000, guid: fce52dd1913537c47ac0d7d32ed2ad8c, type: 3}
 --- !u!1001 &415286586060454279
 PrefabInstance:
   m_ObjectHideFlags: 0

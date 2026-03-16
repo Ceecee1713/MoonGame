@@ -307,6 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9812631fc05549b44b2c3aaf8782a7a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionSFX: {fileID: 8300000, guid: e33f3dd9e74656148868342f7eaf9f55, type: 3}
   inventoryItem:
     SlotImageSprite: {fileID: 21300000, guid: 8231d2c8742b65547bb9ad32912b14e4, type: 3}
     ItemType: 13
@@ -329,6 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe8c957b99ff9648a7f5456fd0a3d32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemDropSFX: {fileID: 8300000, guid: 97fe66fa772d4584aa7755f36569b363, type: 3}
 --- !u!4 &9136349136748174351 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 20afde3ef3ac7084291c3651b9e3d902, type: 3}

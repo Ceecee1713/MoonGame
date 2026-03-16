@@ -43,7 +43,7 @@ public class PrayToMoonStatue : MonoBehaviour
 
         if(_playerCollisionDetected == true)
         {
-            AudioManager.Instance.PlayEnvironmentNoise(prayingSFX);
+            AudioManager.Instance.PlaySoundEffect(prayingSFX);
 
             if(_showMoonTutorial == false) //Show moon tutorial dialogue
             {

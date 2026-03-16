@@ -388,6 +388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 001f2c10e9f9a6e41b3747f112f75e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonClickSFX: {fileID: 8300000, guid: b964cbd8b4680714284e13baf4334706, type: 3}
   currentCanvasGroup: {fileID: 2513773878784065737}
   quitButton: {fileID: 8071534706231953164}
   mainMenuSceneName: 
@@ -537,6 +538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be7531248073a314185e5c8410301cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonClickSFX: {fileID: 8300000, guid: b964cbd8b4680714284e13baf4334706, type: 3}
   currentCanvasGroup: {fileID: 2513773878784065737}
   sceneButton: {fileID: 1556241957444151015}
 --- !u!1 &5452189844973076967

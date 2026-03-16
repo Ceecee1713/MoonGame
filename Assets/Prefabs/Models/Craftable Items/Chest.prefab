@@ -576,6 +576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d38917f0d9a95348a7686d4e323bb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonClickSFX: {fileID: 8300000, guid: 92c90fba82368a444ab6ec5a9b704298, type: 3}
   chestUI: {fileID: 7793890650134421941}
 --- !u!1 &755374012017340728
 GameObject:
@@ -2412,6 +2413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d24767752c918e4799af99ed43a4687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  openChestSFX: {fileID: 8300000, guid: fe0c6e9d1f651b14fa9d0e99a3baf3a4, type: 3}
   chestUI: {fileID: 7793890650134421941}
 --- !u!1 &3398745046905785015
 GameObject:
@@ -7078,6 +7080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23701f390b6738c48a240378e07e5866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chestThud: {fileID: 8300000, guid: 948cf545c51ba5e479bf098e233f395f, type: 3}
 --- !u!1001 &4685989936022588763
 PrefabInstance:
   m_ObjectHideFlags: 0

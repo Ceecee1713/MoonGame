@@ -284,6 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192128a7ed8b3b5469144ae017a84a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonClickSFX: {fileID: 8300000, guid: b964cbd8b4680714284e13baf4334706, type: 3}
   warningMoonPuzzleUI: {fileID: 7205516822280749619}
 --- !u!1 &4884641583111238943
 GameObject:
@@ -644,6 +645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37f32f092cf34644aae580192c7092e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonClickSFX: {fileID: 8300000, guid: b964cbd8b4680714284e13baf4334706, type: 3}
   textAdventureUI: {fileID: 0}
   warningMoonPuzzleUI: {fileID: 7205516822280749619}
   warningMoonPuzzleUIScript: {fileID: 4429380879015813020}

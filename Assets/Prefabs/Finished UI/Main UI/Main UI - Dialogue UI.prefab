@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14116b54bb3dc1f4091f79021bfeb5fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextMessageSFX: {fileID: 8300000, guid: 1f070a9c8b76bee43997205abc4fd8e5, type: 3}
   dialogueText: {fileID: 4359805303771065113}
 --- !u!1 &1207231155303043537
 GameObject:

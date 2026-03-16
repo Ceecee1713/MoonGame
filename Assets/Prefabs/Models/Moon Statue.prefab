@@ -589,6 +589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85f71c641f246d7478a5dc71f5a37545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prayingSFX: {fileID: 8300000, guid: 9512eb890aa43b244bfb9c4c62960aaf, type: 3}
   storytellingUI: {fileID: 0}
   dialogueUI: {fileID: 0}
   moonStatueTutorialDialogue: {fileID: 11400000, guid: 3e614623475e2ad4a980d1e55478c777, type: 2}

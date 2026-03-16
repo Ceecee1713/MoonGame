@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9812631fc05549b44b2c3aaf8782a7a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionSFX: {fileID: 8300000, guid: 30425732cc7111a4a940ef97a4ce943b, type: 3}
   inventoryItem:
     SlotImageSprite: {fileID: 21300000, guid: 5983b31257610634ca6cf30de5fe581a, type: 3}
     ItemType: 10

@@ -1198,7 +1198,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explorationTimer: {fileID: 3204831102578007984}
-  generalGoal: Gather clues to obtain a moon fragment
   retreatGoal: Head back to the Moon Statue
   goalText: {fileID: 207171859922327020}
 --- !u!1 &1814666832936516087
@@ -1799,6 +1798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a4a7a24c69a924abd7210d378f68df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonClickSFX: {fileID: 8300000, guid: 92c90fba82368a444ab6ec5a9b704298, type: 3}
   cluebookUI: {fileID: 0}
   craftingUI: {fileID: 0}
   pauseMenuUI: {fileID: 0}
@@ -4291,7 +4291,7 @@ MonoBehaviour:
   TimerValueToChangeToRetreatGoal: 0
   corriosonValues: {fileID: 11400000, guid: 0c43309b9484a2f4a880d0e8f0a92b86, type: 2}
   timerText: {fileID: 8811247627938576845}
-  maxDurationOfExplorationPhase: 11
+  maxDurationOfExplorationPhaseInSeconds: 0
 --- !u!1 &6785297868517314164
 GameObject:
   m_ObjectHideFlags: 0
