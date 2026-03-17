@@ -378,16 +378,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   corriosonValues: {fileID: 11400000, guid: 0c43309b9484a2f4a880d0e8f0a92b86, type: 2}
-  tutorialDialogue: {fileID: 0}
   introductionDelay: 0.25
+  nextMessageSFX: {fileID: 8300000, guid: 1f070a9c8b76bee43997205abc4fd8e5, type: 3}
+  clearDialogueSFX: {fileID: 8300000, guid: 692fe1723bc84c94aa4a01bfed9d902f, type: 3}
+  backgroundNoise: {fileID: 8300000, guid: 9482316535034b440b9cf3681520cfaa, type: 3}
+  desiredVolumeForBackgroundNoise: 0.1
   startingGameDialogue: {fileID: 11400000, guid: f66bfd8430bda354393085c9b5e83651, type: 2}
   finishedGameDialogue: {fileID: 11400000, guid: a7b17b83e834a8e4e8aefcebaa52053f, type: 2}
   prayerPhaseDialogue: {fileID: 11400000, guid: 8eeeb97570e2b154f962542e09f34fb7, type: 2}
   badPrayerDialogue: {fileID: 11400000, guid: d4218ba24cf0d884d93a6e75c25cbb33, type: 2}
   goodPrayerDialogue: {fileID: 11400000, guid: fa925d0021914c84a8562f5d53330b77, type: 2}
   noPrayerDialogue: {fileID: 11400000, guid: ac80e585f3bd3584f8530ad00735ca29, type: 2}
-  dialogueCanvas: {fileID: 0}
   mainPlayerUI: {fileID: 0}
-  endScreenUI: {fileID: 0}
+  winGameUI: {fileID: 0}
   storytellingUI: {fileID: 6535581254111900172}
   dialogueText: {fileID: 7851264716219384663}

@@ -34,6 +34,6 @@ public class WarningMoonPuzzleUI : MonoBehaviour
 
     public void MarkMoonAreaAsBeenExplored() //Called by AcceptButton
     {
-        moonPuzzleAreaInteractedWith.InteractedOnce = true;
+        moonPuzzleAreaInteractedWith.FadeAudio();
     }
 }

@@ -5,6 +5,12 @@ using DG.Tweening;
 
 public class LoadStartUI : MonoBehaviour
 {
+    [SerializeField]
+    private AudioClip backgroundMusic;
+    [SerializeField]
+    [Range (0,1)]
+    private float desiredVolumeForMusic;
+
     private CanvasGroup _canvasGroup;
 
     private float _durationOfFade = 1.5f;
@@ -20,6 +26,10 @@ public class LoadStartUI : MonoBehaviour
     IEnumerator ShowCanvas()
     {
         yield return new WaitForSeconds(DELAY);
+
+        AudioManager.Instance.SetVolumeForBackgroundNoise(desiredVolumeForMusic);
+        AudioManager.Instance.PlayBackgroundNoise(backgroundMusic);
+
         Tween firstTween = _canvasGroup.DOFade(1f, _durationOfFade);
         yield return firstTween.WaitForCompletion();
     }

@@ -552,6 +552,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53e846871cce2054fb3d8e948b151943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backgroundMusic: {fileID: 8300000, guid: d42da61f5c1e49d4aa0a6cf095be0210, type: 3}
+  desiredVolumeForMusic: 0.5
 --- !u!225 &4239428294172389729
 CanvasGroup:
   m_ObjectHideFlags: 0

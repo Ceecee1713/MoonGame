@@ -13,6 +13,12 @@ public class MoonPuzzleDialogueText : MonoBehaviour
 
     public int WrongButtonChoicesCounter = 0;
 
+    [Header ("Audio")]
+    [SerializeField]
+    private AudioClip nextMessageSFX;
+    [SerializeField]
+    private AudioClip clearDialogueSFX;
+
     [Header ("Other UI Information")]
     [SerializeField]
     private GameObject blackScreenUI;
@@ -178,6 +184,8 @@ public class MoonPuzzleDialogueText : MonoBehaviour
         {
             if(_concludeMoonPuzzle == false)
             {
+                AudioManager.Instance.PlaySoundEffect(nextMessageSFX);
+
                 _index++;
                 StopAllCoroutines();
                 StartCoroutine(TypeMessage(_currentQuestionDialogue.Messages[_index]));
@@ -206,6 +214,8 @@ public class MoonPuzzleDialogueText : MonoBehaviour
         _currentQuestionDialogue = dialogueData;
         _messageLength = _currentQuestionDialogue.Messages.Length; 
 
+        AudioManager.Instance.PlaySoundEffect(clearDialogueSFX);
+        
         StopAllCoroutines();
         StartCoroutine(TypeMessage(_currentQuestionDialogue.Messages[_index]));
     }
@@ -246,6 +256,7 @@ public class MoonPuzzleDialogueText : MonoBehaviour
     
         if (_currentLineCount >= MAX_LINES) //Clear text when we've reached max lines
         {
+            AudioManager.Instance.PlaySoundEffect(clearDialogueSFX);
             dialogueText.text = "";
             _currentLineCount = 0;
         }

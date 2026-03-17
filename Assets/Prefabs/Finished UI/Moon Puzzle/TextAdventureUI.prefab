@@ -1616,6 +1616,8 @@ MonoBehaviour:
   corriosonValues: {fileID: 11400000, guid: 0c43309b9484a2f4a880d0e8f0a92b86, type: 2}
   TextAdventureDialogue: {fileID: 11400000, guid: bf7745267821d204ab87cf2d1aada7e9, type: 2}
   WrongButtonChoicesCounter: 0
+  nextMessageSFX: {fileID: 8300000, guid: 1f070a9c8b76bee43997205abc4fd8e5, type: 3}
+  clearDialogueSFX: {fileID: 8300000, guid: 692fe1723bc84c94aa4a01bfed9d902f, type: 3}
   blackScreenUI: {fileID: 0}
   failedGameUI: {fileID: 0}
   mainPlayerUI: {fileID: 0}

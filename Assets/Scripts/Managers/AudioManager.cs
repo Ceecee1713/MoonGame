@@ -1,15 +1,12 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement; 
 
 public class AudioManager : Singleton<AudioManager>
 {
-    //[SerializeField]
-    //private AllSFXs allSoundEffects;
-
     [SerializeField]
     private AudioSource backgroundNoiseSource;
-    [SerializeField]
-    private AudioSource environmentNoiseSource;
     [SerializeField]
     private AudioSource soundEffectSource;
 
@@ -23,6 +20,12 @@ public class AudioManager : Singleton<AudioManager>
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+    public void FadeVolumeOfAudioSource(AudioSource audioSource, float duration, float targetVolume)
+    {
+        StopAllCoroutines();
+        StartCoroutine(FadeAudioSource(audioSource, duration, targetVolume));
+    }
+
     public void StopSoundEffect(AudioClip audioClip)
     {
         if(audioClip == soundEffectSource.clip)
@@ -31,35 +34,9 @@ public class AudioManager : Singleton<AudioManager>
 
     public void PlaySoundEffect(AudioClip audioClip)
     {
-        //if (!allSoundEffects.IsValidClip(audioClip)) 
-            //return;
-
         soundEffectSource.clip = audioClip; 
         soundEffectSource.Play();
     }
-
-    public void PlayEnvironmentNoise(AudioClip audioClip)
-    {
-        //if (!allSoundEffects.IsValidClip(audioClip)) 
-            //return;
-
-        environmentNoiseSource.clip = audioClip; 
-        environmentNoiseSource.Play();
-    }
-
-    public void StopEnvironmentNoise(AudioClip audioClip)
-    {
-        if(audioClip == environmentNoiseSource.clip)
-            environmentNoiseSource.Stop();
-    }
-
-    /*
-    public void FadeEnvironmentNoise(AudioClip audioClip)
-    {
-        environmentNoiseSource.clip = audioClip; 
-        environmentNoiseSource.Play();
-    }
-    */
 
     public void PlayBackgroundNoise(AudioClip audioClip)
     {
@@ -67,10 +44,33 @@ public class AudioManager : Singleton<AudioManager>
         backgroundNoiseSource.Play();
     }
 
+    public void SetVolumeForBackgroundNoise(float desiredVolume)
+    {
+        backgroundNoiseSource.volume = desiredVolume;
+    }
+
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        StopAllCoroutines();
         backgroundNoiseSource.Stop();
         soundEffectSource.Stop();
-        environmentNoiseSource.Stop();
+    }
+
+    private IEnumerator FadeAudioSource(AudioSource audioSource, float duration, float targetVolume)
+    {
+        float currentTime = 0;
+        float startingVolume = audioSource.volume;
+
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(startingVolume, targetVolume, currentTime / duration);
+            yield return null;
+        }
+
+        audioSource.volume = targetVolume;
+
+        if (targetVolume <= 0f)
+            audioSource.Stop();
     }
 }

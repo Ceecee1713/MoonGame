@@ -10,6 +10,17 @@ public class StorytellingDialogueText : MonoBehaviour
     [SerializeField]
     private float introductionDelay = 0.25f;
 
+    [Header ("Audio")]
+    [SerializeField]
+    private AudioClip nextMessageSFX;
+    [SerializeField]
+    private AudioClip clearDialogueSFX;
+    [SerializeField]
+    private AudioClip backgroundNoise;
+    [SerializeField]
+    [Range (0,1)]
+    private float desiredVolumeForBackgroundNoise;
+
     [Header ("Main Dialogues")]
     [SerializeField]
     private StorytellingDialogueData startingGameDialogue;
@@ -46,7 +57,8 @@ public class StorytellingDialogueText : MonoBehaviour
     private bool _finishedTypingMessage = false; //Prevent or allow going through individual messages when they're not fully typed out
     private bool _stopProgressingThroughDialogue = false;
 
-    private bool _beginPrayerPhase = false;
+    private bool _beginPrayerPhase = false; //Prompt choosing a prayer 
+    private bool _playerIsInPrayerPhase = false;
     private bool _finishPrayerPhase = false;
     private bool _finishGame = false;
     private bool _startIntroductoryDialogue = false;
@@ -89,6 +101,7 @@ public class StorytellingDialogueText : MonoBehaviour
 
         _index = 0; 
         _currentLineCount = 0;
+        _playerIsInPrayerPhase = false;
         _beginPrayerPhase = false;
         _finishPrayerPhase = false;
 
@@ -97,6 +110,9 @@ public class StorytellingDialogueText : MonoBehaviour
 
     private void StartIntroductoryDialogue() 
     {
+        AudioManager.Instance.SetVolumeForBackgroundNoise(desiredVolumeForBackgroundNoise);
+        AudioManager.Instance.PlayBackgroundNoise(backgroundNoise);
+
         _startIntroductoryDialogue = true;
         _currentDialogue = startingGameDialogue;
         _messageLength = _currentDialogue.Messages.Length;
@@ -121,6 +137,7 @@ public class StorytellingDialogueText : MonoBehaviour
 
     private void StartPrayerPhaseAdventure(StartPrayerPhase startPrayerPhase) 
     {
+        _playerIsInPrayerPhase = true;
         _beginPrayerPhase = true;
         _currentDialogue = prayerPhaseDialogue;
         _messageLength = _currentDialogue.Messages.Length;
@@ -169,6 +186,8 @@ public class StorytellingDialogueText : MonoBehaviour
         if(_index+1 == _messageLength)
             return;
 
+        AudioManager.Instance.PlaySoundEffect(nextMessageSFX);
+
         _index++;
         StopAllCoroutines();
         StartCoroutine(TypeMessage(_currentDialogue.Messages[_index]));
@@ -207,6 +226,7 @@ public class StorytellingDialogueText : MonoBehaviour
             EventBus.Instance.Publish(new RestoreCorriosonValue());
         }
             
+        AudioManager.Instance.PlaySoundEffect(nextMessageSFX); 
 
         _beginPrayerPhase = false;
         _finishPrayerPhase = true;
@@ -222,6 +242,9 @@ public class StorytellingDialogueText : MonoBehaviour
     
         if (_currentLineCount >= MAX_LINES) //Clear text when we've reached max lines
         {
+            if(_playerIsInPrayerPhase == false)
+                AudioManager.Instance.PlaySoundEffect(clearDialogueSFX);
+
             dialogueText.text = "";
             _currentLineCount = 0;
         }
