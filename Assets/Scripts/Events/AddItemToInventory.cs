@@ -261,6 +261,10 @@ public class StartBeginnerTutorial : IEvent
 {
 }
 
+public class ShowBeginnerGoal : IEvent
+{
+}
+
 
 public class PauseExplorationTimer : IEvent
 {

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MoonPuzzleTextAdventure
   m_EditorClassIdentifier: 
   TextBranches:
-  - FirstQuestionDialogue: {fileID: 11400000, guid: ccaa5baaa1d187b4687ba105747bb8c0, type: 2}
+  - FirstQuestionDialogue: {fileID: 11400000, guid: fb12237bcd03c39438a38ab1d27823cc, type: 2}
     SecondQuestionDialogue: {fileID: 11400000, guid: c87266406bb442140bc393331d188135, type: 2}
     ThirdQuestionDialogue: {fileID: 11400000, guid: b3c04739e2e644546a6471b88373830b, type: 2}
     FinishTextAdventureDialogue: {fileID: 11400000, guid: 3c86193e53bb209449b05eb0d3e63984, type: 2}

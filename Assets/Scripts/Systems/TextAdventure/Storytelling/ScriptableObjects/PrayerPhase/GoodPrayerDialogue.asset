@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: GoodPrayerDialogue
   m_EditorClassIdentifier: 
   Messages:
-  - You got good  luck
-  - Wow
-  - Amazing
+  - message: 'The Moon Goddess heard your prayer. '
+    uniqueWordsToColour: []
+    wordColour: {r: 1, g: 1, b: 1, a: 1}
+  - message: 'Corrosion will accumulate slower today. '
+    uniqueWordsToColour: []
+    wordColour: {r: 1, g: 1, b: 1, a: 1}

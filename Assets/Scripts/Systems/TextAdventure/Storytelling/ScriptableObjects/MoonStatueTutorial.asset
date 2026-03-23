@@ -13,5 +13,24 @@ MonoBehaviour:
   m_Name: MoonStatueTutorial
   m_EditorClassIdentifier: 
   Messages:
-  - Come to this statue
-  - And pray
+  - message: 'You have a set time to explore the forest before the miasma becomes
+      too much to handle. '
+    uniqueWordsToColour:
+    - set time
+    wordColour: {r: 1, g: 1, b: 1, a: 1}
+  - message: "The Moon Statue may change the speed of how fast Corrosion accumulates,
+      but don\u2019t expect your Goddess to listen every time as her power was drained
+      dramatically."
+    uniqueWordsToColour:
+    - change the speed of how fast Corrosion accumulates
+    wordColour: {r: 1, g: 1, b: 1, a: 1}
+  - message: 'These effects will only last for a day. '
+    uniqueWordsToColour: []
+    wordColour: {r: 1, g: 1, b: 1, a: 1}
+  - message: Interact with The Moon Statue to advance to the next day. Advancing
+      to the next day resets your Health to full as well as reset the timer.
+    uniqueWordsToColour:
+    - resets
+    - Health
+    - reset the timer
+    wordColour: {r: 1, g: 1, b: 1, a: 1}

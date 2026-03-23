@@ -65,8 +65,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Do you want to find a moon fragment? The more clues you have, the easier
-    time you'll have...
+  m_text: A challenge awaits within these stone ruins to obtain a Moon Fragment.
+    Do you wish to find a Moon Fragment? The more Clues you have, the easier time
+    you'll have...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: af58e12efbcd61d43b98901e47d325fd, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

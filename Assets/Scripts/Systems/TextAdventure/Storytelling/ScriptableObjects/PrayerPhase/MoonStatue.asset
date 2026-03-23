@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: MoonStatue
   m_EditorClassIdentifier: 
   Messages:
-  - You've lit up a piece of the Moon Statue! Continue on your journey to restore
-    the Moon's brillance!
+  - message: You've gained a Moon Fragment! I sense a new area of the forest is able
+      to be explored, its Corrosion accumulation weaker...
+    wordsToBold: []

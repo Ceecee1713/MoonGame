@@ -6,6 +6,9 @@ public class CluebookUI : MonoBehaviour
     [SerializeField]
     private GameObject textAdventureUI;
 
+    [SerializeField]
+    private GameObject warningMoonPopUpUI;
+
     private bool _allowPlayerInputs = false;
 
     void OnEnable()
@@ -21,6 +24,9 @@ public class CluebookUI : MonoBehaviour
 
     void OnDisable()
     {
+        if(warningMoonPopUpUI.activeSelf == true)
+            return;
+
         if(textAdventureUI.activeSelf == false)
         {
             EventBus.Instance.Publish(new FreezePlayer(false));

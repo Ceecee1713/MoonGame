@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: NPCOne
   m_EditorClassIdentifier: 
   Messages:
-  - 'Somuli petra auonem ilullius '
+  - message: 'Somuli petra auonem ilullius '
+    wordsToBold: []

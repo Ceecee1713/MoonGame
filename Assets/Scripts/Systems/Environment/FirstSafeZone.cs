@@ -22,8 +22,6 @@ public class FirstSafeZone : MonoBehaviour
     private const bool NEW_EXPLORATION_PHASE = false;
     private const bool STARTING_THE_GAME = false; 
 
-    private const float DELAY = 0.25f;
-
     void Start()
     {
         EventBus.Instance.Subscribe<NewMoonFragmentObtained>(SetNewSafeZoneCollision);
@@ -62,8 +60,7 @@ public class FirstSafeZone : MonoBehaviour
             if(_showMoonTutorial == false)
             {
                 _showMoonTutorial = true;
-                Invoke("ShowTutorial", DELAY);
-                return;
+                ShowTutorial();
             }
         }
     }

@@ -73,7 +73,7 @@ public class MoonPuzzleDialogueText : MonoBehaviour
     private const int MAX_LINES = 3; //For typing out dialogue to mimick paragraph look
 
     private const float TIME_TO_WAIT_FOR_FADING_CANVASES = 1.5f;
-    private const float TYPING_SPEED = 0.015f;
+    private const float TYPING_SPEED = 0.01f;
 
     void Start()
     {

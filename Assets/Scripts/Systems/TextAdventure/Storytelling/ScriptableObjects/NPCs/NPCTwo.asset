@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: NPCTwo
   m_EditorClassIdentifier: 
   Messages:
-  - Pico mujik weno ilu
+  - message: 'Pico mujik weno ilu
+
+'
+    wordsToBold: []

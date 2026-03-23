@@ -64,6 +64,9 @@ public class DialogueCanvas : MonoBehaviour
             if(_newExplorationPhase == true || _startingTheGame == true)
                 EventBus.Instance.Publish(new ResetExplorationTimer());
 
+            if(_startingTheGame == true)
+                EventBus.Instance.Publish(new ShowBeginnerGoal());
+
             StopAllCoroutines();
             this.gameObject.SetActive(false);
             return;
@@ -86,16 +89,38 @@ public class DialogueCanvas : MonoBehaviour
         StartCoroutine(TypeMessage(_currentDialogue.Messages[_index]));
     }
 
-    IEnumerator TypeMessage(string message) 
+    IEnumerator TypeMessage(StorytellingDialogueData.DialogueLine dialogueLine) 
     {
         _finishedTypingMessage = false;
-        dialogueText.text = ""; //Clearing the "dialogueText".text for the new dialouge to be said
-        
-        foreach (char letter in message.ToCharArray()) //Conversion of string to a char array to mimick a "typing" effect of dialouge
+
+        string message = dialogueLine.message;
+
+        if (dialogueLine.uniqueWordsToColour != null)
         {
-            dialogueText.text += letter;
-            yield return new WaitForSeconds(TYPING_SPEED); //Time in between of each character being typed out
-        } 
+            //Convert colour to a hex string that TMP's <color> tag accepts
+            string hexColor = ColorUtility.ToHtmlStringRGB(dialogueLine.wordColour);
+
+            foreach (string word in dialogueLine.uniqueWordsToColour)
+            {
+                if (!string.IsNullOrEmpty(word)) //Wrap each special word in colour tags 
+                    message = message.Replace(word, $"<color=#{hexColor}>{word}</color>");
+            }
+        }
+
+        dialogueText.text = message; //Assign fully made string with all rich text tags (colour tags)
+        dialogueText.maxVisibleCharacters = 0; // Hide all characters until the loop reveals them
+
+        //Force TMP to fully parse and lay out the text so characterCount is accurate before the loop
+        dialogueText.ForceMeshUpdate();
+
+        //characterCount only counts visible characters, ignoring rich text tags (colour tags) 
+        int totalVisibleChars = dialogueText.textInfo.characterCount;
+
+        for (int i = 0; i <= totalVisibleChars; i++) 
+        {
+            dialogueText.maxVisibleCharacters = i; //Reveal one character at a time to mimic typing
+            yield return new WaitForSeconds(TYPING_SPEED);
+        }
 
         _finishedTypingMessage = true;
     }

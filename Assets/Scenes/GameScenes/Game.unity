@@ -6919,6 +6919,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC Ghost (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1566003202804824301, guid: e8587929967098b4ea0b80d5d4a5f6a0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4235671046261060190, guid: e8587929967098b4ea0b80d5d4a5f6a0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 199.67
@@ -9454,6 +9458,10 @@ PrefabInstance:
     - target: {fileID: 1566003202804824301, guid: e8587929967098b4ea0b80d5d4a5f6a0, type: 3}
       propertyPath: m_Name
       value: NPC Ghost (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1566003202804824301, guid: e8587929967098b4ea0b80d5d4a5f6a0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4235671046261060190, guid: e8587929967098b4ea0b80d5d4a5f6a0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17261,6 +17269,14 @@ PrefabInstance:
       propertyPath: clueIndexes.Array.data[8].ClueText
       value: 
       objectReference: {fileID: 351414193}
+    - target: {fileID: 757537653442933301, guid: 5e1f6c33495138f4a9f0546ce96c726b, type: 3}
+      propertyPath: clueIndexes.Array.data[0].FirstClueFragment
+      value: 'Somuli petra auonem ilullius '
+      objectReference: {fileID: 0}
+    - target: {fileID: 757537653442933301, guid: 5e1f6c33495138f4a9f0546ce96c726b, type: 3}
+      propertyPath: clueIndexes.Array.data[0].SecondClueFragment
+      value: Pshsuoafmoasij
+      objectReference: {fileID: 0}
     - target: {fileID: 6165559360547426615, guid: 5e1f6c33495138f4a9f0546ce96c726b, type: 3}
       propertyPath: m_Name
       value: Cluebook Manager
@@ -20182,6 +20198,10 @@ PrefabInstance:
     - target: {fileID: 1566003202804824301, guid: e8587929967098b4ea0b80d5d4a5f6a0, type: 3}
       propertyPath: m_Name
       value: NPC Ghost (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1566003202804824301, guid: e8587929967098b4ea0b80d5d4a5f6a0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4235671046261060190, guid: e8587929967098b4ea0b80d5d4a5f6a0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -34522,6 +34542,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC Ghost (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1566003202804824301, guid: e8587929967098b4ea0b80d5d4a5f6a0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4235671046261060190, guid: e8587929967098b4ea0b80d5d4a5f6a0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 220.78
@@ -35039,7 +35063,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &700471954
 Transform:
   m_ObjectHideFlags: 0
@@ -59439,6 +59463,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC Ghost (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1566003202804824301, guid: e8587929967098b4ea0b80d5d4a5f6a0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4235671046261060190, guid: e8587929967098b4ea0b80d5d4a5f6a0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 167.16
@@ -65412,6 +65440,22 @@ PrefabInstance:
       propertyPath: craftingMaterials.Array.data[1].IsThisAStackableItem
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 430918439151188468, guid: 7353956821e909e42a05c33e58367b94, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 135.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 430918439151188468, guid: 7353956821e909e42a05c33e58367b94, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 126.8146
+      objectReference: {fileID: 0}
+    - target: {fileID: 430918439151188468, guid: 7353956821e909e42a05c33e58367b94, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -45.46582
+      objectReference: {fileID: 0}
+    - target: {fileID: 430918439151188468, guid: 7353956821e909e42a05c33e58367b94, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 18.8138
+      objectReference: {fileID: 0}
     - target: {fileID: 606255408753948045, guid: 7353956821e909e42a05c33e58367b94, type: 3}
       propertyPath: craftingMaterials.Array.size
       value: 2
@@ -65514,6 +65558,10 @@ PrefabInstance:
       propertyPath: craftingMaterials.Array.data[1].Quantity
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1433601368254587503, guid: 7353956821e909e42a05c33e58367b94, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1491176045366574079, guid: 7353956821e909e42a05c33e58367b94, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -65585,6 +65633,10 @@ PrefabInstance:
     - target: {fileID: 2001183631879584909, guid: 7353956821e909e42a05c33e58367b94, type: 3}
       propertyPath: m_text
       value: SOPHISTICATED DICTIONARY
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100420835577720622, guid: 7353956821e909e42a05c33e58367b94, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 12.803711
       objectReference: {fileID: 0}
     - target: {fileID: 2116716245079585767, guid: 7353956821e909e42a05c33e58367b94, type: 3}
       propertyPath: m_Sprite
@@ -65745,6 +65797,10 @@ PrefabInstance:
     - target: {fileID: 3739767117699415342, guid: 7353956821e909e42a05c33e58367b94, type: 3}
       propertyPath: craftingMaterials.Array.data[2].IsThisAStackableItem
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3765123203830677205, guid: 7353956821e909e42a05c33e58367b94, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3782334160383591847, guid: 7353956821e909e42a05c33e58367b94, type: 3}
       propertyPath: m_text
@@ -65979,6 +66035,14 @@ PrefabInstance:
     - target: {fileID: 7801038219871824288, guid: 7353956821e909e42a05c33e58367b94, type: 3}
       propertyPath: mainMenuSceneName
       value: StartScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 7991394884454792563, guid: 7353956821e909e42a05c33e58367b94, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -299.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 7991394884454792563, guid: 7353956821e909e42a05c33e58367b94, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 119.4
       objectReference: {fileID: 0}
     - target: {fileID: 8577645514765312410, guid: 7353956821e909e42a05c33e58367b94, type: 3}
       propertyPath: m_Sprite
@@ -91598,6 +91662,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC Ghost
       objectReference: {fileID: 0}
+    - target: {fileID: 1566003202804824301, guid: e8587929967098b4ea0b80d5d4a5f6a0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4235671046261060190, guid: e8587929967098b4ea0b80d5d4a5f6a0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 159.5502
@@ -91638,6 +91706,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5675986254562470646, guid: e8587929967098b4ea0b80d5d4a5f6a0, type: 3}
+      propertyPath: npcDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 10de9c9e0a7a3db4fb4dc70f57a6c0a5, type: 2}
     - target: {fileID: 5675986254562470646, guid: e8587929967098b4ea0b80d5d4a5f6a0, type: 3}
       propertyPath: dialogueCanvas
       value: 

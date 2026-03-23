@@ -13,6 +13,9 @@ public class GoalText : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI goalText;
 
+    [SerializeField]
+    private GameObject goalTextObject;
+
     private string generalGoal;
 
     private string goal = "Collect Clues and Explore to Obtain the ";
@@ -26,10 +29,12 @@ public class GoalText : MonoBehaviour
 
     void Start()
     {
+        EventBus.Instance.Subscribe<ShowBeginnerGoal>(SetBeginningGoal);
         EventBus.Instance.Subscribe<NewMoonFragmentObtained>(SetNewGoalText);
         EventBus.Instance.Subscribe<NewExplorationPhase>(ResetGoalText);
 
         generalGoal = goal + objectiveOne;
+        goalTextObject.SetActive(false);
     }
     
     void Update()
@@ -41,6 +46,11 @@ public class GoalText : MonoBehaviour
 
         else
             goalText.text = generalGoal;
+    }
+
+    private void SetBeginningGoal(ShowBeginnerGoal showBeginnerGoal)
+    {
+        goalTextObject.SetActive(true);
     }
 
     private void SetNewGoalText(NewMoonFragmentObtained newMoonFragmentObtained)

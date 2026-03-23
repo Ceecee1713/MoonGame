@@ -25,7 +25,7 @@ public class NPC : MonoBehaviour
 
     void Start()
     {
-        _npcMessage = npcDialogue.Messages[0];
+        _npcMessage = npcDialogue.Messages[0].message;
 
         EventBus.Instance.Subscribe<Interact>(CheckToShowDialogue);
         EventBus.Instance.Subscribe<ActivatePlayerInputs>(AllowPlayerInput);

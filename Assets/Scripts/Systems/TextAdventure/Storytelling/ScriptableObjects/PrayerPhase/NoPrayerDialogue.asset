@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: NoPrayerDialogue
   m_EditorClassIdentifier: 
   Messages:
-  - You got nothing
-  - LOSER!
+  - message: 'The Moon Goddess could not hear your prayer. '
+    uniqueWordsToColour: []
+    wordColour: {r: 1, g: 1, b: 1, a: 1}
+  - message: Corrosion levels will not affected today.
+    uniqueWordsToColour: []
+    wordColour: {r: 1, g: 1, b: 1, a: 1}

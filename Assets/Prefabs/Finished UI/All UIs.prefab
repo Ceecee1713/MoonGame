@@ -169,6 +169,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2431215503894648464, guid: deccbce9c09dccf4590e91a0d58eea88, type: 3}
   m_PrefabInstance: {fileID: 644470018448896296}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7714311357141381915 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7205516822280749619, guid: deccbce9c09dccf4590e91a0d58eea88, type: 3}
+  m_PrefabInstance: {fileID: 644470018448896296}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4096308218985105604
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -539,6 +544,10 @@ PrefabInstance:
       propertyPath: pauseMenuUI
       value: 
       objectReference: {fileID: 8595468782035722444}
+    - target: {fileID: 3681603963729911689, guid: 4801e2e69740cc349a21cf03119177be, type: 3}
+      propertyPath: dialogueMainUI
+      value: 
+      objectReference: {fileID: 5174973643747073764}
     - target: {fileID: 4335769907325812664, guid: 4801e2e69740cc349a21cf03119177be, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1000,6 +1009,10 @@ PrefabInstance:
       propertyPath: textAdventureUI
       value: 
       objectReference: {fileID: 3879193269392890380}
+    - target: {fileID: 8401658554136556009, guid: 784c055fe508fc34e84ffbf8c8bafcec, type: 3}
+      propertyPath: warningMoonPopUpUI
+      value: 
+      objectReference: {fileID: 7714311357141381915}
     - target: {fileID: 9026336462218073428, guid: 784c055fe508fc34e84ffbf8c8bafcec, type: 3}
       propertyPath: m_Pivot.x
       value: 0

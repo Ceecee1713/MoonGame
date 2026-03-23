@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: EndGameDialogue
   m_EditorClassIdentifier: 
   Messages:
-  - You did it
-  - You saved the world
+  - message: You did it
+    wordsToBold: []
+  - message: You saved the world
+    wordsToBold: []

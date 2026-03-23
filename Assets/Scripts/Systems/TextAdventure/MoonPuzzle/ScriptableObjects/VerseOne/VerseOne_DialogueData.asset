@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 334035ecee4cd9f4d8be1f6282ba7c23, type: 3}
+  m_Name: VerseOne_DialogueData
+  m_EditorClassIdentifier: 
+  Messages:
+  - 'To obtain a Moon Fragment, your deduction skills will be challenged to recall
+    what words are in one of three Verses in the Ancient Prayer. '
+  - "You\u2019ll go through a series of prompts or questions, and you\u2019ll have
+    to select out of three choices, which answer is the correct one to the prompt
+    or question. "
+  - "You\u2019ll have access to your Cluebook to aid you in your deductions. "
+  - "In the top-left corner, there\u2019s a Health meter. Selecting the wrong choice
+    will reduce your health. When your health reaches zero, it will be Game Over. "
+  - "If you answer all the prompts or questions correctly, you will obtain a Moon
+    Fragment, you\u2019ll be sent back to the Moon Statue to return the Moon Fragment
+    to the Moon and it will advance to the next day."
+  - "Make sure you\u2019re certain in your answers to the questions or prompts, and
+    remember to check your Cluebook if you aren\u2019t sure. Let us begin."
+  - HI THERE
+  - HAVE WE BEEN FIGHTING IN VAIN?
+  - AAAAAAAAAAA
+  ButtonOneText: ONEEE
+  ButtonTwoText: TWOO
+  ButtonThreeText: THREEE
+  correctButtonNumber: 1

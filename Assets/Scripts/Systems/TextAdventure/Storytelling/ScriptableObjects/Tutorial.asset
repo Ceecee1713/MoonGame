@@ -13,5 +13,58 @@ MonoBehaviour:
   m_Name: Tutorial
   m_EditorClassIdentifier: 
   Messages:
-  - Explain how the main UI works, the player goals and the controls!
-  - HELP ME DEVOLA!
+  - message: Before everyone had perished, your people deduced Moonlight can fight
+      off the fog.
+    uniqueWordsToColour: []
+    wordColour: {r: 1, g: 1, b: 1, a: 1}
+  - message: 'However, the Moon Statue has lost all but one fragment. With one fragment
+      left, only a small amount of Moonlight can illuminate your surroundings and
+      protect you from the miasmic air. '
+    uniqueWordsToColour: []
+    wordColour: {r: 1, g: 1, b: 1, a: 1}
+  - message: 'You must restore the Moon Statue and make it whole again. Do so, and
+      The Moon Goddess will revive you and Moonlight will banish the fog far enough
+      for you to rescue others. '
+    uniqueWordsToColour: []
+    wordColour: {r: 1, g: 1, b: 1, a: 1}
+  - message: "Three fragments are missing from the Moon Statue. Each of these fragments
+      are spread across the foggy forest, and you have to find them. It won\u2019t
+      be an easy task though. "
+    uniqueWordsToColour:
+    - Three fragments
+    wordColour: {r: 1, g: 1, b: 1, a: 1}
+  - message: 'Upon praying to the Moon Statue for protection, an Ancient Prayer would
+      be recited, but you forgot the words to it. The Ancient Prayer was broken into
+      three parts, and to get a Moon fragment back, you need to know a Verse of The
+      Ancient Prayer. '
+    uniqueWordsToColour:
+    - three parts
+    wordColour: {r: 1, g: 1, b: 1, a: 1}
+  - message: "I\u2019d suggest looking around in the forest for souls and listening
+      to them. They can give you clues to recount the Ancient Prayer. "
+    uniqueWordsToColour:
+    - souls
+    - clues
+    wordColour: {r: 1, g: 1, b: 1, a: 1}
+  - message: You have three Moon Fragments to find and three Ancient Prayer Verses
+      to reforge together, friend.
+    uniqueWordsToColour:
+    - three Moon Fragments
+    - 'three Ancient Prayer Verses '
+    wordColour: {r: 1, g: 1, b: 1, a: 1}
+  - message: You have a set time to explore the forest before the miasma becomes
+      too much to handle. To progress to the next day, interact with the Moon Statue.
+    uniqueWordsToColour:
+    - set time
+    - next day
+    - Moon Statue
+    wordColour: {r: 1, g: 1, b: 1, a: 1}
+  - message: "Plan accordingly to navigate through the toxic fog strategically. That,
+      and don\u2019t forget your Crafting skills. Your Crafting Bench will be your
+      best friend here. "
+    uniqueWordsToColour:
+    - Crafting Bench
+    wordColour: {r: 1, g: 1, b: 1, a: 1}
+  - message: Confused about Controls? Open Pause Menu (ESC) and Click (?) Button!
+    uniqueWordsToColour: []
+    wordColour: {r: 1, g: 1, b: 1, a: 1}

@@ -13,7 +13,37 @@ MonoBehaviour:
   m_Name: StartingGameDialogue
   m_EditorClassIdentifier: 
   Messages:
-  - There was a civilization that worshipped the moon for protection
-  - Until no more
-  - Rough
-  - HNGHHHHHHHHHHHHHH
+  - message: "There was a small quaint village deep in the woods. The area they called
+      home wasn\u2019t the most suitable for life."
+    wordsToBold: []
+  - message: "Nature was hardly kind to these villagers. They\u2019d have to walk
+      long distances for water, and foraging for food proved even more difficult.
+      Still, they managed."
+    wordsToBold: []
+  - message: 'They had no other choice except to live here, for a miasmic fog was
+      plaguing the land and cornered all inhabitants here. '
+    wordsToBold: []
+  - message: "Fear had taken hold of everyone\u2019s minds and made the people afraid
+      of each other. Order collapsed as panic set in. The civilization had split
+      off and began living far away from each other, creating smaller villages instead."
+    wordsToBold: []
+  - message: 'No one could explain where the fog came from or how it manifested,
+      but it spread throughout the area, killing people, wildlife and rotting plant
+      life. '
+    wordsToBold: []
+  - message: 'Faced with death, the people had turned to their faith. Their faith
+      was in the Moon Goddess as she shone down through the night sky before the
+      fog shrouded it in a thick purple blanket. '
+    wordsToBold: []
+  - message: People knew that Moonlight could repel the fog. Her light was their
+      protection, and everyone had built a Moon Statue of their own to fight off
+      the miasma.
+    wordsToBold: []
+  - message: "Still, prayers couldn\u2019t save the people, and it\u2019s assumed
+      that nearly half of the people had died from the fog. Prayers couldn\u2019t
+      save your village either. "
+    wordsToBold: []
+  - message: "Now, you\u2019re the only one left of your village. Desperation clings
+      to your soul as you refuse to make peace in death. While you can\u2019t bring
+      them back, you have a fighting chance to combat the silent death\u2026"
+    wordsToBold: []

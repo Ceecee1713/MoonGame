@@ -9,6 +9,9 @@ public class OpenCluebookMainUI : MonoBehaviour
     private GameObject cluebookUI;
 
     [SerializeField]
+    private GameObject dialogueMainUI;
+
+    [SerializeField]
     private GameObject craftingUI;
 
     [SerializeField]
@@ -23,7 +26,7 @@ public class OpenCluebookMainUI : MonoBehaviour
 
     public void OpenCluebookClick()
     {
-        if(craftingUI.activeSelf == true || pauseMenuUI.activeSelf == true || _isAChestOpen == true)
+        if(craftingUI.activeSelf == true || pauseMenuUI.activeSelf == true || dialogueMainUI.activeSelf == true || _isAChestOpen == true)
             return;
 
         AudioManager.Instance.PlaySoundEffect(buttonClickSFX);

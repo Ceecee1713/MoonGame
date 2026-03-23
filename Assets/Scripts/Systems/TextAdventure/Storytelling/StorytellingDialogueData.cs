@@ -5,5 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "StorytellingDialogueData", menuName = "Dialogue Scriptable Objects/Create a New Dialogue Branch For Storytelling")]
 public class StorytellingDialogueData : ScriptableObject
 {
-    [TextArea(2,5)] public string [] Messages;
+    [Serializable]
+    public class DialogueLine
+    {
+        [TextArea(2, 5)] public string message;
+        public string[] uniqueWordsToColour;
+        public Color wordColour = Color.white;
+    }
+
+    public DialogueLine[] Messages;
 }

@@ -73,7 +73,7 @@ public class StorytellingDialogueText : MonoBehaviour
     private const bool START_MOON_PUZZLE = false;
     private const bool START_PRAYER_PHASE = false; 
 
-    private const float TYPING_SPEED = 0.015f;
+    private const float TYPING_SPEED = 0.01f;
 
     void Start()
     {
@@ -122,7 +122,7 @@ public class StorytellingDialogueText : MonoBehaviour
         EventBus.Instance.Publish(new PauseExplorationTimer(true));
 
         StopAllCoroutines();
-        StartCoroutine(TypeMessage(_currentDialogue.Messages[_index]));
+        StartCoroutine(TypeMessage(_currentDialogue.Messages[_index].message));
     }
 
     private void StartEndGameDialogueAdventure(StartEndGameDialogue startEndGameDialogue) 
@@ -132,7 +132,7 @@ public class StorytellingDialogueText : MonoBehaviour
         _messageLength = _currentDialogue.Messages.Length;
 
         StopAllCoroutines();
-        StartCoroutine(TypeMessage(_currentDialogue.Messages[_index]));
+        StartCoroutine(TypeMessage(_currentDialogue.Messages[_index].message));
     }
 
     private void StartPrayerPhaseAdventure(StartPrayerPhase startPrayerPhase) 
@@ -143,7 +143,7 @@ public class StorytellingDialogueText : MonoBehaviour
         _messageLength = _currentDialogue.Messages.Length;
 
         StopAllCoroutines();
-        StartCoroutine(TypeMessage(_currentDialogue.Messages[_index]));
+        StartCoroutine(TypeMessage(_currentDialogue.Messages[_index].message));
     }
 
     private void NextDialogue(AdvanceThroughTextAdventure advanceTextAdventure) 
@@ -190,7 +190,7 @@ public class StorytellingDialogueText : MonoBehaviour
 
         _index++;
         StopAllCoroutines();
-        StartCoroutine(TypeMessage(_currentDialogue.Messages[_index]));
+        StartCoroutine(TypeMessage(_currentDialogue.Messages[_index].message));
     }
 
     private void PickPrayer() 
@@ -233,7 +233,7 @@ public class StorytellingDialogueText : MonoBehaviour
         _messageLength = _currentDialogue.Messages.Length; 
 
         StopAllCoroutines();
-        StartCoroutine(TypeMessage(_currentDialogue.Messages[_index]));
+        StartCoroutine(TypeMessage(_currentDialogue.Messages[_index].message));
     }
 
     IEnumerator TypeMessage(string message) 
