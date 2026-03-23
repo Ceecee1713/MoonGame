@@ -20244,6 +20244,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5675986254562470646, guid: e8587929967098b4ea0b80d5d4a5f6a0, type: 3}
+      propertyPath: npcDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 2dd451edcded8ea4aa73e6181a33ab97, type: 2}
+    - target: {fileID: 5675986254562470646, guid: e8587929967098b4ea0b80d5d4a5f6a0, type: 3}
       propertyPath: dialogueCanvas
       value: 
       objectReference: {fileID: 351414202}
@@ -91676,7 +91680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4235671046261060190, guid: e8587929967098b4ea0b80d5d4a5f6a0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 178.82945
+      value: 178.8295
       objectReference: {fileID: 0}
     - target: {fileID: 4235671046261060190, guid: e8587929967098b4ea0b80d5d4a5f6a0, type: 3}
       propertyPath: m_LocalRotation.w
