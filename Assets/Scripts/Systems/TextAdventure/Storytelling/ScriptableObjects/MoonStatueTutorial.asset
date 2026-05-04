@@ -27,7 +27,7 @@ MonoBehaviour:
   - message: 'These effects will only last for a day. '
     uniqueWordsToColour: []
     wordColour: {r: 1, g: 1, b: 1, a: 1}
-  - message: Interact with The Moon Statue to advance to the next day. Advancing
+  - message: Interact with the Moon Statue to advance to the next day. Advancing
       to the next day resets your Health to full as well as reset the timer.
     uniqueWordsToColour:
     - resets

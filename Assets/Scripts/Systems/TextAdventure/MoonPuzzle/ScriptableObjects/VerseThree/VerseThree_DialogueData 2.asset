@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 334035ecee4cd9f4d8be1f6282ba7c23, type: 3}
+  m_Name: VerseThree_DialogueData 2
+  m_EditorClassIdentifier: 
+  Messages:
+  - 'A promise has been spoken in the first verse to show the Moon your reverence:
+    ''We pledge our faithfulness through sculptures of Her Grace''s image every dusk
+    and every dawn, now and forevermore.'''
+  - Despite that, humanity must show the same kindness one final time through their
+    actions. They must show unconditional love for their deity outside of grand gifts
+    or monuments of worship, to prove their wholehearted devotion.
+  - What vow concludes the Ancient Prayer?
+  ButtonOneText: And as long as thou rise to greet the night,  we shall never cease
+    to lift our eyes to meet your illustrious gaze.
+  ButtonTwoText: And as long as thou rise to greet the night, we shall never cease
+    to turn toward three in sincerity and love.
+  ButtonThreeText: And as long as thou rise to greet the night, we shall never cease
+    to hold thee in our eyes and hearts.
+  correctButtonNumber: 3

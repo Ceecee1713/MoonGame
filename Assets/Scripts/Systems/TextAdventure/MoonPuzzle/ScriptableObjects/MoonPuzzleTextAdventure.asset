@@ -14,17 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TextBranches:
   - FirstQuestionDialogue: {fileID: 11400000, guid: fb12237bcd03c39438a38ab1d27823cc, type: 2}
-    SecondQuestionDialogue: {fileID: 11400000, guid: c87266406bb442140bc393331d188135, type: 2}
-    ThirdQuestionDialogue: {fileID: 11400000, guid: b3c04739e2e644546a6471b88373830b, type: 2}
+    SecondQuestionDialogue: {fileID: 11400000, guid: 897f802ae9f08254db93162cb4c5174c, type: 2}
+    ThirdQuestionDialogue: {fileID: 11400000, guid: 79adb6ecc15d47c4da56b88a01ba93f8, type: 2}
     FinishTextAdventureDialogue: {fileID: 11400000, guid: 3c86193e53bb209449b05eb0d3e63984, type: 2}
     MoonFragmentSprite: {fileID: 21300000, guid: 3d681560edf372342b3e2a0a0089a9e6, type: 3}
-  - FirstQuestionDialogue: {fileID: 11400000, guid: c87266406bb442140bc393331d188135, type: 2}
-    SecondQuestionDialogue: {fileID: 11400000, guid: ccaa5baaa1d187b4687ba105747bb8c0, type: 2}
-    ThirdQuestionDialogue: {fileID: 11400000, guid: b3c04739e2e644546a6471b88373830b, type: 2}
+  - FirstQuestionDialogue: {fileID: 11400000, guid: 83fbb1f2d6f8f8e40812f2c8edccf3b9, type: 2}
+    SecondQuestionDialogue: {fileID: 11400000, guid: b58886ce114999a4192a860c8b5cfd4c, type: 2}
+    ThirdQuestionDialogue: {fileID: 11400000, guid: b1f3b57d2761f56409bbc90c31c3d44e, type: 2}
     FinishTextAdventureDialogue: {fileID: 11400000, guid: 3c86193e53bb209449b05eb0d3e63984, type: 2}
     MoonFragmentSprite: {fileID: 21300000, guid: 39216f72845d6634ab9017e0cad188f6, type: 3}
-  - FirstQuestionDialogue: {fileID: 11400000, guid: ccaa5baaa1d187b4687ba105747bb8c0, type: 2}
-    SecondQuestionDialogue: {fileID: 11400000, guid: c87266406bb442140bc393331d188135, type: 2}
-    ThirdQuestionDialogue: {fileID: 11400000, guid: b3c04739e2e644546a6471b88373830b, type: 2}
+  - FirstQuestionDialogue: {fileID: 11400000, guid: e2a1c4c4d07fcc64cbbae7233af33aa5, type: 2}
+    SecondQuestionDialogue: {fileID: 11400000, guid: bb7b9f081c474c8429b99bed54615796, type: 2}
+    ThirdQuestionDialogue: {fileID: 11400000, guid: a54283429bad4ec48a12ba92875d0304, type: 2}
     FinishTextAdventureDialogue: {fileID: 11400000, guid: 3c86193e53bb209449b05eb0d3e63984, type: 2}
     MoonFragmentSprite: {fileID: 21300000, guid: 39216f72845d6634ab9017e0cad188f6, type: 3}

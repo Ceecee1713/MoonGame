@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 334035ecee4cd9f4d8be1f6282ba7c23, type: 3}
+  m_Name: VerseThree_DialogueData
+  m_EditorClassIdentifier: 
+  Messages:
+  - The familiar voice awakens from within the statue. It's much clearer now...
+  - 'The final verse speaks of the core belief of your people''s faith of the Moon.
+    Her Grace''s light isn''t just like fire that merely brightens the night sky.
+    Divinity can never be extinguished, forever above humanity. '
+  - What was declared about the Moon to truly be to the people?
+  ButtonOneText: Thou art the ever bright constancy we gaze upon to never forget.
+  ButtonTwoText: Thou art the constancy that shapes our world in thine own image.
+  ButtonThreeText: Thou art the silent maiden that witnesses the trivialities of
+    humanity.
+  correctButtonNumber: 1

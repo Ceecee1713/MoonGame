@@ -13,23 +13,25 @@ MonoBehaviour:
   m_Name: VerseOne_DialogueData
   m_EditorClassIdentifier: 
   Messages:
-  - 'To obtain a Moon Fragment, your deduction skills will be challenged to recall
-    what words are in one of three Verses in the Ancient Prayer. '
+  - To obtain a Moon Fragment, you will be challenged to recall a phrase from the
+    Ancient Prayer.
   - "You\u2019ll go through a series of prompts or questions, and you\u2019ll have
-    to select out of three choices, which answer is the correct one to the prompt
+    to select out of three choices which answer is the correct one to the prompt
     or question. "
   - "You\u2019ll have access to your Cluebook to aid you in your deductions. "
   - "In the top-left corner, there\u2019s a Health meter. Selecting the wrong choice
     will reduce your health. When your health reaches zero, it will be Game Over. "
-  - "If you answer all the prompts or questions correctly, you will obtain a Moon
-    Fragment, you\u2019ll be sent back to the Moon Statue to return the Moon Fragment
-    to the Moon and it will advance to the next day."
+  - If you answer all the prompts or questions correctly, you will obtain a Moon
+    Fragment, be sent back to the Full Moon Statue to return the Moon Fragment, and
+    it will advance to the next day.
   - "Make sure you\u2019re certain in your answers to the questions or prompts, and
-    remember to check your Cluebook if you aren\u2019t sure. Let us begin."
-  - HI THERE
-  - HAVE WE BEEN FIGHTING IN VAIN?
-  - AAAAAAAAAAA
-  ButtonOneText: ONEEE
-  ButtonTwoText: TWOO
-  ButtonThreeText: THREEE
-  correctButtonNumber: 1
+    remember to check your Cluebook to provide you with clues to the correct answers.
+    Time for the first question:"
+  - A low voice awakens from within the Moon Statue before you...
+  - 'Before a single prayer was spoken to the Moon, the people first had to understand
+    how to gain an audience with Her Grace. '
+  - How did the devoted first introduce themselves to the Moon?
+  ButtonOneText: We command thee, eternal Moon, to hear our voices.
+  ButtonTwoText: We gather before thee, eternal Moon, as humble followers.
+  ButtonThreeText: 'We kneel beneath thee, eternal Moon, and offer our reverence. '
+  correctButtonNumber: 3

@@ -46,65 +46,67 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clueIndexes:
   - ClueText: {fileID: 0}
-    FirstClueFragment: {fileID: 11400000, guid: 57d9f4a495e2b0d4cb47ab5b738f26f6, type: 2}
-    SecondClueFragment: {fileID: 11400000, guid: 7a96fe29a4641d9498be6ce327fbd059, type: 2}
-    FullCodedClue: 
-    FullDecipheredClue: The sky is blue!
+    FirstClueFragment: {fileID: 11400000, guid: 10de9c9e0a7a3db4fb4dc70f57a6c0a5, type: 2}
+    SecondClueFragment: {fileID: 11400000, guid: 2dd451edcded8ea4aa73e6181a33ab97, type: 2}
+    FullCodedClue: Faurbo zimp cranek vostle
+    FullDecipheredClue: Done when one wishes to show the deepest form of respect.
     FoundFirstClueFragment: 0
     FoundSecondClueFragment: 0
   - ClueText: {fileID: 0}
-    FirstClueFragment: {fileID: 11400000, guid: 50e65609a4f75f04a8efa45ae37fc92f, type: 2}
-    SecondClueFragment: {fileID: 11400000, guid: 50e65609a4f75f04a8efa45ae37fc92f, type: 2}
-    FullCodedClue: 
-    FullDecipheredClue: 
+    FirstClueFragment: {fileID: 11400000, guid: 28a95a5ec9759144c83dc1627354536f, type: 2}
+    SecondClueFragment: {fileID: 11400000, guid: 4a2efd8aae0d1f245b52902b35a4517c, type: 2}
+    FullCodedClue: safndsafanasnsads
+    FullDecipheredClue: The very nature of the Moon in the context of your people.
     FoundFirstClueFragment: 0
     FoundSecondClueFragment: 0
   - ClueText: {fileID: 0}
-    FirstClueFragment: {fileID: 11400000, guid: 50e65609a4f75f04a8efa45ae37fc92f, type: 2}
-    SecondClueFragment: {fileID: 11400000, guid: 50e65609a4f75f04a8efa45ae37fc92f, type: 2}
+    FirstClueFragment: {fileID: 11400000, guid: 8e2adbe73ffbfc14b95717f703b03995, type: 2}
+    SecondClueFragment: {fileID: 11400000, guid: 23c3f4fe9482bbc4c9ebd931c9f60457, type: 2}
     FullCodedClue: 
-    FullDecipheredClue: 
+    FullDecipheredClue: How your people shows their devotion to the Moon.
     FoundFirstClueFragment: 0
     FoundSecondClueFragment: 0
   - ClueText: {fileID: 0}
-    FirstClueFragment: {fileID: 11400000, guid: 50e65609a4f75f04a8efa45ae37fc92f, type: 2}
-    SecondClueFragment: {fileID: 11400000, guid: 50e65609a4f75f04a8efa45ae37fc92f, type: 2}
+    FirstClueFragment: {fileID: 11400000, guid: 7d682adf7a27cfc4db4399e78f4d6eb8, type: 2}
+    SecondClueFragment: {fileID: 11400000, guid: ba59ba0d1ff78c148a65fb714859a84f, type: 2}
     FullCodedClue: 
-    FullDecipheredClue: 
+    FullDecipheredClue: What does the Moon witness from humanity?
     FoundFirstClueFragment: 0
     FoundSecondClueFragment: 0
   - ClueText: {fileID: 0}
-    FirstClueFragment: {fileID: 11400000, guid: 50e65609a4f75f04a8efa45ae37fc92f, type: 2}
-    SecondClueFragment: {fileID: 11400000, guid: 50e65609a4f75f04a8efa45ae37fc92f, type: 2}
+    FirstClueFragment: {fileID: 11400000, guid: 348e5bde95b9df442b1194c5a8e13908, type: 2}
+    SecondClueFragment: {fileID: 11400000, guid: f675338aeb6538a49991a2e91b9c4d00, type: 2}
     FullCodedClue: 
-    FullDecipheredClue: 
+    FullDecipheredClue: 'A statement that''s open about misery wholeheartedly. '
     FoundFirstClueFragment: 0
     FoundSecondClueFragment: 0
   - ClueText: {fileID: 0}
-    FirstClueFragment: {fileID: 11400000, guid: 50e65609a4f75f04a8efa45ae37fc92f, type: 2}
-    SecondClueFragment: {fileID: 11400000, guid: 50e65609a4f75f04a8efa45ae37fc92f, type: 2}
+    FirstClueFragment: {fileID: 11400000, guid: b90fbd9366dac054481f8ff1e2e83c42, type: 2}
+    SecondClueFragment: {fileID: 11400000, guid: f1991c7afced816419dbeb3b337a6b37, type: 2}
     FullCodedClue: 
-    FullDecipheredClue: 
+    FullDecipheredClue: 'Be transparent with the Moon while making humanity seem
+      capable. '
     FoundFirstClueFragment: 0
     FoundSecondClueFragment: 0
   - ClueText: {fileID: 0}
-    FirstClueFragment: {fileID: 11400000, guid: 50e65609a4f75f04a8efa45ae37fc92f, type: 2}
-    SecondClueFragment: {fileID: 11400000, guid: 50e65609a4f75f04a8efa45ae37fc92f, type: 2}
+    FirstClueFragment: {fileID: 11400000, guid: 38a3fa902d89dcd4bbdfd48596078af6, type: 2}
+    SecondClueFragment: {fileID: 11400000, guid: fa776d549e04f8f4ba5dea9ed83cae48, type: 2}
     FullCodedClue: 
-    FullDecipheredClue: 
+    FullDecipheredClue: 'The Moon always remains in the night sky. She is constant,
+      but she knows her powers already. '
     FoundFirstClueFragment: 0
     FoundSecondClueFragment: 0
   - ClueText: {fileID: 0}
-    FirstClueFragment: {fileID: 11400000, guid: 50e65609a4f75f04a8efa45ae37fc92f, type: 2}
-    SecondClueFragment: {fileID: 11400000, guid: 50e65609a4f75f04a8efa45ae37fc92f, type: 2}
+    FirstClueFragment: {fileID: 11400000, guid: ad0da430414640048bf4ec26d98b0e81, type: 2}
+    SecondClueFragment: {fileID: 11400000, guid: 3a3b4f377c42ed94792df46e35708826, type: 2}
     FullCodedClue: 
-    FullDecipheredClue: 
+    FullDecipheredClue: 'The answer requires no audience, exchange or recognition. '
     FoundFirstClueFragment: 0
     FoundSecondClueFragment: 0
   - ClueText: {fileID: 0}
-    FirstClueFragment: {fileID: 11400000, guid: 50e65609a4f75f04a8efa45ae37fc92f, type: 2}
-    SecondClueFragment: {fileID: 11400000, guid: 50e65609a4f75f04a8efa45ae37fc92f, type: 2}
+    FirstClueFragment: {fileID: 11400000, guid: 9ec1234a409dce040b8cff97d5baadca, type: 2}
+    SecondClueFragment: {fileID: 11400000, guid: e907eb47a92fc1b42ae7d383f5a01d2b, type: 2}
     FullCodedClue: 
-    FullDecipheredClue: 
+    FullDecipheredClue: Choose the best answer that treats something sacred.
     FoundFirstClueFragment: 0
     FoundSecondClueFragment: 0

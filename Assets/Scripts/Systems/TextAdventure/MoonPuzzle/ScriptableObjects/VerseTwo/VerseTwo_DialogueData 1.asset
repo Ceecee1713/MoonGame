@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 334035ecee4cd9f4d8be1f6282ba7c23, type: 3}
+  m_Name: VerseTwo_DialogueData 1
+  m_EditorClassIdentifier: 
+  Messages:
+  - Faith isn't only made of reverence and philosophy. Grief and agony shapes faith
+    as well.
+  - 'When it''s dark out, Death creeps up and greets those of the living with an
+    unfortunate end. The Moon knows this well. '
+  - What statement expresses despair most accurately?
+  ButtonOneText: We bring before thee our despair, the grief of those taken by shadow.
+  ButtonTwoText: We bring before thee our despair and search for Her Grace's divine
+    light for salvation.
+  ButtonThreeText: We bury our sorrow and cower in darkness, for grief is unworthy
+    of thy radiant and eternal gaze.
+  correctButtonNumber: 1
