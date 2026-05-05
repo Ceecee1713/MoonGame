@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        EventBus.Instance.Subscribe<CompletedAllMoonPuzzles>(CompletedMoonPuzzle);
+        EventBus.Instance.Subscribe<CompletedAllMoonPuzzles>(CompletedMoonPuzzles);
         EventBus.Instance.Subscribe<NewMoonFragmentObtained>(MaterialsAndStreetlightChange);
         EventBus.Instance.Subscribe<StartBeginnerTutorial>(StartBeginningTutorial);
     }
@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
     }
 
     //Called BEFORE moon text adventure UI has been disabled, keep in mind
-    private void CompletedMoonPuzzle(CompletedAllMoonPuzzles completedAllMoonPuzzles)
+    private void CompletedMoonPuzzles(CompletedAllMoonPuzzles completedAllMoonPuzzles) //Completed all three moon puzzles
     {
         //Special particle effects or extra things
         Invoke("PromptEndGameDialogue", timeDelayBeforeShowingEndGameDialogue);

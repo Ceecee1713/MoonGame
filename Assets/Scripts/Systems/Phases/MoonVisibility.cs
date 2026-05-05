@@ -2,6 +2,12 @@ using UnityEngine;
 
 public class MoonVisibility : MonoBehaviour
 {
+    [SerializeField]
+    private ParticleSystem moonSparkles;
+
+    [SerializeField]
+    private Camera moonCamera;
+
     [Header ("Moon Dialogue - UI")]
     [SerializeField]
     private GameObject dialogueCanvas;
@@ -28,6 +34,16 @@ public class MoonVisibility : MonoBehaviour
     void Start()
     {
         EventBus.Instance.Subscribe<NewMoonFragmentObtained>(ObtainedNewMoonFragment);
+        EventBus.Instance.Subscribe<CompletedAllMoonPuzzles>(CompletedMoonPuzzles);
+
+        moonCamera.enabled = false;
+        moonSparkles.Stop();
+    }
+
+    private void CompletedMoonPuzzles(CompletedAllMoonPuzzles completedAllMoonPuzzles) //Completed all three moon puzzles
+    {
+        moonCamera.enabled = true;
+        moonSparkles.Play();
     }
 
     private void ObtainedNewMoonFragment(NewMoonFragmentObtained newMoonFragmentObtained)
