@@ -3,6 +3,10 @@ using UnityEngine;
 
 //This contains all the events (data types) that the game uses
 
+public class CompletedAllMoonPuzzles : IEvent //Game Manager
+{
+}
+
 #region Inventory and Crafting System Events
 
 public class AddItemToInventory : IEvent
@@ -409,11 +413,15 @@ public class NewExplorationPhase : IEvent
 {
 }
 
-public class CompletedAllMoonPuzzles : IEvent
+public class ResetWorldItems : IEvent
 {
 }
 
-public class ResetWorldItems : IEvent
+public class StopMoonStatueSpin : IEvent
+{
+}
+
+public class MakeMoonStatueSpin : IEvent
 {
 }
 #endregion

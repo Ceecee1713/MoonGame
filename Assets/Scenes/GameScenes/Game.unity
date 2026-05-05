@@ -65578,6 +65578,10 @@ PrefabInstance:
       propertyPath: m_ColorTemperature
       value: 17000
       objectReference: {fileID: 0}
+    - target: {fileID: 2262828465055998428, guid: 1586817c988aeae4cb6cb3721fbca451, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 22fb2849df4ad5f4e88680c0cd8d3e77, type: 2}
     - target: {fileID: 2365211017206223085, guid: 1586817c988aeae4cb6cb3721fbca451, type: 3}
       propertyPath: moonCamera
       value: 
@@ -65639,6 +65643,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3636233020764458064, guid: 1586817c988aeae4cb6cb3721fbca451, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3636233020764458064, guid: 1586817c988aeae4cb6cb3721fbca451, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 25f6adfc9d489ec458b0f584322af6fd, type: 2}
@@ -65667,11 +65675,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8240600652183564411, guid: 1586817c988aeae4cb6cb3721fbca451, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8240600652183564411, guid: 1586817c988aeae4cb6cb3721fbca451, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: f20d90e629dd8d544acf91a0d575692c, type: 2}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1486889843047182779, guid: 1586817c988aeae4cb6cb3721fbca451, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1586817c988aeae4cb6cb3721fbca451, type: 3}
@@ -76993,6 +77006,10 @@ PrefabInstance:
     - target: {fileID: 1958357180402882388, guid: 577c6b2e5a442074fa1cfb2bf9f10d22, type: 3}
       propertyPath: timeDelayBeforeShowingEndGameDialogue
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958357180402882388, guid: 577c6b2e5a442074fa1cfb2bf9f10d22, type: 3}
+      propertyPath: timeDelayBeforeStartingEndGameDialogue
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1958357180402882388, guid: 577c6b2e5a442074fa1cfb2bf9f10d22, type: 3}
       propertyPath: timeDelayBeforeShowingBeginningTutorial

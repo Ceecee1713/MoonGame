@@ -230,7 +230,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You've gained a new moon fragment!
+  m_text: You've gained a Moon Fragment!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: af58e12efbcd61d43b98901e47d325fd, type: 2}
   m_sharedMaterial: {fileID: -2307556845382827942, guid: af58e12efbcd61d43b98901e47d325fd, type: 2}

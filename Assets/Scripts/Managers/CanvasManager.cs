@@ -7,7 +7,7 @@ public class CanvasManager : MonoBehaviour
 {
     [Header ("All Fullscreen UI Canvases")]
     [SerializeField]
-    private GameObject [] canvases; //Must contain ALL fullscreen UI canvases (UIs that completely cover a screen. Look at PhaseShifint_1 scene for reference) 
+    private GameObject [] canvases; //Must contain ALL fullscreen UIs that completely cover a screen. Look at PhaseShifint_1 scene for reference
 
     [SerializeField]
     private float fadingTime = 1.0f;

@@ -18,7 +18,6 @@ public class FirstSafeZone : MonoBehaviour
     private bool _playerCollisionDetected = false; 
 
     private const bool RECOVER_HEALTH = true;
-    
     private const bool NEW_EXPLORATION_PHASE = false;
     private const bool STARTING_THE_GAME = false; 
 

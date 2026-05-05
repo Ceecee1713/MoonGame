@@ -232,6 +232,9 @@ public class MoonPuzzleDialogueText : MonoBehaviour
         EventBus.Instance.Publish(new DisplayMoonFragmentImage(TextAdventureDialogue.TextBranches[_textBranchIndex].MoonFragmentSprite));
         EventBus.Instance.Publish(new FadeSingleCanvas(moonPuzzleUIPopUp, _fadeOutCanvas));
 
+        if(_completedMoonPuzzlesCounter == TOTAL_NUMBER_OF_MOON_PUZZLES)
+            EventBus.Instance.Publish(new MakeMoonStatueSpin());
+
         yield return new WaitForSeconds(TIME_TO_WAIT_FOR_FADING_CANVASES);
 
         //No longer moon fragment UI Pop Up, no longer show text adventure UI, show main player UI

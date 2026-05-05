@@ -17,16 +17,18 @@ public class GameManager : MonoBehaviour
 
     [Header ("Seconds Time Delays")]
     [SerializeField]
-    private float timeDelayBeforeShowingEndGameDialogue = 2.0f;
-    [SerializeField]
     private float timeDelayBeforeShowingBeginningTutorial = 2.0f; 
+    [SerializeField]
+    private float timeDelayBeforeShowingEndGameDialogue = 2.0f;
+
+    private float timeDelayBeforeStartingEndGameDialogue; 
 
     [HideInInspector]
     public int AreaChangesCount = 0; 
 
-    private const int MAX_NUMBER_OF_AREA_CHANGES = 2; 
+    private const float TIME_DELAY_ACCOUNTING_FOR_FADING_CANVASES = 1.0f; //Account for fading screen time when changing canvases
 
-    private const float TIME_TO_WAIT_FOR_FADING_CANVASES = 1.5f;
+    private const int MAX_NUMBER_OF_AREA_CHANGES = 2; 
 
     private const bool STARTING_THE_GAME = true; 
 
@@ -38,6 +40,8 @@ public class GameManager : MonoBehaviour
         EventBus.Instance.Subscribe<CompletedAllMoonPuzzles>(CompletedMoonPuzzles);
         EventBus.Instance.Subscribe<NewMoonFragmentObtained>(MaterialsAndStreetlightChange);
         EventBus.Instance.Subscribe<StartBeginnerTutorial>(StartBeginningTutorial);
+
+        timeDelayBeforeStartingEndGameDialogue = timeDelayBeforeShowingEndGameDialogue - TIME_DELAY_ACCOUNTING_FOR_FADING_CANVASES;
     }
 
     void Update()
@@ -58,18 +62,24 @@ public class GameManager : MonoBehaviour
     }
 
     //Called BEFORE moon text adventure UI has been disabled, keep in mind
-    private void CompletedMoonPuzzles(CompletedAllMoonPuzzles completedAllMoonPuzzles) //Completed all three moon puzzles
+    private void CompletedMoonPuzzles(CompletedAllMoonPuzzles completedAllMoonPuzzles)
     {
-        //Special particle effects or extra things
         Invoke("PromptEndGameDialogue", timeDelayBeforeShowingEndGameDialogue);
+    }
+
+    private void PromptEndGameDialogue()
+    {
+        StopAllCoroutines();
+        StartCoroutine(ShowEndGameDialogue());
     }
 
     IEnumerator ShowEndGameDialogue()
     {
         EventBus.Instance.Publish(new ChangeCanvases(storytellingUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
-        yield return new WaitForSeconds(TIME_TO_WAIT_FOR_FADING_CANVASES);
+        yield return new WaitForSeconds(timeDelayBeforeStartingEndGameDialogue);
         blackScreenUI.SetActive(true);
         EventBus.Instance.Publish(new StartEndGameDialogue());
+        EventBus.Instance.Publish(new StopMoonStatueSpin()); //Make moon statue stop spinning and particle effect
         yield return null;
     }
 
@@ -79,11 +89,5 @@ public class GameManager : MonoBehaviour
         dialogueCanvas.SetActive(true);
         EventBus.Instance.Publish(new TypeDialogueOnMainUI(beginningTutorialDialogue, false, STARTING_THE_GAME));
         yield return null;
-    }
-
-    private void PromptEndGameDialogue()
-    {
-        StopAllCoroutines();
-        StartCoroutine(ShowEndGameDialogue());
     }
 }
