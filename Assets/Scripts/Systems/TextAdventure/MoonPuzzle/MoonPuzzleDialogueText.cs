@@ -229,7 +229,6 @@ public class MoonPuzzleDialogueText : MonoBehaviour
         EventBus.Instance.Publish(new ResetWorldItems());
         EventBus.Instance.Publish(new PauseExplorationTimer(true));
         EventBus.Instance.Publish(new NewMoonFragmentObtained()); 
-        EventBus.Instance.Publish(new DisplayMoonFragmentImage(TextAdventureDialogue.TextBranches[_textBranchIndex].MoonFragmentSprite));
         EventBus.Instance.Publish(new FadeSingleCanvas(moonPuzzleUIPopUp, _fadeOutCanvas));
 
         if(_completedMoonPuzzlesCounter == TOTAL_NUMBER_OF_MOON_PUZZLES)

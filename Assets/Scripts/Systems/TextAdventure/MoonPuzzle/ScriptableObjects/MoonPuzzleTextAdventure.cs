@@ -18,6 +18,4 @@ public struct TextBranches
     public MoonPuzzleDialogueData SecondQuestionDialogue;
     public MoonPuzzleDialogueData ThirdQuestionDialogue;
     public MoonPuzzleDialogueData FinishTextAdventureDialogue;
-
-    public Sprite MoonFragmentSprite;
 }

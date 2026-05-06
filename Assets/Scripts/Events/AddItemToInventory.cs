@@ -127,19 +127,6 @@ public class AdvanceThroughTextAdventure : IEvent
 {
 }
 
-
-//Show a moon fragment UI after successfully completing moon puzzle 
-public class DisplayMoonFragmentImage : IEvent
-{
-    public Sprite MoonFragmentSprite;
-
-    public DisplayMoonFragmentImage(Sprite moonFragmentSprite)
-    {
-        MoonFragmentSprite = moonFragmentSprite;
-    }
-}
-
-
 //Interacting with moon statue 
 public class StartPrayerPhase : IEvent
 {
