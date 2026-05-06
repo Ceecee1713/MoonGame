@@ -16,6 +16,8 @@ public class CorriosonZone : MonoBehaviour
     private float DefaultStartingSpeed;
 
     [SerializeField]
+    private bool isFirstCorriosonZoneInSecondArea = false; 
+    [SerializeField]
     private bool lastMoonPuzzleCorriosonZone = false; 
 
     private int counter;
@@ -79,13 +81,16 @@ public class CorriosonZone : MonoBehaviour
     {
         if(moonPuzzleZoneIndex != changeCorriosonValue.CorriosonAreaNumber || lastMoonPuzzleCorriosonZone == true)
             return;
+        
+        if(isFirstCorriosonZoneInSecondArea == true)
+            return;
 
         CurrentSpeedToLowerHealth = changeCorriosonValue.CorriosonValue;
     }
 
     private void ReturnToDefaultSpeed(RestoreCorriosonValue restoreCorriosonValue)
     {
-        if(lastMoonPuzzleCorriosonZone == true)
+        if(lastMoonPuzzleCorriosonZone == true || isFirstCorriosonZoneInSecondArea == true)
             return;
 
         CurrentSpeedToLowerHealth = DefaultStartingSpeed;

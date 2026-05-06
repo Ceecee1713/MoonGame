@@ -70,6 +70,7 @@ MonoBehaviour:
   moonPuzzleZoneIndex: 1
   CurrentSpeedToLowerHealth: 0
   DefaultStartingSpeed: 0.65
+  isFirstCorriosonZoneInSecondArea: 0
   lastMoonPuzzleCorriosonZone: 1
 --- !u!1 &1048283509909654208
 GameObject:
@@ -141,6 +142,7 @@ MonoBehaviour:
   moonPuzzleZoneIndex: 1
   CurrentSpeedToLowerHealth: 0
   DefaultStartingSpeed: 0.3
+  isFirstCorriosonZoneInSecondArea: 0
   lastMoonPuzzleCorriosonZone: 0
 --- !u!1 &1250870041479745809
 GameObject:
@@ -212,6 +214,7 @@ MonoBehaviour:
   moonPuzzleZoneIndex: 1
   CurrentSpeedToLowerHealth: 0
   DefaultStartingSpeed: 0.3
+  isFirstCorriosonZoneInSecondArea: 1
   lastMoonPuzzleCorriosonZone: 0
 --- !u!1 &2483839844155720236
 GameObject:
@@ -283,6 +286,7 @@ MonoBehaviour:
   moonPuzzleZoneIndex: 2
   CurrentSpeedToLowerHealth: 0
   DefaultStartingSpeed: 0.3
+  isFirstCorriosonZoneInSecondArea: 0
   lastMoonPuzzleCorriosonZone: 0
 --- !u!1 &3186354443612990807
 GameObject:
@@ -422,6 +426,7 @@ MonoBehaviour:
   moonPuzzleZoneIndex: 1
   CurrentSpeedToLowerHealth: 0
   DefaultStartingSpeed: 0.3
+  isFirstCorriosonZoneInSecondArea: 0
   lastMoonPuzzleCorriosonZone: 0
 --- !u!1 &4089792901666932433
 GameObject:
@@ -561,6 +566,7 @@ MonoBehaviour:
   moonPuzzleZoneIndex: 1
   CurrentSpeedToLowerHealth: 0
   DefaultStartingSpeed: 0.3
+  isFirstCorriosonZoneInSecondArea: 0
   lastMoonPuzzleCorriosonZone: 0
 --- !u!1 &5339635152527515304
 GameObject:
@@ -673,6 +679,7 @@ MonoBehaviour:
   moonPuzzleZoneIndex: 2
   CurrentSpeedToLowerHealth: 0
   DefaultStartingSpeed: 0.3
+  isFirstCorriosonZoneInSecondArea: 0
   lastMoonPuzzleCorriosonZone: 0
 --- !u!1 &7924914294772372121
 GameObject:

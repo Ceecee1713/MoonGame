@@ -6,9 +6,6 @@ using TMPro;
 
 public class MoonPuzzleDialogueText : MonoBehaviour
 {
-    [SerializeField]
-    private CorriosonValues corriosonValues;
-
     public MoonPuzzleTextAdventure TextAdventureDialogue;
 
     public int WrongButtonChoicesCounter = 0;
