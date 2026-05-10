@@ -4,6 +4,7 @@ using TMPro;
 
 public class ExplorationTimer : MonoBehaviour
 {
+    [Header ("Time Values")]
     public float RemainingTime; 
     public float TimerValueToChangeToRetreatGoal; 
 

@@ -22,9 +22,20 @@ public class GameManager : MonoBehaviour
     private float timeDelayBeforeShowingEndGameDialogue = 2.0f;
 
     private float timeDelayBeforeStartingEndGameDialogue; 
+    
+    [SerializeField, HideInInspector]
+    private int _areaChangesCount = 0;
 
-    [HideInInspector]
-    public int AreaChangesCount = 0; 
+    public int AreaChangesCount //For deciphering a clue at the crafting table
+    {
+        get => _areaChangesCount;
+        set => _areaChangesCount = Mathf.Clamp(value, 0, MAX_NUMBER_OF_AREA_CHANGES);
+    }
+
+    private void OnValidate()
+    {
+        _areaChangesCount = Mathf.Clamp(_areaChangesCount, 0, MAX_NUMBER_OF_AREA_CHANGES);
+    }
 
     private const float TIME_DELAY_ACCOUNTING_FOR_FADING_CANVASES = 1.0f; //Account for fading screen time when changing canvases
 
@@ -44,15 +55,10 @@ public class GameManager : MonoBehaviour
         timeDelayBeforeStartingEndGameDialogue = timeDelayBeforeShowingEndGameDialogue - TIME_DELAY_ACCOUNTING_FOR_FADING_CANVASES;
     }
 
-    void Update()
-    {
-        Mathf.Clamp(AreaChangesCount, 0, MAX_NUMBER_OF_AREA_CHANGES);
-    }
-
-    //Changes materials for deciphering a clue at crafting table and turn on street lamp lights
     private void MaterialsAndStreetlightChange(NewMoonFragmentObtained newMoonFragmentObtained)
     {
         AreaChangesCount++;
+        EventBus.Instance.Publish(new NewAreaChange(AreaChangesCount)); //Publish to LightPropMoon and StreetLamps
     }
 
     private void StartBeginningTutorial(StartBeginnerTutorial startBeginnerTutorial) //Published by StorytellingDialogueText

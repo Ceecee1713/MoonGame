@@ -29,14 +29,14 @@ public class NPCAnimation : MonoBehaviour
 
     private IEnumerator LerpY(float startingValue, float targetValue)
     {
-        float elapsed = 0f;
+        float elapsedTime = 0f;
 
-        while (elapsed < durationOfAnimationLoop)
+        while (elapsedTime < durationOfAnimationLoop)
         {
-            elapsed += Time.deltaTime;
-            float t = Mathf.SmoothStep(0f, 1f, elapsed / durationOfAnimationLoop);
+            elapsedTime += Time.deltaTime;
+            float currentValue = Mathf.SmoothStep(0f, 1f, elapsedTime / durationOfAnimationLoop);
             Vector3 currentPosition = transform.position;
-            currentPosition.y = Mathf.Lerp(startingValue, targetValue, t);
+            currentPosition.y = Mathf.Lerp(startingValue, targetValue, currentValue);
             transform.position = currentPosition;
             yield return null;
         }

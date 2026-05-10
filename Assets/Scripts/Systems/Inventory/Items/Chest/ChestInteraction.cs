@@ -16,7 +16,7 @@ public class ChestInteraction : MonoBehaviour
         EventBus.Instance.Subscribe<Interact>(CheckForInteraction);
     }
 
-    private void CheckForInteraction(Interact interact) //When player "interacts" with this game object (keybind E)
+    private void CheckForInteraction(Interact interact) //When player interacts with this game object 
     {
         if(_playerStayingInCollision == true)
         {

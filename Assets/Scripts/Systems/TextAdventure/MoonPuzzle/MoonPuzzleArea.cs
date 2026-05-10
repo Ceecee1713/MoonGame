@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class MoonPuzzleArea : MonoBehaviour
 {
+    [Header ("Audio")]
     [SerializeField]
     private AudioSource moonPuzzleAreaAudioSource; //Audio Source Game Object MUST be attached and configured in scene, not from Assets
     [SerializeField]
     private float totalTimeDurationToFadeAudioSource;
 
+    [Header ("Warning Moon Puzzle UI Config")]
     [SerializeField]
     private GameObject warningMoonPuzzleUI;
     [SerializeField]

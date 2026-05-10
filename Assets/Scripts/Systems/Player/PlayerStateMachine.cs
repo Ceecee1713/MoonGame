@@ -43,6 +43,8 @@ public class PlayerStateMachine : BaseStateMachine
 
     private Vector2 _playerMovement; //Grab raw movement inputs
 
+    private Vector3 _moonStatuePosition;
+
     private float _maximumSpeed;
     private float _timeDurationOfSpeedChanging; //Time duration to change player's speed in "x" amount of seconds
     private float _timeMultiplierForMovementChanging; //How fast to change speed from 0f to "_maximumSpeed"
@@ -58,8 +60,6 @@ public class PlayerStateMachine : BaseStateMachine
     public PlayerIdleState IdleState { get; private set; }
     public PlayerWanderState WanderState { get; private set; }
     public PlayerPauseState PausedState { get; private set; }
-
-    private Vector3 _moonStatuePosition;
 
     void Awake()
     {

@@ -7,12 +7,11 @@ public class CanvasManager : MonoBehaviour
 {
     [Header ("All Fullscreen UI Canvases")]
     [SerializeField]
-    private GameObject [] canvases; //Must contain ALL fullscreen UIs that completely cover a screen. Look at PhaseShifint_1 scene for reference
+    private GameObject [] canvases; //Must contain ALL fullscreen UIs that completely cover a screen
 
     [SerializeField]
     private float fadingTime = 1.0f;
 
-    private bool _showTextAdventure;
     private GameObject _currentCanvas;
     private CanvasGroup _currentCanvasGroup, _newCanvasGroup;
 
@@ -22,11 +21,11 @@ public class CanvasManager : MonoBehaviour
         EventBus.Instance.Subscribe<FadeSingleCanvas>(FadeSingleCanvas);
     }
 
-    private void ChangeCanvases(ChangeCanvases changeCanvases)
+    private void ChangeCanvases(ChangeCanvases changeCanvases) //Change to one new UI
     {
         for (int i = 0; i < canvases.Length; i++)
         {
-            if (canvases[i].activeSelf == true) //Checking if only one canvas is active
+            if (canvases[i].activeSelf == true) 
             {
                 _currentCanvas = canvases[i];
                 _currentCanvasGroup = canvases[i].GetComponent<CanvasGroup>();
@@ -69,14 +68,15 @@ public class CanvasManager : MonoBehaviour
         yield return firstTween.WaitForCompletion();
         _currentCanvas.SetActive(false);
 
+        //Fade in new canvas 
         newCanvas.SetActive(true);
         Tween secondTween = newCanvasGroup.DOFade(1.0f, fadingTime);
         yield return secondTween.WaitForCompletion();
 
         if(startMoonPuzzle == true)
-            EventBus.Instance.Publish(new StartNewTextAdventure()); //Prompt the first message of dialogue to be said
+            EventBus.Instance.Publish(new StartNewTextAdventure()); //Prompt first message of text adventure dialogue to be said
 
         if(startPrayerPhase == true)
-            EventBus.Instance.Publish(new StartPrayerPhase()); //Prompt the first message of dialogue to be said
+            EventBus.Instance.Publish(new StartPrayerPhase()); //Prompt first message of prayer dialogue to be said
     }
 }

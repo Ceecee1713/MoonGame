@@ -37572,8 +37572,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 455597868}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16770418, y: 0.00016496936, z: -0.000028063498, w: 0.9858374}
-  m_LocalPosition: {x: 150, y: 3, z: 140.55}
+  m_LocalRotation: {x: 0.11446111, y: 0.0001662395, z: -0.000019153842, w: 0.99342775}
+  m_LocalPosition: {x: 150, y: 3, z: 140.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -40377,7 +40377,6 @@ GameObject:
   - component: {fileID: 508233656}
   - component: {fileID: 508233655}
   - component: {fileID: 508233654}
-  - component: {fileID: 508233653}
   - component: {fileID: 508233652}
   m_Layer: 0
   m_Name: Cinemachine Camera
@@ -40444,23 +40443,6 @@ MonoBehaviour:
         DecelTime: 0
   PlayerIndex: -1
   AutoEnableInputs: 1
---- !u!114 &508233653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 508233651}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a076c17fe76165e4f8ed21498b877bf9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Easing: 0
-  Modifiers: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!114 &508233654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40474,7 +40456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Composition:
-    ScreenPosition: {x: -0.00025862455, y: 0.22500116}
+    ScreenPosition: {x: -0.00025862455, y: 0.3277766}
     DeadZone:
       Enabled: 0
       Size: {x: 0.2, y: 0.2}
@@ -40513,14 +40495,14 @@ MonoBehaviour:
   Radius: 10
   Orbits:
     Top:
-      Radius: 7.5
-      Height: 4.5
+      Radius: 8
+      Height: 5
     Center:
-      Radius: 5.5
+      Radius: 6
       Height: 3
     Bottom:
       Radius: 4
-      Height: 1
+      Height: 1.5
     SplineCurvature: 0.5
   RecenteringTarget: 2
   HorizontalAxis:
@@ -40604,8 +40586,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 508233651}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16770415, y: 0.00016496931, z: -0.000028063494, w: 0.9858374}
-  m_LocalPosition: {x: 150, y: 3, z: 140.55}
+  m_LocalRotation: {x: 0.11446112, y: 0.0001662395, z: -0.00001915384, w: 0.99342775}
+  m_LocalPosition: {x: 150, y: 3, z: 140.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -72831,6 +72813,10 @@ PrefabInstance:
     - target: {fileID: 1697689115834144306, guid: a556eeabb8b17844ca2b4841825b04f0, type: 3}
       propertyPath: m_Name
       value: Audio Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697689115834144306, guid: a556eeabb8b17844ca2b4841825b04f0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7412062327747173753, guid: a556eeabb8b17844ca2b4841825b04f0, type: 3}
       propertyPath: m_LocalPosition.x

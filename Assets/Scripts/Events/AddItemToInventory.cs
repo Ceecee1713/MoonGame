@@ -411,4 +411,16 @@ public class StopMoonStatueSpin : IEvent
 public class MakeMoonStatueSpin : IEvent
 {
 }
+
+//For LightPropMoon and StreetLamps scripts 
+public class NewAreaChange : IEvent 
+{
+    public int AreaChangesCount;
+
+    public NewAreaChange(int areaChangesCount)
+    {
+        AreaChangesCount = areaChangesCount;
+    }
+}
+
 #endregion

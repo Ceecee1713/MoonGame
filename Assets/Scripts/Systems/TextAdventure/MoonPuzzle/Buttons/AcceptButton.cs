@@ -5,6 +5,7 @@ public class AcceptButton : MonoBehaviour
     [SerializeField]
     private AudioClip buttonClickSFX;
 
+    [Header ("UI Information")]
     [SerializeField]
     private GameObject textAdventureUI;
     [SerializeField]

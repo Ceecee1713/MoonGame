@@ -11,7 +11,6 @@ public class CorriosonZone : MonoBehaviour
 
     [SerializeField]
     private float CurrentSpeedToLowerHealth;
-
     [SerializeField]
     private float DefaultStartingSpeed;
 

@@ -35,7 +35,7 @@ public class PrayToMoonStatue : MonoBehaviour
         _allowInput = activatePlayerInputs.AllowInputs;
     }
 
-    private void OpenStorytellingUI(Interact interact) //When player "interacts" with this game object (keybind E)
+    private void OpenStorytellingUI(Interact interact) //When player interacts with this game object 
     {
         if(_interactedOnce == true || _allowInput == false)
             return;

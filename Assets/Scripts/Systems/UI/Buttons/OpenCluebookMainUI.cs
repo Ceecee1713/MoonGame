@@ -5,15 +5,13 @@ public class OpenCluebookMainUI : MonoBehaviour
     [SerializeField]
     private AudioClip buttonClickSFX;
 
+    [Header ("UI Information")]
     [SerializeField]
     private GameObject cluebookUI;
-
     [SerializeField]
     private GameObject dialogueMainUI;
-
     [SerializeField]
     private GameObject craftingUI;
-
     [SerializeField]
     private GameObject pauseMenuUI;
 

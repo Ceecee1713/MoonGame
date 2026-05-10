@@ -55,7 +55,7 @@ public class NPC : MonoBehaviour
         _allowInput = activatePlayerInputs.AllowInputs;
     }
 
-    private void CheckToShowDialogue(Interact pickingUpItem) //When player "interacts" with this game object (keybind E)
+    private void CheckToShowDialogue(Interact pickingUpItem) //When player interacts with this game object 
     {
         if(_allowInput == false)
             return;

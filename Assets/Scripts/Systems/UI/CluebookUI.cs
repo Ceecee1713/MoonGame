@@ -3,9 +3,9 @@ using UnityEngine.UI;
 
 public class CluebookUI : MonoBehaviour
 {
+    [Header ("UI Information")]
     [SerializeField]
     private GameObject textAdventureUI;
-
     [SerializeField]
     private GameObject warningMoonPopUpUI;
 

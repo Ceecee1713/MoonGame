@@ -6,7 +6,6 @@ public class CraftingTable : MonoBehaviour
     private GameObject craftingUI;
 
     private bool _allowInput = true;
-
     private bool _playerStayingInCollision = false; 
     private bool _playerInCollision = false; 
 
@@ -21,7 +20,7 @@ public class CraftingTable : MonoBehaviour
         _allowInput = activatePlayerInputs.AllowInputs;
     }
 
-    private void OpenCraftingUI(Interact interact) //When player "interacts" with this game object (keybind E)
+    private void OpenCraftingUI(Interact interact) //When player interacts with this game object 
     {
         if(_allowInput == false)
             return;

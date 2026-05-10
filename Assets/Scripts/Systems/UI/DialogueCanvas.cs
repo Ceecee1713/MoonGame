@@ -23,6 +23,8 @@ public class DialogueCanvas : MonoBehaviour
     private const float TYPING_SPEED = 0.01f;
     private const float DELAY = 1.5f;
 
+    private const bool ALLOW_PLAYER_INPUTS = true; 
+
     void Awake()
     {
         EventBus.Instance.Subscribe<TypeDialogueOnMainUI>(DisplayMessage);
@@ -62,7 +64,11 @@ public class DialogueCanvas : MonoBehaviour
             EventBus.Instance.Publish(new MaintainPlayerHealth(false));
 
             if(_newExplorationPhase == true || _startingTheGame == true)
+            {
                 EventBus.Instance.Publish(new ResetExplorationTimer());
+                EventBus.Instance.Publish(new ActivatePlayerInputs(ALLOW_PLAYER_INPUTS));
+            }
+                
 
             if(_startingTheGame == true)
                 EventBus.Instance.Publish(new ShowBeginnerGoal());

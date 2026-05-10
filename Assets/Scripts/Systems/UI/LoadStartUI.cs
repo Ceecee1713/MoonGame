@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class LoadStartUI : MonoBehaviour
 {
+    [Header ("Audio")]
     [SerializeField]
     private AudioClip backgroundMusic;
     [SerializeField]

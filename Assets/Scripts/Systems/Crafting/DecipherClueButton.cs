@@ -46,6 +46,7 @@ public class DecipherClueButton : MonoBehaviour
     {
     }
 
+    //Explain the numbers for comparison in the "if" statements and why they matter - GameManager 
     private void CheckToSwitchMaterials()
     {
         if(newMoonPuzzleIndex == 0)

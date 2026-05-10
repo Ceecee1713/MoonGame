@@ -3,9 +3,6 @@ using UnityEngine;
 public class StreetLamps : MonoBehaviour
 {
     [SerializeField]
-    private GameManager gameManager;
-
-    [SerializeField]
     private Light light;
 
     [SerializeField]
@@ -18,14 +15,26 @@ public class StreetLamps : MonoBehaviour
     {
         startingIntensity = light.intensity;
         light.intensity = 0f;
+
+        EventBus.Instance.Subscribe<NewAreaChange>(LightUpLamp);
     }
 
-    void Update()
+    void OnEnable()
     {
-        if(gameManager.AreaChangesCount == areaNumber)
+    }
+
+    void OnDisable()
+    {
+        if (EventBus.Instance != null)
+            EventBus.Instance.Unsubscribe<NewAreaChange>(LightUpLamp);
+    }
+
+    private void LightUpLamp(NewAreaChange newAreaChange)
+    {
+        if(newAreaChange.AreaChangesCount == areaNumber)
         {
             light.intensity = startingIntensity;
             enabled = false; 
-        }  
+        } 
     }
 }

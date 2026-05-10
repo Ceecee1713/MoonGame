@@ -3,9 +3,6 @@ using UnityEngine;
 public class LightPropMoon : MonoBehaviour
 {
     [SerializeField]
-    private GameManager gameManager;
-
-    [SerializeField]
     private ParticleSystem moonSparkles;
 
     [Header ("Moon Statue Lights")]
@@ -33,11 +30,23 @@ public class LightPropMoon : MonoBehaviour
 
         lightUnderMoon.intensity = 0f;
         moonlight.intensity = 0f;
+
+        EventBus.Instance.Subscribe<NewAreaChange>(LightUpMoon);
     }
 
-    void Update()
+    void OnEnable()
     {
-        if(gameManager.AreaChangesCount == areaNumber)
+    }
+
+    void OnDisable()
+    {
+        if (EventBus.Instance != null)
+            EventBus.Instance.Unsubscribe<NewAreaChange>(LightUpMoon);
+    }
+
+    private void LightUpMoon(NewAreaChange newAreaChange)
+    {
+        if(newAreaChange.AreaChangesCount == areaNumber)
         {
             moonSparkles.Stop();
 

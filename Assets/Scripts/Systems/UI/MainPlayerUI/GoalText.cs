@@ -10,9 +10,9 @@ public class GoalText : MonoBehaviour
     [SerializeField]
     private string retreatGoal;
 
+    [Header ("UI Information")]
     [SerializeField]
     private TextMeshProUGUI goalText;
-
     [SerializeField]
     private GameObject goalTextObject;
 
