@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FinishMoonPuzzleDialogue
   m_EditorClassIdentifier: 
   Messages:
-  - You re-forged a verse of the Ancient Moon Prayer. You've earned a Moon Fragment.
+  - You re-forged a Verse of the Ancient Moon Prayer. You've earned a Moon Fragment.
   ButtonOneText: 
   ButtonTwoText: 
   ButtonThreeText: 

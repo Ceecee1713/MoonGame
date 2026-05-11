@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: VerseOne_DialogueData
   m_EditorClassIdentifier: 
   Messages:
-  - To obtain a Moon Fragment, you will be challenged to recall a phrase from the
-    Ancient Prayer.
+  - To obtain a Moon Fragment and reforge an Ancient Prayer Verse, you will be challenged
+    to recall a phrase from the Ancient Prayer.
   - "You\u2019ll go through a series of prompts or questions, and you\u2019ll have
     to select out of three choices which answer is the correct one to the prompt
     or question. "
   - "You\u2019ll have access to your Cluebook to aid you in your deductions. "
   - "In the top-left corner, there\u2019s a Health meter. Selecting the wrong choice
-    will reduce your health. When your health reaches zero, it will be Game Over. "
+    will reduce your Health. When your Health reaches zero, it will be Game Over. "
   - If you answer all the prompts or questions correctly, you will obtain a Moon
     Fragment, be sent back to the Full Moon Statue to return the Moon Fragment, and
     it will advance to the next day.

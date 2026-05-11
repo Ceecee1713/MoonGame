@@ -13,6 +13,8 @@ public class CorriosonZone : MonoBehaviour
     private float CurrentSpeedToLowerHealth;
     [SerializeField]
     private float DefaultStartingSpeed;
+    [SerializeField]
+    private float speedForThirdCorriosonArea; //When two moon puzzles are complete ONLY
 
     [SerializeField]
     private bool isFirstCorriosonZoneInSecondArea = false; 
@@ -32,6 +34,7 @@ public class CorriosonZone : MonoBehaviour
         EventBus.Instance.Subscribe<ChangeCorriosonValue>(ChangeSpeedToLowerHealth);
         EventBus.Instance.Subscribe<RestoreCorriosonValue>(ReturnToDefaultSpeed);
         EventBus.Instance.Subscribe<NewMoonFragmentObtained>(SetNewCorriosonZone);
+        EventBus.Instance.Subscribe<ChangeThirdCorriosonAreaValue>(SetThirdCorriosonZoneSpeed);
     }
 
     void OnDestroy()
@@ -41,6 +44,7 @@ public class CorriosonZone : MonoBehaviour
             EventBus.Instance.Unsubscribe<ChangeCorriosonValue>(ChangeSpeedToLowerHealth);
             EventBus.Instance.Unsubscribe<RestoreCorriosonValue>(ReturnToDefaultSpeed);
             EventBus.Instance.Unsubscribe<NewMoonFragmentObtained>(SetNewCorriosonZone);
+            EventBus.Instance.Subscribe<ChangeThirdCorriosonAreaValue>(SetThirdCorriosonZoneSpeed);
         }
     }
 
@@ -93,5 +97,15 @@ public class CorriosonZone : MonoBehaviour
             return;
 
         CurrentSpeedToLowerHealth = DefaultStartingSpeed;
+    }
+
+    private void SetThirdCorriosonZoneSpeed(ChangeThirdCorriosonAreaValue changeThirdCorriosonAreaValue)
+    {
+        if(lastMoonPuzzleCorriosonZone == false)
+            return;
+
+        DefaultStartingSpeed = speedForThirdCorriosonArea;
+        CurrentSpeedToLowerHealth = speedForThirdCorriosonArea;
+        lastMoonPuzzleCorriosonZone = false; //Allow third corrioson zone to now have value changes like other corrioson zones
     }
 }

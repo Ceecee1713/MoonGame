@@ -59,6 +59,9 @@ public class GameManager : MonoBehaviour
     {
         AreaChangesCount++;
         EventBus.Instance.Publish(new NewAreaChange(AreaChangesCount)); //Publish to LightPropMoon and StreetLamps
+        
+        if(AreaChangesCount == MAX_NUMBER_OF_AREA_CHANGES)
+            EventBus.Instance.Publish(new ChangeThirdCorriosonAreaValue());
     }
 
     private void StartBeginningTutorial(StartBeginnerTutorial startBeginnerTutorial) //Published by StorytellingDialogueText

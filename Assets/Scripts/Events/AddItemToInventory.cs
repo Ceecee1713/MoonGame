@@ -393,6 +393,10 @@ public class RestoreCorriosonValue : IEvent
 {
 }
 
+public class ChangeThirdCorriosonAreaValue : IEvent
+{
+}
+
 //(DELETE COMMENT AFTER WRITING FULL DOCUMENTATION)
 //Teleport player back to moon puzzle, reset player health to full AND delete item drops
 //Published for EACH new exploration phase, not just for finishing a moon puzzle

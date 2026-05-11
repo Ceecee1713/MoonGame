@@ -73,7 +73,7 @@ public class StorytellingDialogueText : MonoBehaviour
     private const bool START_MOON_PUZZLE = false;
     private const bool START_PRAYER_PHASE = false; 
 
-    private const float TYPING_SPEED = 0.01f;
+    private const float TYPING_SPEED = 0.008f;
 
     void Start()
     {

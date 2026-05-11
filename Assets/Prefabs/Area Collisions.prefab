@@ -82,6 +82,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1353280846309199364}
   - component: {fileID: 1259653141878661566}
+  - component: {fileID: 7519113229183094063}
   - component: {fileID: 6990835674678836107}
   m_Layer: 0
   m_Name: Moon Fragment Area One (2)
@@ -126,6 +127,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.5716102, y: 3.07203, z: 3.6045735}
   m_Center: {x: 0.00000011920929, y: 1.036015, z: 0.014304042}
+--- !u!65 &7519113229183094063
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048283509909654208}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6990835674678836107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,6 +176,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5308114845546340051}
   - component: {fileID: 6740834883218890661}
+  - component: {fileID: 8815299020142012479}
+  - component: {fileID: 798139363803418484}
   - component: {fileID: 527557349344392802}
   m_Layer: 0
   m_Name: Moon Fragment Area Two
@@ -198,6 +222,48 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.5716102, y: 3.07203, z: 3.6045735}
   m_Center: {x: 0.00000011920929, y: 1.036015, z: 0.014304042}
+--- !u!65 &8815299020142012479
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250870041479745809}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &798139363803418484
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250870041479745809}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &527557349344392802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,6 +292,8 @@ GameObject:
   m_Component:
   - component: {fileID: 965711635165345276}
   - component: {fileID: 8726939003038593444}
+  - component: {fileID: 8078246222943270243}
+  - component: {fileID: 1141304107239202031}
   - component: {fileID: 1075710119335523987}
   m_Layer: 0
   m_Name: Moon Fragment Area Two (1)
@@ -270,6 +338,48 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.5716102, y: 3.07203, z: 3.6045735}
   m_Center: {x: 0.00000011920929, y: 1.036015, z: 0.014304042}
+--- !u!65 &8078246222943270243
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2483839844155720236}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &1141304107239202031
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2483839844155720236}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1075710119335523987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,7 +465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextSafeZoneArea: {fileID: 4089792901666932433}
-  speedToIncraseHealth: 1.2
+  speedToIncraseHealth: 1
 --- !u!1 &4059097111974093791
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,6 +476,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7205013701281643526}
   - component: {fileID: 290066861303710786}
+  - component: {fileID: 3082649117288613560}
+  - component: {fileID: 2142235470589548265}
   - component: {fileID: 875077360664149367}
   m_Layer: 0
   m_Name: Moon Fragment Area One
@@ -410,6 +522,48 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.5716102, y: 3.07203, z: 3.6045735}
   m_Center: {x: 0.00000011920929, y: 1.036015, z: 0.014304042}
+--- !u!65 &3082649117288613560
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4059097111974093791}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &2142235470589548265
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4059097111974093791}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &875077360664149367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -495,7 +649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextSafeZoneArea: {fileID: 0}
-  speedToIncraseHealth: 1.2
+  speedToIncraseHealth: 1
 --- !u!1 &4537977623438103593
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,6 +660,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6332143498218755754}
   - component: {fileID: 658024753442363735}
+  - component: {fileID: 926216996264017586}
   - component: {fileID: 3979713193253527003}
   m_Layer: 0
   m_Name: Moon Fragment Area Two (2)
@@ -550,6 +705,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.5716102, y: 3.07203, z: 3.6045735}
   m_Center: {x: 0.00000011920929, y: 1.036015, z: 0.014304042}
+--- !u!65 &926216996264017586
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4537977623438103593}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3979713193253527003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -619,6 +795,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7503720371400322017}
   - component: {fileID: 1653128662500010481}
+  - component: {fileID: 4053910994826324147}
+  - component: {fileID: 7099737770964737474}
   - component: {fileID: 8360120004951524123}
   m_Layer: 0
   m_Name: Moon Fragment Area One (1)
@@ -663,6 +841,48 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.5716102, y: 3.07203, z: 3.6045735}
   m_Center: {x: 0.00000011920929, y: 1.036015, z: 0.014304042}
+--- !u!65 &4053910994826324147
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6702080772393797434}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &7099737770964737474
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6702080772393797434}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8360120004951524123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -750,4 +970,4 @@ MonoBehaviour:
   nextSafeZoneArea: {fileID: 3186354443612990807}
   dialogueUI: {fileID: 0}
   corriosonZoneTutorial: {fileID: 0}
-  speedToIncraseHealth: 1.2
+  speedToIncraseHealth: 1

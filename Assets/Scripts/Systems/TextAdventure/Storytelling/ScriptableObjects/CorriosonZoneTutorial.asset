@@ -18,16 +18,12 @@ MonoBehaviour:
     uniqueWordsToColour: []
     wordColour: {r: 1, g: 1, b: 1, a: 1}
   - message: "If you leave the Moonlight, you\u2019ll begin to accumulate Corrosion.
-      Corrosion will lower your Health. Staying in the Moonlight will recover your
-      Health."
+      Corrosion lowers your Health. Staying in the Moonlight recovers your Health."
     uniqueWordsToColour:
-    - leave
-    - Corrosion
-    - lower
-    - Health
-    - Staying
-    - recover
-    - Health
+    - leave the Moonlight
+    - Corrosion lowers your Health
+    - Staying in the Moonlight recovers your Health
+    - accumulate Corrosion
     wordColour: {r: 1, g: 1, b: 1, a: 1}
   - message: 'Corrosion will accumulate dramatically once the timer reaches 0. You
       will die if your health drops to 0. '
@@ -39,14 +35,11 @@ MonoBehaviour:
     uniqueWordsToColour:
     - 
     wordColour: {r: 1, g: 1, b: 1, a: 1}
-  - message: 'Gathering more Moon Fragments will increase the range of Moonlight
-      to traverse the forest safely and Corrosion will accumulate slower. '
+  - message: 'Gathering more Moon Fragments increases the range of Moonlight to traverse
+      the forest safely and Corrosion will accumulate slower. '
     uniqueWordsToColour:
-    - more Moon Fragments
-    - increase
-    - range
-    - Corrosion
-    - slower
+    - more Moon Fragments increases the range of Moonlight
+    - Corrosion will accumulate slower
     wordColour: {r: 1, g: 1, b: 1, a: 1}
   - message: Plan accordingly to navigate through the miasma strategically.
     uniqueWordsToColour: []

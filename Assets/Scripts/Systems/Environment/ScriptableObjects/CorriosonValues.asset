@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dc6800efdad2f742bdae55ce47c2b1c, type: 3}
   m_Name: CorriosonValues
   m_EditorClassIdentifier: 
-  DefaultStartingSpeed: 0.3
-  SpeedToLowerHealthWhenTimerIsUp: 0.8
-  SpeedToLowerHealthForBadPrayerEffect: 0.55
-  SpeedToLowerHealthForGoodPrayerEffect: 0.2
+  SpeedToLowerHealthWhenTimerIsUp: 0.5
+  SpeedToLowerHealthForBadPrayerEffect: 0.05
+  SpeedToLowerHealthForGoodPrayerEffect: 0.02

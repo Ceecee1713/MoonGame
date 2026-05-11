@@ -27,8 +27,9 @@ MonoBehaviour:
     uniqueWordsToColour: []
     wordColour: {r: 1, g: 1, b: 1, a: 1}
   - message: "Fear had taken hold of everyone\u2019s minds and made the people afraid
-      of each other. Order collapsed as panic set in. The civilization had split
-      off and began living far away from each other, creating smaller villages instead."
+      of each other. Order collapsed as panic set in. The civilization fell apart
+      and everyone began living far away from each other, creating smaller villages
+      instead."
     uniqueWordsToColour: []
     wordColour: {r: 1, g: 1, b: 1, a: 1}
   - message: 'No one could explain where the fog came from or how it manifested,
@@ -42,17 +43,16 @@ MonoBehaviour:
     uniqueWordsToColour: []
     wordColour: {r: 1, g: 1, b: 1, a: 1}
   - message: People knew that Moonlight could repel the fog. Her light was their
-      protection, and everyone had built a Moon Statue of their own to fight off
-      the miasma.
+      protection, and everyone built Moon Statues of their own to fight off the miasma.
     uniqueWordsToColour: []
     wordColour: {r: 1, g: 1, b: 1, a: 1}
   - message: "Still, prayers couldn\u2019t save the people, and it\u2019s assumed
-      that nearly half of the people had died from the fog. Prayers couldn\u2019t
-      save your village either. "
+      that half of the people had died from the fog. Prayers couldn\u2019t save your
+      village either. "
     uniqueWordsToColour: []
     wordColour: {r: 1, g: 1, b: 1, a: 1}
   - message: "Now, you\u2019re the only one left of your village and the last of
-      the Moon Priestesses. Desperation clings to your soul as you refuse to make
+      their Moon Priestesses. Desperation clings to your soul as you refuse to make
       peace in death. While you can\u2019t bring them back, you have a fighting chance
       to combat the silent death\u2026"
     uniqueWordsToColour: []

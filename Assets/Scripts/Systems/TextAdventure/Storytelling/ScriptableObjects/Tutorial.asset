@@ -31,33 +31,35 @@ MonoBehaviour:
       are spread across the foggy forest, and you have to find them. It won\u2019t
       be an easy task though. "
     uniqueWordsToColour:
-    - Three fragments
+    - Three fragments are missing
     wordColour: {r: 1, g: 1, b: 1, a: 1}
   - message: 'Upon praying to the Full Moon Statue for protection, an Ancient Prayer
       would be recited, but you forgot the words to it. The Ancient Prayer was broken
       into three parts, and to get a Moon fragment back, you need to know a Verse
       of The Ancient Prayer. '
     uniqueWordsToColour:
-    - three parts
+    - broken into three parts
     wordColour: {r: 1, g: 1, b: 1, a: 1}
   - message: "I\u2019d suggest looking around in the forest for souls and listening
-      to them. They can give you clues to recount the Ancient Prayer. "
+      to them. They can give you clues to recount the Ancient Prayer's Verses."
     uniqueWordsToColour:
     - souls
     - clues
     wordColour: {r: 1, g: 1, b: 1, a: 1}
-  - message: You have three Moon Fragments to find to bring back to the Moon Statue
-      and three Ancient Prayer Verses to reforge together, friend.
+  - message: You have three Moon Fragments to find and three Ancient Prayer Verses
+      to reforge, friend.
     uniqueWordsToColour:
     - three Moon Fragments
     - 'three Ancient Prayer Verses '
     wordColour: {r: 1, g: 1, b: 1, a: 1}
   - message: You have a set time to explore the forest before the miasma becomes
-      too much to handle. To progress to the next day, interact with the Moon Statue.
+      too much to handle. To progress to the next day, interact with the Full Moon
+      Statue.
     uniqueWordsToColour:
     - set time
     - next day
-    - Moon Statue
+    - interact
+    - Full Moon Statue
     wordColour: {r: 1, g: 1, b: 1, a: 1}
   - message: "Plan accordingly to navigate through the toxic fog strategically. That,
       and don\u2019t forget your Crafting skills. Your Crafting Bench will be your
