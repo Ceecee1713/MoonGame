@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using TMPro;
 
@@ -27,9 +28,13 @@ public class DecipherClueButton : MonoBehaviour
 
     private string [] _craftingMaterialsNames = new string[2];
 
-    private bool _craftingAClue = false;
+    private bool _allowClicking = true;
 
     private int newMoonPuzzleIndex;
+
+    private const bool CRAFTING_A_CLUE = true;
+
+    private const float DELAY = 0.5f;
 
     void Start()
     {
@@ -44,6 +49,7 @@ public class DecipherClueButton : MonoBehaviour
 
     void OnDisable()
     {
+        _allowClicking = true;
     }
 
     //Explain the numbers for comparison in the "if" statements and why they matter - GameManager 
@@ -74,15 +80,22 @@ public class DecipherClueButton : MonoBehaviour
 
     public void OnDecipherClueClick()
     {
+        if(_allowClicking != true)
+        return;
+
+        _allowClicking = false;
+
         AudioManager.Instance.PlaySoundEffect(buttonClickSFX);
         
-        EventBus.Instance.Publish(new CheckForCompleteClues()); //Publish to CluebookManager
+        EventBus.Instance.Publish(new CheckForCompleteClues());
+        
         craftManager.ResetStatus();
 
-        _craftingAClue = true;
-
         for(int i = 0; i < craftingMaterials.Length; i++)
-            craftManager.CheckInventoryForCraftingMaterials(craftingMaterials[i], craftingMaterials.Length, _craftingAClue);
+            craftManager.CheckInventoryForCraftingMaterials(craftingMaterials[i]);
+
+        craftManager.TryCompleteCraft(craftingMaterials.Length, CRAFTING_A_CLUE); 
+        craftManager.DelayClickingOfButtons();
     }
 
     private void UpdateMaterialDescriptionText()
@@ -95,5 +108,10 @@ public class DecipherClueButton : MonoBehaviour
         }
             
         materialDescriptionText.text = string.Join("\n", _craftingMaterialsNames);
+    }
+
+    public void AllowClicking()
+    {
+        _allowClicking = true;
     }
 }

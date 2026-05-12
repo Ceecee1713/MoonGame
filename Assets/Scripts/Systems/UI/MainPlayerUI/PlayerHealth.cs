@@ -17,7 +17,8 @@ public class PlayerHealth : MonoBehaviour
     
     private float _speedToChangeHealth;
 
-    private const float SMALL_TIME_DELAY = 0.2F;
+    private const float HEALTH_VALUE_TO_DIE_AT = 0.125f; //0.0f doesn't match the visuals of the health slider
+    private const float SMALL_TIME_DELAY = 0.2f;
 
     private const bool ALLOW_PLAYER_INPUT = false;
     private const bool START_MOON_PUZZLE = false;
@@ -37,13 +38,13 @@ public class PlayerHealth : MonoBehaviour
         if( _pauseCorrioson == true || _doNotRepeat == true)
             return;
 
-        if(_recoverHealth == false && health.value != 0.0f)
+        if(_recoverHealth == false && health.value > HEALTH_VALUE_TO_DIE_AT)
             health.value -= Time.deltaTime * _speedToChangeHealth;
 
         if(_recoverHealth == true && health.value != 1.0f)
             health.value += Time.deltaTime * _speedToChangeHealth;
 
-        if(health.value == 0.0f) 
+        if(health.value <= HEALTH_VALUE_TO_DIE_AT) 
         {
             StartCoroutine(ShowFailedGameScreen());
             _doNotRepeat = true;

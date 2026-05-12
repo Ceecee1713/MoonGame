@@ -4089,6 +4089,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 550e956cab293b54b86f1978b5a51bd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  craftButtons:
+  - {fileID: 7095758862472468762}
+  - {fileID: 7550111806832784199}
+  - {fileID: 7253191743824489314}
+  - {fileID: 2644685396598514471}
+  - {fileID: 6001304732140370916}
+  decipherClueButton: {fileID: 8292463595728209977}
   inventoryData: {fileID: 11400000, guid: 3e223954c69a03a4ca8d8bbf172e7db9, type: 2}
 --- !u!1 &6387781963427389269
 GameObject:

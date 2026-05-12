@@ -79,12 +79,12 @@ public class RemoveItemFromSlot : IEvent
 public class AdjustInventorySlotItemQuantity : IEvent 
 {
     public int NewQuantity;
-    public int InventoryIndex;
+    public InventoryItemTypes ItemType;
 
-    public AdjustInventorySlotItemQuantity(int newQuantity, int inventoryIndex)
+    public AdjustInventorySlotItemQuantity(int newQuantity, InventoryItemTypes itemType)
     {
         NewQuantity = newQuantity;
-        InventoryIndex = inventoryIndex;
+        ItemType = itemType;
     }
 }
 

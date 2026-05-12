@@ -63,7 +63,10 @@ public class PrayToMoonStatue : MonoBehaviour
     private void OnTriggerStay(Collider collider)
     {
         if (collider.gameObject.CompareTag("Player"))
+        {
             _playerCollisionDetected = true;
+            EventBus.Instance.Publish(new InCollision(_playerCollisionDetected));
+        }  
     }
 
     private void OnTriggerExit(Collider collider)
@@ -72,6 +75,7 @@ public class PrayToMoonStatue : MonoBehaviour
         {
             _playerCollisionDetected = false; 
             _interactedOnce = false;
+            EventBus.Instance.Publish(new InCollision(_playerCollisionDetected));
         }
     }
 }

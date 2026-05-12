@@ -1,9 +1,16 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CraftManager : MonoBehaviour
 {
+    [Header ("Buttons")]
+    [SerializeField]
+    private CraftButton [] craftButtons;
+    [SerializeField]
+    private DecipherClueButton decipherClueButton;
+
     [SerializeField]
     private InventoryData inventoryData;
 
@@ -26,6 +33,8 @@ public class CraftManager : MonoBehaviour
     //"_amountOfFullStacksPerMaterialToRemove[i]" represents the amount of a unique material to be removed that have maxed quantity
     //"_materialsForCraftableItem[i]" represents a unique material's item data. 
 
+    private const float DELAY = 0.25f;
+
     void Start()
     {
         EventBus.Instance.Subscribe<AllowToCraftClue>(CheckToMakeClue);
@@ -41,6 +50,14 @@ public class CraftManager : MonoBehaviour
     {
         _allowPlayerInputs = true;
         EventBus.Instance.Publish(new ActivatePlayerInputs(_allowPlayerInputs));
+
+        StopAllCoroutines();
+    }
+
+    public void DelayClickingOfButtons()
+    {
+        StopAllCoroutines();
+        StartCoroutine(DelayClick());
     }
 
     public void ResetStatus() 
@@ -67,39 +84,43 @@ public class CraftManager : MonoBehaviour
         _itemToCraft = craftableInventoryItem;
     }
 
-    //Published by CraftButton and DecipherClueButton. Method repeatedly called from both scripts for each new crafting material
-    public void CheckInventoryForCraftingMaterials(ItemData craftingMaterial, int maxAmountOfCraftingMaterialTypes, bool craftingAClue) //Step One
+    //Called by CraftButton and DecipherClueButton. Method repeatedly called from both scripts for each new crafting material
+    public void CheckInventoryForCraftingMaterials(ItemData craftingMaterial) //Step One
     {
         if(_notEnoughItemQuantity == true)
             return;
         
-        //Resetting for each new material 
         _quantityRemaining = false;
         _remainingQuantity = 0;
         _amountOfAnInventoryItemNeeded = 0;
         _moveToNextMaterial = false;
 
-        if(_remainingQuantity > 0) //Exit method if there's not enough quantity for a material in inventory
+        SearchInventoryForItemMaterial(craftingMaterial);
+
+        if(_remainingQuantity > 0)
         {
             _notEnoughItemQuantity = true;
             return;
         }
+    }
 
-        SearchInventoryForItemMaterial(craftingMaterial); //Step Two
+    public void TryCompleteCraft(int maxAmountOfCraftingMaterialTypes, bool craftingAClue) //Step Seven
+    {
+        if(_notEnoughItemQuantity)
+            return;
 
-        if(craftingAClue == true) //Deciphering clue
+        if(craftingAClue)
         {
             if(_amountOfMatchingCraftingMaterials >= maxAmountOfCraftingMaterialTypes && _allowCraftingForClue != false)
             {
-                DecipherClue();
-                EventBus.Instance.Publish(new DecipherClue()); //Publish to CluebookManager
+                DecipherClue(); //Step Eight
+                EventBus.Instance.Publish(new DecipherClue());
             }
         }
-
-        else //Adding an inventory item to inventory
+        else
         {
             if(_amountOfMatchingCraftingMaterials >= maxAmountOfCraftingMaterialTypes)
-                CraftInventoryItem(_itemToCraft);
+                CraftInventoryItem(_itemToCraft); //Step Eight
         }
     }
 
@@ -163,7 +184,7 @@ public class CraftManager : MonoBehaviour
         _amountOfAnInventoryItemNeeded++; 
         MarkItemForRemoval(slotIndex);
         CountMatchingInventoryItemMaterials(craftingMaterial);
-        _moveToNextMaterial = true; //Move onto next crafting material 
+        _moveToNextMaterial = true; //Move onto next crafting material (back to Step One)
     }
 
     //Leftover quantity, adjust inventory item's quantity
@@ -172,7 +193,7 @@ public class CraftManager : MonoBehaviour
         _quantityRemaining = false;
         AdjustInventoryQuantity(slotIndex);
         _amountOfMatchingCraftingMaterials++; //Count for one material for craftable item's recipe found
-        _moveToNextMaterial = true; //Move onto next crafting material 
+        _moveToNextMaterial = true; //Move onto next crafting material (back to Step One)
     }
 
     //Mark an inventory item to be removed (item is removed in "InventoryUI")
@@ -187,7 +208,7 @@ public class CraftManager : MonoBehaviour
         for(int i = 0; i < inventoryData.Inventory.Count; i++)
         {
             if(inventoryData.Inventory[i].ItemType == craftingMaterial.ItemType)
-                _amountOfAnInventoryItemNeeded--; //Decrease to indicate that a matching material has been found (which is good)
+                _amountOfAnInventoryItemNeeded--; //Decrease to indicate that a matching material has been found
 
             if(_amountOfAnInventoryItemNeeded == 0)
             {
@@ -201,21 +222,32 @@ public class CraftManager : MonoBehaviour
     private void AdjustInventoryQuantity(int slotIndex)
     {
         int newQuantity = Mathf.Abs(_remainingQuantity);
-        EventBus.Instance.Publish(new AdjustInventorySlotItemQuantity(newQuantity, slotIndex)); //Publish to InventoryUI
+        InventoryItemTypes itemType = inventoryData.Inventory[slotIndex].ItemType;
+        EventBus.Instance.Publish(new AdjustInventorySlotItemQuantity(newQuantity, itemType));
     }
 
-    private void CraftInventoryItem(ItemData craftableInventoryItem) 
+    private void CraftInventoryItem(ItemData craftableInventoryItem) //Step Eight
     {
         ItemData clonedItem = craftableInventoryItem.Clone();
+        EventBus.Instance.Publish(new RemoveUsedMaterials(_materialsForCraftableItem, _amountOfFullStacksPerMaterialToRemove));
         EventBus.Instance.Publish(new AddItemToInventory(clonedItem));
+        ResetStatus();
+    }
+
+    private void DecipherClue() //Step Eight
+    {
         EventBus.Instance.Publish(new RemoveUsedMaterials(_materialsForCraftableItem, _amountOfFullStacksPerMaterialToRemove));
         ResetStatus();
     }
 
-    private void DecipherClue()
+    IEnumerator DelayClick() 
     {
-        EventBus.Instance.Publish(new RemoveUsedMaterials(_materialsForCraftableItem, _amountOfFullStacksPerMaterialToRemove));
-        ResetStatus();
+        yield return new WaitForSeconds(DELAY);
+
+        for(int i = 0; i < craftButtons.Length; i++)
+            craftButtons[i].AllowClicking();
+
+        decipherClueButton.AllowClicking();
     }
 }
 

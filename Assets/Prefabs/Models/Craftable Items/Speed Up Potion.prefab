@@ -168,8 +168,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.16327794
-  m_Center: {x: -0.00011393428, y: 0.08531612, z: 0.0009788424}
+  m_Radius: 0.22628286
+  m_Center: {x: 0.0005161464, y: 0.13256979, z: 0.0009788424}
 --- !u!114 &4028038062313565959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,6 +193,7 @@ MonoBehaviour:
   gameObjectToSetInactive: {fileID: 0}
   makeGameObjectInactive: 0
   DeleteAfterInteraction: 0
+  InteractedByPlayerOnce: 0
 --- !u!114 &4836095260780738362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,15 +257,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6611202281652330841, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
       propertyPath: m_Radius
-      value: 0.16270557
+      value: 0.22571048
       objectReference: {fileID: 0}
     - target: {fileID: 6611202281652330841, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
       propertyPath: m_Center.x
-      value: 0.000000014901161
+      value: 0.0006301105
       objectReference: {fileID: 0}
     - target: {fileID: 6611202281652330841, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
       propertyPath: m_Center.y
-      value: 0.08505848
+      value: 0.13231215
       objectReference: {fileID: 0}
     - target: {fileID: 6611202281652330841, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
       propertyPath: m_Center.z

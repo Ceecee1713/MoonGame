@@ -155,6 +155,7 @@ MonoBehaviour:
   gameObjectToSetInactive: {fileID: 0}
   makeGameObjectInactive: 0
   DeleteAfterInteraction: 0
+  InteractedByPlayerOnce: 0
 --- !u!1 &2599918748685701585
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,6 +392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b5450e460a580041a3fe091e839c39a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  worldInteractableItem: {fileID: 1074593396037846807}
   hoverMessageUI: {fileID: 7885152348183322797}
 --- !u!1 &6394683187890275017
 GameObject:

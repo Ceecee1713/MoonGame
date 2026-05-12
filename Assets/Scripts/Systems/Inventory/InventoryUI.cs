@@ -33,7 +33,7 @@ public class InventoryUI : MonoBehaviour
     //For adding items into inventory
     private int _remainingQuantity;
 
-    private const int MAX_STACK_AMOUNT = 9;
+    private const int MAX_STACK_AMOUNT = 9; //Make sure this value is the same as the MAX_STACK_AMOUNT for ChestUI
 
     void Start()
     {
@@ -72,94 +72,6 @@ public class InventoryUI : MonoBehaviour
     {
         _allowInput = activatePlayerInputs.AllowInputs;
     }
-
-    /*
-    private void AddInventoryItem(AddItemToInventory addItemToInventory) //Feb 2
-    {
-        ItemData itemToCheck = addItemToInventory.InventoryItem;
-        
-        _remainingQuantity = itemToCheck.Quantity;
-
-        if(itemToCheck.IsThisAStackableItem == true && !itemToCheck.IsDroppedItem)
-        {
-            for(int i = 0; i < inventorySlots.Length; i++) 
-            {
-                if(_remainingQuantity <= 0)
-                    break;
-
-                if(inventorySlots[i].InventoryItem != null && inventorySlots[i].InventoryItem.IsThisAStackableItem == true && 
-                    inventorySlots[i].InventoryItem.ItemType == itemToCheck.ItemType) 
-                {
-                    int currentQuantity = inventorySlots[i].InventoryItem.Quantity;
-                    int availableSpace = MAX_STACK_AMOUNT - currentQuantity;
-                    
-                    if(availableSpace > 0) 
-                    {
-                        int amountToAdd = Mathf.Min(availableSpace, _remainingQuantity); 
-                        inventorySlots[i].InventoryItem.Quantity += amountToAdd; //Add quantity onto inventory slot's item's quantity
-                        
-                        //Adding quantity onto inventory item in inventoryData 
-                        for(int j = 0; j < inventoryData.Inventory.Count; j++) 
-                        {
-                            if(inventoryData.Inventory[j].ItemType == itemToCheck.ItemType && inventoryData.Inventory[j].Quantity < MAX_STACK_AMOUNT)
-                            {
-                                inventoryData.Inventory[j].Quantity += amountToAdd; 
-                                break;
-                            }
-                                
-                        }
-
-                        _remainingQuantity -= amountToAdd;
-                    }
-                }
-            }
-        }
-
-        //Create a new stack for the same inventory type 
-        if(_remainingQuantity > 0)
-        {
-            itemToCheck.Quantity = Mathf.Min(_remainingQuantity, MAX_STACK_AMOUNT);
-            itemToCheck.IsDroppedItem = false;
-
-            for(int i = 0; i < inventorySlots.Length; i++) 
-            {
-                if(inventorySlots[i].IsEmpty == true)
-                {
-                    inventorySlots[i].AddItemToSlot(itemToCheck);
-                    inventoryData.Inventory.Add(itemToCheck);
-                    _remainingQuantity -= itemToCheck.Quantity;
-                    break;
-                }
-            }
-        }
-        
-        //Handling subsequent overflow of quantity stacking with clones 
-        while(_remainingQuantity > 0)
-        {
-            bool foundEmptySlot = false;
-            
-            for(int i = 0; i < inventorySlots.Length; i++) 
-            {
-                if(inventorySlots[i].IsEmpty == true)
-                {
-                    //Clone for each additional overflow slot
-                    ItemData clonedItem = itemToCheck.Clone();
-                    clonedItem.Quantity = Mathf.Min(_remainingQuantity, MAX_STACK_AMOUNT);
-                    itemToCheck.IsDroppedItem = false;
-
-                    inventorySlots[i].AddItemToSlot(clonedItem);
-                    inventoryData.Inventory.Add(clonedItem);
-                    _remainingQuantity -= clonedItem.Quantity;
-                    foundEmptySlot = true;
-                    break;
-                }
-            }
-            
-            if(!foundEmptySlot)
-                break;
-        }
-    }
-    */
 
     #region Adding Inventory Item
 
@@ -278,79 +190,76 @@ public class InventoryUI : MonoBehaviour
                 break;
         }
     }
+    #endregion
 
     //Published by CraftManager if there's remainder for a crafting material
     private void AdjustInventoryQuantity(AdjustInventorySlotItemQuantity adjustInventorySlotItemQuantity)
     {
-        _inventoryDataIndex = adjustInventorySlotItemQuantity.InventoryIndex;
-        _newQuantity =  adjustInventorySlotItemQuantity.NewQuantity;
+        bool hasEmptySlot = false;
 
         for(int i = 0; i < inventorySlots.Length; i++)
         {
-            if(inventorySlots[i].InventoryItem.Quantity == inventoryData.Inventory[_inventoryDataIndex].Quantity &&
-            inventorySlots[i].InventoryItem.ItemType == inventoryData.Inventory[_inventoryDataIndex].ItemType)
+            if(inventorySlots[i].IsEmpty)
             {
-                inventorySlots[i].InventoryItem.Quantity = _newQuantity;
-                inventoryData.Inventory[_inventoryDataIndex].Quantity = _newQuantity; 
+                hasEmptySlot = true;
+                break;
+            }
+        }
+
+        if(!hasEmptySlot)
+            return;
+
+        _newQuantity = adjustInventorySlotItemQuantity.NewQuantity;
+        InventoryItemTypes itemType = adjustInventorySlotItemQuantity.ItemType;
+
+        for(int j = 0; j < inventorySlots.Length; j++)
+        {
+            if(inventorySlots[j].InventoryItem != null &&
+            inventorySlots[j].InventoryItem.ItemType == itemType)
+            {
+                inventorySlots[j].InventoryItem.Quantity = _newQuantity;
+                inventorySlots[j].UpdateItemTextQuantity(_newQuantity);
+
+                for(int k = 0; k < inventoryData.Inventory.Count; k++)
+                {
+                    if(inventoryData.Inventory[k].ItemType == itemType)
+                    {
+                        inventoryData.Inventory[k].Quantity = _newQuantity;
+                        break;
+                    }
+                }
                 break;
             }
         }
     }
-    #endregion
-
-    /*
-    private void RemoveConsumedMaterials(RemoveUsedMaterials removeUsedMaterials) //Feb 2
-    {
-        //Removal of inventory items that were used as crafting materials (by CraftManager)
-        for(int i = 0; i < removeUsedMaterials.AmountsPerStackableItemToRemove.Count; i++)
-        {
-            _amountOfFullStacksPerMaterialConsumed = removeUsedMaterials.AmountsPerStackableItemToRemove[i];
-            _numberToMatchAmountOfFullyConsumedMaterial = 0;
-
-            var targetInventoryItemType = removeUsedMaterials.CraftingMaterialItems[i].ItemType;
-            
-            for(int j = 0; j < inventorySlots.Length; j++)
-            {
-                if(_numberToMatchAmountOfFullyConsumedMaterial >= _amountOfFullStacksPerMaterialConsumed)
-                    break;
-
-                if (inventorySlots[j].InventoryItem != null && inventorySlots[j].InventoryItem.ItemType == targetInventoryItemType)
-                {
-                    //Remove item from inventory slot
-                    ItemData itemToRemove = inventorySlots[j].InventoryItem;
-                    int quantityToMatch = itemToRemove.Quantity;
-                    inventorySlots[j].RemoveItemFromSlot();
-                    
-                    //Iterating backwards as we're removing indexes of the "inventoryData.Inventory" List
-                    for(int k = inventoryData.Inventory.Count - 1; k >= 0; k--)
-                    {
-                        //Remove matching inventory item from inventoryData
-                        if(inventoryData.Inventory[k].ItemType == targetInventoryItemType && 
-                        inventoryData.Inventory[k].Quantity == quantityToMatch)
-                        {
-                            inventoryData.Inventory.RemoveAt(k);
-                            break;
-                        }
-                    }
-                    
-                    _numberToMatchAmountOfFullyConsumedMaterial++;
-                }
-            }
-        }
-    }
-    */
 
     #region Removing Consumed Inventory Items That Were Used As Materials
 
     private void RemoveConsumedMaterials(RemoveUsedMaterials removeUsedMaterials) //Step One
     {
-        //Removal of inventory items that were used as crafting materials (by CraftManager) for FULL STACK materials 
-        for(int i = 0; i < removeUsedMaterials.AmountsPerStackableItemToRemove.Count; i++)
+        //Check all inventory slots if they have items before starting to remove any
+        //If no empty inventory slots are found (all slots have an item), don't remove any of them as materials
+        bool hasEmptySlot = false;
+
+        for(int i = 0; i < inventorySlots.Length; i++)
         {
-            _amountOfFullStacksPerMaterialConsumed = removeUsedMaterials.AmountsPerStackableItemToRemove[i];
+            if(inventorySlots[i].IsEmpty)
+            {
+                hasEmptySlot = true;
+                break;
+            }
+        }
+
+        if(!hasEmptySlot)
+            return;
+
+        //Removal of inventory items that were used as crafting materials (by CraftManager) for FULL STACK materials 
+        for(int j = 0; j < removeUsedMaterials.AmountsPerStackableItemToRemove.Count; j++)
+        {
+            _amountOfFullStacksPerMaterialConsumed = removeUsedMaterials.AmountsPerStackableItemToRemove[j];
             _numberToMatchAmountOfFullyConsumedMaterial = 0;
 
-            var targetInventoryItemType = removeUsedMaterials.CraftingMaterialItems[i].ItemType;
+            var targetInventoryItemType = removeUsedMaterials.CraftingMaterialItems[j].ItemType;
             
             RemoveStacksOfMaterial(targetInventoryItemType); 
         }
@@ -361,7 +270,7 @@ public class InventoryUI : MonoBehaviour
         for(int j = 0; j < inventorySlots.Length; j++)
         {
             if(_numberToMatchAmountOfFullyConsumedMaterial >= _amountOfFullStacksPerMaterialConsumed) 
-                break; //Removed all full stacks needed for the material, move onto next material
+                break; //Removed all full stacks needed for the material, move onto next material (back to Step One)
 
             if (inventorySlots[j].InventoryItem == null || inventorySlots[j].InventoryItem.ItemType != targetInventoryItemType)
                 continue;

@@ -15,9 +15,10 @@ public class InteractableItem : MonoBehaviour
 
     [HideInInspector]
     public bool DeleteAfterInteraction = false; //Accessed by PlayerSpawner
+    [HideInInspector]
+    public bool InteractedByPlayerOnce = false; //Accessed by NPCHoverMessage
 
     private bool _allowInput = true;
-    private bool _interactedByPlayerOnce = false;
     private bool _playerStayingInCollision = false; 
     private bool _playerInCollision = false;
 
@@ -45,18 +46,18 @@ public class InteractableItem : MonoBehaviour
 
     private void ResetVisibilityOfGameObject(ResetWorldItems resetWorldItems)
     {
-        _interactedByPlayerOnce = false;
+        InteractedByPlayerOnce = false;
 
         if(makeGameObjectInactive == true && gameObjectToSetInactive != null)
             gameObjectToSetInactive.SetActive(true);
     }
 
-    private void CheckIfItemIsPickedUp(Interact pickingUpItem) //When player "interacts" with this game object (keybind E)
+    private void CheckIfItemIsPickedUp(Interact pickingUpItem) //When player interacts with this game object
     {
-        if(_allowInput == false || _interactedByPlayerOnce == true)
+        if(_allowInput == false || InteractedByPlayerOnce == true)
             return;
 
-        if(_playerStayingInCollision == true && _interactedByPlayerOnce == false)
+        if(_playerStayingInCollision == true && InteractedByPlayerOnce == false)
         {
             AudioManager.Instance.PlaySoundEffect(interactionSFX);
 
@@ -68,7 +69,7 @@ public class InteractableItem : MonoBehaviour
                 
             EventBus.Instance.Publish(new AddItemToInventory(clonedInventoryItem)); 
 
-            _interactedByPlayerOnce = true;
+            InteractedByPlayerOnce = true;
 
             //Mark player no longer in collision with this interactable object
             _playerInCollision = false;

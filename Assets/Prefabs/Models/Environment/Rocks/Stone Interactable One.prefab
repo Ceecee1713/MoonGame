@@ -156,6 +156,7 @@ MonoBehaviour:
   gameObjectToSetInactive: {fileID: 5494042238877189202}
   makeGameObjectInactive: 1
   DeleteAfterInteraction: 0
+  InteractedByPlayerOnce: 0
 --- !u!1 &3461553780863731315
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,6 +789,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3720996786152304038, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
+      propertyPath: worldInteractableItem
+      value: 
+      objectReference: {fileID: 8433840329203370036}
     - target: {fileID: 6047790840679149552, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0

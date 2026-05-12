@@ -68,7 +68,7 @@ public class MoonPuzzleArea : MonoBehaviour
         _allowInput = activatePlayerInputs.AllowInputs;
     }
 
-    private void OpenTextAdventureUI(Interact interact) //When player "interacts" with this game object (keybind E)
+    private void OpenTextAdventureUI(Interact interact) //When player interacts with this game object
     {
         if(_allowInput == false)
             return;
@@ -87,12 +87,18 @@ public class MoonPuzzleArea : MonoBehaviour
     private void OnTriggerStay(Collider collider)
     {
         if (collider.gameObject.CompareTag("Player"))
+        {
             _playerCollisionDetected = true;
+            EventBus.Instance.Publish(new InCollision(_playerCollisionDetected));
+        }
     }
 
     private void OnTriggerExit(Collider collider)
     {
         if (collider.gameObject.CompareTag("Player"))
+        {
             _playerCollisionDetected = false; 
+            EventBus.Instance.Publish(new InCollision(_playerCollisionDetected));
+        }
     }
 }

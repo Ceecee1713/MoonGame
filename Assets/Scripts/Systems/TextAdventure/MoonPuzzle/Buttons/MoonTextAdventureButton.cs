@@ -76,7 +76,11 @@ public class MoonTextAdventureButton : MonoBehaviour
         if (buttonNumber == _currentQuestionDialogue.correctButtonNumber)
         {
             if (_nextQuestionDialogue == null)
+            {
+                Debug.Log("_nextQuestionDialogue is null");
                 return;
+            }
+                
 
             if(_concludeMoonPuzzle == true)
             {
