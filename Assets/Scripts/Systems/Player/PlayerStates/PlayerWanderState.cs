@@ -28,7 +28,15 @@ public class PlayerWanderState : PlayerState
             cameraRight.Normalize();
             
             StateMachine.MovementDirection = cameraForward * StateMachine.PlayerDirection.z + cameraRight * StateMachine.PlayerDirection.x;
+
+            float yBefore = StateMachine.transform.position.y;
+
             StateMachine.CharacterController.Move(StateMachine.MovementDirection.normalized * StateMachine.MovementSpeed * Time.deltaTime);
+
+            //Preventing Player's Y position from changing when rubbing against objects while moving
+            Vector3 position = StateMachine.transform.position; 
+            if (position.y != yBefore)
+                StateMachine.transform.position = new Vector3(position.x, yBefore, position.z);
 
             //Player Rotation
             StateMachine.TargetRotationDirection = StateMachine.mainCamera.forward * StateMachine.PlayerDirection.z;
