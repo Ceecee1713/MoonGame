@@ -223,8 +223,8 @@ CharacterController:
   serializedVersion: 3
   m_Height: 0.05
   m_Radius: 0.013
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_SlopeLimit: 0
+  m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.06, z: 0}
@@ -284,13 +284,13 @@ MonoBehaviour:
   potionSpeed: 7
   itemTimeDurationOfSpeedChanging: 4
   itemTimeMultiplier: 3
-  MaxLengthOfTimeForSpeedUp: 7
+  MaxDurationForSpeedUp: 7
   CurrentTimeLengthForSpeedUp: 0
-  _characterController: {fileID: 0}
-  _playerDirection: {x: 0, y: 0, z: 0}
-  _movementDirection: {x: 0, y: 0, z: 0}
-  _targetRotationDirection: {x: 0, y: 0, z: 0}
-  _minimumMovementDistance: 0.1
+  CharacterController: {fileID: 0}
+  PlayerDirection: {x: 0, y: 0, z: 0}
+  MovementDirection: {x: 0, y: 0, z: 0}
+  TargetRotationDirection: {x: 0, y: 0, z: 0}
+  MinimumMovementDistance: 0.1
 --- !u!1 &5546468624401137082
 GameObject:
   m_ObjectHideFlags: 0

@@ -361,7 +361,7 @@ MonoBehaviour:
 
 
     A dropped item
-    will disappear when it''s a new day.
+    will disappear when it''s a new day. Chests are exempt from this.
 
 '
   m_isRightToLeft: 0
