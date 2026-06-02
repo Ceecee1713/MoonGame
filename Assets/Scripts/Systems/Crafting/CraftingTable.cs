@@ -1,13 +1,17 @@
 using UnityEngine;
 
+/// <summary>
+/// Manages the player's interaction with making the crafting UI appear and pausing the game
+/// </summary>
+
 public class CraftingTable : MonoBehaviour
 {
     [SerializeField]
     private GameObject craftingUI;
 
-    private bool _allowInput = true;
-    private bool _playerStayingInCollision = false; 
-    private bool _playerInCollision = false; 
+    private bool _allowInput = true; //Prevent or allow for the player to interact or click on certain objects during runtime
+    private bool _playerStayingInCollision = false; //Prevent or allow pausing the game and freezing the player in place
+    private bool _playerInCollision = false; //Flag whether the player can interact with the crafting table or not: if they're in range or not
 
     void Start()
     {
@@ -29,7 +33,7 @@ public class CraftingTable : MonoBehaviour
         {
             craftingUI.SetActive(true);
             EventBus.Instance.Publish(new FreezePlayer(true));
-            EventBus.Instance.Publish(new PauseExplorationTimer(true));
+            EventBus.Instance.Publish(new PauseExplorationTimer(true)); //Publish to ExplorationTimer
         }
     }
 

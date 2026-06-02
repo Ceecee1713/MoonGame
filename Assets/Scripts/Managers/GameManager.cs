@@ -2,6 +2,21 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Manages the publishing of multiple events as well as setting UI canvases active for the related events. 
+/// In addition, responsible for keeping track of how many puzzle areas have been completed.
+/// </summary>
+/// 
+/// <remarks>
+/// This script has one variable that's accessible by scripts that have GameManager as a Serializable field: "AreaChangesCount", 
+/// though the value cannot be set or altered by these scripts. Only get. For scripts that get this variable, MAKE SURE FOR EACH OF THOSE REFERENCING SCRIPTS
+/// that the comparison of values matches with the maximum value of "AreaChangesCount" here.
+///
+/// See <see cref="DecipherClueButton"/> for any oddities.
+///
+/// No other script should be keeping track of how many puzzle areas have been completed.
+/// </remarks>
+
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
@@ -13,7 +28,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject storytellingUI;
     [SerializeField]
-    private GameObject dialogueCanvas;
+    private GameObject dialogueCanvas; //Dialogue Canvas that's layered on top of the Main Player UI
 
     [Header ("Seconds Time Delays")]
     [SerializeField]
@@ -29,7 +44,7 @@ public class GameManager : MonoBehaviour
     public int AreaChangesCount //For deciphering a clue at the crafting table
     {
         get => _areaChangesCount;
-        set => _areaChangesCount = Mathf.Clamp(value, 0, MAX_NUMBER_OF_AREA_CHANGES);
+        private set => _areaChangesCount = Mathf.Clamp(value, 0, MAX_NUMBER_OF_AREA_CHANGES);
     }
 
     private void OnValidate()
@@ -39,7 +54,7 @@ public class GameManager : MonoBehaviour
 
     private const float TIME_DELAY_ACCOUNTING_FOR_FADING_CANVASES = 1.0f; //Account for fading screen time when changing canvases
 
-    private const int MAX_NUMBER_OF_AREA_CHANGES = 2; 
+    private const int MAX_NUMBER_OF_AREA_CHANGES = 2; //Number of puzzle areas to be completed, EXCLUDING the last puzzle. (total number of puzzle areas - 1)
 
     private const bool STARTING_THE_GAME = true; 
 
@@ -55,7 +70,8 @@ public class GameManager : MonoBehaviour
         timeDelayBeforeStartingEndGameDialogue = timeDelayBeforeShowingEndGameDialogue - TIME_DELAY_ACCOUNTING_FOR_FADING_CANVASES;
     }
 
-    private void MaterialsAndStreetlightChange(NewMoonFragmentObtained newMoonFragmentObtained)
+    //Illuminate street lights and change the materials of decorative moon statues 
+    private void MaterialsAndStreetlightChange(NewMoonFragmentObtained newMoonFragmentObtained) //Published by MoonPuzzleDialogueText
     {
         AreaChangesCount++;
         EventBus.Instance.Publish(new NewAreaChange(AreaChangesCount)); //Publish to LightPropMoon and StreetLamps
@@ -70,8 +86,8 @@ public class GameManager : MonoBehaviour
         StartCoroutine(ShowBeginningTutorial());
     }
 
-    //Called BEFORE moon text adventure UI has been disabled, keep in mind
-    private void CompletedMoonPuzzles(CompletedAllMoonPuzzles completedAllMoonPuzzles)
+    //Called BEFORE moon text adventure UI has been disabled
+    private void CompletedMoonPuzzles(CompletedAllMoonPuzzles completedAllMoonPuzzles) //Published by MoonPuzzleDialogueText
     {
         Invoke("PromptEndGameDialogue", timeDelayBeforeShowingEndGameDialogue);
     }
@@ -82,7 +98,8 @@ public class GameManager : MonoBehaviour
         StartCoroutine(ShowEndGameDialogue());
     }
 
-    IEnumerator ShowEndGameDialogue()
+    //Fade the screen into the storytelling UI and start end game dialogue on the UI
+    private IEnumerator ShowEndGameDialogue()
     {
         EventBus.Instance.Publish(new ChangeCanvases(storytellingUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
         yield return new WaitForSeconds(timeDelayBeforeStartingEndGameDialogue);
@@ -92,7 +109,8 @@ public class GameManager : MonoBehaviour
         yield return null;
     }
 
-    IEnumerator ShowBeginningTutorial()
+    //Show the tutorial on the dialogue canvas layered on top of the Main Player UI to run through player's objective
+    private IEnumerator ShowBeginningTutorial()
     {
         yield return new WaitForSeconds(timeDelayBeforeShowingBeginningTutorial);
         dialogueCanvas.SetActive(true);
