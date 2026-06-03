@@ -5,6 +5,29 @@ using UnityEngine.EventSystems;
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// Manages an inventory slot that'll be visible to the player on screen 
+/// </summary>
+/// 
+/// <remarks>
+/// This script is made to be on an UI object that the player can click on
+/// and on the same game object as "InventoryUI" as public variables and methods are to be referenced by that script
+/// 
+/// This script works together with the "InventoryUI", "PlayerSpawner", "ChestUI" scripts
+/// See <see cref="ChestUI"/> and how they interact with each other - add inventory item into chest's inventory
+/// See <see cref="InventoryUI"/> and how they interact with each other -  Select inventory slot, add inventory item, and remove slot's inventory item 
+/// through publishing "SelectInventoryItem" and "RemoveItemFromSlot" events
+/// 
+/// See <see cref="PlayerSpawner"/> for how inventory items are instantiated when they're dropped and have exited player's inventory - publishing the "SpawnDroppedInventoryItem" event
+/// 
+/// "ChestSlot" acts similarily to this script with how visuals are managed and setting of inventory items
+/// Make sure they both function the same
+/// See <see cref="ChestSlot"/> for how they function similarily.
+/// 
+/// See <see cref="InventoryItemTypes"/> for what makes up an inventory item and how inventory UI slots are made up.
+/// 
+/// </remarks>
+
 public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
 {
     public ItemData InventoryItem;
@@ -13,10 +36,13 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     private InventorySlot inventorySlotVisuals; 
     
+    /// <summary> Game object of the outline image, indicating when the inventory slot is selected.</summary>
     public GameObject OutlineImage; 
+
+    /// <summary> Flags whether this slot has no inventory item assigned.</summary>
     public bool IsEmpty;
 
-    private bool _allowInput = true;
+    private bool _allowInput = true; //Prevent or allow for the player to click on this game object
     private bool _isAChestOpen = false;
 
     void Start()
@@ -44,7 +70,7 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
         inventorySlotVisuals.ItemQuantityText.text = "X " + newItemQuantity;
     }
 
-    public void RemoveItemFromSlot() 
+    public void RemoveItemFromSlot()
     {
         IsEmpty = true;
         InventoryItem = null;
@@ -60,12 +86,12 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
     {
         if(InventoryItem != null && InventoryItem.ItemObject != null)
         {
-            EventBus.Instance.Publish(new SpawnDroppedInventoryItem(InventoryItem));
+            EventBus.Instance.Publish(new SpawnDroppedInventoryItem(InventoryItem)); //Publish to "PlayerSpawner"
             RemoveItemFromSlot();
         }
     }
 
-    private void ChangeInput(ChestIsOpen chestIsOpen)
+    private void ChangeInput(ChestIsOpen chestIsOpen) //Published by "ChestInteraction" 
     {
         _isAChestOpen = chestIsOpen.IsAChestOpen;
     }
@@ -80,13 +106,13 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
         if(_allowInput == false)
             return;
 
-        EventBus.Instance.Publish(new SelectInventoryItem(InventoryItem, this));
+        EventBus.Instance.Publish(new SelectInventoryItem(InventoryItem, this)); //Publish to "InventoryUI" 
 
         if(InventoryItem != null && _isAChestOpen == true)
         {
             ItemData clonedInventoryItem = InventoryItem.Clone();
-            EventBus.Instance.Publish(new CheckToAddItemToChest(clonedInventoryItem));
-            EventBus.Instance.Publish(new RemoveItemFromSlot(this)); //Removing this slot's inventory item (in InventoryUI)
+            EventBus.Instance.Publish(new CheckToAddItemToChest(clonedInventoryItem)); //Publish to "ChestUI"
+            EventBus.Instance.Publish(new RemoveItemFromSlot(this)); //Publish to "InventoryUI" 
         }
     }
 }

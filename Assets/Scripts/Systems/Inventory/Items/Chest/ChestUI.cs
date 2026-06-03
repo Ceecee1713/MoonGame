@@ -1,5 +1,21 @@
 using UnityEngine;
 
+/// <summary>
+/// Manages the inventory of the chest though for only adding items
+/// </summary>
+/// 
+/// <remarks>
+/// This script works together with the "ChestSlot" script
+/// See <see cref="ChestSlot"/> and how they interact with visuals and setting an inventory item to a slot
+/// 
+/// "InventoryUI" acts similarily to this script. The method of adding an inventory item to their respective inventories is the same
+/// Make sure they both function the same
+/// See <see cref="InventoryUI"/> for how they function similarily and how "InventoryUI" publishes the "CheckToAddItemToChest" event this script listens to
+/// 
+/// See <see cref="InventoryItemTypes"/> for what makes up an inventory item.
+/// 
+/// </remarks>
+
 public class ChestUI : MonoBehaviour
 {
     [SerializeField]
@@ -28,7 +44,7 @@ public class ChestUI : MonoBehaviour
         EventBus.Instance.Publish(new PauseExplorationTimer(false));
     }
 
-    private void CheckToAddItemIntoChest(CheckToAddItemToChest checkToAddItemToChest)
+    private void CheckToAddItemIntoChest(CheckToAddItemToChest checkToAddItemToChest) //Published by "InventoryUISlot" 
     {
         AddInventoryItem(checkToAddItemToChest.InventoryItem);
     }
@@ -50,7 +66,7 @@ public class ChestUI : MonoBehaviour
             CreateOverflowStacks(itemToCheck); // Step Two
     }
 
-    //Adding onto quantity to an existing inventory item with new "itemToCheck" quantity
+    //Adding onto quantity of an existing, same inventory item with new "itemToCheck" quantity
     private int AddToExistingStacks(ItemData itemToCheck) // Step Two
     {
         for(int i = 0; i < chestSlots.Length; i++)
@@ -58,6 +74,7 @@ public class ChestUI : MonoBehaviour
             if(_remainingQuantity <= 0)
                 break;
 
+            //Checking is inventory slot item is stackable, not null and shares same item type as "itemToCheck"
             if(!IsMatchingStackableSlot(i, itemToCheck))
                 continue;
 
@@ -66,6 +83,7 @@ public class ChestUI : MonoBehaviour
 
             if(availableSpace > 0)
             {
+                //Add quantity on existing inventory item in inventory slot
                 int amountToAdd = Mathf.Min(availableSpace, _remainingQuantity);
                 chestSlots[i].InventoryItem.Quantity += amountToAdd;
                 chestSlots[i].UpdateItemTextQuantity(chestSlots[i].InventoryItem.Quantity);
@@ -77,7 +95,7 @@ public class ChestUI : MonoBehaviour
         return _remainingQuantity;
     }
 
-    //Check if chest slot item is stackable, not null, and shares same item type as itemToCheck
+    //Check if inventory slot item is stackable, not null and shares same item type as "itemToCheck"
     private bool IsMatchingStackableSlot(int slotIndex, ItemData itemToCheck) //Step Three
     {
         return chestSlots[slotIndex].InventoryItem != null &&
@@ -85,7 +103,7 @@ public class ChestUI : MonoBehaviour
             chestSlots[slotIndex].InventoryItem.ItemType == itemToCheck.ItemType;
     }
 
-    //Create new chest item stack for itemToCheck in chest slot
+    //Add new chest item stack for itemToCheck in chest slot
     private int CreateNewStack(ItemData itemToCheck) //Step Two
     {
         itemToCheck.Quantity = Mathf.Min(_remainingQuantity, MAX_STACK_AMOUNT);
@@ -103,7 +121,7 @@ public class ChestUI : MonoBehaviour
         return _remainingQuantity;
     }
 
-    //Create new chest item overflow stacks for itemToCheck in chest slots
+    //Add new chest item overflow stacks for itemToCheck in chest slots
     private void CreateOverflowStacks(ItemData itemToCheck) //Step Two
     {
         while(_remainingQuantity > 0)

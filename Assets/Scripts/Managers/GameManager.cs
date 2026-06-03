@@ -9,9 +9,8 @@ using UnityEngine;
 /// 
 /// <remarks>
 /// This script has one variable that's accessible by scripts that have GameManager as a Serializable field: "AreaChangesCount", 
-/// though the value cannot be set or altered by these scripts. Only get. For scripts that get this variable, MAKE SURE FOR EACH OF THOSE REFERENCING SCRIPTS
-/// that the comparison of values matches with the maximum value of "AreaChangesCount" here.
-///
+/// though the value cannot be set or altered by these scripts. Only get. Only "DecipherClueButton" gets this variable.
+/// MAKE SURE FOR EACH OF THOSE REFERENCING SCRIPTS that the comparison of values matches with the maximum value of "AreaChangesCount" here.
 /// See <see cref="DecipherClueButton"/> for any oddities.
 ///
 /// No other script should be keeping track of how many puzzle areas have been completed.
@@ -71,23 +70,23 @@ public class GameManager : MonoBehaviour
     }
 
     //Illuminate street lights and change the materials of decorative moon statues 
-    private void MaterialsAndStreetlightChange(NewMoonFragmentObtained newMoonFragmentObtained) //Published by MoonPuzzleDialogueText
+    private void MaterialsAndStreetlightChange(NewMoonFragmentObtained newMoonFragmentObtained) //Published by "MoonPuzzleDialogueText"
     {
         AreaChangesCount++;
-        EventBus.Instance.Publish(new NewAreaChange(AreaChangesCount)); //Publish to LightPropMoon and StreetLamps
+        EventBus.Instance.Publish(new NewAreaChange(AreaChangesCount)); //Publish to "LightPropMoon" and "StreetLamps"
         
         if(AreaChangesCount == MAX_NUMBER_OF_AREA_CHANGES)
-            EventBus.Instance.Publish(new ChangeThirdCorriosonAreaValue());
+            EventBus.Instance.Publish(new ChangeThirdCorriosonAreaValue()); //Publish to "CorriosonZone" 
     }
 
-    private void StartBeginningTutorial(StartBeginnerTutorial startBeginnerTutorial) //Published by StorytellingDialogueText
+    private void StartBeginningTutorial(StartBeginnerTutorial startBeginnerTutorial) //Published by "StorytellingDialogueText"
     {
         StopAllCoroutines();
         StartCoroutine(ShowBeginningTutorial());
     }
 
     //Called BEFORE moon text adventure UI has been disabled
-    private void CompletedMoonPuzzles(CompletedAllMoonPuzzles completedAllMoonPuzzles) //Published by MoonPuzzleDialogueText
+    private void CompletedMoonPuzzles(CompletedAllMoonPuzzles completedAllMoonPuzzles) //Published by "MoonPuzzleDialogueText"
     {
         Invoke("PromptEndGameDialogue", timeDelayBeforeShowingEndGameDialogue);
     }
@@ -104,8 +103,8 @@ public class GameManager : MonoBehaviour
         EventBus.Instance.Publish(new ChangeCanvases(storytellingUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
         yield return new WaitForSeconds(timeDelayBeforeStartingEndGameDialogue);
         blackScreenUI.SetActive(true);
-        EventBus.Instance.Publish(new StartEndGameDialogue());
-        EventBus.Instance.Publish(new StopMoonStatueSpin()); //Make moon statue stop spinning and particle effect
+        EventBus.Instance.Publish(new StartEndGameDialogue()); //Publish to "StorytellingDialogueText"
+        EventBus.Instance.Publish(new StopMoonStatueSpin()); //Publish to "MoonVisibility"
         yield return null;
     }
 
@@ -114,7 +113,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(timeDelayBeforeShowingBeginningTutorial);
         dialogueCanvas.SetActive(true);
-        EventBus.Instance.Publish(new TypeDialogueOnMainUI(beginningTutorialDialogue, false, STARTING_THE_GAME));
+        EventBus.Instance.Publish(new TypeDialogueOnMainUI(beginningTutorialDialogue, false, STARTING_THE_GAME)); //Publish to "DialogueCanvas"
         yield return null;
     }
 }

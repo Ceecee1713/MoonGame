@@ -7,7 +7,7 @@ using UnityEngine;
 /// This is to be used for any script that needs an easier way to reference the player's inventory without direct accessing
 /// </summary>
 /// 
-/// /// <remarks>
+/// <remarks>
 /// The ordering of items between the player's displayed inventory and what they actually have can become out of sync.
 /// Thus, the "InventoryUI" iterates through some of its for-loops with this script backwards to avoid issues of desyncing
 ///</remarks>

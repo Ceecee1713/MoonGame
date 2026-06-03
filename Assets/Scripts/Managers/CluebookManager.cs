@@ -24,11 +24,11 @@ public struct Clue
     public TextMeshProUGUI ClueText;
 
     /// <summary>Information about the first clue fragment's gibberish message. Assign in Inspector.</summary>
-    /// <remarks>See <see cref="StorytellingDialogueData"/> for how messages are structured.</remarks>
+    /// <remarks>See <see cref="StorytellingDialogueData"/> for how dialogue messages are structured.</remarks>
     public StorytellingDialogueData FirstClueFragment;
 
     /// <summary>Information about the second clue fragment's gibberish message. Assign in Inspector.</summary>
-    /// <remarks>See <see cref="StorytellingDialogueData"/> for how messages are structured.</remarks>
+    /// <remarks>See <see cref="StorytellingDialogueData"/> for how dialogue messages are structured.</remarks>
     public StorytellingDialogueData SecondClueFragment;
 
     /// <summary>Complete gibberish message built from both fragments at runtime. Do NOT assign in Inspector.</summary>

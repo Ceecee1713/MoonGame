@@ -3,22 +3,31 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Manages the slider that controls the player's health and publishes events when it's "game over" when health is dropped fully
+/// </summary>
+/// 
+/// <remarks>
+/// This script works together with any corrioson zone scripts, safe zone scripts, 
+/// //ADD OTHER SCRIPTS
+/// </remarks>
+
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField]
-    private GameObject failedGameUI;
+    private GameObject failedGameUI; 
     
     [SerializeField]
     private Slider health;
 
-    private bool _pauseCorrioson = false;
-    private bool _doNotRepeat = false;
+    private bool _pauseCorrioson = false; 
+    private bool _promptedFailureGameScreen = false;
     private bool _recoverHealth = false;
     
     private float _speedToChangeHealth;
 
     private const float HEALTH_VALUE_TO_DIE_AT = 0.125f; //0.0f doesn't match the visuals of the health slider
-    private const float SMALL_TIME_DELAY = 0.2f;
+    private const float TIME_DELAY_BEFORE_SWAPPING_UI_SCREENS = 0.2f;
 
     private const bool ALLOW_PLAYER_INPUT = false;
     private const bool START_MOON_PUZZLE = false;
@@ -35,7 +44,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
-        if( _pauseCorrioson == true || _doNotRepeat == true)
+        if( _pauseCorrioson == true || _promptedFailureGameScreen == true)
             return;
 
         if(_recoverHealth == false && health.value > HEALTH_VALUE_TO_DIE_AT)
@@ -47,7 +56,7 @@ public class PlayerHealth : MonoBehaviour
         if(health.value <= HEALTH_VALUE_TO_DIE_AT) 
         {
             StartCoroutine(ShowFailedGameScreen());
-            _doNotRepeat = true;
+            _promptedFailureGameScreen = true;
         }
     }
 
@@ -74,7 +83,7 @@ public class PlayerHealth : MonoBehaviour
         EventBus.Instance.Publish(new PauseExplorationTimer(true));
         EventBus.Instance.Publish(new ActivatePlayerInputs(false));
 
-        yield return new WaitForSeconds(SMALL_TIME_DELAY);
+        yield return new WaitForSeconds(TIME_DELAY_BEFORE_SWAPPING_UI_SCREENS);
 
         EventBus.Instance.Publish(new ChangeCanvases(failedGameUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
     }

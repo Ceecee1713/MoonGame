@@ -9,10 +9,21 @@ using UnityEngine;
 /// </summary>
 /// 
 /// <remarks>
-/// This script works closely with "CraftButton" and "DecipherClueButton". They're all designed to be on the same game object and can be easily referenced by each other 
+/// This script is to be attached to the Crafting UI and should have the "CraftButton" and "DecipherClueButton" be on the same parent game object
+/// as those two scripts directly call public methods from this script
+/// 
 /// This script doesn't craft items or remove inventory items to be treated as crafting materials. This script acts more as a middle man to 
 /// pass parameters through and validatebetween what's needed and what the player has. Removal of inventory items, adding inventory items, 
-/// and solving clues are left to the "InventoryUI" and "CluebookManager" respectfully
+/// and solving clues are left to the "InventoryUI" and "CluebookManager" respectively
+/// 
+/// This script works closely with "CraftButton", "DecipherClueButton", "CluebookManager", "InventoryUI" scripts
+/// See <see cref="CraftButton"/> for how they work together - "CraftButton" accessing multiple of this script's methods
+/// See <see cref="DecipherClueButton"/> for how they work together - "DecipherClueButton" accessing multiple of this script's methods
+/// See <see cref="CluebookManager"/> for how they work together - Publishing AllowToCraftClue event this script listens to and prompting to decipher a clue
+/// See <see cref="InventoryUI"/> for how items are removed from inventory, added into inventory and currently held inventory items' quantities are adjusted.
+/// 
+/// See <see cref="InventoryData"/> for what the collection is made up of
+/// 
 ///</remarks>
 
 public class CraftManager : MonoBehaviour
@@ -23,7 +34,6 @@ public class CraftManager : MonoBehaviour
     [SerializeField]
     private DecipherClueButton decipherClueButton; //Used to temporarily prevent the player from clicking on the buttons this script is attached to
 
-    /// <remarks>See <see cref="InventoryData"/> for the collection is made up of.</remarks>
     [SerializeField] private InventoryData inventoryData; //Collection of all the player's inventory items to be easily accessible
 
     private ItemData _itemToCraft; 
@@ -92,17 +102,17 @@ public class CraftManager : MonoBehaviour
         _amountOfAnInventoryItemNeeded = 0;
     }
 
-    private void CheckToMakeClue(AllowToCraftClue allowToCraftClue) //Published by CluebookManager. Step Zero
+    private void CheckToMakeClue(AllowToCraftClue allowToCraftClue) //Published by "CluebookManager". Step Zero
     {
         _allowCraftingForClue = allowToCraftClue.AvaliableClueToDecipher;
     }
 
-    public void SetInventoryItemToCraft(ItemData craftableInventoryItem) //Published by CraftButton. Step Zero
+    public void SetInventoryItemToCraft(ItemData craftableInventoryItem) 
     {
         _itemToCraft = craftableInventoryItem;
     }
 
-    //Called by CraftButton and DecipherClueButton. Method repeatedly called from both scripts for each new crafting material
+    //Called by "CraftButton" and "DecipherClueButton". Method repeatedly called from both scripts for each new crafting material
     public void CheckInventoryForCraftingMaterials(ItemData craftingMaterial) //Step One
     {
         if(_notEnoughItemQuantity == true)
@@ -132,7 +142,7 @@ public class CraftManager : MonoBehaviour
             if(_amountOfMatchingCraftingMaterials >= maxAmountOfCraftingMaterialTypes && _allowCraftingForClue != false)
             {
                 DecipherClue(); //Step Seven
-                EventBus.Instance.Publish(new DecipherClue());
+                EventBus.Instance.Publish(new DecipherClue()); //Publish to "CluebokManager"
             }
         }
 
@@ -243,22 +253,20 @@ public class CraftManager : MonoBehaviour
     {
         int newQuantity = Mathf.Abs(_remainingQuantity);
         InventoryItemTypes itemType = inventoryData.Inventory[slotIndex].ItemType;
-        EventBus.Instance.Publish(new AdjustInventorySlotItemQuantity(newQuantity, itemType)); //Publish to InventoryUI
+        EventBus.Instance.Publish(new AdjustInventorySlotItemQuantity(newQuantity, itemType)); //Publish to "InventoryUI"
     }
 
-    /// <remarks>See <see cref="InventoryUI"/> for how items are moved, added and inventory items' quantities are adjusted.</remarks>
     private void CraftInventoryItem(ItemData craftableInventoryItem) //Step Seven
     {
         ItemData clonedItem = craftableInventoryItem.Clone();
-        EventBus.Instance.Publish(new RemoveUsedMaterials(_materialsForCraftableItem, _amountOfFullStacksPerMaterialToRemove));
-        EventBus.Instance.Publish(new AddItemToInventory(clonedItem));
+        EventBus.Instance.Publish(new RemoveUsedMaterials(_materialsForCraftableItem, _amountOfFullStacksPerMaterialToRemove)); //Publish to "InventoryUI"
+        EventBus.Instance.Publish(new AddItemToInventory(clonedItem)); //Publish to "InventoryUI"
         ResetStatus();
     }
 
-    //Publishing to InventoryUI
     private void DecipherClue() //Step Seven
     {
-        EventBus.Instance.Publish(new RemoveUsedMaterials(_materialsForCraftableItem, _amountOfFullStacksPerMaterialToRemove)); 
+        EventBus.Instance.Publish(new RemoveUsedMaterials(_materialsForCraftableItem, _amountOfFullStacksPerMaterialToRemove)); //Publish to "InventoryUI"
         ResetStatus();
     }
 

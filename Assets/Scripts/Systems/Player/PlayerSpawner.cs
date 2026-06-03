@@ -1,5 +1,18 @@
 using UnityEngine;
 
+/// <summary>
+/// Manages instantiating an inventory item when it's dropped from the player's inventory
+/// </summary>
+/// 
+/// <remarks>
+/// See <see cref="InventoryItemTypes"/> for what makes up an inventory item and how inventory UI slots are made up.
+/// 
+/// This script works together with the "InventoryUISlot" and "InteractableItem" scripts
+/// See <see cref="InventoryUISlot"/> for how they work together - Prompting the SpawnDroppedInventoryItem event
+/// See <see cref="InteractableItem"/> for how they work together - Utilizing public variables while instantiating the dropped inventory item  
+/// 
+/// </remarks>
+
 public class PlayerSpawner : MonoBehaviour
 {
     void Start()

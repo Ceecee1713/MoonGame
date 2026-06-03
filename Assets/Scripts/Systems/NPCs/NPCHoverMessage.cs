@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// Manages displaying a world space UI component for NPC game objects based on player collision
+/// </summary>
+
 public class NPCHoverMessage : MonoBehaviour
 {
     [SerializeField]

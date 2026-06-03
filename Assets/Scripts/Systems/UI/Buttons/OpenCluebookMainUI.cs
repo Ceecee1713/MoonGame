@@ -31,7 +31,7 @@ public class OpenCluebookMainUI : MonoBehaviour
         cluebookUI.SetActive(true);
     }
 
-    private void ChangeInput(ChestIsOpen chestIsOpen)
+    private void ChangeInput(ChestIsOpen chestIsOpen) //Published by "ChestInteraction"
     {
         _isAChestOpen = chestIsOpen.IsAChestOpen;
     }

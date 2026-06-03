@@ -1,35 +1,49 @@
 using UnityEngine;
 
+/// <summary>
+/// Manages the full moon statue with prompting the progression to the next day (prayer phase) as well as visuals for the moon statue
+/// Such as material swapping and a particle effect
+/// </summary>
+/// 
+/// <remarks>
+/// This scripts works together with the "MoonPuzzleDialogueText", "GameManager", DialogueCanvas" scripts
+/// 
+/// See <see cref="MoonPuzzleDialogueText"/> for how they work together - how material swapping is prompted 
+/// See <see cref="DialogueCanvas"/> for how they work together - show dialogue on the main player UI
+/// See <see cref="GameManager"/> for how they work together - switching to the storytelling UI canvas
+/// 
+/// See <see cref="StorytellingDialogueData"/> for how dialogue messages are structured.
+/// 
+/// </remarks>
+
 public class MoonVisibility : MonoBehaviour
 {
     [SerializeField]
     private ParticleSystem moonSparkles;
     [SerializeField]
-    private Camera moonCamera;
+    private Camera moonCamera; //Secondary camera to zoom in on the moon statue
 
     [Header ("Animation Information")]
     [SerializeField]
     private Animator moonAnimator;
     [SerializeField] 
-    private string animationBoolName;
+    private string animationBoolName; //Name of animation bool used as a parameter for the moon spinning animation in the moon statue animator
 
     [Header ("Moon Dialogue - UI")]
     [SerializeField]
-    private GameObject dialogueCanvas;
+    private GameObject dialogueCanvas; //Dialogue canvas layered ontop of the main player UI
     [SerializeField]
-    private StorytellingDialogueData completedMoonPuzzleDialogue;
+    private StorytellingDialogueData completedMoonPuzzleDialogue; //Dialogue to appear on main player UI after successfully gaining a moon fragment
     [SerializeField]
     private float delayBeforeShowingMoonMessage = 1.5f;
 
     [Header ("Moon Statue Pieces Information")]
     [SerializeField]
-    private GameObject [] moonFragments = new GameObject [3];
+    private GameObject [] moonFragments = new GameObject [3]; //Moon fragments to swap materials of
     [SerializeField]
     private Material litUpMoonMaterial;
-    [SerializeField]
-    private Material darkMoonMaterial;
 
-    private int moonCounter = 0;
+    private int _moonCounter = 0;
 
     private bool _playAnimation = false;
 
@@ -39,14 +53,14 @@ public class MoonVisibility : MonoBehaviour
     void Start()
     {
         EventBus.Instance.Subscribe<NewMoonFragmentObtained>(ObtainedNewMoonFragment);
-        EventBus.Instance.Subscribe<StopMoonStatueSpin>(StopMoonSpinAndSparkles);
+        EventBus.Instance.Subscribe<StopMoonStatueSpin>(StopMoonStatueSpinAndSparkles);
         EventBus.Instance.Subscribe<MakeMoonStatueSpin>(MakeMoonStatueSpin);
 
         moonCamera.enabled = false;
         moonSparkles.Stop();
     }
     
-    private void MakeMoonStatueSpin(MakeMoonStatueSpin makeMoonStatueSpin) //When all three moon puzzles are complete
+    private void MakeMoonStatueSpin(MakeMoonStatueSpin makeMoonStatueSpin) //When all three moon puzzles are complete. Published by "MoonPuzzleDialogueText"
     {
         moonCamera.enabled = true;
         _playAnimation = true;
@@ -54,7 +68,7 @@ public class MoonVisibility : MonoBehaviour
         moonSparkles.Play();
     }
 
-    private void StopMoonSpinAndSparkles(StopMoonStatueSpin stopMoonStatueSpin) //Published by GameManager
+    private void StopMoonStatueSpinAndSparkles(StopMoonStatueSpin stopMoonStatueSpin) //Published by "GameManager"
     {
         moonCamera.enabled = false;
         _playAnimation = false;
@@ -62,22 +76,23 @@ public class MoonVisibility : MonoBehaviour
         moonSparkles.Stop();
     }
 
-    private void ObtainedNewMoonFragment(NewMoonFragmentObtained newMoonFragmentObtained)
+    //Swap moon fragment material and or show the moon dialogue on top of the dialogue canvas UI
+    private void ObtainedNewMoonFragment(NewMoonFragmentObtained newMoonFragmentObtained) //Published by "MoonPuzzleDialogueText"
     {
-        if(moonCounter >= moonFragments.Length)
+        if(_moonCounter >= moonFragments.Length)
             return; 
 
-        MeshRenderer moonFragmentRenderer = moonFragments[moonCounter].GetComponent<MeshRenderer>();
+        MeshRenderer moonFragmentRenderer = moonFragments[_moonCounter].GetComponent<MeshRenderer>();
         moonFragmentRenderer.material = litUpMoonMaterial;
-        moonCounter++;
+        _moonCounter++;
 
-        if(moonCounter != moonFragments.Length)
+        if(_moonCounter != moonFragments.Length)
             Invoke("ShowMoonStatueMessage",  delayBeforeShowingMoonMessage);
     }
 
-    private void ShowMoonStatueMessage()
+    private void ShowMoonStatueMessage() //Called by invocation
     {
         dialogueCanvas.SetActive(true);
-        EventBus.Instance.Publish(new TypeDialogueOnMainUI(completedMoonPuzzleDialogue, NEW_EXPLORATION_PHASE, STARTING_THE_GAME));
+        EventBus.Instance.Publish(new TypeDialogueOnMainUI(completedMoonPuzzleDialogue, NEW_EXPLORATION_PHASE, STARTING_THE_GAME)); //Publish to "DialogueCanvas"
     }
 }

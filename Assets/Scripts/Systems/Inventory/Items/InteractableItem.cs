@@ -1,5 +1,19 @@
 using UnityEngine;
 
+/// <summary>
+/// Manages an interactable inventory item that can be added to the player's inventory
+/// </summary>
+/// 
+/// <remarks>
+/// See <see cref="InventoryItemTypes"/> for what makes up an inventory item and how inventory UI slots are made up.
+/// 
+/// This script works together with the "InventoryUI", "PlayerInputController", "PlayerSpawner" scripts
+/// See <see cref="InventoryUI"/> for how they work together - Adding the inventory item to player inventory
+/// See <see cref="PlayerInputController"/> for how they work together - publishing the Interact event this script listens to
+/// See <see cref="PlayerSpawner"/> for how they work together - Instantiating an inventory item
+/// 
+/// </remarks>
+
 public class InteractableItem : MonoBehaviour
 {
     [SerializeField]
@@ -9,18 +23,23 @@ public class InteractableItem : MonoBehaviour
     public ItemData inventoryItem; 
 
     [Header ("Game Object's Visibility - Environment")]
+    /// <summary> A child game object to set inactive on a prefab game object.</summary>
     public GameObject gameObjectToSetInactive;
+
     [SerializeField]
-    private bool makeGameObjectInactive = false;
+    private bool makeGameObjectInactive = false; //Flag whether a child game object needs to be set inactive. Works together with "gameObjectToSetInactive"
 
-    [HideInInspector]
-    public bool DeleteAfterInteraction = false; //Accessed by PlayerSpawner
-    [HideInInspector]
-    public bool InteractedByPlayerOnce = false; //Accessed by NPCHoverMessage
+    /// <summary> Accessed by PlayerSpawner. </summary>
+    [HideInInspector] 
+    public bool DeleteAfterInteraction = false; 
 
-    private bool _allowInput = true;
-    private bool _playerStayingInCollision = false; 
-    private bool _playerInCollision = false;
+    /// <summary> Accessed by PlayerSpawner. </summary>
+    [HideInInspector]
+    public bool InteractedByPlayerOnce = false; 
+
+    private bool _allowInput = true; //Prevent or allow for the player to interact with this item
+    private bool _playerStayingInCollision = false; //Flags if the player's remaining inside the item's collision
+    private bool _playerInCollision = false; //Flags if the player is inside this item's collision to be interacted with: if the player's in range or not
 
     void Start()
     {
@@ -44,7 +63,7 @@ public class InteractableItem : MonoBehaviour
         _allowInput = activatePlayerInputs.AllowInputs;
     }
 
-    private void ResetVisibilityOfGameObject(ResetWorldItems resetWorldItems)
+    private void ResetVisibilityOfGameObject(ResetWorldItems resetWorldItems) //Check which event this is published by
     {
         InteractedByPlayerOnce = false;
 
@@ -52,7 +71,7 @@ public class InteractableItem : MonoBehaviour
             gameObjectToSetInactive.SetActive(true);
     }
 
-    private void CheckIfItemIsPickedUp(Interact pickingUpItem) //When player interacts with this game object
+    private void CheckIfItemIsPickedUp(Interact pickingUpItem) //When player interacts with this game object. Published by "PlayerInputController"
     {
         if(_allowInput == false || InteractedByPlayerOnce == true)
             return;
@@ -67,7 +86,7 @@ public class InteractableItem : MonoBehaviour
             if(clonedInventoryItem.IsDroppedItem == true)
                 clonedInventoryItem.IsDroppedItem = false;
                 
-            EventBus.Instance.Publish(new AddItemToInventory(clonedInventoryItem)); 
+            EventBus.Instance.Publish(new AddItemToInventory(clonedInventoryItem)); //Publish to "InventoryUI"
 
             InteractedByPlayerOnce = true;
 

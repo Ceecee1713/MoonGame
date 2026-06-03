@@ -353,6 +353,7 @@ public class PauseGame : IEvent
 
 
 #region Chest Interaction Events
+
 public class ChestIsOpen : IEvent
 {
     public bool IsAChestOpen;

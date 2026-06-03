@@ -2,7 +2,15 @@ using UnityEngine;
 
 /// <summary>
 /// Manages the player's interaction with making the crafting UI appear and pausing the game
+/// This script is to be attached to the crafting table game object the player is meant to interact with
 /// </summary>
+/// 
+/// <remarks>
+/// This script works closely with "PlayerInputController" and "ExplorationTimer" scripts 
+/// See <see cref="PlayerInputController"/> for how they work together - prompting Interact event that this script listens to
+/// See <see cref="ExplorationTimer"/> for how they work together - pausing the exploration timer countdown
+/// 
+///</remarks>
 
 public class CraftingTable : MonoBehaviour
 {
@@ -24,7 +32,7 @@ public class CraftingTable : MonoBehaviour
         _allowInput = activatePlayerInputs.AllowInputs;
     }
 
-    private void OpenCraftingUI(Interact interact) //When player interacts with this game object 
+    private void OpenCraftingUI(Interact interact) //When player interacts with this game object. Published by "PlayerInputController"
     {
         if(_allowInput == false)
             return;
@@ -33,7 +41,7 @@ public class CraftingTable : MonoBehaviour
         {
             craftingUI.SetActive(true);
             EventBus.Instance.Publish(new FreezePlayer(true));
-            EventBus.Instance.Publish(new PauseExplorationTimer(true)); //Publish to ExplorationTimer
+            EventBus.Instance.Publish(new PauseExplorationTimer(true)); //Publish to "ExplorationTimer"
         }
     }
 

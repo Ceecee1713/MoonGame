@@ -1,5 +1,18 @@
 using UnityEngine;
 
+/// <summary>
+/// Manages the material change and stopping of particle effects for decorative moon statues
+/// </summary>
+/// 
+/// <remarks>
+/// This script is to ONLY be attached to moon statues that their only purpose is to prompt a moon puzzle
+/// This script will also be disabled as it only needs to serve one small minor purpose
+/// 
+/// This script works together with the "GameManager" script
+/// See <see cref="GameManager"/> for how they work together - publishing the "NewAreaChange" event this script listens to
+/// 
+/// </remarks>
+
 public class LightPropMoon : MonoBehaviour
 {
     [SerializeField]
@@ -7,13 +20,13 @@ public class LightPropMoon : MonoBehaviour
 
     [Header ("Moon Statue Lights")]
     [SerializeField]
-    private Light lightUnderMoon;
+    private Light lightUnderMoon; //Light that only illumintates the statue itself
     [SerializeField]
-    private Light moonlight;
+    private Light moonlight; //Light that illuminates the surrounding area
 
     [Header ("Moon Statue Pieces Information")]
     [SerializeField]
-    private GameObject [] moonFragments;
+    private GameObject [] moonFragments; //Game Objects to swap their materials with
     [SerializeField]
     private Material litUpMoonMaterial;
 
@@ -23,7 +36,7 @@ public class LightPropMoon : MonoBehaviour
 
     private float startingMoonlightIntensity, startingLightUnderMoonIntensity;
 
-    void Start()
+    void Start() 
     {
         startingLightUnderMoonIntensity = lightUnderMoon.intensity;
         startingMoonlightIntensity = moonlight.intensity;
@@ -44,7 +57,8 @@ public class LightPropMoon : MonoBehaviour
             EventBus.Instance.Unsubscribe<NewAreaChange>(LightUpMoon);
     }
 
-    private void LightUpMoon(NewAreaChange newAreaChange)
+    //Swap materials, stop the particle effects and disable this script
+    private void LightUpMoon(NewAreaChange newAreaChange) //Published by "GameManager" when a moon puzzle has been completed
     {
         if(newAreaChange.AreaChangesCount == areaNumber)
         {

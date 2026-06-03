@@ -10,11 +10,18 @@ using TMPro;
 /// This script works closely with "CraftManager" script for it to run through each material and see 
 /// if the player's inventory has the right amount of that particular material to decipher a clue. 
 /// This script also works closely with the "GameManager" script to get a public variable's value only.
+/// See <see cref="CraftManager"/> for how they work together 
+/// See <see cref="GameManager"/> for how they work together - syncing values (GameManager's "AreaChangesCount" variable and this script's "newMoonPuzzleIndex")
 /// 
-/// The materials change as more moon puzzle areas are solved, which they are updated in a method: "CheckToSwitchMaterials" and "UpdateMaterialDescriptionText"
+/// See <see cref="CluebookManager"/> for how these two scripts work together - this script prompting the "CheckForCompleteClues" event for "CluebookManager"
+/// 
+/// The crafting materials change as more moon puzzle areas are solved, which they are updated in methods: "CheckToSwitchMaterials" and "UpdateMaterialDescriptionText"
 /// 
 /// This script is designed to be on a button game object 
-/// This script is on the same game object as the "CraftManager", so it can directly access any of its public methods or variables
+/// This script should be on the same game object as the "CraftManager", so it can directly access any of CraftManager's public methods
+/// 
+/// See <see cref="InventoryItemTypes"/> for how inventory items are structured.
+/// 
 ///</remarks>
 
 
@@ -43,15 +50,12 @@ public class DecipherClueButton : MonoBehaviour
     //All material arrays MUST be the same length as "craftingMaterials"
     //All crafting materials are the same as normal inventory items
 
-    /// <remarks>See <see cref="InventoryItemTypes"/> for inventory items are structured.</remarks>
     private string [] _craftingMaterialsNames = new string[2]; //For the crafting material descriptions. 
     //Updates when materials are changed when more moon puzzle areas are solved
 
     private bool _allowClicking = true; //Prevent or allow for the player to click on the button game object this script is attached to
 
-    /// <remarks>See <see cref="GameManager"/> for context on "AreaChangesCount".</remarks>
-    private int newMoonPuzzleIndex; //This value "syncs" with the GameManager's "AreaChangesCount" variable though it's only a publicy get variable.
-
+    private int newMoonPuzzleIndex; //This value syncs with the GameManager's "AreaChangesCount" variable 
 
     private const bool CRAFTING_A_CLUE = true;
 
@@ -102,11 +106,7 @@ public class DecipherClueButton : MonoBehaviour
         }
     }
 
-    /// <remarks>
-    /// See <see cref="CluebookManager"/> for more context on which method "CheckForCompleteClues" event is sent to.</remarks>
-    /// See <see cref="CraftManager"/> for this script interacts with its various methods.</remarks>
-    ///</remarks>
-    public void OnDecipherClueClick()
+    public void OnDecipherClueClick() //Method to attach to button
     {
         if(_allowClicking != true)
         return;
@@ -115,7 +115,7 @@ public class DecipherClueButton : MonoBehaviour
 
         AudioManager.Instance.PlaySoundEffect(buttonClickSFX);
         
-        EventBus.Instance.Publish(new CheckForCompleteClues());
+        EventBus.Instance.Publish(new CheckForCompleteClues()); //Publish to "CluebookManager"
         
         craftManager.ResetStatus();
 

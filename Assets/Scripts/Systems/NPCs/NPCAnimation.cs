@@ -1,6 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Manages functionality of an NPC's floating animation
+/// </summary>
+
 public class NPCAnimation : MonoBehaviour
 {
     [Header("Y Position Settings")]
