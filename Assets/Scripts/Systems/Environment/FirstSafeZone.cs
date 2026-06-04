@@ -28,8 +28,8 @@ public class FirstSafeZone : MonoBehaviour
     [Header ("For Tutorial Dialogue Message")]
     [SerializeField]
     private GameObject dialogueUI; //Dialogue UI that's layered ontop of the Main Player UI
-
-    [SerializeField] private StorytellingDialogueData corriosonZoneTutorial; 
+    [SerializeField] 
+    private StorytellingDialogueData corriosonZoneTutorial; 
     
     [SerializeField]
     private float speedToIncraseHealth = 1.2f;

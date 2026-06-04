@@ -34662,6 +34662,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 351093547}
     - target: {fileID: 5550553281294923609, guid: fcc2beeb16423f54ba1d144dd5986114, type: 3}
+      propertyPath: moonPuzzleAreaNumber
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5550553281294923609, guid: fcc2beeb16423f54ba1d144dd5986114, type: 3}
       propertyPath: moonPuzzleAreaAudioSource
       value: 
       objectReference: {fileID: 2079552770}
@@ -57523,6 +57527,10 @@ PrefabInstance:
       propertyPath: DefaultStartingSpeed
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 527557349344392802, guid: 52fa42ca21cedae47aeb92ee82935da1, type: 3}
+      propertyPath: DefaultSpeedToLowerHealth
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 658024753442363735, guid: 52fa42ca21cedae47aeb92ee82935da1, type: 3}
       propertyPath: m_Size.x
       value: 67.21865
@@ -57575,6 +57583,10 @@ PrefabInstance:
       propertyPath: DefaultStartingSpeed
       value: 0.03
       objectReference: {fileID: 0}
+    - target: {fileID: 875077360664149367, guid: 52fa42ca21cedae47aeb92ee82935da1, type: 3}
+      propertyPath: DefaultSpeedToLowerHealth
+      value: 0.03
+      objectReference: {fileID: 0}
     - target: {fileID: 926216996264017586, guid: 52fa42ca21cedae47aeb92ee82935da1, type: 3}
       propertyPath: m_Size.x
       value: 60.89244
@@ -57609,6 +57621,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1075710119335523987, guid: 52fa42ca21cedae47aeb92ee82935da1, type: 3}
       propertyPath: DefaultStartingSpeed
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075710119335523987, guid: 52fa42ca21cedae47aeb92ee82935da1, type: 3}
+      propertyPath: DefaultSpeedToLowerHealth
       value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 1141304107239202031, guid: 52fa42ca21cedae47aeb92ee82935da1, type: 3}
@@ -57935,6 +57951,10 @@ PrefabInstance:
       propertyPath: speedForThirdCorriosonArea
       value: 0.03
       objectReference: {fileID: 0}
+    - target: {fileID: 6477595376660196553, guid: 52fa42ca21cedae47aeb92ee82935da1, type: 3}
+      propertyPath: speedToLowerHealthForThirdCorriosonArea
+      value: 0.03
+      objectReference: {fileID: 0}
     - target: {fileID: 6740834883218890661, guid: 52fa42ca21cedae47aeb92ee82935da1, type: 3}
       propertyPath: m_Size.x
       value: 113.64907
@@ -57961,6 +57981,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6990835674678836107, guid: 52fa42ca21cedae47aeb92ee82935da1, type: 3}
       propertyPath: DefaultStartingSpeed
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 6990835674678836107, guid: 52fa42ca21cedae47aeb92ee82935da1, type: 3}
+      propertyPath: DefaultSpeedToLowerHealth
       value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 7016924787795790897, guid: 52fa42ca21cedae47aeb92ee82935da1, type: 3}
@@ -58085,6 +58109,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8360120004951524123, guid: 52fa42ca21cedae47aeb92ee82935da1, type: 3}
       propertyPath: DefaultStartingSpeed
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 8360120004951524123, guid: 52fa42ca21cedae47aeb92ee82935da1, type: 3}
+      propertyPath: DefaultSpeedToLowerHealth
       value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 8726939003038593444, guid: 52fa42ca21cedae47aeb92ee82935da1, type: 3}
@@ -78402,6 +78430,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 351093547}
     - target: {fileID: 4410238203838639852, guid: a709262158f50a346922de5f1fec4ecf, type: 3}
+      propertyPath: moonPuzzleAreaNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410238203838639852, guid: a709262158f50a346922de5f1fec4ecf, type: 3}
       propertyPath: moonPuzzleAreaAudioSource
       value: 
       objectReference: {fileID: 1866553017}
@@ -82074,6 +82106,10 @@ PrefabInstance:
 
         Sapphire x1'
       objectReference: {fileID: 0}
+    - target: {fileID: 7714311357141381915, guid: 7353956821e909e42a05c33e58367b94, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7801038219871824288, guid: 7353956821e909e42a05c33e58367b94, type: 3}
       propertyPath: mainMenuSceneName
       value: StartScene
@@ -83545,6 +83581,10 @@ PrefabInstance:
       propertyPath: warningMoonPuzzleUI
       value: 
       objectReference: {fileID: 351093547}
+    - target: {fileID: 2330695526276945478, guid: aeac7d0cfc43d4d4f9e32992fadc0b03, type: 3}
+      propertyPath: moonPuzzleAreaNumber
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2330695526276945478, guid: aeac7d0cfc43d4d4f9e32992fadc0b03, type: 3}
       propertyPath: moonPuzzleAreaAudioSource
       value: 

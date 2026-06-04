@@ -8,13 +8,11 @@ using UnityEngine;
 /// Corrioson Zones are the OnTrigger collisions that'll drop the player's health continuously 
 /// 
 /// This script works together with "PlayerHealth", "StorytellingDialogueText", "GameManager", "ExplorationTimer", "MoonPuzzleDialogueText" scripts
-/// See <see cref="PlayerHealth"/> for how they work together - prompting to change the speed of lowering player's health
-/// See <see cref="StorytellingDialogueText"/> for how they work together - prompting the "RestoreCorriosonValue" and 
-/// "ChangeCorriosonValue" events this script listens to
-/// 
-/// See <see cref="GameManager"/> for how they work together - prompting the "ChangeThirdCorriosonAreaValue" event this script listens to
-/// See <see cref="ExplorationTimer"/> for how they work together - prompting the "ChangeCorriosonValue" event this script listens to
-/// See <see cref="MoonPuzzleDialogueText"/> for how they work together - prompting the "ChangeCorriosonValue" event this script listens to
+/// See <see cref="PlayerHealth"/> - prompting to change the speed of lowering player's health
+/// See <see cref="StorytellingDialogueText"/> - prompting the "RestoreCorriosonValue" and "ChangeCorriosonValue" events this script listens to
+/// See <see cref="GameManager"/> - prompting the "ChangeThirdCorriosonAreaValue" event this script listens to
+/// See <see cref="ExplorationTimer"/> - prompting the "ChangeCorriosonValue" event this script listens to
+/// See <see cref="MoonPuzzleDialogueText"/> - prompting the "ChangeCorriosonValue" event this script listens to
 /// 
 /// </remarks>
 
@@ -41,7 +39,7 @@ public class CorriosonZone : MonoBehaviour
     [SerializeField]
     private bool lastMoonPuzzleCorriosonZone = false; 
 
-    private int numberOfMoonPuzzlesSolved; 
+    private int _numberOfMoonPuzzlesSolved; 
 
     private bool _playerCollisionDetected = false; //Flag whether the player is inside the collision to lower their health
 
@@ -76,9 +74,9 @@ public class CorriosonZone : MonoBehaviour
 
         if(nextCorriosonZone != null)
         {
-            numberOfMoonPuzzlesSolved++;
+            _numberOfMoonPuzzlesSolved++;
 
-            if(numberOfMoonPuzzlesSolved == moonPuzzleZoneIndex)
+            if(_numberOfMoonPuzzlesSolved == moonPuzzleZoneIndex)
             {
                 nextCorriosonZone.SetActive(true);
                 Destroy(this.gameObject);
@@ -101,7 +99,7 @@ public class CorriosonZone : MonoBehaviour
             _playerCollisionDetected = false; 
     }
 
-    private void ChangeSpeedToLowerHealth(ChangeCorriosonValue changeCorriosonValue) //Published by "StorytellingDialogueText" and "ExplorationTimer"
+    private void ChangeSpeedToLowerHealth(ChangeCorriosonValue changeCorriosonValue) //Published by "StorytellingDialogueText" and/or "ExplorationTimer"
     {
         if(moonPuzzleZoneIndex != changeCorriosonValue.CorriosonAreaNumber || lastMoonPuzzleCorriosonZone == true)
             return;

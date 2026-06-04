@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary> Dialogue for storytelling, NPCs and structuring the cluebook </summary>
+
 [CreateAssetMenu(fileName = "StorytellingDialogueData", menuName = "Dialogue Scriptable Objects/Create a New Dialogue Branch For Storytelling")]
 public class StorytellingDialogueData : ScriptableObject
 {

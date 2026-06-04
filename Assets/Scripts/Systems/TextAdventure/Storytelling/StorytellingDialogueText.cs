@@ -2,6 +2,41 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// Manages the storytelling text adventure as well as publishing events when starting the tutorial dialogue, starting/ending prayer phase (progressing to next day),
+/// showing winning screen, and changing the corrioson area speeds of lowering health (or maintaining them at their current speed)
+/// </summary>
+/// 
+/// <remarks>
+/// This script controls the storytelling UI dialogue text for the storytelling UI
+/// 
+/// This script is used for minor storytelling acorss the game
+/// as well as progressing to the next day with the prayer phase (this is prompted by player interacting with moon statue)
+/// 
+/// See <see cref="StorytellingDialogueData"/> for how each individual storytelling dialogue is set up. 
+/// See <see cref="CorriosonValues"/> for how the different speed values that can be given to the corrioson zones to drop player's health
+/// 
+/// This script's way of typing dialogue is the same as "MoonPuzzleDialogueText"
+/// Make sure they both type dialogue the same in their IEnumerators as well as the number of "MAX_LINES" is the same across both scripts
+/// 
+/// ______________________________________________________________________________________________________________________
+/// 
+/// This script works together with the scripts: "CanvasManager", "PlayerInputController", "PlayerStateMachine", "ItemDrop", "GoalText", "PlayerHealth",
+/// "InteractableItem", "ExplorationTimer", "CorriosonZone", "GameManager"
+/// 
+/// See <see cref="CanvasManager"/> - Swapping UI canvases in and out
+/// See <see cref="PlayerInputController"/> - listening to "AdvanceThroughTextAdventure" event that "PlayerInputController" published
+/// See <see cref="PlayerStateMachine"/> - freezing the player 
+/// See <see cref="ItemDrop"/> - Destroying game object attached to the script
+/// See <see cref="GoalText"/> - Keeping the same new goal text on screen
+/// See <see cref="PlayerHealth"/> - Reset player health to full and maintain player's health
+/// See <see cref="InteractableItem"/> - Resetting the activeness of certain game objects 
+/// See <see cref="ExplorationTimer"/> - Pausing exploration timer's countdown and resetting it
+/// See <see cref="CorriosonZone"/> - Changing the speed of how fast corrioson zones drop player's health
+/// See <see cref="GameManager"/> - Showing the tutorial dialogue on the dialogue canvas layered ontop of main player UI
+/// 
+/// </remarks>
+
 public class StorytellingDialogueText : MonoBehaviour
 {
     [SerializeField]
@@ -118,14 +153,14 @@ public class StorytellingDialogueText : MonoBehaviour
         _messageLength = _currentDialogue.Messages.Length;
 
         EventBus.Instance.Publish(new FreezePlayer(true));
-        EventBus.Instance.Publish(new MaintainPlayerHealth(true));
-        EventBus.Instance.Publish(new PauseExplorationTimer(true));
+        EventBus.Instance.Publish(new MaintainPlayerHealth(true)); //Publish to "PlayerHealth"
+        EventBus.Instance.Publish(new PauseExplorationTimer(true)); //Publish to "ExplorationTimer"
 
         StopAllCoroutines();
         StartCoroutine(TypeMessage(_currentDialogue.Messages[_index].message));
     }
 
-    private void StartEndGameDialogueAdventure(StartEndGameDialogue startEndGameDialogue) 
+    private void StartEndGameDialogueAdventure(StartEndGameDialogue startEndGameDialogue) //See what scripts publish this event
     {
         _finishGame = true;
         _currentDialogue = finishedGameDialogue;
@@ -135,7 +170,7 @@ public class StorytellingDialogueText : MonoBehaviour
         StartCoroutine(TypeMessage(_currentDialogue.Messages[_index].message));
     }
 
-    private void StartPrayerPhaseAdventure(StartPrayerPhase startPrayerPhase) 
+    private void StartPrayerPhaseAdventure(StartPrayerPhase startPrayerPhase) //See what scripts publish this event
     {
         _playerIsInPrayerPhase = true;
         _beginPrayerPhase = true;
@@ -146,7 +181,8 @@ public class StorytellingDialogueText : MonoBehaviour
         StartCoroutine(TypeMessage(_currentDialogue.Messages[_index].message));
     }
 
-    private void NextDialogue(AdvanceThroughTextAdventure advanceTextAdventure) 
+    //Iterating through storytelling dialogue messages. Published by "PlayerInputController"
+    private void NextDialogue(AdvanceThroughTextAdventure advanceTextAdventure)
     {
         if(_finishedTypingMessage != true || _stopProgressingThroughDialogue == true)
             return;
@@ -160,7 +196,7 @@ public class StorytellingDialogueText : MonoBehaviour
         if(_index+1 == _messageLength && _finishGame == true) //Show win game screen
         {
             _stopProgressingThroughDialogue = true;
-            EventBus.Instance.Publish(new ChangeCanvases(winGameUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
+            EventBus.Instance.Publish(new ChangeCanvases(winGameUI, START_MOON_PUZZLE, START_PRAYER_PHASE)); //Publish to "CanvasManager"
             return;
         }
 
@@ -168,18 +204,18 @@ public class StorytellingDialogueText : MonoBehaviour
         {
             _stopProgressingThroughDialogue = true;
             EventBus.Instance.Publish(new FreezePlayer(false));
-            EventBus.Instance.Publish(new ChangeCanvases(mainPlayerUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
-            EventBus.Instance.Publish(new NewExplorationPhase());
-            EventBus.Instance.Publish(new ResetWorldItems());
-            EventBus.Instance.Publish(new ResetExplorationTimer());
+            EventBus.Instance.Publish(new ChangeCanvases(mainPlayerUI, START_MOON_PUZZLE, START_PRAYER_PHASE)); //Publish to "CanvasManager"
+            EventBus.Instance.Publish(new NewExplorationPhase()); //Publish to "PlayerStateMachine", "ItemDrop", "GoalText", "PlayerHealth"
+            EventBus.Instance.Publish(new ResetWorldItemsActiveness()); //Publish to "InteractableItem"
+            EventBus.Instance.Publish(new ResetExplorationTimer()); //Publish to "ExplorationTimer"
             return;
         }
 
         if(_index+1 == _messageLength && _startIntroductoryDialogue == true) //Show beginning tutorial for the start of the game
         {
             _stopProgressingThroughDialogue = true;
-            EventBus.Instance.Publish(new ChangeCanvases(mainPlayerUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
-            EventBus.Instance.Publish(new StartBeginnerTutorial()); //Publish to GameManager
+            EventBus.Instance.Publish(new ChangeCanvases(mainPlayerUI, START_MOON_PUZZLE, START_PRAYER_PHASE)); //Publish to "CanvasManager"
+            EventBus.Instance.Publish(new StartBeginnerTutorial()); //Publish to "GameManager"
             return;
         }
 
@@ -203,8 +239,8 @@ public class StorytellingDialogueText : MonoBehaviour
         {
             _currentDialogue = badPrayerDialogue;
 
-            //Make corrioson accumalate faster (lower player health faster)
-            EventBus.Instance.Publish(new ChangeCorriosonValue(corriosonValues.SpeedToLowerHealthForBadPrayerEffect, FIRST_MOON_PUZZLE_AREA_NUMBER));
+            //Make corrioson accumalate faster (lower player health faster). All publish to "CorriosonZone"
+            EventBus.Instance.Publish(new ChangeCorriosonValue(corriosonValues.SpeedToLowerHealthForBadPrayerEffect, FIRST_MOON_PUZZLE_AREA_NUMBER)); 
             EventBus.Instance.Publish(new ChangeCorriosonValue(corriosonValues.SpeedToLowerHealthForBadPrayerEffect, SECOND_MOON_PUZZLE_AREA_NUMBER));
             EventBus.Instance.Publish(new ChangeCorriosonValue(corriosonValues.SpeedToLowerHealthForBadPrayerEffect, THIRD_MOON_PUZZLE_AREA_NUMBER));
         }
@@ -213,7 +249,7 @@ public class StorytellingDialogueText : MonoBehaviour
         {
             _currentDialogue = goodPrayerDialogue;
 
-            //Make corrioson accumalate slower (lower player health slower)
+            //Make corrioson accumalate slower (lower player health slower). All publish to "CorriosonZone"
             EventBus.Instance.Publish(new ChangeCorriosonValue(corriosonValues.SpeedToLowerHealthForGoodPrayerEffect, FIRST_MOON_PUZZLE_AREA_NUMBER));
             EventBus.Instance.Publish(new ChangeCorriosonValue(corriosonValues.SpeedToLowerHealthForGoodPrayerEffect, SECOND_MOON_PUZZLE_AREA_NUMBER));
             EventBus.Instance.Publish(new ChangeCorriosonValue(corriosonValues.SpeedToLowerHealthForGoodPrayerEffect, THIRD_MOON_PUZZLE_AREA_NUMBER));
@@ -223,7 +259,7 @@ public class StorytellingDialogueText : MonoBehaviour
         else if(_randomPrayerNumber == 3)
         {
             _currentDialogue = noPrayerDialogue;
-            EventBus.Instance.Publish(new RestoreCorriosonValue());
+            EventBus.Instance.Publish(new RestoreCorriosonValue()); //Publish to "CorriosonZone"
         }
             
         AudioManager.Instance.PlaySoundEffect(nextMessageSFX); 
@@ -236,7 +272,7 @@ public class StorytellingDialogueText : MonoBehaviour
         StartCoroutine(TypeMessage(_currentDialogue.Messages[_index].message));
     }
 
-    IEnumerator TypeMessage(string message) 
+    private IEnumerator TypeMessage(string message) 
     {
         _finishedTypingMessage = false;
     

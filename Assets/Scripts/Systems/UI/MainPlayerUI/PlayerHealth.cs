@@ -71,7 +71,7 @@ public class PlayerHealth : MonoBehaviour
         _pauseCorrioson = maintainPlayerHealth.PauseCorrioson;
     }
 
-    private void StartNewExplorationPhase(NewExplorationPhase newExplorationPhase)
+    private void StartNewExplorationPhase(NewExplorationPhase newExplorationPhase) //Published by "MoonPuzzleDialogueText" or "StorytellingDialogueData"
     {
         health.value = 1.0f; //Reset health to full
         _recoverHealth = true;
@@ -80,11 +80,11 @@ public class PlayerHealth : MonoBehaviour
     IEnumerator ShowFailedGameScreen()
     {
         EventBus.Instance.Publish(new FreezePlayer(true));
-        EventBus.Instance.Publish(new PauseExplorationTimer(true));
+        EventBus.Instance.Publish(new PauseExplorationTimer(true)); //Publish to "ExplorationTimer"
         EventBus.Instance.Publish(new ActivatePlayerInputs(false));
 
         yield return new WaitForSeconds(TIME_DELAY_BEFORE_SWAPPING_UI_SCREENS);
 
-        EventBus.Instance.Publish(new ChangeCanvases(failedGameUI, START_MOON_PUZZLE, START_PRAYER_PHASE));
+        EventBus.Instance.Publish(new ChangeCanvases(failedGameUI, START_MOON_PUZZLE, START_PRAYER_PHASE)); //Publish to "CanvasManager"
     }
 }

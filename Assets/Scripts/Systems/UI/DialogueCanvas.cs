@@ -3,6 +3,22 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// Manages the dialogue UI functionality - typing dialogue only and publishing events to other scripts
+/// </summary>
+/// 
+/// <remarks>
+/// 
+///  See <see cref="StorytellingDialogueData"/> for how each individual storytelling dialogue is set up. 
+/// 
+/// This script works together with the "PlayerInputController", "ExplorationTimer", "PlayerHealth", "GoalText" scripts
+/// See <see cref="PlayerInputController"/> - Listening to "AdvanceDialogueOnMainUI" and "TypeDialogueOnMainUI" events that "PlayerInputController" publishes
+/// See <see cref="ExplorationTimer"/> - Pause/unpause exploration timer countdown
+/// See <see cref="PlayerHealth"/> - Maintaining / not maintain player health
+/// See <see cref="GoalText"/> - Display the beginning goal text when you start the game
+/// 
+/// </remarks>
+
 public class DialogueCanvas : MonoBehaviour
 {
     [SerializeField]
@@ -53,7 +69,7 @@ public class DialogueCanvas : MonoBehaviour
         _index = 0;
     }
 
-    private void FinishMessage(AdvanceDialogueOnMainUI advanceDialogueOnMainUI) //Called by "PlayerInputController" (keybind Enter/left mouse click)
+    private void FinishMessage(AdvanceDialogueOnMainUI advanceDialogueOnMainUI) //Published by "PlayerInputController"
     {
         if(_finishedTypingMessage != true)
             return;
@@ -61,17 +77,17 @@ public class DialogueCanvas : MonoBehaviour
         if(_index+1 == _dialogueArrayLength)
         {
             EventBus.Instance.Publish(new FreezePlayer(false));
-            EventBus.Instance.Publish(new MaintainPlayerHealth(false));
+            EventBus.Instance.Publish(new MaintainPlayerHealth(false)); //Publish to "PlayerHealth"
 
             if(_newExplorationPhase == true || _startingTheGame == true)
             {
-                EventBus.Instance.Publish(new ResetExplorationTimer());
+                EventBus.Instance.Publish(new ResetExplorationTimer()); //Publish to "ExplorationTimer"
                 EventBus.Instance.Publish(new ActivatePlayerInputs(ALLOW_PLAYER_INPUTS));
             }
                 
 
             if(_startingTheGame == true)
-                EventBus.Instance.Publish(new ShowBeginnerGoal());
+                EventBus.Instance.Publish(new ShowBeginnerGoal()); //Publish to "GoalText"
 
             StopAllCoroutines();
             this.gameObject.SetActive(false);
@@ -84,7 +100,7 @@ public class DialogueCanvas : MonoBehaviour
         StartCoroutine(TypeMessage(_currentDialogue.Messages[_index]));
     }
 
-    private void DisplayMessage(TypeDialogueOnMainUI typeDialogueOnMainUI)
+    private void DisplayMessage(TypeDialogueOnMainUI typeDialogueOnMainUI) //Published by "PlayerInputController"
     {
         _newExplorationPhase = typeDialogueOnMainUI.NewExplorationPhase;
         _startingTheGame = typeDialogueOnMainUI.StartingTheGame;
@@ -95,7 +111,7 @@ public class DialogueCanvas : MonoBehaviour
         StartCoroutine(TypeMessage(_currentDialogue.Messages[_index]));
     }
 
-    IEnumerator TypeMessage(StorytellingDialogueData.DialogueLine dialogueLine) 
+    private IEnumerator TypeMessage(StorytellingDialogueData.DialogueLine dialogueLine) 
     {
         _finishedTypingMessage = false;
 

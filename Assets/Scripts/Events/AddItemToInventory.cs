@@ -256,6 +256,15 @@ public class ShowBeginnerGoal : IEvent
 {
 }
 
+public class OpenTextAdventureUI : IEvent
+{
+    public int CurrentMoonPuzzleAreaNumber;
+
+    public OpenTextAdventureUI(int currentMoonPuzzleAreaNumber)
+    {
+        CurrentMoonPuzzleAreaNumber = currentMoonPuzzleAreaNumber;
+    }
+}
 
 public class PauseExplorationTimer : IEvent
 {
@@ -405,7 +414,7 @@ public class NewExplorationPhase : IEvent
 {
 }
 
-public class ResetWorldItems : IEvent
+public class ResetWorldItemsActiveness : IEvent
 {
 }
 
@@ -425,6 +434,17 @@ public class NewAreaChange : IEvent
     public NewAreaChange(int areaChangesCount)
     {
         AreaChangesCount = areaChangesCount;
+    }
+}
+
+//For stopping the audio at moon puzzle areas - audio that acts as audio for the sparkle particle effects
+public class StopMoonPuzzleAreaAudio : IEvent 
+{
+    public int CurrentMoonPuzzleAreaNumber;
+
+    public StopMoonPuzzleAreaAudio(int currentMoonPuzzleAreaNumber)
+    {
+        CurrentMoonPuzzleAreaNumber = currentMoonPuzzleAreaNumber;
     }
 }
 

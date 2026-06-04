@@ -1,8 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-//This script is to be used on quit buttons for the start menu UI screen
-//And the pause menu UI screen
+/// <summary>
+/// Manages the quit button for the start menu UI and pause menu UI
+/// </remarks>
 
 public class QuitButton : MonoBehaviour
 {
@@ -58,11 +59,10 @@ public class QuitButton : MonoBehaviour
 
     private void Quit()
     {
-        //UnityEditor.EditorApplication.isPlaying = false; 
 	    Application.Quit();
     }
 
-    IEnumerator AllowClicking()
+    private IEnumerator AllowClicking()
     {
         yield return new WaitForSeconds(DELAY);
         _allowClicking = true;

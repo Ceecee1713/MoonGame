@@ -2,6 +2,22 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/// <summary>
+/// Manages the exploration timer that's displayed on the main player UI 
+/// </summary>
+/// 
+/// <remarks>
+/// This script is to be attached to a textmeshproUGUI that'll be acting as the display for timer text
+/// This script is to be on the same game object that "ExplorationTimer" is on since they'll both be on the main player UI.
+/// This script directly references "ExplorationTimer"
+/// 
+/// See <see cref="CorriosonValues"/> for how the different speed values that can be given to the corrioson zones to drop player's health
+/// 
+/// This script works together with scripts: "CorriosonZone" 
+/// See <see cref="CorriosonZone"/> - Changing the speed of how fast corrioson zones drop player's health
+/// 
+/// </remarks>
+
 public class ExplorationTimer : MonoBehaviour
 {
     [Header ("Time Values")]
@@ -41,6 +57,7 @@ public class ExplorationTimer : MonoBehaviour
 
         if(RemainingTime == 0)
         {
+            //All publish to "CorriosonZone"
             EventBus.Instance.Publish(new ChangeCorriosonValue(corriosonValues.SpeedToLowerHealthWhenTimerIsUp, FIRST_MOON_PUZZLE_AREA_NUMBER));
             EventBus.Instance.Publish(new ChangeCorriosonValue(corriosonValues.SpeedToLowerHealthWhenTimerIsUp, SECOND_MOON_PUZZLE_AREA_NUMBER));
             EventBus.Instance.Publish(new ChangeCorriosonValue(corriosonValues.SpeedToLowerHealthWhenTimerIsUp, THIRD_MOON_PUZZLE_AREA_NUMBER));
@@ -60,7 +77,7 @@ public class ExplorationTimer : MonoBehaviour
         timerText.text = string.Format("{0:00}:{1:00}", _minutes, _seconds);
     }
 
-    private void PauseTimerCountdown(PauseExplorationTimer pauseExplorationTimer)
+    private void PauseTimerCountdown(PauseExplorationTimer pauseExplorationTimer) 
     {
         _doNotAllowTimerToCountDown = pauseExplorationTimer.AllowCountdown;
     }

@@ -2,6 +2,10 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement; 
 
+/// <summary>
+/// Manages the "play again" / "start" / "main menu" button for the start menu UI and pause menu UI
+/// </remarks>
+
 public class SceneButton : MonoBehaviour
 {
     [SerializeField]
@@ -91,7 +95,7 @@ public class SceneButton : MonoBehaviour
         SceneManager.LoadSceneAsync(mainMenuSceneName);
     }
 
-    IEnumerator AllowClicking()
+    private IEnumerator AllowClicking()
     {
         yield return new WaitForSeconds(DELAY);
         _allowClicking = true;

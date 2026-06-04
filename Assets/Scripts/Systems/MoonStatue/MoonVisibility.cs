@@ -90,7 +90,7 @@ public class MoonVisibility : MonoBehaviour
             Invoke("ShowMoonStatueMessage",  delayBeforeShowingMoonMessage);
     }
 
-    private void ShowMoonStatueMessage() //Called by invocation
+    private void ShowMoonStatueMessage() 
     {
         dialogueCanvas.SetActive(true);
         EventBus.Instance.Publish(new TypeDialogueOnMainUI(completedMoonPuzzleDialogue, NEW_EXPLORATION_PHASE, STARTING_THE_GAME)); //Publish to "DialogueCanvas"

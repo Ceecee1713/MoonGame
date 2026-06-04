@@ -7,10 +7,12 @@ using UnityEngine;
 /// <remarks>
 /// See <see cref="InventoryItemTypes"/> for what makes up an inventory item and how inventory UI slots are made up.
 /// 
-/// This script works together with the "InventoryUI", "PlayerInputController", "PlayerSpawner" scripts
-/// See <see cref="InventoryUI"/> for how they work together - Adding the inventory item to player inventory
-/// See <see cref="PlayerInputController"/> for how they work together - publishing the Interact event this script listens to
-/// See <see cref="PlayerSpawner"/> for how they work together - Instantiating an inventory item
+/// This script works together with scripts: "MoonPuzzleDialogueText", "StorytellingDialogueText", "PlayerInputController", "InventoryUI"
+/// See <see cref="MoonPuzzleDialogueText"/> - Listening to "ResetWorldItemsActiveness" event "MoonPuzzleDialogueText" publishes 
+/// See <see cref="StorytellingDialogueText"/> - Listening to "ResetWorldItemsActiveness" event "StorytellingDialogueText" publishes 
+/// See <see cref="PlayerInputController"/> - Listening to "Interact" event "PlayerInputController" publishes 
+/// See <see cref="InventoryUI"/> - Adding the inventory item to player inventory
+/// See <see cref="PlayerSpawner"/> - Instantiating an inventory item
 /// 
 /// </remarks>
 
@@ -29,23 +31,23 @@ public class InteractableItem : MonoBehaviour
     [SerializeField]
     private bool makeGameObjectInactive = false; //Flag whether a child game object needs to be set inactive. Works together with "gameObjectToSetInactive"
 
-    /// <summary> Accessed by PlayerSpawner. </summary>
+    /// <summary> Accessed by PlayerSpawner, used when I=instantiating a dropped inventory item. </summary>
     [HideInInspector] 
     public bool DeleteAfterInteraction = false; 
 
-    /// <summary> Accessed by PlayerSpawner. </summary>
+    /// <summary> Accessed by PlayerSpawner, used when I=instantiating a dropped inventory item. </summary>
     [HideInInspector]
     public bool InteractedByPlayerOnce = false; 
 
     private bool _allowInput = true; //Prevent or allow for the player to interact with this item
     private bool _playerStayingInCollision = false; //Flags if the player's remaining inside the item's collision
-    private bool _playerInCollision = false; //Flags if the player is inside this item's collision to be interacted with: if the player's in range or not
+    private bool _playerInCollision = false; //Flags if the player is inside this item's collision to be interacted with
 
     void Start()
     {
         EventBus.Instance.Subscribe<Interact>(CheckIfItemIsPickedUp);
         EventBus.Instance.Subscribe<ActivatePlayerInputs>(AllowPlayerInput);
-        EventBus.Instance.Subscribe<ResetWorldItems>(ResetVisibilityOfGameObject);
+        EventBus.Instance.Subscribe<ResetWorldItemsActiveness>(ResetVisibilityOfGameObject);
     }
 
     void OnDestroy()
@@ -54,7 +56,7 @@ public class InteractableItem : MonoBehaviour
         {
             EventBus.Instance.Unsubscribe<Interact>(CheckIfItemIsPickedUp);
             EventBus.Instance.Unsubscribe<ActivatePlayerInputs>(AllowPlayerInput);
-            EventBus.Instance.Unsubscribe<ResetWorldItems>(ResetVisibilityOfGameObject);
+            EventBus.Instance.Unsubscribe<ResetWorldItemsActiveness>(ResetVisibilityOfGameObject);
         }
     }
 
@@ -63,7 +65,7 @@ public class InteractableItem : MonoBehaviour
         _allowInput = activatePlayerInputs.AllowInputs;
     }
 
-    private void ResetVisibilityOfGameObject(ResetWorldItems resetWorldItems) //Check which event this is published by
+    private void ResetVisibilityOfGameObject(ResetWorldItemsActiveness resetWorldItemsActiveness) //Published by "MoonPuzzleDialogueText" or "StorytellingDialogueText"
     {
         InteractedByPlayerOnce = false;
 

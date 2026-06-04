@@ -849,7 +849,7 @@ GameObject:
   - component: {fileID: 4873583498902832999}
   - component: {fileID: 7651080995915273695}
   m_Layer: 5
-  m_Name: 'Option Four Button '
+  m_Name: Try Again Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1551,7 +1551,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90cfc284999ce34c9bce96235d7b43b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  corriosonValues: {fileID: 11400000, guid: 0c43309b9484a2f4a880d0e8f0a92b86, type: 2}
   TextAdventureDialogue: {fileID: 11400000, guid: bf7745267821d204ab87cf2d1aada7e9, type: 2}
   WrongButtonChoicesCounter: 0
   nextMessageSFX: {fileID: 8300000, guid: 1f070a9c8b76bee43997205abc4fd8e5, type: 3}
@@ -1564,7 +1563,7 @@ MonoBehaviour:
   dialogueText: {fileID: 8288009892634834876}
   heartImage: {fileID: 3280108529386148875}
   emptyHeartSprite: {fileID: 21300000, guid: 24b9c86f6f6f25d47b810454b746dfdd, type: 3}
-  returnButton: {fileID: 6025896915974861733}
+  tryAgainButton: {fileID: 6025896915974861733}
   ButtonOptions: {fileID: 741038249091380606}
   buttonOneText: {fileID: 1750577539518440137}
   buttonTwoText: {fileID: 3963925398307273383}

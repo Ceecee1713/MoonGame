@@ -325,9 +325,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moonPuzzleAreaAudioSource: {fileID: 0}
+  moonPuzzleAreaNumber: 3
   totalTimeDurationToFadeAudioSource: 0
   warningMoonPuzzleUI: {fileID: 0}
-  warningMoonPuzzleUIScript: {fileID: 0}
 --- !u!4 &2945320635670146213 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 667db8bd5bafb2d4aa1325ad50c33178, type: 3}
