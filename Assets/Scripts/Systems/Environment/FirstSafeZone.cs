@@ -8,11 +8,17 @@ using UnityEngine;
 /// This script is used for only the first safe zone when no moon puzzles have been solved.
 /// 
 /// Safe Zones are the OnTrigger collisions that'll raise the player's health continuously.
+/// This script works similarily to SafeZone with both being collisions that'll raise the player's health continuously.
+/// See <see cref="SafeZone"/> for similarities and make sure they both work the same
 /// 
-/// This script works together with "PlayerHealth",  "MoonPuzzleDialogueText", "DialogueCanvas" scripts
-/// See <see cref="PlayerHealth"/> for how they work together - prompting to raise the player's health
-/// See <see cref="MoonPuzzleDialogueText"/> for how they work together - publishing the "NewMoonFragmentObtained" event this script listens to
-/// See <see cref="DialogueCanvas"/> for how they work together - prompting to show the dialogue canvas and start dialogue
+/// This script works together with "PlayerHealth",  "MoonPuzzleDialogueText", "DialogueCanvas", "PlayerStateMachine" scripts
+/// See <see cref="PlayerHealth"/> - Publishing "AlterPlayerHealth" to raise the player's health
+/// See <see cref="MoonPuzzleDialogueText"/> - Listening to "NewMoonFragmentObtained" event that "MoonPuzzleDialogueText" publishes to change safe zone 
+/// areas in the same area and delete the current safe zone in the area
+/// 
+/// 
+/// See <see cref="DialogueCanvas"/> - Publishing "TypeDialogueOnMainUI" event to show the dialogue UI canvas and start dialogue
+/// See <see cref="PlayerStateMachine"/> - Publishing "FreezePlayer" to freeze player
 /// 
 /// See <see cref="StorytellingDialogueData"/> for how the dialogue data is set up for the tutorial
 /// 
@@ -52,7 +58,7 @@ public class FirstSafeZone : MonoBehaviour
             EventBus.Instance.Unsubscribe<NewMoonFragmentObtained>(SetNewSafeZoneCollision);
     }
 
-    //Destroy the Game Object attached to this script and set the replacement safe zone for the same area active
+    //"NewMoonFragmentObtained" is the name of an event. Empty event
     private void SetNewSafeZoneCollision(NewMoonFragmentObtained newMoonFragmentObtained) //Published by "MoonPuzzleDialogueText"
     {
         if(nextSafeZoneArea != null)
@@ -88,7 +94,7 @@ public class FirstSafeZone : MonoBehaviour
     private void ShowTutorial() //Show the tutorial dialogue and set the dialouge UI active
     {
         dialogueUI.SetActive(true);
-        EventBus.Instance.Publish(new FreezePlayer(true));
+        EventBus.Instance.Publish(new FreezePlayer(true)); //Publish to "PlayerStateMachine"
         EventBus.Instance.Publish(new TypeDialogueOnMainUI(corriosonZoneTutorial, NEW_EXPLORATION_PHASE, STARTING_THE_GAME)); //Publish to "DialogueCanvas"
     }
 }

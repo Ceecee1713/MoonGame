@@ -227,26 +227,18 @@ public class TypeDialogueOnMainUI : IEvent
     }
 } 
 
-
 //Advance through the single dialogue to the UI responsible for handling single dialogues
 public class AdvanceDialogueOnMainUI : IEvent
 {
 }
 
-
-//(DELETE COMMENT AFTER WRITING FULL DOCUMENTATION)
-//For a new exploration phase ONLY AFTER completing a moon puzzle text adventure:
-//Show dialogue from the moon statue, change materials for deciphering clue on craft manager,
-//destroy NPCs in that completed puzzle area AND change collisions (safe zone and corrioson areas)
 public class NewMoonFragmentObtained : IEvent 
 {
 }
 
-
 public class ResetExplorationTimer : IEvent
 {
 }
-
 
 public class StartBeginnerTutorial : IEvent
 {
@@ -256,11 +248,11 @@ public class ShowBeginnerGoal : IEvent
 {
 }
 
-public class OpenTextAdventureUI : IEvent
+public class OpenWarningMoonPuzzleUI : IEvent
 {
     public int CurrentMoonPuzzleAreaNumber;
 
-    public OpenTextAdventureUI(int currentMoonPuzzleAreaNumber)
+    public OpenWarningMoonPuzzleUI(int currentMoonPuzzleAreaNumber)
     {
         CurrentMoonPuzzleAreaNumber = currentMoonPuzzleAreaNumber;
     }
@@ -291,7 +283,6 @@ public class ActivatePlayerInputs : IEvent
     }
 }
 
-
 //Either incrase or lower the player's health based on environment collisions
 public class AlterPlayerHealth : IEvent
 {
@@ -305,7 +296,6 @@ public class AlterPlayerHealth : IEvent
     }
 }
 
-
 public class FreezePlayer : IEvent
 {
     public bool PausePlayerMovement;
@@ -315,7 +305,6 @@ public class FreezePlayer : IEvent
         PausePlayerMovement = pausePlayerMovement;
     }
 }
-
 
 //Increase the speed of the player after using a speed-up item from inventory slot
 public class SpeedUpPlayer : IEvent
@@ -330,18 +319,16 @@ public class Interact : IEvent
 {
 }
 
-
 //Prevent the player from using an equpped inventory item when in collision with an object
-public class InCollision : IEvent
+public class PreventPlayerInteractingWithInventory : IEvent
 {
     public bool PlayerInCollision;
 
-    public InCollision(bool playerInCollision)
+    public PreventPlayerInteractingWithInventory(bool playerInCollision)
     {
         PlayerInCollision = playerInCollision;
     }
 }
-
 
 //Either momentarily pause the dropping of the player's health or not
 public class MaintainPlayerHealth : IEvent
@@ -353,7 +340,6 @@ public class MaintainPlayerHealth : IEvent
         PauseCorrioson = pauseCorrioson;
     }
 }
-
 
 public class PauseGame : IEvent
 {
@@ -407,9 +393,6 @@ public class ChangeThirdCorriosonAreaValue : IEvent
 {
 }
 
-//(DELETE COMMENT AFTER WRITING FULL DOCUMENTATION)
-//Teleport player back to moon puzzle, reset player health to full AND delete item drops
-//Published for EACH new exploration phase, not just for finishing a moon puzzle
 public class NewExplorationPhase : IEvent
 {
 }

@@ -5,11 +5,12 @@ using UnityEngine;
 /// </summary>
 /// 
 /// <remarks>
-/// This script works together with the "PlayerInputController", "InventoryUISlot", "OpenCluebookMainUI" scripts
+/// This script works together with the "PlayerInputController", "InventoryUISlot", "OpenCluebookMainUI", "InventoryUI" scripts
 /// 
-/// See <see cref="PlayerInputController"/> how they work together - prompting the "Interact" event this script listens to
-/// See <see cref="InventoryUISlot"/> how they work together - prompting the "ChestIsOpen" event this script to the "InventoryUISlot" script
-/// See <see cref="OpenCluebookMainUI"/> how they work together - stopping the cluebook button on the main player UI from being interactable temporarily
+/// See <see cref="PlayerInputController"/> - Listening to the "Interact" event that "PlayerInputController" publishes to open chest
+/// See <see cref="InventoryUISlot"/> - Publishing "ChestIsOpen" event that "InventoryUISlot" publishes to change interaction with UI slot
+/// See <see cref="OpenCluebookMainUI"/> - Publishing "ChestIsOpen" event to stop the cluebook button on the main player UI from being interactable temporarily
+/// See <see cref="InventoryUI"/> - Publishing "PreventPlayerInteractingWithInventory" event to prevent/allow for player to interact with inventory
 /// 
 /// </remarks>
 
@@ -29,6 +30,7 @@ public class ChestInteraction : MonoBehaviour
         EventBus.Instance.Subscribe<Interact>(CheckForInteraction);
     }
 
+    //"Interact" is the name of an event. Empty event
     private void CheckForInteraction(Interact interact) //When player interacts with this game object. Published by "PlayerInputController"
     {
         if(_playerStayingInCollision == true)
@@ -44,7 +46,7 @@ public class ChestInteraction : MonoBehaviour
         if (collider.gameObject.CompareTag("Player"))
         {
             _playerInCollision = true;
-            EventBus.Instance.Publish(new InCollision(_playerInCollision));
+            EventBus.Instance.Publish(new PreventPlayerInteractingWithInventory(_playerInCollision)); //Publish to "InventoryUI"
         }
     }
 
@@ -60,7 +62,7 @@ public class ChestInteraction : MonoBehaviour
         {
             _playerInCollision = false;
             _playerStayingInCollision = false; 
-            EventBus.Instance.Publish(new InCollision(_playerInCollision));
+            EventBus.Instance.Publish(new PreventPlayerInteractingWithInventory(_playerInCollision)); //Publish to "InventoryUI"
         }
     }
 }

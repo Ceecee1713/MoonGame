@@ -1,5 +1,17 @@
 using UnityEngine;
 
+/// <summary>
+/// Manages an inventory item that's been dropped
+/// </summary>
+/// 
+/// <remarks>
+/// 
+/// This script works together with the "MoonPuzzleDialogueText", "StorytellingDialogueText" scripts
+/// See <see cref="MoonPuzzleDialogueText"/> - Listening to "NewExplorationPhase" event that "MoonPuzzleDialogueText" published to destroy self
+/// See <see cref="StorytellingDialogueText"/> - Listening to "NewExplorationPhase" event that "StorytellingDialogueText" published to destroy self
+/// 
+/// </remarks>
+
 public class ItemDrop : MonoBehaviour
 {
     [SerializeField]
@@ -16,7 +28,8 @@ public class ItemDrop : MonoBehaviour
             EventBus.Instance.Unsubscribe<NewExplorationPhase>(DeleteSelfOnNewExplorationPhase);
     }
 
-    private void DeleteSelfOnNewExplorationPhase(NewExplorationPhase newExplorationPhase)
+    //"NewExplorationPhase" is the name of an event. Empty event
+    private void DeleteSelfOnNewExplorationPhase(NewExplorationPhase newExplorationPhase) //Published by "MoonPuzzleDialogueText" or "StorytellingDialogueText"
     {
         Destroy(this.gameObject);
     }

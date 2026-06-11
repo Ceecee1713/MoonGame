@@ -8,10 +8,12 @@ using UnityEngine;
 /// This script is to be attached to a choice button on the moon puzzle text adventure UI.
 /// The button is to act as one out of three buttons that'll be a choice to a moon puzzle's question
 /// 
-/// This script is to be attached to the moon puzzle text adventure UI as well as directly accessing the 
-/// "MoonPuzzleDialogueText" script given that they'll be on the same game object.
-/// See <see cref="MoonPuzzleDialogueText"/> for how they work together - calling public methods and variables from "MoonPuzzleDialogueText"
-/// and listening to "SetMoonPuzzleQuestions" event "MoonPuzzleDialogueText" publishes
+/// This script is to be attached to the moon puzzle text adventure UI game object as well as having "MoonPuzzleDialogue" attached to the same game object
+/// to directly access public methods and variables 
+/// 
+/// See <see cref="MoonPuzzleDialogueText"/> - calling public methods and variables from "MoonPuzzleDialogueText"
+/// and listening to "SetMoonPuzzleQuestions" event "MoonPuzzleDialogueText" publishes when moon puzzle question's dialogue has all been typed out
+/// to determine new question dialogue of the current moon puzzle
 /// 
 /// See <see cref="MoonPuzzleDialogueData"/> for how each individual moon puzzle QUESTION branch is set up. 
 /// 
@@ -55,7 +57,9 @@ public class MoonTextAdventureButton : MonoBehaviour
             EventBus.Instance.Unsubscribe<SetMoonPuzzleQuestions>(SetNextQuestionDialogue);
     }
 
-    //When moon puzzle question's dialogue has all been typed out
+    //Receives a "SetMoonPuzzleQuestions" event with parameters:
+    //(MoonPuzzleDialogueData) QuestionDialogue - current question dialogue for the moon puzzle text adventure
+    //(int) TextBranch - current moon puzzle text branch index (first moon puzzle, second moon puzzle, third moon puzzle)
     private void SetNextQuestionDialogue(SetMoonPuzzleQuestions setMoonPuzzleQuestions) //Published by "MoonPuzzleDialogueText"
     {
         _allowInput = true;

@@ -21,33 +21,38 @@ using TMPro;
 /// 
 /// This script's way of typing dialogue is the same as "StorytellingDialogueText"
 /// Make sure they both type dialogue the same in their IEnumerators as well as the number of "MAX_LINES" is the same across both scripts
+/// See <see cref="StorytellingDialogueText"/>
 /// 
 /// ______________________________________________________________________________________________________________________
 /// 
 /// This script works together with the scripts: "CanvasManager", "PlayerInputController", "PlayerStateMachine", "ItemDrop", "GoalText", "PlayerHealth",
-/// "InteractableItem", "ExplorationTimer", "Npc", "SafeZone", "FirstSafeZone", "CorriosonZone", "MoonVisibility", "GameManager", "MoonTextAdventureButton"
+/// "InteractableItem", "ExplorationTimer", "SafeZone", "FirstSafeZone", "CorriosonZone", "MoonVisibility", "GameManager", "MoonTextAdventureButton"
 /// 
-/// See <see cref="CanvasManager"/> - Swapping UI canvases in and out and fading a single UI canvas
-/// See <see cref="PlayerInputController"/> - listening to "AdvanceThroughTextAdventure" event that "PlayerInputController" published
-/// See <see cref="PlayerStateMachine"/> - freezing the player 
-/// See <see cref="ItemDrop"/> - Destroying game object attached to the script
-/// See <see cref="GoalText"/> - Setting a new goal text on screen and/or keeping the same new goal text on screen
-/// See <see cref="PlayerHealth"/> - Reset player health to full
-/// See <see cref="InteractableItem"/> - Resetting the activeness of certain game objects 
-/// See <see cref="ExplorationTimer"/> - Pausing exploration timer's countdown
-/// See <see cref="Npc"/> - Destroying game object attached based on conditions
-/// See <see cref="SafeZone"/> - Destroying game object attached based on conditions
-/// See <see cref="FirstSafeZone"/> - Destroying game object attached based on conditions
-/// See <see cref="CorriosonZone"/> - Destroying game object attached based on conditions and/or change corrioson zones
+/// See <see cref="CanvasManager"/> - Publishing "ChangeCanvases" event to swap UI canvases and publishing "FadeSingleCanvas" event to fade a single UI canvas
+/// See <see cref="PlayerInputController"/> - Listening to "AdvanceThroughTextAdventure" event that "PlayerInputController" published to move through dialogue
+/// See <see cref="PlayerStateMachine"/> - Publishing "NewExplorationPhase" event to move player back to a set position
+/// See <see cref="ItemDrop"/> - Publishing "NewExplorationPhase" event to destroy game object attached to "ItemDrop" script
+/// See <see cref="GoalText"/> - Publishing "NewExplorationPhase" event to keep the same new goal text on screen,
+/// and publishing "NewMoonFragmentObtained" event to set a new goal text on screen
 /// 
-/// See <see cref="MoonVisibility"/> - Light up a moon fragment of moon statue, spin the moon of the moon statue and/or display dialogue
-/// on dialogue UI layered ontop of main player UI
+/// See <see cref="PlayerHealth"/> - Publishing "NewExplorationPhase" event to reset player health to full
+/// See <see cref="InteractableItem"/> - Publishing "ResetWorldItemsActiveness" event to reset the activeness of certain game objects 
+/// See <see cref="ExplorationTimer"/> - Publishing "PauseExplorationTimer" event to pause exploration timer's countdown
 /// 
-/// See <see cref="GameManager"/> - Show end game dialogue, change lights on decorative moon statues, illuminate streetlights and/or
-/// set third corrioson zone's values
+/// See <see cref="SafeZone"/> - Publishing "NewMoonFragmentObtained" event to destroy game object attached to "SafeZone" script based on conditions
+/// See <see cref="FirstSafeZone"/> - Publishing "NewMoonFragmentObtained" event to destroy game object attached to "SafeZone" script based on conditions
+/// See <see cref="CorriosonZone"/> - Publishing "NewMoonFragmentObtained" event to destroy game object attached "CorriosonZone" script 
+/// based on conditions and change corrioson zones
 /// 
-/// See <see cref="MoonTextAdventureButton"/> - Setting the next question dialogue to be said 
-/// after all the current question's dialogue has been said and allowing access to public variables and methods
+/// See <see cref="MoonVisibility"/> - Publishing "NewMoonFragmentObtained" event to light up a moon fragment of moon statue, 
+/// and publishing "MakeMoonStatueSpin" event to spin the moon of the moon statue and/or display dialogue on dialogue UI layered ontop of main player UI
+/// 
+/// See <see cref="GameManager"/> - Publishing "CompletedAllMoonPuzzles" event to show end game dialogue, and
+/// publishing ""NewMoonFragmentObtained"" event to change lights on decorative moon statues and illuminate streetlights and/or set third corrioson zone's values
+/// 
+/// See <see cref="MoonTextAdventureButton"/> - Publishing "SetMoonPuzzleQuestions" event to set the next question dialogue to be said 
+/// "MoonTextAdventureButton" is designed to be on decision buttons that are on the same game object as this script 
+/// to have access to this script's public variables and methods
 /// 
 /// </remarks>
 
@@ -123,7 +128,7 @@ public class MoonPuzzleDialogueText : MonoBehaviour
 
     void Start()
     {
-        EventBus.Instance.Subscribe<StartNewTextAdventure>(StartTextAdventure);
+        EventBus.Instance.Subscribe<StartNewTextAdventure>(PreperationForFirstDialogueOfTextAdventure);
         EventBus.Instance.Subscribe<AdvanceThroughTextAdventure>(NextTextAdvetureDialogue);
 
         _fullHeartSprite = heartImage.sprite;
@@ -205,8 +210,8 @@ public class MoonPuzzleDialogueText : MonoBehaviour
         StartCoroutine(TypeMessage(_currentQuestionDialogue.Messages[_index]));
     }
 
-    //Choose correct moon puzzle branch (correct moon puzzle dialogue), assign first moon puzzle dialogue question and prompt to type out question
-    private void StartTextAdventure(StartNewTextAdventure startNewTextAdventure) //Published by "CanvasManager"
+    //"StartNewTextAdventure" is the name of an event. Empty event
+    private void PreperationForFirstDialogueOfTextAdventure(StartNewTextAdventure startNewTextAdventure) //Published by "CanvasManager"
     {
         _concludeMoonPuzzle = false;
         WrongButtonChoicesCounter = 0;
@@ -219,8 +224,8 @@ public class MoonPuzzleDialogueText : MonoBehaviour
         StartCoroutine(TypeMessage(_currentQuestionDialogue.Messages[_index]));
     }
 
-    //Iterating through moon puzzle's branch's dialogue messages. Published by "PlayerInputController"
-    private void NextTextAdvetureDialogue(AdvanceThroughTextAdventure advanceThroughTextAdventure) 
+    //"AdvanceThroughTextAdventure" is the name of an event. Empty event
+    private void NextTextAdvetureDialogue(AdvanceThroughTextAdventure advanceThroughTextAdventure) //Published by "PlayerInputController"
     {
         if(_finishedTypingMessage != true || _doNotRepeat == true || _failedMoonPuzzle == true)
             return;

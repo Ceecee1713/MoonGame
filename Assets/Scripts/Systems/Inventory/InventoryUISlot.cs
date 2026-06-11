@@ -14,17 +14,21 @@ using TMPro;
 /// and on the same game object as "InventoryUI" as public variables and methods are to be referenced by that script
 /// 
 /// This script works together with the "InventoryUI", "PlayerSpawner", "ChestUI" scripts
-/// See <see cref="ChestUI"/> and how they interact with each other - add inventory item into chest's inventory
-/// See <see cref="InventoryUI"/> and how they interact with each other -  Select inventory slot, add inventory item, and remove slot's inventory item 
+/// See <see cref="ChestUI"/> - add inventory item into chest's inventory
+/// See <see cref="InventoryUI"/> -  Accessing public methods and variables from this script
 /// through publishing "SelectInventoryItem" and "RemoveItemFromSlot" events
 /// 
-/// See <see cref="PlayerSpawner"/> for how inventory items are instantiated when they're dropped and have exited player's inventory - publishing the "SpawnDroppedInventoryItem" event
+/// See <see cref="PlayerSpawner"/> for how inventory items are instantiated when they're dropped 
+/// and have exited player's inventory - publishing the "SpawnDroppedInventoryItem" event
 /// 
 /// "ChestSlot" acts similarily to this script with how visuals are managed and setting of inventory items
 /// Make sure they both function the same
 /// See <see cref="ChestSlot"/> for how they function similarily.
 /// 
 /// See <see cref="InventoryItemTypes"/> for what makes up an inventory item and how inventory UI slots are made up.
+/// 
+/// This script works with multiple other scripts that publish and subscribe to "ActivatePlayerInputs" event
+/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
 /// 
 /// </remarks>
 
@@ -91,12 +95,18 @@ public class InventoryUISlot : MonoBehaviour, IPointerClickHandler
         }
     }
 
+    //Receives a "ChestIsOpen" event with parameters:
+    //(bool) IsAChestOpen - (true = a chest has been opened by player interaction, 
+    //false = a chest has NOT been opened by player interaction).
     private void ChangeInput(ChestIsOpen chestIsOpen) //Published by "ChestInteraction" 
     {
         _isAChestOpen = chestIsOpen.IsAChestOpen;
     }
 
-    private void AllowPlayerInput(ActivatePlayerInputs activatePlayerInputs)
+    //Receives a "ActivatePlayerInputs" event with parameters:
+    //(bool) AllowInputs - (true = allow the player to interact with world objects and UI, 
+    //false = do NOT allow the player to interact with world objects and UI).
+    private void AllowPlayerInput(ActivatePlayerInputs activatePlayerInputs) //Multiple publishers and subscribers
     {
         _allowInput = activatePlayerInputs.AllowInputs;
     }

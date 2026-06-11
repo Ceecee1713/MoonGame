@@ -11,11 +11,21 @@ using TMPro;
 /// 
 ///  See <see cref="StorytellingDialogueData"/> for how each individual storytelling dialogue is set up. 
 /// 
-/// This script works together with the "PlayerInputController", "ExplorationTimer", "PlayerHealth", "GoalText" scripts
-/// See <see cref="PlayerInputController"/> - Listening to "AdvanceDialogueOnMainUI" and "TypeDialogueOnMainUI" events that "PlayerInputController" publishes
-/// See <see cref="ExplorationTimer"/> - Pause/unpause exploration timer countdown
-/// See <see cref="PlayerHealth"/> - Maintaining / not maintain player health
-/// See <see cref="GoalText"/> - Display the beginning goal text when you start the game
+/// This script works together with the "PlayerInputController", "ExplorationTimer", "PlayerHealth", "GoalText", "PlayerStateMachine" scripts
+/// See <see cref="PlayerInputController"/> - Listening to "AdvanceDialogueOnMainUI" that "PlayerInputController" publishes to advance dialogue, 
+/// and "TypeDialogueOnMainUI" events that "PlayerInputController" publishes
+/// 
+/// 
+/// See <see cref="ExplorationTimer"/> - Publishing "PauseExplorationTimer" to pause/unpause exploration timer countdown
+/// See <see cref="PlayerHealth"/> - Publishing "MaintainPlayerHealth" to maintain / not maintain player's current health
+/// See <see cref="GoalText"/> - Publishing "ShowBeginnerGoal" to display the beginning goal text when you start the game
+/// See <see cref="PlayerStateMachine"/> - Publishing "FreezePlayer" to unfreeze the player
+/// 
+/// This script works with multiple other scripts that publish "TypeDialogueOnMainUI"
+/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
+/// 
+/// This script works with multiple other scripts that publish and subscribe to "ActivatePlayerInputs"
+/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
 /// 
 /// </remarks>
 
@@ -69,6 +79,7 @@ public class DialogueCanvas : MonoBehaviour
         _index = 0;
     }
 
+    //"AdvanceDialogueOnMainUI" is the name of an event. Empty event
     private void FinishMessage(AdvanceDialogueOnMainUI advanceDialogueOnMainUI) //Published by "PlayerInputController"
     {
         if(_finishedTypingMessage != true)
@@ -76,15 +87,14 @@ public class DialogueCanvas : MonoBehaviour
 
         if(_index+1 == _dialogueArrayLength)
         {
-            EventBus.Instance.Publish(new FreezePlayer(false));
+            EventBus.Instance.Publish(new FreezePlayer(false)); //Publish to "PlayerStateMachine"
             EventBus.Instance.Publish(new MaintainPlayerHealth(false)); //Publish to "PlayerHealth"
 
             if(_newExplorationPhase == true || _startingTheGame == true)
             {
                 EventBus.Instance.Publish(new ResetExplorationTimer()); //Publish to "ExplorationTimer"
-                EventBus.Instance.Publish(new ActivatePlayerInputs(ALLOW_PLAYER_INPUTS));
+                EventBus.Instance.Publish(new ActivatePlayerInputs(ALLOW_PLAYER_INPUTS)); //Multiple subscribers and publishers
             }
-                
 
             if(_startingTheGame == true)
                 EventBus.Instance.Publish(new ShowBeginnerGoal()); //Publish to "GoalText"
@@ -100,7 +110,13 @@ public class DialogueCanvas : MonoBehaviour
         StartCoroutine(TypeMessage(_currentDialogue.Messages[_index]));
     }
 
-    private void DisplayMessage(TypeDialogueOnMainUI typeDialogueOnMainUI) //Published by "PlayerInputController"
+    //Receives a "TypeDialogueOnMainUI" event with parameters:
+    //(StorytellingDialogueData) Dialogue - dialogue to advance through and display
+    //(bool) NewExplorationPhase - (true = it's a new exploration phase, 
+    //false = it is NOT a new exploration phase).
+    //(bool) StartingTheGame - (true = it's the start of the game,
+    //false = it is NOT the start of the game).
+    private void DisplayMessage(TypeDialogueOnMainUI typeDialogueOnMainUI) //Multiple publishers
     {
         _newExplorationPhase = typeDialogueOnMainUI.NewExplorationPhase;
         _startingTheGame = typeDialogueOnMainUI.StartingTheGame;

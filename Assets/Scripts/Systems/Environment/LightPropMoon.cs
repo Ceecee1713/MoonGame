@@ -9,7 +9,7 @@ using UnityEngine;
 /// This script will also be disabled as it only needs to serve one small minor purpose
 /// 
 /// This script works together with the "GameManager" script
-/// See <see cref="GameManager"/> for how they work together - publishing the "NewAreaChange" event this script listens to
+/// See <see cref="GameManager"/> - Listening to "NewAreaChange" event that "GameManager" publishes to change moon material and stop moon sparkles particles
 /// 
 /// </remarks>
 
@@ -58,6 +58,8 @@ public class LightPropMoon : MonoBehaviour
     }
 
     //Swap materials, stop the particle effects and disable this script
+    //Receives a "NewAreaChange" event with parameters:
+    //(int) "AreaChangesCount" - number tracking how many areas have been completed 
     private void LightUpMoon(NewAreaChange newAreaChange) //Published by "GameManager" when a moon puzzle has been completed
     {
         if(newAreaChange.AreaChangesCount == areaNumber)

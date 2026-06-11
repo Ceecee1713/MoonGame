@@ -10,12 +10,13 @@ using TMPro;
 /// This script works closely with "CraftManager" script for it to run through each material and see 
 /// if the player's inventory has the right amount of that particular material to decipher a clue. 
 /// This script also works closely with the "GameManager" script to get a public variable's value only.
-/// See <see cref="CraftManager"/> for how they work together 
-/// See <see cref="GameManager"/> for how they work together - syncing values (GameManager's "AreaChangesCount" variable and this script's "newMoonPuzzleIndex")
+/// See <see cref="CraftManager"/> - Accessing "CraftManager" public methods
+/// See <see cref="GameManager"/> - syncing values (GameManager's "AreaChangesCount" variable and this script's "newMoonPuzzleIndex")
 /// 
-/// See <see cref="CluebookManager"/> for how these two scripts work together - this script prompting the "CheckForCompleteClues" event for "CluebookManager"
+/// See <see cref="CluebookManager"/> - Publishing "CheckForCompleteClues" event to check for any completed, gibberish clues
 /// 
-/// The crafting materials change as more moon puzzle areas are solved, which they are updated in methods: "CheckToSwitchMaterials" and "UpdateMaterialDescriptionText"
+/// In this script, the crafting materials change as more moon puzzle areas are solved, 
+/// which they are updated in methods: "CheckToSwitchMaterials" and "UpdateMaterialDescriptionText"
 /// 
 /// This script is designed to be on a button game object 
 /// This script should be on the same game object as the "CraftManager", so it can directly access any of CraftManager's public methods

@@ -4,6 +4,25 @@ using System.Collections.Generic;
 using StateMachine;
 using UnityEngine;
 
+/// <summary>
+/// Manages the player's movement and states
+/// </summary>
+/// 
+/// <remarks>
+/// This scripts works together with "InventoryUI", "MoonPuzzleDialogueText", "StorytellingDialogueText" scripts
+/// See <see cref="InventoryUI"/> - Listening to "SpeedUpPlayer" event that "InventoryUI" publishes to speed up player or not
+/// See <see cref="MoonPuzzleDialogueText"/> -  Listening to "NewExplorationPhase" event that "MoonPuzzleDialogueText" publishes to move player back to a set position
+/// See <see cref="StorytellingDialogueText"/> - Listening to "NewExplorationPhase" event that "MoonPuzzleDialogueText" publishes to move player back to a set position
+/// 
+/// This script inherits from "BaseStateMachine" as the player uses a state machine and states
+/// See <see cref="BaseStateMachine"/> for how the state machine is structured
+/// See <see cref="PlayerState"/> for how each player state is structured
+/// 
+/// This script works with multiple other scripts that publish "FreezePlayer"
+/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
+/// 
+/// </remarks>
+
 public class PlayerStateMachine : BaseStateMachine
 {
     public Transform mainCamera;
@@ -89,7 +108,8 @@ public class PlayerStateMachine : BaseStateMachine
         EventBus.Instance.Subscribe<NewExplorationPhase>(StartNewExplorationPhase);
     }
 
-    private void StartNewExplorationPhase(NewExplorationPhase newExplorationPhase)
+    //"NewExplorationPhase" is the name of an event. Empty event
+    private void StartNewExplorationPhase(NewExplorationPhase newExplorationPhase) //Published by "MoonPuzzleDialogueText" or "StorytellingDialogueText"
     {
         this.gameObject.transform.position = _moonStatuePosition; 
     }
@@ -101,7 +121,10 @@ public class PlayerStateMachine : BaseStateMachine
         PlayerDirection = new Vector3(_playerMovement.x, 0f, _playerMovement.y).normalized;
     }
 
-    private void FreezePlayer(FreezePlayer freezePlayer)
+    //Receives a "FreezePlayer" event with parameters:
+    //(bool) PausePlayerMovement - (true = allow the player to move, 
+    //false = do NOT allow the player to move)
+    private void FreezePlayer(FreezePlayer freezePlayer) //Multiple publishers
     {
         if(freezePlayer.PausePlayerMovement == true)
             StateChange(PausedState);
@@ -109,7 +132,8 @@ public class PlayerStateMachine : BaseStateMachine
             StateChange(IdleState);
     }
 
-    private void AllowToSpeedUpPlayer(SpeedUpPlayer speedUpPlayer)
+    //"SpeedUpPlayer" is the name of an event. Empty event
+    private void AllowToSpeedUpPlayer(SpeedUpPlayer speedUpPlayer) //Published by "InventoryUI"
     {
         _speedUpPlayer = true;
     }
@@ -189,7 +213,7 @@ public class PlayerStateMachine : BaseStateMachine
             StartCoroutine(SpeedChange(0.0f));
     }
 
-    IEnumerator SpeedChange(float targetSpeed) 
+    private IEnumerator SpeedChange(float targetSpeed) 
     {
         float elapsedTime = 0;
 

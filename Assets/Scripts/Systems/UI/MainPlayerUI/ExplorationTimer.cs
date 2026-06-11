@@ -8,13 +8,16 @@ using TMPro;
 /// 
 /// <remarks>
 /// This script is to be attached to a textmeshproUGUI that'll be acting as the display for timer text
-/// This script is to be on the same game object that "ExplorationTimer" is on since they'll both be on the main player UI.
-/// This script directly references "ExplorationTimer"
 /// 
 /// See <see cref="CorriosonValues"/> for how the different speed values that can be given to the corrioson zones to drop player's health
 /// 
-/// This script works together with scripts: "CorriosonZone" 
-/// See <see cref="CorriosonZone"/> - Changing the speed of how fast corrioson zones drop player's health
+/// This script works together with scripts: "CorriosonZone", "StorytellingDialogueText", "DialogueCanvas"
+/// See <see cref="CorriosonZone"/> - Publishing "ChangeCorriosonValue" event to change the speed of how fast corrioson zones drop player's health
+/// See <see cref="StorytellingDialogueText"/> - Listening to "ResetExplorationTimer" event that "StorytellingDialogueText" published to reset exploration timer countdown
+/// See <see cref="DialogueCanvas"/> - Listening to "ResetExplorationTimer" event that "DialogueCanvas" published to reset exploration timer countdown
+/// 
+/// This script works with multiple other scripts that publish "PauseExplorationTimer"
+/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
 /// 
 /// </remarks>
 
@@ -77,12 +80,12 @@ public class ExplorationTimer : MonoBehaviour
         timerText.text = string.Format("{0:00}:{1:00}", _minutes, _seconds);
     }
 
-    private void PauseTimerCountdown(PauseExplorationTimer pauseExplorationTimer) 
+    private void PauseTimerCountdown(PauseExplorationTimer pauseExplorationTimer) //Multiple publishers
     {
         _doNotAllowTimerToCountDown = pauseExplorationTimer.AllowCountdown;
     }
 
-    private void ResetTimer(ResetExplorationTimer resetExplorationTimer)
+    private void ResetTimer(ResetExplorationTimer resetExplorationTimer) //Published by "StorytellingDialogueText" or "DialogueCanvas"
     {
         RemainingTime = maxDurationOfExplorationPhaseInSeconds;
         _doNotAllowTimerToCountDown = false;

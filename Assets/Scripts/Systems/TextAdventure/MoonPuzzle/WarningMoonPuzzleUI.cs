@@ -11,11 +11,11 @@ using TMPro;
 /// This script is to be attached to the UI screen that asks and warns the player about entering a moon puzzle text adventure.
 /// This UI will consist of an accept and reject button to either proceed to the moon puzzle text adventure UI or not
 /// This script works together with the accept button script
-/// See <see cref="AcceptButton"/> for how they work together - accessing public methods as they're on the same game object
+/// See <see cref="AcceptButton"/> - accessing public methods as they're on the same game object
 /// 
 /// This script also works together with "MoonPuzzleArea" 
-/// See <see cref="MoonPuzzleArea"/> for how they work together - publishing "StopMoonPuzzleAreaAudio" and 
-/// listening to "OpenTextAdventureUI" that "MoonPuzzleArea" script publishes.
+/// See <see cref="MoonPuzzleArea"/> - Publishing "StopMoonPuzzleAreaAudio" to stop audio of the current moon puzzle area, 
+/// and listening to "OpenTextAdventureUI" that "MoonPuzzleArea" script publishes to display warning moon puzzle UI
 /// 
 /// This UI screen will be set active by the "MoonPuzzleArea" script 
 /// 
@@ -35,7 +35,7 @@ public class WarningMoonPuzzleUI : MonoBehaviour
 
     void Start()
     {
-        EventBus.Instance.Subscribe<OpenTextAdventureUI>(DisplayButtonOptions);
+        EventBus.Instance.Subscribe<OpenWarningMoonPuzzleUI>(DisplayButtonOptions);
         this.gameObject.SetActive(false);
     }
     
@@ -49,9 +49,11 @@ public class WarningMoonPuzzleUI : MonoBehaviour
         acceptButton.SetActive(false);
     }
 
-    private void DisplayButtonOptions(OpenTextAdventureUI openTextAdventureUI) //Published by "MoonPuzzleArea"
+    //Receives a "OpenWarningMoonPuzzleUI" event with parameters:
+    //(int) CurrentMoonPuzzleAreaNumber - number of the current moon puzzle area player is in
+    private void DisplayButtonOptions(OpenWarningMoonPuzzleUI openWarningMoonPuzzleUI) //Published by "MoonPuzzleArea"
     {
-        _currentMoonPuzzleAreaNumber = openTextAdventureUI.CurrentMoonPuzzleAreaNumber;
+        _currentMoonPuzzleAreaNumber = openWarningMoonPuzzleUI.CurrentMoonPuzzleAreaNumber;
         declineButton.SetActive(true);
         acceptButton.SetActive(true);
     }

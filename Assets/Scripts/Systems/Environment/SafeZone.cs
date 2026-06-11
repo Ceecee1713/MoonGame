@@ -6,10 +6,13 @@ using UnityEngine;
 /// 
 /// <remarks>
 /// Safe Zones are the OnTrigger collisions that'll raise the player's health continuously.
+/// This script works similarily to SafeZone with both being collisions that'll raise the player's health continuously.
+/// See <see cref="FirstSafeZone"/> for similarities and make sure they both work the same
 /// 
-/// This script works together with "PlayerHealth" and "MoonPuzzleDialogueText" scripts
-/// See <see cref="PlayerHealth"/> for how they work together - prompting to raise the player's health
-/// See <see cref="MoonPuzzleDialogueText"/> for how they work together - publishing the "NewMoonFragmentObtained" event this script listens to
+/// This script works together with "PlayerHealth",  "MoonPuzzleDialogueText", "DialogueCanvas", "PlayerStateMachine" scripts
+/// See <see cref="PlayerHealth"/> - Publishing "AlterPlayerHealth" to raise the player's health
+/// See <see cref="MoonPuzzleDialogueText"/> - Listening to "NewMoonFragmentObtained" event that "MoonPuzzleDialogueText" publishes to change safe zone 
+/// areas in the same area and delete the current safe zone in the area
 /// 
 /// </remarks>
 
@@ -38,7 +41,7 @@ public class SafeZone : MonoBehaviour
             EventBus.Instance.Unsubscribe<NewMoonFragmentObtained>(SetNewSafeZoneCollision);
     }
 
-    //Destroy the Game Object attached to this script and set the replacement safe zone for the same area active
+    //"NewMoonFragmentObtained" is the name of an event. Empty event
     private void SetNewSafeZoneCollision(NewMoonFragmentObtained newMoonFragmentObtained) //Published by "MoonPuzzleDialogueText"
     {
         if(nextSafeZoneArea != null)

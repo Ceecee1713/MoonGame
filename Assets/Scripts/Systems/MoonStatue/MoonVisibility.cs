@@ -8,9 +8,11 @@ using UnityEngine;
 /// <remarks>
 /// This scripts works together with the "MoonPuzzleDialogueText", "GameManager", DialogueCanvas" scripts
 /// 
-/// See <see cref="MoonPuzzleDialogueText"/> for how they work together - how material swapping is prompted 
-/// See <see cref="DialogueCanvas"/> for how they work together - show dialogue on the main player UI
-/// See <see cref="GameManager"/> for how they work together - switching to the storytelling UI canvas
+/// See <see cref="MoonPuzzleDialogueText"/> - Listening to "MakeMoonStatueSpin" event that "MoonPuzzleDialogueText" publishes to spin the moon statue and start moon sparkles particles 
+/// and listening to "ObtainedNewMoonFragment" event that "MoonPuzzleDialogueText" publishes to swap materials on moon statue 
+/// 
+/// See <see cref="DialogueCanvas"/> - Publishing "TypeDialogueOnMainUI" event to show dialogue on the main player UI
+/// See <see cref="GameManager"/> - Listening to "StopMoonStatueSpin" that "GameManager" publishes to stop moon statue spinning and stop moon sparkles particles
 /// 
 /// See <see cref="StorytellingDialogueData"/> for how dialogue messages are structured.
 /// 
@@ -60,6 +62,7 @@ public class MoonVisibility : MonoBehaviour
         moonSparkles.Stop();
     }
     
+    //"MakeMoonStatueSpin" is the name of an event. Empty event
     private void MakeMoonStatueSpin(MakeMoonStatueSpin makeMoonStatueSpin) //When all three moon puzzles are complete. Published by "MoonPuzzleDialogueText"
     {
         moonCamera.enabled = true;
@@ -68,6 +71,7 @@ public class MoonVisibility : MonoBehaviour
         moonSparkles.Play();
     }
 
+    //"StopMoonStatueSpin" is the name of an event. Empty event
     private void StopMoonStatueSpinAndSparkles(StopMoonStatueSpin stopMoonStatueSpin) //Published by "GameManager"
     {
         moonCamera.enabled = false;
@@ -76,7 +80,7 @@ public class MoonVisibility : MonoBehaviour
         moonSparkles.Stop();
     }
 
-    //Swap moon fragment material and or show the moon dialogue on top of the dialogue canvas UI
+    //"NewMoonFragmentObtained" is the name of an event. Empty event
     private void ObtainedNewMoonFragment(NewMoonFragmentObtained newMoonFragmentObtained) //Published by "MoonPuzzleDialogueText"
     {
         if(_moonCounter >= moonFragments.Length)

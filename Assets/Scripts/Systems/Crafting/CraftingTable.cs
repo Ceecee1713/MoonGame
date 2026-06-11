@@ -6,9 +6,14 @@ using UnityEngine;
 /// </summary>
 /// 
 /// <remarks>
-/// This script works closely with "PlayerInputController" and "ExplorationTimer" scripts 
-/// See <see cref="PlayerInputController"/> for how they work together - prompting Interact event that this script listens to
-/// See <see cref="ExplorationTimer"/> for how they work together - pausing the exploration timer countdown
+/// 
+/// This script works closely with "PlayerInputController", "InventoryUI", "ExplorationTimer" scripts 
+/// See <see cref="PlayerInputController"/> - Listening to "Interact" event that "PlayerInputController" publishes
+/// See <see cref="InventoryUI"/> - Publishing "PreventPlayerInteractingWithInventory" to prevent/allow player to interact with player inventory
+/// See <see cref="ExplorationTimer"/> - Publishing "PauseExplorationTimer" to pause exploration timer countdown
+/// 
+/// This script works with multiple other scripts that subscribe and publish "ActivatePlayerInputs" event. 
+/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
 /// 
 ///</remarks>
 
@@ -27,11 +32,15 @@ public class CraftingTable : MonoBehaviour
         EventBus.Instance.Subscribe<ActivatePlayerInputs>(AllowPlayerInput);
     }
 
-    private void AllowPlayerInput(ActivatePlayerInputs activatePlayerInputs)
+    //Receives a "ActivatePlayerInputs" event with parameters:
+    //(bool) AllowInputs - (true = allow the player to interact with world objects and UI, 
+    //false = do NOT allow the player to interact with world objects and UI).
+    private void AllowPlayerInput(ActivatePlayerInputs activatePlayerInputs) //Mulitple publishers
     {
         _allowInput = activatePlayerInputs.AllowInputs;
     }
 
+    //"Interact" is the name of an event. Empty event
     private void OpenCraftingUI(Interact interact) //When player interacts with this game object. Published by "PlayerInputController"
     {
         if(_allowInput == false)
@@ -40,7 +49,7 @@ public class CraftingTable : MonoBehaviour
         if(_playerStayingInCollision == true)
         {
             craftingUI.SetActive(true);
-            EventBus.Instance.Publish(new FreezePlayer(true));
+            EventBus.Instance.Publish(new FreezePlayer(true)); //Publish to "PlayerStateMachine"
             EventBus.Instance.Publish(new PauseExplorationTimer(true)); //Publish to "ExplorationTimer"
         }
     }
@@ -50,7 +59,7 @@ public class CraftingTable : MonoBehaviour
         if (collider.gameObject.CompareTag("Player"))
         {
             _playerInCollision = true;
-            EventBus.Instance.Publish(new InCollision(_playerInCollision));
+            EventBus.Instance.Publish(new PreventPlayerInteractingWithInventory(_playerInCollision)); //Publish to "InventoryUI"
         }
     }
 
@@ -66,7 +75,7 @@ public class CraftingTable : MonoBehaviour
         {
             _playerInCollision = false;
             _playerStayingInCollision = false; 
-            EventBus.Instance.Publish(new InCollision(_playerInCollision));
+            EventBus.Instance.Publish(new PreventPlayerInteractingWithInventory(_playerInCollision)); //Publish to "InventoryUI"
         }
     }
 }

@@ -5,12 +5,17 @@ using UnityEngine;
 /// </summary>
 /// 
 /// <remarks>
-/// This scripts works together with the "DialogueCanvas", "CanvasManager", "PlayerInputController" scripts
-/// See <see cref="DialogueCanvas"/> for how they work together - show dialogue on the main player UI
-/// See <see cref="CanvasManager"/> for how they work together - switching to the storytelling UI canvas
-/// See <see cref="PlayerInputController"/> for how they work together - prompting the "Interact" event this script listens to
+/// This scripts works together with the "DialogueCanvas", "CanvasManager", "PlayerInputController", "PlayerStateMachine", "InventoryUI" scripts
+/// See <see cref="DialogueCanvas"/> - Publishing "TypeDialogueOnMainUI" event show dialogue on the main player UI
+/// See <see cref="CanvasManager"/> - Publishing "ChangeCanvases" event to switch to the storytelling UI canvas and prompting to show first message of prayer dialogue on storytelling UI
+/// See <see cref="PlayerInputController"/> - Listening to the "Interact" event that "PlayerInputController" publishes
+/// See <see cref="PlayerStateMachine"/> - Publishing "FreezePlayer" event to freeze player
+/// See <see cref="InventoryUI"/> - Publishing "PreventPlayerInteractingWithInventory" event prevent/allow the player to interact with the inventory
 /// 
 /// See <see cref="StorytellingDialogueData"/> for how dialogue messages are structured.
+/// 
+/// This script works with multiple other scripts that subscribe and publish "ActivatePlayerInputs" event. 
+/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
 /// 
 /// </remarks>
 
@@ -44,11 +49,15 @@ public class PrayToMoonStatue : MonoBehaviour
         EventBus.Instance.Subscribe<ActivatePlayerInputs>(AllowPlayerInput);
     } 
 
-    private void AllowPlayerInput(ActivatePlayerInputs activatePlayerInputs)
+    //Receives a "ActivatePlayerInputs" event with parameters:
+    //(bool) AllowInputs - (true = allow the player to interact with world objects and UI, 
+    //false = do NOT allow the player to interact with world objects and UI).
+    private void AllowPlayerInput(ActivatePlayerInputs activatePlayerInputs) //Multiple publishers and subscribers
     {
         _allowInput = activatePlayerInputs.AllowInputs;
     }
 
+    //"Interact" is the name of an event. Empty event
     private void OpenStorytellingUI(Interact interact) //When player interacts with this game object. Published by "PlayerInputController"
     {
         if(_interactedOnce == true || _allowInput == false)
@@ -63,14 +72,15 @@ public class PrayToMoonStatue : MonoBehaviour
                 _showMoonTutorial = true;
                 dialogueUI.SetActive(true);
                 
-                EventBus.Instance.Publish(new FreezePlayer(true));
+                EventBus.Instance.Publish(new FreezePlayer(true)); //Publish to "PlayerStateMachine"
                 EventBus.Instance.Publish(new TypeDialogueOnMainUI(moonStatueTutorialDialogue, NEW_EXPLORATION_PHASE, STARTING_THE_GAME)); //Publish to "DialogueCanvas"
                 return;
             }
 
             _interactedOnce = true;
-            EventBus.Instance.Publish(new FreezePlayer(true));
+            EventBus.Instance.Publish(new FreezePlayer(true)); //Publish to "PlayerStateMachine"
             EventBus.Instance.Publish(new ChangeCanvases(storytellingUI, START_MOON_PUZZLE, START_PRAYER_PHASE)); //Publish to "CanvasManager"
+            //Prompt first message of prayer dialogue to show when praying to the Moon Statue on storytelling UI
         }
     }
 
@@ -79,7 +89,7 @@ public class PrayToMoonStatue : MonoBehaviour
         if (collider.gameObject.CompareTag("Player"))
         {
             _playerCollisionDetected = true;
-            EventBus.Instance.Publish(new InCollision(_playerCollisionDetected));
+            EventBus.Instance.Publish(new PreventPlayerInteractingWithInventory(_playerCollisionDetected)); //Publish to "InventoryUI"
         }  
     }
 
@@ -89,7 +99,7 @@ public class PrayToMoonStatue : MonoBehaviour
         {
             _playerCollisionDetected = false; 
             _interactedOnce = false;
-            EventBus.Instance.Publish(new InCollision(_playerCollisionDetected));
+            EventBus.Instance.Publish(new PreventPlayerInteractingWithInventory(_playerCollisionDetected)); //Publish to "InventoryUI"
         }
     }
 }

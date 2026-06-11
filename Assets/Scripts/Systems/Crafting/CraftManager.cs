@@ -17,12 +17,17 @@ using UnityEngine;
 /// and solving clues are left to the "InventoryUI" and "CluebookManager" respectively
 /// 
 /// This script works closely with "CraftButton", "DecipherClueButton", "CluebookManager", "InventoryUI" scripts
-/// See <see cref="CraftButton"/> for how they work together - "CraftButton" accessing multiple of this script's methods
-/// See <see cref="DecipherClueButton"/> for how they work together - "DecipherClueButton" accessing multiple of this script's methods
-/// See <see cref="CluebookManager"/> for how they work together - Publishing AllowToCraftClue event this script listens to and prompting to decipher a clue
-/// See <see cref="InventoryUI"/> for how items are removed from inventory, added into inventory and currently held inventory items' quantities are adjusted.
+/// See <see cref="CraftButton"/> - "CraftButton" accessing multiple of this script's public methods
+/// See <see cref="DecipherClueButton"/> - "DecipherClueButton" accessing multiple of this script's public methods
+/// See <see cref="CluebookManager"/> - Listening to "AllowToCraftClue" event that "CluebookManager" publishes to know if this script can craft a clue
+/// See <see cref="InventoryUI"/> - Publishing "AdjustInventorySlotItemQuantity" to change inventory items' quantities in player inventory, 
+/// Publishing "RemoveUsedMaterials" to remove inventory items in player inventory 
+/// Publishing "AddItemToInventory" to add an inventory item into player inventory
 /// 
 /// See <see cref="InventoryData"/> for what the collection is made up of
+/// 
+/// This script works with multiple other scripts that subscribe and publish "ActivatePlayerInputs" event. 
+/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
 /// 
 ///</remarks>
 
@@ -71,13 +76,13 @@ public class CraftManager : MonoBehaviour
     void OnEnable()
     {
         _allowPlayerInputs = false;
-        EventBus.Instance.Publish(new ActivatePlayerInputs(_allowPlayerInputs));
+        EventBus.Instance.Publish(new ActivatePlayerInputs(_allowPlayerInputs)); //Multiple subscribers
     }
 
     void OnDisable()
     {
         _allowPlayerInputs = true;
-        EventBus.Instance.Publish(new ActivatePlayerInputs(_allowPlayerInputs));
+        EventBus.Instance.Publish(new ActivatePlayerInputs(_allowPlayerInputs)); //Multiple subscribers
 
         StopAllCoroutines();
     }
@@ -102,6 +107,16 @@ public class CraftManager : MonoBehaviour
         _amountOfAnInventoryItemNeeded = 0;
     }
 
+    /*
+    public AllowToCraftClue(bool avaliableClueToDecipher) 
+    {
+        AvaliableClueToDecipher = avaliableClueToDecipher;
+    }
+    */
+
+    //Receives a "AllowToCraftClue" event with parameters:
+    //(bool) "AvaliableClueToDecipher" - (true = there's a completed, gibberish clue inside cluebook
+    //false = there is NOT a completed, gibberish clue inside cluebook)
     private void CheckToMakeClue(AllowToCraftClue allowToCraftClue) //Published by "CluebookManager". Step Zero
     {
         _allowCraftingForClue = allowToCraftClue.AvaliableClueToDecipher;
@@ -118,6 +133,7 @@ public class CraftManager : MonoBehaviour
         if(_notEnoughItemQuantity == true)
             return;
         
+        //Reset
         _quantityRemaining = false;
         _remainingQuantity = 0;
         _amountOfAnInventoryItemNeeded = 0;
@@ -226,7 +242,7 @@ public class CraftManager : MonoBehaviour
         _moveToNextMaterial = true; //Move onto next crafting material (back to Step One)
     }
 
-    //Mark an inventory item to be removed (item is removed in "InventoryUI")
+    //Mark an inventory item to be removed 
     private void MarkItemForRemoval(int slotIndex)
     {
         _amountOfFullStacksPerMaterialToRemove.Add(_amountOfAnInventoryItemNeeded);

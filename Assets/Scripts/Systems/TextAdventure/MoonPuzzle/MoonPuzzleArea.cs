@@ -9,10 +9,21 @@ using UnityEngine;
 /// <remarks>
 /// See <see cref="InventoryItemTypes"/> for what makes up an inventory item and how inventory UI slots are made up.
 /// 
-/// This script works together with the "InventoryUI", "PlayerInputController", "PlayerSpawner" scripts
-/// See <see cref="InventoryUI"/> for how they work together - Adding the inventory item to player inventory
-/// See <see cref="PlayerInputController"/> for how they work together - publishing the Interact event this script listens to
-/// See <see cref="PlayerSpawner"/> for how they work together - Instantiating an inventory item
+/// This script works together with the scripts: 
+/// "WarningMoonPuzzleUI", "PlayerInputController", "PlayerStateMachine", "PlayerHealth" , "ExplorationTimer" , "InventoryUI"
+/// 
+/// See <see cref="WarningMoonPuzzleUI"/> - Listening to "StopMoonPuzzleAreaAudio" event "WarningMoonPuzzleUI" to
+/// prompt fading of audio of the moon puzzle area 
+/// and publishing "OpenTextAdventureUI" to "WarningMoonPuzzleUI" to display the warning UI before starting the moon puzzle text adventure
+/// 
+/// See <see cref="PlayerInputController"/> - Listening to "Interact" event that "PlayerInputController" publishes
+/// See <see cref="PlayerStateMachine"/> - Publishing "FreezePlayer" event to prompt freezing a player
+/// See <see cref="PlayerHealth"/> - Publishing "MaintainPlayerHealth" event to prompt maintaining player's current health
+/// See <see cref="ExplorationTimer"/> - Publishing "PauseExplorationTimer" event to prompt pausing exploration timer countdown
+/// See <see cref="InventoryUI"/> - Publishing "PreventPlayerInteractingWithInventory" event to prompt allowing/preventing player input with the inventory system
+/// 
+/// This script works with multiple other scripts that publish and subscribe to "ActivatePlayerInputs"
+/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
 /// 
 /// </remarks>
 
@@ -37,10 +48,6 @@ public class MoonPuzzleArea : MonoBehaviour
     private bool _playerCollisionDetected = false; //Flags if the player is inside this item's collision to be interacted with
 
     private const float DESIRED_VOLUME = 0.0f;
-
-    private const bool START_MOON_PUZZLE = true;
-    
-    private const bool START_PRAYER_PHASE = false;
 
     void Start()
     {
@@ -73,6 +80,8 @@ public class MoonPuzzleArea : MonoBehaviour
         }
     }
 
+    //Receives a "StopMoonPuzzleAreaAudio" event with parameters:
+    //(int) CurrentMoonPuzzleAreaNumber - the number of the current moon puzzle area player is in
     private void StopMoonStatueAudio(StopMoonPuzzleAreaAudio stopMoonPuzzleAreaAudio) //Published by "WarningMoonPuzzleUI"
     {
         if (!enabled || moonPuzzleAreaNumber != stopMoonPuzzleAreaAudio.CurrentMoonPuzzleAreaNumber) 
@@ -83,25 +92,28 @@ public class MoonPuzzleArea : MonoBehaviour
         enabled = false;
     }
 
-    private void AllowPlayerInput(ActivatePlayerInputs activatePlayerInputs)
+    //Receives a "ActivatePlayerInputs" event with parameters:
+    //(bool) AllowInputs - (true = allow the player to interact with world objects and UI, 
+    //false = do NOT allow the player to interact with world objects and UI).
+    private void AllowPlayerInput(ActivatePlayerInputs activatePlayerInputs) //Multiple publishers and subscribers
     {
         _allowInput = activatePlayerInputs.AllowInputs;
     }
 
-    private void OpenTextAdventureUI(Interact interact) //When player interacts with this game object
+    //"Interact" is the name of an event. Empty event
+    private void OpenTextAdventureUI(Interact interact) //When player interacts with this game object. Published by "PlayerInputController"
     {
         if(_allowInput == false)
             return;
 
         if(_playerCollisionDetected == true)
         {
-            EventBus.Instance.Publish(new FreezePlayer(true));
-            EventBus.Instance.Publish(new MaintainPlayerHealth(true));
-            EventBus.Instance.Publish(new PauseExplorationTimer(true));
+            EventBus.Instance.Publish(new FreezePlayer(true)); //Publish to "PlayerStateMachine"
+            EventBus.Instance.Publish(new MaintainPlayerHealth(true)); //Publish to "PlayerHealth" 
+            EventBus.Instance.Publish(new PauseExplorationTimer(true)); //Publish to "ExplorationTimer"
             
             warningMoonPuzzleUI.SetActive(true);
-            //warningMoonPuzzleUIScript.ShowWarningMessage(this);
-            EventBus.Instance.Publish(new OpenTextAdventureUI(moonPuzzleAreaNumber)); //Publish to "WarningMoonPuzzleUI"
+            EventBus.Instance.Publish(new OpenWarningMoonPuzzleUI(moonPuzzleAreaNumber)); //Publish to "WarningMoonPuzzleUI"
         }
     }
 
@@ -110,7 +122,7 @@ public class MoonPuzzleArea : MonoBehaviour
         if (collider.gameObject.CompareTag("Player"))
         {
             _playerCollisionDetected = true;
-            EventBus.Instance.Publish(new InCollision(_playerCollisionDetected));
+            EventBus.Instance.Publish(new PreventPlayerInteractingWithInventory(_playerCollisionDetected)); //Publish to "InventoryUI"
         }
     }
 
@@ -119,7 +131,7 @@ public class MoonPuzzleArea : MonoBehaviour
         if (collider.gameObject.CompareTag("Player"))
         {
             _playerCollisionDetected = false; 
-            EventBus.Instance.Publish(new InCollision(_playerCollisionDetected));
+            EventBus.Instance.Publish(new PreventPlayerInteractingWithInventory(_playerCollisionDetected)); //Publish to "InventoryUI"
         }
     }
 }

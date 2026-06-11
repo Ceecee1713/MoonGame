@@ -8,11 +8,19 @@ using UnityEngine;
 /// <remarks>
 /// See <see cref="StorytellingDialogueData"/> for how dialogue messages are structured.
 /// 
-/// This script works together with the "DialogueCanvas", "MoonPuzzleDialogueText", "CluebookManager", "PlayerInputController" scripts
-/// See <see cref="DialogueCanvas"/> for how they work together - destroying NPC when a new moon puzzle is completed
-/// See <see cref="MoonPuzzleDialogueText"/> for how they work together - display dialogue on the dialogue canvas
-/// See <see cref="CluebookManager"/> for how they work together - prompting to add clue fragment to cluebook
-/// See <see cref="PlayerInputController"/> for how they work together - publishing the Interact event this script listens to
+/// This script works together with the "DialogueCanvas", "MoonPuzzleDialogueText", "CluebookManager", "PlayerInputController", 
+/// "PlayerStateMachine", "InventoryUI", "PlayerHealth" scripts
+/// 
+/// See <see cref="MoonPuzzleDialogueText"/> - Listening to "TypeDialogueOnMainUI" event that "MoonPuzzleDialogueText" publishes to destroy self 
+/// See <see cref="DialogueCanvas"/> - publishing "TypeDialogueOnMainUI" event to display dialogue on the dialogue canvas
+/// See <see cref="CluebookManager"/> - publishing "FoundClueFragment" event to add clue fragment to cluebook
+/// See <see cref="PlayerInputController"/> - Listening to "Interact" event that "PlayerInputController" publishes 
+/// See <see cref="PlayerStateMachine"/> - publishing "FreezePlayer" event to freeze player in place
+/// See <see cref="InventoryUI"/> - publishing "PreventPlayerInteractingWithInventory" event to allow/prevent player input with the inventory system
+/// See <see cref="PlayerHealth"/> - publishing "MaintainPlayerHealth" event to maintain player's current health
+/// 
+/// This script works with multiple other scripts that publish and subscribe to  "ActivatePlayerInputs" event
+/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
 /// 
 /// </remarks>
 
@@ -60,6 +68,7 @@ public class NPC : MonoBehaviour
         }
     }
 
+    //"NewMoonFragmentObtained" is the name of an event. Empty event
     private void DestroyAfterMoonPuzzleCompletion(NewMoonFragmentObtained newMoonFragmentObtained) //Published by "MoonPuzzleDialogueText"
     {
         _numberOfMoonPuzzlesCompleted++;
@@ -68,11 +77,15 @@ public class NPC : MonoBehaviour
             Destroy(this.gameObject);
     }
 
-    private void AllowPlayerInput(ActivatePlayerInputs activatePlayerInputs)
+    //Receives a "ActivatePlayerInputs" event with parameters:
+    //(bool) AllowInputs - (true = allow the player to interact with world objects and UI, 
+    //false = do NOT allow the player to interact with world objects and UI).
+    private void AllowPlayerInput(ActivatePlayerInputs activatePlayerInputs) //Multiple publishers and subscribers
     {
         _allowInput = activatePlayerInputs.AllowInputs;
     }
 
+    //"Interact" is the name of an event. Empty event
     private void CheckToShowDialogue(Interact pickingUpItem) //When player interacts with this game object. Published by "PlayerInputController"
     
     {
@@ -83,8 +96,8 @@ public class NPC : MonoBehaviour
         {
             dialogueCanvas.SetActive(true);
 
-            EventBus.Instance.Publish(new FreezePlayer(true));
-            EventBus.Instance.Publish(new MaintainPlayerHealth(true));
+            EventBus.Instance.Publish(new FreezePlayer(true)); //Publish to "PlayerStateMachine"
+            EventBus.Instance.Publish(new MaintainPlayerHealth(true)); //Publish to "PlayerHealth"
             EventBus.Instance.Publish(new TypeDialogueOnMainUI(npcDialogue, NEW_EXPLORATION_PHASE, STARTING_THE_GAME)); //Publish to "DialogueCanvas"
             EventBus.Instance.Publish(new FoundClueFragment(_npcMessage)); //Publish to "CluebookManager" 
         }
@@ -95,7 +108,7 @@ public class NPC : MonoBehaviour
         if (collider.gameObject.CompareTag("Player"))
         {
             _playerInCollision = true;
-            EventBus.Instance.Publish(new InCollision(_playerInCollision));
+            EventBus.Instance.Publish(new PreventPlayerInteractingWithInventory(_playerInCollision)); //Publish to "InventoryUI"
         }
     }
 
@@ -111,7 +124,7 @@ public class NPC : MonoBehaviour
         {
             _playerInCollision = false;
             _playerStayingInCollision = false; 
-            EventBus.Instance.Publish(new InCollision(_playerInCollision));
+            EventBus.Instance.Publish(new PreventPlayerInteractingWithInventory(_playerInCollision)); //Publish to "InventoryUI"
         }
     }
 }

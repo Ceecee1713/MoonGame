@@ -9,7 +9,7 @@ using UnityEngine;
 /// <remarks>
 /// This script works closely with "CraftManager" script for it to run through each material and see 
 /// if the player's inventory has the right amount of that particular material and enough space in their inventory to add a new item.
-/// See <see cref="CraftManager"/> for how this script interacts with the CraftManager's various methods.
+/// See <see cref="CraftManager"/> - Accessing "CraftManager" public methods
 /// 
 /// This script is designed to be on a button game object 
 /// This script is on the same game object as the "CraftManager", so it can directly access any of the CraftManager's public methods 
@@ -29,7 +29,9 @@ public class CraftButton : MonoBehaviour
     [SerializeField]
     private ItemData craftableInventoryItem; 
 
-    [SerializeField] private List <ItemData> craftingMaterials; //Crafting materials are the same as normal inventory items
+    [SerializeField] 
+    private List <ItemData> craftingMaterials; //Crafting materials are the same as normal inventory items
+    //Crafting materials are the same as normal inventory items
 
     private bool _allowClicking = true; //Prevent or allow for the player to click on the button game object this script is attached to
 

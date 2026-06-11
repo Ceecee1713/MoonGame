@@ -8,7 +8,7 @@ using UnityEngine;
 /// This script will be disabled as it only needs to serve one small minor purpose
 /// 
 /// This script works together with the "GameManager" script
-/// See <see cref="GameManager"/> for how they work together - publishing the "NewAreaChange" event this script listens to
+/// See <see cref="GameManager"/> - Listening to "NewAreaChange" event that "NewAreaChange" published to change light intensity
 /// </remarks>
 
 public class StreetLamps : MonoBehaviour
@@ -40,6 +40,8 @@ public class StreetLamps : MonoBehaviour
             EventBus.Instance.Unsubscribe<NewAreaChange>(LightUpLamp);
     }
 
+    //Receives a "NewAreaChange" event with parameters:
+    //(int) "AreaChangesCount" - number tracking how many areas have been completed 
     private void LightUpLamp(NewAreaChange newAreaChange) //Published by "GameManager" when a moon puzzle has been completed
     {
         if(newAreaChange.AreaChangesCount == areaNumber)

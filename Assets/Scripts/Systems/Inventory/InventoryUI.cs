@@ -11,7 +11,7 @@ using UnityEngine;
 /// This script is made to be on an UI object for the inventory UI
 /// and on the same game object as "InventoryUISlot" as public variables and methods are to be referenced by that script
 /// 
-/// This script works together with the "CraftManager", "InventoryUISlot", "InteractableItem", "ChestSlot", "InteractableItem", "PlayerInputController" scripts
+/// This script works together with the "CraftManager", "InventoryUISlot", "InteractableItem", "ChestSlot", "InteractableItem", "PlayerInputController", "PlayerStateMachine" scripts
 /// See <see cref="CraftManager"/> and how they interact with removing items and flagging those items for removal as well as adding the crafted inventory item 
 /// as well as prompting the "AdjustInventorySlotItemQuantity" and "RemoveUsedMaterials" events this script listens to
 /// 
@@ -21,8 +21,8 @@ using UnityEngine;
 /// See <see cref="ChestSlot"/> and how they interact with visuals and setting an inventory item to a slot as well as 
 /// prompting the "AddItemToInventory' event this script listens to
 /// 
-/// See <see cref="InteractableItem"/> and how it prompts the "AddItemToInventory' event this script listens to
-/// See <see cref="PlayerInputController"/> and how it prompts the "DropEquipedInventoryItem" and "UseInventoryItem" events this script listens to
+/// See <see cref="InteractableItem"/> - Listening to "AddItemToInventory' event that "InteractableItem" publishes
+/// See <see cref="PlayerInputController"/> Listening to "DropEquipedInventoryItem' and "UseInventoryItem" events that "PlayerInputController" publishes 
 /// 
 /// "ChestUI" acts similarily to this script. The method of adding an inventory item to their respective inventories is the same
 /// Make sure they both function the same
@@ -31,8 +31,13 @@ using UnityEngine;
 /// This script unequips items when they are dropped, but those dropped items are instantiated and initialized in a different script: "PlayerSpawner"
 /// See <see cref="PlayerSpawner"/> on how it's done
 /// 
+/// See <see cref="PlayerStateMachine"/> - Publishing "SpeedUpPlayer" event to speed up the player upon using an item
+/// 
 /// See <see cref="InventoryItemTypes"/> for what makes up an inventory item.
 /// See <see cref="InventoryData"/> for what the collection is made up of.
+/// 
+/// This script works with multiple other scripts that publish and subscribe to "ActivatePlayerInputs" event
+/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
 /// 
 /// </remarks>
 
@@ -41,7 +46,8 @@ public class InventoryUI : MonoBehaviour
     [SerializeField]
     private InventoryUISlot [] inventorySlots = new InventoryUISlot [8]; //Inventory slots visibly shown on screen
 
-    [SerializeField] private InventoryData inventoryData; //Collection of all the player's inventory items to be easily accessible
+    [SerializeField] 
+    private InventoryData inventoryData; //Collection of all the player's inventory items to be easily accessible
 
     [SerializeField]
     private ItemData _equipedInventoryItem;
@@ -77,7 +83,7 @@ public class InventoryUI : MonoBehaviour
         EventBus.Instance.Subscribe<AdjustInventorySlotItemQuantity>(AdjustInventoryQuantity);
 
         //Player interaction events 
-        EventBus.Instance.Subscribe<InCollision>(CheckIfPlayerIsInACollision);
+        EventBus.Instance.Subscribe<PreventPlayerInteractingWithInventory>(CheckIfPlayerIsInACollision);
         EventBus.Instance.Subscribe<SelectInventoryItem>(EquipInventoryItem);
         EventBus.Instance.Subscribe<DropEquipedInventoryItem>(DropEquipedInventoryItem);
         EventBus.Instance.Subscribe<UseInventoryItem>(CheckToUseInventoryItem);
@@ -95,18 +101,26 @@ public class InventoryUI : MonoBehaviour
             _equipedInventoryItem = _selectedInventoryUISlot.InventoryItem;
     }
 
-    private void CheckIfPlayerIsInACollision(InCollision inCollision)
+    //Receives a "PreventPlayerInteractingWithInventory" event with parameters:
+    //(bool) PlayerInCollision - (true = player is in a CERTAIN TYPE of collision, 
+    //false = player is NOT in a CERTAIN TYPE of collision).
+    private void CheckIfPlayerIsInACollision(PreventPlayerInteractingWithInventory preventPlayerInteractingWithInventory) //Multiple publishers
     {
-        _playerIsInCollision = inCollision.PlayerInCollision;
+        _playerIsInCollision = preventPlayerInteractingWithInventory.PlayerInCollision;
     }
 
-    private void AllowPlayerInput(ActivatePlayerInputs activatePlayerInputs)
+    //Receives a "ActivatePlayerInputs" event with parameters:
+    //(bool) AllowInputs - (true = allow the player to interact with world objects and UI, 
+    //false = do NOT allow the player to interact with world objects and UI).
+    private void AllowPlayerInput(ActivatePlayerInputs activatePlayerInputs) //Multiple publishers and subscribers
     {
         _allowInput = activatePlayerInputs.AllowInputs;
     }
 
     #region Adding Inventory Item
 
+    //Receives a "AddItemToInventory" event with parameters:
+    //(ItemData) InventoryItem - Inventory item to add into player's inventory
     //Published by "ChestSlot" or "InteractableItem"
     private void AddInventoryItem(AddItemToInventory addItemToInventory) //Step One
     {
@@ -225,6 +239,11 @@ public class InventoryUI : MonoBehaviour
     }
     #endregion
 
+
+    //Receives a "AdjustInventorySlotItemQuantity" event with parameters:
+    //(int) NewQuantity - Quantity to now set for the inventory item that's been marked by "CraftManager" to be used as a material
+    //(InventoryItemTypes) ItemType - Inventory type of the material 
+
     //Published by "CraftManager" if there's remainder for a crafting material
     private void AdjustInventoryQuantity(AdjustInventorySlotItemQuantity adjustInventorySlotItemQuantity)
     {
@@ -268,6 +287,11 @@ public class InventoryUI : MonoBehaviour
     }
 
     #region Removing Consumed Inventory Items That Were Used As Materials
+
+    //Receives a "RemoveUsedMaterials" event with parameters:
+    //List <ItemData> CraftingMaterialItems - All the inventory items that have been marked as materials by "CraftManager"
+    //List <int> AmountsPerStackableItemToRemove - Number of full stacks of each material to be removed
+    //Example: Each index represents the number of full stacks of ONE inventory item to be removed from player's ivnentory
 
     //Published by "CraftManager" to completely remove used up inventory items as materials
     private void RemoveConsumedMaterials(RemoveUsedMaterials removeUsedMaterials) //Step One
@@ -341,6 +365,9 @@ public class InventoryUI : MonoBehaviour
     }
     #endregion
 
+    //Receives a "SelectInventoryItem" event with parameters:
+    //(ItemData) InventoryItem - Equiped inventory item from currently selected inventory UI slot
+    //(InventoryUISlot) InventoryUISlot - Currently selected inventory UI slot
     private void EquipInventoryItem(SelectInventoryItem selectInventoryItem) //Published by "InventoryUISlot"
     {
         for(int i = 0; i < inventorySlots.Length; i++)
@@ -363,8 +390,8 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    //Method for Inventory Data as the ordering of items between the player's displayed inventory (in the inventory slots)
-    //and what they actually in their inventory through the scriptable object, inventoryData, they can become out of sync
+    //Method for "inventoryData" as the ordering of items between the player's displayed inventory (in the inventory slots)
+    //and what they actually in their inventory through the scriptable object, "inventoryData", they can become out of sync
     private int FindInventoryDataIndex(InventoryItemTypes itemType)
     {
         for(int i = 0; i < inventoryData.Inventory.Count; i++)
@@ -374,6 +401,7 @@ public class InventoryUI : MonoBehaviour
         return -1;
     }
 
+    //"UseInventoryItem" is the name of an event. Empty event
     private void CheckToUseInventoryItem(UseInventoryItem useInventoryItem) //Reserved for only speed potions, published by "PlayerInputController"
     {
         if(_playerIsInCollision == true || _allowInput == false)
@@ -393,7 +421,7 @@ public class InventoryUI : MonoBehaviour
 
                     _selectedInventoryUISlot.RemoveItemFromSlot();
 
-                    EventBus.Instance.Publish(new SpeedUpPlayer());
+                    EventBus.Instance.Publish(new SpeedUpPlayer()); //Publish to "PlayerStateMachine"
 
                     //Deselect inventory slot
                     _selectedInventoryUISlot.OutlineImage.SetActive(false); 
@@ -405,6 +433,7 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
+    //"DropEquipedInventoryItem" is the name of an event. Empty event
     private void DropEquipedInventoryItem(DropEquipedInventoryItem dropEquipedInventoryItem) //Published by "PlayerInputController"
     {
         if(_playerIsInCollision || _allowInput == false)
@@ -431,6 +460,8 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
+    //Receives a "RemoveItemFromSlot" event with parameters:
+    //(InventoryUISlot) InventorySlot - Currently selected inventory UI slot
     private void RemoveItemFromInventory(RemoveItemFromSlot removeItemFromSlot) //Published by "InventoryUISlot" to remove its item when item moves into a chest
     {
         for(int i = 0; i < inventorySlots.Length; i++)

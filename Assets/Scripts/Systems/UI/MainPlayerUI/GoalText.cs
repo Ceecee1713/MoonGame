@@ -13,8 +13,10 @@ using TMPro;
 /// 
 /// This script works together with scripts: "DialogueCanvas", "MoonPuzzleDialogueText" , "StorytellingDialogueData" 
 /// See <see cref="DialogueCanvas"/> - Listening to "ShowBeginnerGoal" event that "DialogueCanvas" publishes
-/// See <see cref="MoonPuzzleDialogueText"/> - Listening to "NewMoonFragmentObtained" and "NewExplorationPhase" events that "MoonPuzzleDialogueText" publishes
-/// See <see cref="StorytellingDialogueData"/> - Listening to "NewExplorationPhase" event that "StorytellingDialogueData" publishes
+/// See <see cref="MoonPuzzleDialogueText"/> - Listening to "NewMoonFragmentObtained" event that "MoonPuzzleDialogueText" publishes 
+/// to set a new general goal and reset to general goal, and listening to "NewExplorationPhase" event that "MoonPuzzleDialogueText" publishes to reset to general goal
+/// 
+/// See <see cref="StorytellingDialogueData"/> - Listening to "NewExplorationPhase" event that "StorytellingDialogueData" publishes to reset to general goal
 /// 
 /// </remarks>
 
@@ -64,11 +66,13 @@ public class GoalText : MonoBehaviour
             goalText.text = _generalGoal;
     }
 
+    //"ShowBeginnerGoal" is the name of an event. Empty event
     private void SetBeginningGoal(ShowBeginnerGoal showBeginnerGoal) //Published by "DialogueCanvas"
     {
         goalTextObject.SetActive(true);
     }
 
+    //"NewMoonFragmentObtained" is the name of an event. Empty event
     private void SetNewGoalText(NewMoonFragmentObtained newMoonFragmentObtained) //Published by "MoonPuzzleDialogueText"
     {
         _numberOfAreaChanges++;
@@ -82,6 +86,7 @@ public class GoalText : MonoBehaviour
         goalText.text = _generalGoal;
     }
 
+    //"NewExplorationPhase" is the name of an event. Empty event
     private void ResetGoalText(NewExplorationPhase newExplorationPhase) //Published by "MoonPuzzleDialogueText" or "StorytellingDialogueData"
     {
         goalText.text = _generalGoal;

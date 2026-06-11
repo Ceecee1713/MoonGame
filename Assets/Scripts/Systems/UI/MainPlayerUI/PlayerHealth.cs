@@ -8,8 +8,24 @@ using UnityEngine.UI;
 /// </summary>
 /// 
 /// <remarks>
-/// This script works together with any corrioson zone scripts, safe zone scripts, 
-/// //ADD OTHER SCRIPTS
+/// This script works together with these scripts: PlayerStateMachine, ExplorationTimer, CanvasManager, MoonPuzzleDialogueText, 
+/// StorytellingDialogueText, FirstSafeZone, SafeZone, CorriosonZone
+/// 
+/// See <see cref="PlayerStateMachine"/> - Publishing "FreezePlayer" to freeze the player
+/// See <see cref="ExplorationTimer"/> - Publishing "PauseExplorationTimer" to pause the exploration timer countdown
+/// See <see cref="CanvasManager"/> - Publishing "ChangeCanvases" to swap canvases
+/// See <see cref="MoonPuzzleDialogueText"/> - Listening to "NewExplorationPhase" event that "MoonPuzzleDialogueText" publishes to reset health
+/// See <see cref="StorytellingDialogueText"/> - Listening to "NewExplorationPhase" event that "StorytellingDialogueText" publishes to reset health
+/// See <see cref="FirstSafeZone"/> - Listening to "AlterPlayerHealth" event that "FirstSafeZone" publishes to alter player's current health
+/// See <see cref="SafeZone"/> - Listening to "AlterPlayerHealth" event that "SafeZone" publishes to alter player's current health
+/// See <see cref="CorriosonZone"/> - Listening to "AlterPlayerHealth" event that "CorriosonZone" publishes to alter player's current health
+/// 
+/// This script works with multiple other scripts that publish and subscribe to "ActivatePlayerInputs"
+/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
+/// 
+/// This script works with multiple other scripts that publish "MaintainPlayerHealth"
+/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
+/// 
 /// </remarks>
 
 public class PlayerHealth : MonoBehaviour
@@ -60,28 +76,36 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private void ChangeHealthValue(AlterPlayerHealth alterPlayerHealth)
+    //Receives a "AlterPlayerHealth" event with parameters:
+    //(bool) RecoverHealth - (true = increase the player's current health
+    //false = lower the player's current health)
+    //(float) SpeedToChangeHealth - speed to change player's health by
+    private void ChangeHealthValue(AlterPlayerHealth alterPlayerHealth) //Published by "FirstSafeZone", "SafeZone" or "CorriosonZone"
     {
         _recoverHealth = alterPlayerHealth.RecoverHealth;
         _speedToChangeHealth = alterPlayerHealth.SpeedToChangeHealth;
     }
 
-    private void ApplyCorrioson(MaintainPlayerHealth maintainPlayerHealth)
+    //Receives a "MaintainPlayerHealth" event with parameters:
+    //(bool) PauseCorrioson - (true = maintain the player's current health
+    //false = allow the player's health to be changed)
+    private void ApplyCorrioson(MaintainPlayerHealth maintainPlayerHealth) //Multiple publishers
     {
         _pauseCorrioson = maintainPlayerHealth.PauseCorrioson;
     }
 
-    private void StartNewExplorationPhase(NewExplorationPhase newExplorationPhase) //Published by "MoonPuzzleDialogueText" or "StorytellingDialogueData"
+    //"NewExplorationPhase" is the name of an event. Empty event
+    private void StartNewExplorationPhase(NewExplorationPhase newExplorationPhase) //Published by "MoonPuzzleDialogueText" or "StorytellingDialogueText"
     {
         health.value = 1.0f; //Reset health to full
         _recoverHealth = true;
     }
 
-    IEnumerator ShowFailedGameScreen()
+    private IEnumerator ShowFailedGameScreen()
     {
-        EventBus.Instance.Publish(new FreezePlayer(true));
+        EventBus.Instance.Publish(new FreezePlayer(true)); //Publish to "PlayerStateMachine"
         EventBus.Instance.Publish(new PauseExplorationTimer(true)); //Publish to "ExplorationTimer"
-        EventBus.Instance.Publish(new ActivatePlayerInputs(false));
+        EventBus.Instance.Publish(new ActivatePlayerInputs(false)); //Multiple subscribers and publishers
 
         yield return new WaitForSeconds(TIME_DELAY_BEFORE_SWAPPING_UI_SCREENS);
 

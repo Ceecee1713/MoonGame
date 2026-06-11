@@ -8,11 +8,18 @@ using UnityEngine;
 /// Corrioson Zones are the OnTrigger collisions that'll drop the player's health continuously 
 /// 
 /// This script works together with "PlayerHealth", "StorytellingDialogueText", "GameManager", "ExplorationTimer", "MoonPuzzleDialogueText" scripts
-/// See <see cref="PlayerHealth"/> - prompting to change the speed of lowering player's health
-/// See <see cref="StorytellingDialogueText"/> - prompting the "RestoreCorriosonValue" and "ChangeCorriosonValue" events this script listens to
-/// See <see cref="GameManager"/> - prompting the "ChangeThirdCorriosonAreaValue" event this script listens to
-/// See <see cref="ExplorationTimer"/> - prompting the "ChangeCorriosonValue" event this script listens to
-/// See <see cref="MoonPuzzleDialogueText"/> - prompting the "ChangeCorriosonValue" event this script listens to
+/// See <see cref="PlayerHealth"/> - Publishing "AlterPlayerHealth" to drop player's current health
+/// See <see cref="StorytellingDialogueText"/> - Listening to "RestoreCorriosonValue" to reset corrioson values
+/// and "ChangeCorriosonValue" events that "StorytellingDialogueText" publishes to change corrioson values
+/// 
+/// See <see cref="GameManager"/> - Listening to "ChangeThirdCorriosonAreaValue" event that "GameManager" publishes to
+/// allow third corrioson values to be altered
+/// 
+/// See <see cref="ExplorationTimer"/> - Listening to  "ChangeCorriosonValue" event that "ExplorationTimer" publishes to
+/// allow third corrioson values to be altered
+/// 
+/// See <see cref="MoonPuzzleDialogueText"/> - Listening to "NewMoonFragmentObtained" event that "MoonPuzzleDialogueText" publishes
+/// to change replace corrioson zones in the same area and/or delete the current corrioson zone in the same area
 /// 
 /// </remarks>
 
@@ -66,7 +73,7 @@ public class CorriosonZone : MonoBehaviour
         }
     }
 
-    //Destroy the Game Object attached to this script and set the replacement corrison zone for the same area active
+    //"NewMoonFragmentObtained" is the name of an event. Empty event
     private void SetNewCorriosonZone(NewMoonFragmentObtained newMoonFragmentObtained) //Published by "MoonPuzzleDialogueText"
     {
         if(lastMoonPuzzleCorriosonZone == true)
@@ -99,6 +106,9 @@ public class CorriosonZone : MonoBehaviour
             _playerCollisionDetected = false; 
     }
 
+    //Receives a "ChangeCorriosonValue" event with parameters:
+    //(float) "CorriosonValue" - speed to now set the current speed to lower health as
+    //(int) "CorriosonAreaNumber" - the area number of the corrioson area the player is currently colliding with
     private void ChangeSpeedToLowerHealth(ChangeCorriosonValue changeCorriosonValue) //Published by "StorytellingDialogueText" and/or "ExplorationTimer"
     {
         if(moonPuzzleZoneIndex != changeCorriosonValue.CorriosonAreaNumber || lastMoonPuzzleCorriosonZone == true)
@@ -110,6 +120,7 @@ public class CorriosonZone : MonoBehaviour
         CurrentSpeedToLowerHealth = changeCorriosonValue.CorriosonValue;
     }
 
+    //"RestoreCorriosonValue" is the name of an event. Empty event
     private void ReturnToDefaultSpeed(RestoreCorriosonValue restoreCorriosonValue) //Published by "StorytellingDialogueText"
     {
         if(lastMoonPuzzleCorriosonZone == true || isFirstCorriosonZoneInSecondArea == true)
@@ -118,6 +129,7 @@ public class CorriosonZone : MonoBehaviour
         CurrentSpeedToLowerHealth = DefaultSpeedToLowerHealth;
     }
 
+    //"ChangeThirdCorriosonAreaValue" is the name of an event. Empty event
     private void SetThirdCorriosonZoneSpeed(ChangeThirdCorriosonAreaValue changeThirdCorriosonAreaValue) //Published by "GameManager"
     {
         if(lastMoonPuzzleCorriosonZone == false)

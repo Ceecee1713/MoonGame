@@ -12,6 +12,12 @@ using UnityEngine;
 /// Make sure they both function the same
 /// See <see cref="InventoryUI"/> for how they function similarily and how "InventoryUI" publishes the "CheckToAddItemToChest" event this script listens to
 /// 
+/// This script works closely with "PlayerStateMachine", "PlayerHealth", "PauseExplorationTimer", "InventoryUISlot" scripts
+/// See <see cref="PlayerStateMachine"/> - Publishing "FreezePlayer" to prevent/allow player to move
+/// See <see cref="PlayerHealth"/> - Publishing "MaintainPlayerHealth" to maintain / not maintain player's current health 
+/// See <see cref="PauseExplorationTimer"/> - Publishing "PauseExplorationTimer" to pause/unpause exploration timer countdown 
+/// See <see cref="InventoryUISlot"/> - Listening to "CheckToAddItemToChest" event that "InventoryUISlot" publishes to add an inventory item into chest inventory and chest UI slot 
+/// 
 /// See <see cref="InventoryItemTypes"/> for what makes up an inventory item.
 /// 
 /// </remarks>
@@ -32,18 +38,20 @@ public class ChestUI : MonoBehaviour
 
     void OnEnable()
     {
-        EventBus.Instance.Publish(new FreezePlayer(true));
-        EventBus.Instance.Publish(new MaintainPlayerHealth(true));
-        EventBus.Instance.Publish(new PauseExplorationTimer(true));
+        EventBus.Instance.Publish(new FreezePlayer(true)); //Publish to "PlayerStateMachine"
+        EventBus.Instance.Publish(new MaintainPlayerHealth(true)); //Publish to "PlayerHealth"
+        EventBus.Instance.Publish(new PauseExplorationTimer(true)); //Publish to "ExplorationTimer"
     }
 
     void OnDisable()
     {
-        EventBus.Instance.Publish(new FreezePlayer(false));
-        EventBus.Instance.Publish(new MaintainPlayerHealth(false));
-        EventBus.Instance.Publish(new PauseExplorationTimer(false));
+        EventBus.Instance.Publish(new FreezePlayer(false)); //Publish to "PlayerStateMachine"
+        EventBus.Instance.Publish(new MaintainPlayerHealth(false)); //Publish to "PlayerHealth"
+        EventBus.Instance.Publish(new PauseExplorationTimer(false)); //Publish to "ExplorationTimer"
     }
 
+    //Receives a "CheckToAddItemIntoChest" event with parameters:
+    //(ItemData) InventoryItem - Inventory item to add into chest inventory
     private void CheckToAddItemIntoChest(CheckToAddItemToChest checkToAddItemToChest) //Published by "InventoryUISlot" 
     {
         AddInventoryItem(checkToAddItemToChest.InventoryItem);

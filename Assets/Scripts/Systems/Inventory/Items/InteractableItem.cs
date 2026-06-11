@@ -11,8 +11,13 @@ using UnityEngine;
 /// See <see cref="MoonPuzzleDialogueText"/> - Listening to "ResetWorldItemsActiveness" event "MoonPuzzleDialogueText" publishes 
 /// See <see cref="StorytellingDialogueText"/> - Listening to "ResetWorldItemsActiveness" event "StorytellingDialogueText" publishes 
 /// See <see cref="PlayerInputController"/> - Listening to "Interact" event "PlayerInputController" publishes 
-/// See <see cref="InventoryUI"/> - Adding the inventory item to player inventory
+/// See <see cref="InventoryUI"/> - Publishing "AddItemToInventory" event to add the inventory item to player inventory,
+/// and publishing "PreventPlayerInteractingWithInventory" to allow/prevent player input with the inventory system
+/// 
 /// See <see cref="PlayerSpawner"/> - Instantiating an inventory item
+/// 
+/// This script works with multiple other scripts that publish and subscribe to "ActivatePlayerInputs" event
+/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
 /// 
 /// </remarks>
 
@@ -60,11 +65,15 @@ public class InteractableItem : MonoBehaviour
         }
     }
 
-    private void AllowPlayerInput(ActivatePlayerInputs activatePlayerInputs)
+    //Receives a "ActivatePlayerInputs" event with parameters:
+    //(bool) AllowInputs - (true = allow the player to interact with world objects and UI, 
+    //false = do NOT allow the player to interact with world objects and UI).
+    private void AllowPlayerInput(ActivatePlayerInputs activatePlayerInputs) //Multiple publishers and subscribers
     {
         _allowInput = activatePlayerInputs.AllowInputs;
     }
 
+    //"ResetWorldItemsActiveness" is the name of an event. Empty event
     private void ResetVisibilityOfGameObject(ResetWorldItemsActiveness resetWorldItemsActiveness) //Published by "MoonPuzzleDialogueText" or "StorytellingDialogueText"
     {
         InteractedByPlayerOnce = false;
@@ -73,6 +82,7 @@ public class InteractableItem : MonoBehaviour
             gameObjectToSetInactive.SetActive(true);
     }
 
+    //"Interact" is the name of an event. Empty event
     private void CheckIfItemIsPickedUp(Interact pickingUpItem) //When player interacts with this game object. Published by "PlayerInputController"
     {
         if(_allowInput == false || InteractedByPlayerOnce == true)
@@ -94,7 +104,7 @@ public class InteractableItem : MonoBehaviour
 
             //Mark player no longer in collision with this interactable object
             _playerInCollision = false;
-            EventBus.Instance.Publish(new InCollision(_playerInCollision));
+            EventBus.Instance.Publish(new PreventPlayerInteractingWithInventory(_playerInCollision)); //Publish to "InventoryUI"
 
             if(makeGameObjectInactive == true && gameObjectToSetInactive != null)
                 gameObjectToSetInactive.SetActive(false);
@@ -109,7 +119,7 @@ public class InteractableItem : MonoBehaviour
         if (collider.gameObject.CompareTag("Player"))
         {
             _playerInCollision = true;
-            EventBus.Instance.Publish(new InCollision(_playerInCollision));
+            EventBus.Instance.Publish(new PreventPlayerInteractingWithInventory(_playerInCollision)); //Publish to "InventoryUI"
         }
     }
 
@@ -125,7 +135,7 @@ public class InteractableItem : MonoBehaviour
         {
             _playerInCollision = false;
             _playerStayingInCollision = false; 
-            EventBus.Instance.Publish(new InCollision(_playerInCollision));
+            EventBus.Instance.Publish(new PreventPlayerInteractingWithInventory(_playerInCollision)); //Publish to "InventoryUI"
         }
     }
 }

@@ -10,9 +10,13 @@ using TMPro;
 /// </summary>
 /// 
 /// <remarks>
-/// This script works closely with the "NPC", "DecipherClueButton" and "CraftManager" scripts to handle the altering of each clue's messaging: 
-/// "NPC" assigns the clue fragment, "DecipherClueButton" asks CluebookManager to check for completed gibberish messages, 
-/// "CraftManager" asks CluebookManager to alter the clue's messaging to show the completed readable version.
+/// 
+/// This script works together with scripts: "CraftManager", "DecipherClueButton", "NPC"
+/// See <see cref="CraftManager"/> - Listening to "DecipherClue" event that "CraftManager publishes to decipher a clue,
+/// and publishing "AllowToCraftClue" to return value to "CraftManager" if it can craft a clue
+/// 
+/// See <see cref="DecipherClueButton"/> - Listening to "CheckForCompleteClues" event that "DecipherClueButton" publishes to check for any complete, gibberish clues
+/// See <see cref="NPC"/> - Listening to "FoundClueFragment" event that "NPC" publishes to change a clue's text and mark a clue fragment found
 /// 
 /// No other script should be controlling the cluebook's answers directly.
 ///</remarks>
@@ -32,8 +36,7 @@ public struct Clue
     public StorytellingDialogueData SecondClueFragment;
 
     /// <summary>Complete gibberish message built from both fragments at runtime. Do NOT assign in Inspector.</summary>
-    [HideInInspector]
-    public string FullGibberishClue;
+    [HideInInspector] public string FullGibberishClue;
 
     /// <summary>Complete deciphered message revealed after crafting. Assign in Inspector.</summary>
     public string FullDecipheredClue;
@@ -75,8 +78,9 @@ public class CluebookManager : MonoBehaviour
         EventBus.Instance.Subscribe<DecipherClue>(DecipherSingleClue);
     }
 
-    //Checking if the given clue message matches any of the messages from "clueIndexes" fragments 
-    private void CheckForMatchingClueFragments(FoundClueFragment foundClueFragment) //Published by NPC
+    //Receives a "FoundClueFragment" event with parameters:
+    //(string) "ClueDialogue" - dialogue of the newly found clue fragment
+    private void CheckForMatchingClueFragments(FoundClueFragment foundClueFragment) //Published by "NPC"
     {
         _clueDialogueMessage = foundClueFragment.ClueDialogue;
 
@@ -102,7 +106,7 @@ public class CluebookManager : MonoBehaviour
         }
     }
 
-    /// <remarks>See <see cref="CraftManager"/> for more context on which method this event is sent to.</remarks>
+    //"CheckForCompleteClues" is the name of an event. Empty event
     private void CheckForACompleteClue(CheckForCompleteClues checkForCompleteClues) //Published by DecipherClueButton
     {
         for(int i = 0; i < clueIndexes.Length; i++) 
@@ -117,12 +121,11 @@ public class CluebookManager : MonoBehaviour
             _resolvedClue = false;
         }
 
-        //Allow for a clue to be crafted in the CraftManager
-        EventBus.Instance.Publish(new AllowToCraftClue(_resolvedClue));
+        EventBus.Instance.Publish(new AllowToCraftClue(_resolvedClue)); //Publish to "CraftManager"
     }
 
-    //Deciphering the clue's messaging
-    private void DecipherSingleClue(DecipherClue decipherClue) //Published by CraftManager
+    //"DecipherClue" is the name of an event. Empty event
+    private void DecipherSingleClue(DecipherClue decipherClue) //Published by "CraftManager"
     {
         for(int i = 0; i < clueIndexes.Length; i++)
         {

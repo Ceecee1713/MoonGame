@@ -8,8 +8,8 @@ using UnityEngine;
 /// See <see cref="InventoryItemTypes"/> for what makes up an inventory item and how inventory UI slots are made up.
 /// 
 /// This script works together with the "InventoryUISlot" and "InteractableItem" scripts
-/// See <see cref="InventoryUISlot"/> for how they work together - Prompting the SpawnDroppedInventoryItem event
-/// See <see cref="InteractableItem"/> for how they work together - Utilizing public variables while instantiating the dropped inventory item  
+/// See <see cref="InventoryUISlot"/> - Publihsing the "SpawnDroppedInventoryItem" event
+/// See <see cref="InteractableItem"/> - Utilizing public variables from "InteractableItem" while instantiating the dropped inventory item  
 /// 
 /// </remarks>
 
@@ -20,7 +20,9 @@ public class PlayerSpawner : MonoBehaviour
         EventBus.Instance.Subscribe<SpawnDroppedInventoryItem>(SpawnInventoryItem);
     }
 
-    private void SpawnInventoryItem(SpawnDroppedInventoryItem spawnDroppedInventoryItem)
+    //Receives a "SpawnDroppedInventoryItem" event with parameters:
+    //(ItemData) "InventoryItem" - Inventory item to instantiate
+    private void SpawnInventoryItem(SpawnDroppedInventoryItem spawnDroppedInventoryItem) //Published by "InventoryUISlot"
     {
         Quaternion prefabRotation = spawnDroppedInventoryItem.InventoryItem.ItemObject.transform.rotation;
         GameObject instance = Instantiate(spawnDroppedInventoryItem.InventoryItem.ItemObject, this.gameObject.transform.position, prefabRotation);

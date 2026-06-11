@@ -18,22 +18,31 @@ using TMPro;
 /// 
 /// This script's way of typing dialogue is the same as "MoonPuzzleDialogueText"
 /// Make sure they both type dialogue the same in their IEnumerators as well as the number of "MAX_LINES" is the same across both scripts
-/// 
+/// See <see cref="MoonPuzzleDialogueText"/>
 /// ______________________________________________________________________________________________________________________
 /// 
 /// This script works together with the scripts: "CanvasManager", "PlayerInputController", "PlayerStateMachine", "ItemDrop", "GoalText", "PlayerHealth",
 /// "InteractableItem", "ExplorationTimer", "CorriosonZone", "GameManager"
 /// 
-/// See <see cref="CanvasManager"/> - Swapping UI canvases in and out
-/// See <see cref="PlayerInputController"/> - listening to "AdvanceThroughTextAdventure" event that "PlayerInputController" published
-/// See <see cref="PlayerStateMachine"/> - freezing the player 
-/// See <see cref="ItemDrop"/> - Destroying game object attached to the script
-/// See <see cref="GoalText"/> - Keeping the same new goal text on screen
-/// See <see cref="PlayerHealth"/> - Reset player health to full and maintain player's health
-/// See <see cref="InteractableItem"/> - Resetting the activeness of certain game objects 
-/// See <see cref="ExplorationTimer"/> - Pausing exploration timer's countdown and resetting it
-/// See <see cref="CorriosonZone"/> - Changing the speed of how fast corrioson zones drop player's health
-/// See <see cref="GameManager"/> - Showing the tutorial dialogue on the dialogue canvas layered ontop of main player UI
+/// See <see cref="CanvasManager"/> - Listening to "StartPrayerPhase" that "CanvasManager" publishes to begin dialogue for praying at the moon statue, 
+/// and publishing "ChangeCanvases" event to swap UI canvases 
+/// 
+/// See <see cref="PlayerInputController"/> - Listening to "AdvanceThroughTextAdventure" event "PlayerInputController" publishes to advance through dialogue
+/// See <see cref="PlayerStateMachine"/> - Publishing "FreezePlayer" event to freeze/unfreeze the player 
+/// See <see cref="ItemDrop"/> - Publishing "NewExplorationPhase" event to destroy game object attached "ItemDrop" script
+/// See <see cref="GoalText"/> - Publishing "NewExplorationPhase" event to keep the same new goal text on screen
+/// See <see cref="PlayerHealth"/> - Publishing "MaintainPlayerHealth" event to maintain player's current health,
+/// and publishing "NewExplorationPhase" event to reset player health to full 
+/// 
+/// See <see cref="InteractableItem"/> - Publishing "ResetWorldItemsActiveness" event to reset the activeness of certain game objects 
+/// See <see cref="ExplorationTimer"/> - Publishing "PauseExplorationTimer" to pause exploration timer's countdown, 
+/// and publishing "ResetExplorationTimer" to reset exploration timer countdown 
+/// 
+/// See <see cref="CorriosonZone"/> - Publishing "ChangeCorriosonValue" and "RestoreCorriosonValue" 
+/// to change the speed of how fast corrioson zones drop player's health
+/// 
+/// See <see cref="GameManager"/> - Listening to "StartEndGameDialogue" that "GameManager" publishes to begin end game dialogue for storytelling UI,
+/// and publishing "StartBeginnerTutorial" to show the tutorial dialogue on the dialogue canvas layered ontop of main player UI
 /// 
 /// </remarks>
 
@@ -103,8 +112,6 @@ public class StorytellingDialogueText : MonoBehaviour
     private const int THIRD_MOON_PUZZLE_AREA_NUMBER = 3;
     private const int MAX_LINES = 3; //For typing out dialogue to mimick paragraph look
 
-    private const bool STARTING_THE_GAME = true; 
-
     private const bool START_MOON_PUZZLE = false;
     private const bool START_PRAYER_PHASE = false; 
 
@@ -152,7 +159,7 @@ public class StorytellingDialogueText : MonoBehaviour
         _currentDialogue = startingGameDialogue;
         _messageLength = _currentDialogue.Messages.Length;
 
-        EventBus.Instance.Publish(new FreezePlayer(true));
+        EventBus.Instance.Publish(new FreezePlayer(true)); //Publish to "PlayerStateMachine"
         EventBus.Instance.Publish(new MaintainPlayerHealth(true)); //Publish to "PlayerHealth"
         EventBus.Instance.Publish(new PauseExplorationTimer(true)); //Publish to "ExplorationTimer"
 
@@ -160,7 +167,8 @@ public class StorytellingDialogueText : MonoBehaviour
         StartCoroutine(TypeMessage(_currentDialogue.Messages[_index].message));
     }
 
-    private void StartEndGameDialogueAdventure(StartEndGameDialogue startEndGameDialogue) //See what scripts publish this event
+    //"StartEndGameDialogue" is the name of an event. Empty event
+    private void StartEndGameDialogueAdventure(StartEndGameDialogue startEndGameDialogue) //Published by "GameManager"
     {
         _finishGame = true;
         _currentDialogue = finishedGameDialogue;
@@ -170,7 +178,8 @@ public class StorytellingDialogueText : MonoBehaviour
         StartCoroutine(TypeMessage(_currentDialogue.Messages[_index].message));
     }
 
-    private void StartPrayerPhaseAdventure(StartPrayerPhase startPrayerPhase) //See what scripts publish this event
+    //"StartPrayerPhase" is the name of an event. Empty event
+    private void StartPrayerPhaseAdventure(StartPrayerPhase startPrayerPhase) //Published by "CanvasManager"
     {
         _playerIsInPrayerPhase = true;
         _beginPrayerPhase = true;
@@ -182,6 +191,7 @@ public class StorytellingDialogueText : MonoBehaviour
     }
 
     //Iterating through storytelling dialogue messages. Published by "PlayerInputController"
+    //"AdvanceThroughTextAdventure" is the name of an event. Empty event
     private void NextDialogue(AdvanceThroughTextAdventure advanceTextAdventure)
     {
         if(_finishedTypingMessage != true || _stopProgressingThroughDialogue == true)
@@ -203,7 +213,7 @@ public class StorytellingDialogueText : MonoBehaviour
         if(_index+1 == _messageLength && _finishPrayerPhase == true) //Return to Exploration Phase with Main Player UI
         {
             _stopProgressingThroughDialogue = true;
-            EventBus.Instance.Publish(new FreezePlayer(false));
+            EventBus.Instance.Publish(new FreezePlayer(false)); //Publish to "PlayerStateMachine"
             EventBus.Instance.Publish(new ChangeCanvases(mainPlayerUI, START_MOON_PUZZLE, START_PRAYER_PHASE)); //Publish to "CanvasManager"
             EventBus.Instance.Publish(new NewExplorationPhase()); //Publish to "PlayerStateMachine", "ItemDrop", "GoalText", "PlayerHealth"
             EventBus.Instance.Publish(new ResetWorldItemsActiveness()); //Publish to "InteractableItem"

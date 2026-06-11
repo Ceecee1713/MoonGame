@@ -13,7 +13,7 @@ using TMPro;
 /// This script is made to be on an UI object that the player can click on
 /// 
 /// This script works together with the "InventoryUI" script
-/// See <see cref="InventoryUI"/> and how they interact with each other - adding an inventory item back into player inventory
+/// See <see cref="InventoryUI"/> - Publishing "AddItemToInventory" to add an inventory item back into player inventory
 /// 
 /// "InventoryUISlot" acts similarily to this script with how visuals are managed and setting of inventory items
 /// Make sure they both function the same
