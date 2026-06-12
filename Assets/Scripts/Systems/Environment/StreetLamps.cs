@@ -8,7 +8,7 @@ using UnityEngine;
 /// This script will be disabled as it only needs to serve one small minor purpose
 /// 
 /// This script works together with the "GameManager" script
-/// See <see cref="GameManager"/> - Listening to "NewAreaChange" event that "NewAreaChange" published to change light intensity
+/// See <see cref="GameManager"/> - Listening to "NewAreaChange" event that "GameManager" published to change light intensity
 /// </remarks>
 
 public class StreetLamps : MonoBehaviour
@@ -28,10 +28,6 @@ public class StreetLamps : MonoBehaviour
         light.intensity = 0f;
 
         EventBus.Instance.Subscribe<NewAreaChange>(LightUpLamp);
-    }
-
-    void OnEnable()
-    {
     }
 
     void OnDisable()

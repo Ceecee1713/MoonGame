@@ -11,12 +11,12 @@ using TMPro;
 /// This script is to be on the same game object that "ExplorationTimer" is on since they'll both be on the main player UI.
 /// This script directly references "ExplorationTimer"
 /// 
-/// This script works together with scripts: "DialogueCanvas", "MoonPuzzleDialogueText" , "StorytellingDialogueData" 
+/// This script works together with scripts: "DialogueCanvas", "MoonPuzzleDialogueText" , "StorytellingDialogueText" 
 /// See <see cref="DialogueCanvas"/> - Listening to "ShowBeginnerGoal" event that "DialogueCanvas" publishes
 /// See <see cref="MoonPuzzleDialogueText"/> - Listening to "NewMoonFragmentObtained" event that "MoonPuzzleDialogueText" publishes 
 /// to set a new general goal and reset to general goal, and listening to "NewExplorationPhase" event that "MoonPuzzleDialogueText" publishes to reset to general goal
 /// 
-/// See <see cref="StorytellingDialogueData"/> - Listening to "NewExplorationPhase" event that "StorytellingDialogueData" publishes to reset to general goal
+/// See <see cref="StorytellingDialogueText"/> - Listening to "NewExplorationPhase" event that "StorytellingDialogueText" publishes to reset to general goal
 /// 
 /// </remarks>
 
@@ -57,7 +57,7 @@ public class GoalText : MonoBehaviour
     
     void Update()
     {
-        Mathf.Clamp(_numberOfAreaChanges, 0, MAX_NUMBER_OF_AREA_CHANGES);
+        _numberOfAreaChanges = Mathf.Clamp(_numberOfAreaChanges, 0, MAX_NUMBER_OF_AREA_CHANGES);
 
         if(explorationTimer.RemainingTime < explorationTimer.TimerValueToChangeToRetreatGoal)
             goalText.text = retreatGoal;
@@ -87,7 +87,7 @@ public class GoalText : MonoBehaviour
     }
 
     //"NewExplorationPhase" is the name of an event. Empty event
-    private void ResetGoalText(NewExplorationPhase newExplorationPhase) //Published by "MoonPuzzleDialogueText" or "StorytellingDialogueData"
+    private void ResetGoalText(NewExplorationPhase newExplorationPhase) //Published by "MoonPuzzleDialogueText" or "StorytellingDialogueText"
     {
         goalText.text = _generalGoal;
     }

@@ -47,10 +47,6 @@ public class LightPropMoon : MonoBehaviour
         EventBus.Instance.Subscribe<NewAreaChange>(LightUpMoon);
     }
 
-    void OnEnable()
-    {
-    }
-
     void OnDisable()
     {
         if (EventBus.Instance != null)

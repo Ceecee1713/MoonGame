@@ -22,9 +22,4 @@ public class LosingUI : MonoBehaviour
         EventBus.Instance.Publish(new MaintainPlayerHealth(true)); //Publish to "PlayerHealth"
         EventBus.Instance.Publish(new PauseExplorationTimer(true)); // Publish to "ExplorationTimer'
     }
-
-    void OnDisable()
-    {
-
-    }
 }

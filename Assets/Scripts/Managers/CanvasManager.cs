@@ -10,11 +10,11 @@ using DG.Tweening;
 /// <remarks>
 /// No other script should be swapping out or fading UI canvases
 /// 
-/// This script works together with scripts: "MoonPuzzleDialogueText"
+/// This script works together with scripts: "MoonPuzzleDialogueText", "StorytellingDialogueText"
 /// See <see cref="MoonPuzzleDialogueText"/> - Listening to "FadeSingleCanvas" event "MoonPuzzleDialogueText" publishes to fade a single UI canvas
+/// and publishing "StartNewTextAdventure" to prompt the first dialogue for a moon puzzle text adventure 
 /// 
-/// This script works with multiple other scripts that publish "ChangeCanvases" event. 
-/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
+/// See <see cref="StorytellingDialogueText"/> - Publishing "StartPrayerPhase" to prompt the first dialogue of a prayer
 /// 
 ///</remarks>
 

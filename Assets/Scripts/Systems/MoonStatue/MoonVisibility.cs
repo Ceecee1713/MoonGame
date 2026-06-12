@@ -9,7 +9,7 @@ using UnityEngine;
 /// This scripts works together with the "MoonPuzzleDialogueText", "GameManager", DialogueCanvas" scripts
 /// 
 /// See <see cref="MoonPuzzleDialogueText"/> - Listening to "MakeMoonStatueSpin" event that "MoonPuzzleDialogueText" publishes to spin the moon statue and start moon sparkles particles 
-/// and listening to "ObtainedNewMoonFragment" event that "MoonPuzzleDialogueText" publishes to swap materials on moon statue 
+/// and listening to "NewMoonFragmentObtained" event that "MoonPuzzleDialogueText" publishes to swap materials on moon statue 
 /// 
 /// See <see cref="DialogueCanvas"/> - Publishing "TypeDialogueOnMainUI" event to show dialogue on the main player UI
 /// See <see cref="GameManager"/> - Listening to "StopMoonStatueSpin" that "GameManager" publishes to stop moon statue spinning and stop moon sparkles particles

@@ -16,9 +16,6 @@ using UnityEngine;
 /// 
 /// See <see cref="PlayerSpawner"/> - Instantiating an inventory item
 /// 
-/// This script works with multiple other scripts that publish and subscribe to "ActivatePlayerInputs" event
-/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
-/// 
 /// </remarks>
 
 public class InteractableItem : MonoBehaviour
@@ -36,11 +33,11 @@ public class InteractableItem : MonoBehaviour
     [SerializeField]
     private bool makeGameObjectInactive = false; //Flag whether a child game object needs to be set inactive. Works together with "gameObjectToSetInactive"
 
-    /// <summary> Accessed by PlayerSpawner, used when I=instantiating a dropped inventory item. </summary>
+    /// <summary> Accessed by PlayerSpawner, used when Instantiating a dropped inventory item. </summary>
     [HideInInspector] 
     public bool DeleteAfterInteraction = false; 
 
-    /// <summary> Accessed by PlayerSpawner, used when I=instantiating a dropped inventory item. </summary>
+    /// <summary> Accessed by PlayerSpawner, used when Instantiating a dropped inventory item. </summary>
     [HideInInspector]
     public bool InteractedByPlayerOnce = false; 
 

@@ -15,7 +15,7 @@ using TMPro;
 /// 
 /// This script also works together with "MoonPuzzleArea" 
 /// See <see cref="MoonPuzzleArea"/> - Publishing "StopMoonPuzzleAreaAudio" to stop audio of the current moon puzzle area, 
-/// and listening to "OpenTextAdventureUI" that "MoonPuzzleArea" script publishes to display warning moon puzzle UI
+/// and listening to "OpenWarningMoonPuzzleUI" that "MoonPuzzleArea" script publishes to display warning moon puzzle UI
 /// 
 /// This UI screen will be set active by the "MoonPuzzleArea" script 
 /// 
@@ -37,10 +37,6 @@ public class WarningMoonPuzzleUI : MonoBehaviour
     {
         EventBus.Instance.Subscribe<OpenWarningMoonPuzzleUI>(DisplayButtonOptions);
         this.gameObject.SetActive(false);
-    }
-    
-    void OnEnable()
-    {
     }
 
     void OnDisable()

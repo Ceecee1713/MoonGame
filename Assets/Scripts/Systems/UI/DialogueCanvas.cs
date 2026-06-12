@@ -8,24 +8,16 @@ using TMPro;
 /// </summary>
 /// 
 /// <remarks>
+/// This script is to be attached to a UI game object that's for dialogue that'll be layered on top of the main player UI
 /// 
 ///  See <see cref="StorytellingDialogueData"/> for how each individual storytelling dialogue is set up. 
 /// 
 /// This script works together with the "PlayerInputController", "ExplorationTimer", "PlayerHealth", "GoalText", "PlayerStateMachine" scripts
-/// See <see cref="PlayerInputController"/> - Listening to "AdvanceDialogueOnMainUI" that "PlayerInputController" publishes to advance dialogue, 
-/// and "TypeDialogueOnMainUI" events that "PlayerInputController" publishes
-/// 
-/// 
+/// See <see cref="PlayerInputController"/> - Listening to "AdvanceDialogueOnMainUI" that "PlayerInputController" publishes to advance dialogue
 /// See <see cref="ExplorationTimer"/> - Publishing "PauseExplorationTimer" to pause/unpause exploration timer countdown
 /// See <see cref="PlayerHealth"/> - Publishing "MaintainPlayerHealth" to maintain / not maintain player's current health
 /// See <see cref="GoalText"/> - Publishing "ShowBeginnerGoal" to display the beginning goal text when you start the game
 /// See <see cref="PlayerStateMachine"/> - Publishing "FreezePlayer" to unfreeze the player
-/// 
-/// This script works with multiple other scripts that publish "TypeDialogueOnMainUI"
-/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
-/// 
-/// This script works with multiple other scripts that publish and subscribe to "ActivatePlayerInputs"
-/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
 /// 
 /// </remarks>
 
@@ -47,7 +39,6 @@ public class DialogueCanvas : MonoBehaviour
     private int _index = 0; //Index to go through the dialogue message array (individual messages) from "dialogueData" 
 
     private const float TYPING_SPEED = 0.01f;
-    private const float DELAY = 1.5f;
 
     private const bool ALLOW_PLAYER_INPUTS = true; 
 
@@ -60,10 +51,6 @@ public class DialogueCanvas : MonoBehaviour
     void Start()
     {
         this.gameObject.SetActive(false);
-    }
-
-    void OnEnable()
-    {
     }
 
     void OnDisable()

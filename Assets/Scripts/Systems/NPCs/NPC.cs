@@ -11,16 +11,13 @@ using UnityEngine;
 /// This script works together with the "DialogueCanvas", "MoonPuzzleDialogueText", "CluebookManager", "PlayerInputController", 
 /// "PlayerStateMachine", "InventoryUI", "PlayerHealth" scripts
 /// 
-/// See <see cref="MoonPuzzleDialogueText"/> - Listening to "TypeDialogueOnMainUI" event that "MoonPuzzleDialogueText" publishes to destroy self 
+/// See <see cref="MoonPuzzleDialogueText"/> - Listening to "NewMoonFragmentObtained" event that "MoonPuzzleDialogueText" publishes to destroy self 
 /// See <see cref="DialogueCanvas"/> - publishing "TypeDialogueOnMainUI" event to display dialogue on the dialogue canvas
 /// See <see cref="CluebookManager"/> - publishing "FoundClueFragment" event to add clue fragment to cluebook
 /// See <see cref="PlayerInputController"/> - Listening to "Interact" event that "PlayerInputController" publishes 
 /// See <see cref="PlayerStateMachine"/> - publishing "FreezePlayer" event to freeze player in place
 /// See <see cref="InventoryUI"/> - publishing "PreventPlayerInteractingWithInventory" event to allow/prevent player input with the inventory system
 /// See <see cref="PlayerHealth"/> - publishing "MaintainPlayerHealth" event to maintain player's current health
-/// 
-/// This script works with multiple other scripts that publish and subscribe to  "ActivatePlayerInputs" event
-/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
 /// 
 /// </remarks>
 

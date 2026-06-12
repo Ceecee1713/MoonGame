@@ -36,9 +36,6 @@ using UnityEngine;
 /// See <see cref="InventoryItemTypes"/> for what makes up an inventory item.
 /// See <see cref="InventoryData"/> for what the collection is made up of.
 /// 
-/// This script works with multiple other scripts that publish and subscribe to "ActivatePlayerInputs" event
-/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
-/// 
 /// </remarks>
 
 public class InventoryUI : MonoBehaviour
@@ -60,16 +57,12 @@ public class InventoryUI : MonoBehaviour
     private bool _allowInput = true; //Prevent or allow for the player to use or drop items
     private bool _playerIsInCollision = false; //Flag whether the player can interact with the crafting table or not: if they're in range or not
 
-    //Removes inventory items consumed during crafting
+    //Remove / reduce quantity inventory items consumed during crafting
     private int _amountOfFullStacksPerMaterialConsumed;
     private int _numberToMatchAmountOfFullyConsumedMaterial = 0;
-
-    //Reduce quantity of inventory items during crafting
-    private int _inventoryDataIndex;
     private int _newQuantity;
 
-    //For adding items into inventory
-    private int _remainingQuantity;
+    private int _remainingQuantity; //For adding items into inventory 
 
     private const int MAX_STACK_AMOUNT = 9; //Make sure this value is the same as the MAX_STACK_AMOUNT for "ChestUI" script
 

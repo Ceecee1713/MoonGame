@@ -14,7 +14,7 @@ using TMPro;
 /// and on the same game object as "InventoryUI" as public variables and methods are to be referenced by that script
 /// 
 /// This script works together with the "InventoryUI", "PlayerSpawner", "ChestUI" scripts
-/// See <see cref="ChestUI"/> - add inventory item into chest's inventory
+/// See <see cref="ChestUI"/> - Publishing "CheckToAddItemToChest" event to add this slot's inventory item into chest's inventory
 /// See <see cref="InventoryUI"/> -  Accessing public methods and variables from this script
 /// through publishing "SelectInventoryItem" and "RemoveItemFromSlot" events
 /// 
@@ -26,9 +26,6 @@ using TMPro;
 /// See <see cref="ChestSlot"/> for how they function similarily.
 /// 
 /// See <see cref="InventoryItemTypes"/> for what makes up an inventory item and how inventory UI slots are made up.
-/// 
-/// This script works with multiple other scripts that publish and subscribe to "ActivatePlayerInputs" event
-/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
 /// 
 /// </remarks>
 

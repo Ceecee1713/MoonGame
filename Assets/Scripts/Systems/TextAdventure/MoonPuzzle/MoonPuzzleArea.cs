@@ -12,7 +12,7 @@ using UnityEngine;
 /// This script works together with the scripts: 
 /// "WarningMoonPuzzleUI", "PlayerInputController", "PlayerStateMachine", "PlayerHealth" , "ExplorationTimer" , "InventoryUI"
 /// 
-/// See <see cref="WarningMoonPuzzleUI"/> - Listening to "StopMoonPuzzleAreaAudio" event "WarningMoonPuzzleUI" to
+/// See <see cref="WarningMoonPuzzleUI"/> - Listening to "StopMoonPuzzleAreaAudio" event "WarningMoonPuzzleUI" publishes to
 /// prompt fading of audio of the moon puzzle area 
 /// and publishing "OpenTextAdventureUI" to "WarningMoonPuzzleUI" to display the warning UI before starting the moon puzzle text adventure
 /// 
@@ -21,9 +21,6 @@ using UnityEngine;
 /// See <see cref="PlayerHealth"/> - Publishing "MaintainPlayerHealth" event to prompt maintaining player's current health
 /// See <see cref="ExplorationTimer"/> - Publishing "PauseExplorationTimer" event to prompt pausing exploration timer countdown
 /// See <see cref="InventoryUI"/> - Publishing "PreventPlayerInteractingWithInventory" event to prompt allowing/preventing player input with the inventory system
-/// 
-/// This script works with multiple other scripts that publish and subscribe to "ActivatePlayerInputs"
-/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
 /// 
 /// </remarks>
 
@@ -55,10 +52,6 @@ public class MoonPuzzleArea : MonoBehaviour
         EventBus.Instance.Subscribe<ActivatePlayerInputs>(AllowPlayerInput);
         EventBus.Instance.Subscribe<StopMoonPuzzleAreaAudio>(StopMoonStatueAudio);
     } 
-
-    void OnEnable()
-    {
-    }
 
     void OnDisable()
     {

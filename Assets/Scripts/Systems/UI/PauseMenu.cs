@@ -14,9 +14,6 @@ using UnityEngine.UI;
 /// See <see cref="PlayerHealth"/> - Publishing "MaintainPlayerHealth" to maintain / not maintain player's current health
 /// See <see cref="PlayerStateMachine"/> - Publishing "FreezePlayer" to freeze / unfreeze player 
 /// 
-/// This script works with multiple other scripts that publish and subscribe to "ActivatePlayerInputs"
-/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
-/// 
 /// </remarks>
 
 public class PauseMenu : MonoBehaviour
@@ -38,7 +35,7 @@ public class PauseMenu : MonoBehaviour
 
     void OnEnable()
     {
-        EventBus.Instance.Publish(new FreezePlayer(true)); //Publishes to "PlayerStateMachine"
+        EventBus.Instance.Publish(new FreezePlayer(true)); //Publish to "PlayerStateMachine"
         EventBus.Instance.Publish(new MaintainPlayerHealth(true)); //Publish to "PlayerHealth"
         EventBus.Instance.Publish(new PauseExplorationTimer(true)); //Publish to "ExplorationTimer"
 
@@ -49,13 +46,13 @@ public class PauseMenu : MonoBehaviour
 
     void OnDisable()
     {
-        EventBus.Instance.Publish(new FreezePlayer(false)); //Publishes to "PlayerStateMachine"
+        EventBus.Instance.Publish(new FreezePlayer(false)); //Publish to "PlayerStateMachine"
         EventBus.Instance.Publish(new MaintainPlayerHealth(false)); //Publish to "PlayerHealth"
         EventBus.Instance.Publish(new PauseExplorationTimer(false)); //Publish to "ExplorationTimer"
 
         //Allow Player Inputs
         _allowPlayerInputs = true;
-        EventBus.Instance.Publish(new ActivatePlayerInputs(_allowPlayerInputs)); //Multiple subscribers
+        EventBus.Instance.Publish(new ActivatePlayerInputs(_allowPlayerInputs)); //Multiple publishers and subscribers
     }
 
     //"PauseGame" is the name of an event. Empty event

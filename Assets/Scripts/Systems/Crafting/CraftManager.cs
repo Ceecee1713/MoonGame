@@ -26,9 +26,6 @@ using UnityEngine;
 /// 
 /// See <see cref="InventoryData"/> for what the collection is made up of
 /// 
-/// This script works with multiple other scripts that subscribe and publish "ActivatePlayerInputs" event. 
-/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
-/// 
 ///</remarks>
 
 public class CraftManager : MonoBehaviour
@@ -82,8 +79,7 @@ public class CraftManager : MonoBehaviour
     void OnDisable()
     {
         _allowPlayerInputs = true;
-        EventBus.Instance.Publish(new ActivatePlayerInputs(_allowPlayerInputs)); //Multiple subscribers
-
+        EventBus.Instance.Publish(new ActivatePlayerInputs(_allowPlayerInputs)); //Multiple subscribers and publishers
         StopAllCoroutines();
     }
 
@@ -106,13 +102,6 @@ public class CraftManager : MonoBehaviour
         _remainingQuantity = 0;
         _amountOfAnInventoryItemNeeded = 0;
     }
-
-    /*
-    public AllowToCraftClue(bool avaliableClueToDecipher) 
-    {
-        AvaliableClueToDecipher = avaliableClueToDecipher;
-    }
-    */
 
     //Receives a "AllowToCraftClue" event with parameters:
     //(bool) "AvaliableClueToDecipher" - (true = there's a completed, gibberish clue inside cluebook
@@ -158,7 +147,7 @@ public class CraftManager : MonoBehaviour
             if(_amountOfMatchingCraftingMaterials >= maxAmountOfCraftingMaterialTypes && _allowCraftingForClue != false)
             {
                 DecipherClue(); //Step Seven
-                EventBus.Instance.Publish(new DecipherClue()); //Publish to "CluebokManager"
+                EventBus.Instance.Publish(new DecipherClue()); //Publish to "CluebookManager"
             }
         }
 

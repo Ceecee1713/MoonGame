@@ -20,12 +20,6 @@ using UnityEngine.UI;
 /// See <see cref="SafeZone"/> - Listening to "AlterPlayerHealth" event that "SafeZone" publishes to alter player's current health
 /// See <see cref="CorriosonZone"/> - Listening to "AlterPlayerHealth" event that "CorriosonZone" publishes to alter player's current health
 /// 
-/// This script works with multiple other scripts that publish and subscribe to "ActivatePlayerInputs"
-/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
-/// 
-/// This script works with multiple other scripts that publish "MaintainPlayerHealth"
-/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
-/// 
 /// </remarks>
 
 public class PlayerHealth : MonoBehaviour
@@ -37,7 +31,7 @@ public class PlayerHealth : MonoBehaviour
     private Slider health;
 
     private bool _pauseCorrioson = false; 
-    private bool _promptedFailureGameScreen = false;
+    private bool _promptedFailureGameScreen = false; //Prevent looping through Update()
     private bool _recoverHealth = false;
     
     private float _speedToChangeHealth;

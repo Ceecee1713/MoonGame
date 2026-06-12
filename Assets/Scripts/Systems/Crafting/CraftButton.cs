@@ -31,15 +31,10 @@ public class CraftButton : MonoBehaviour
 
     [SerializeField] 
     private List <ItemData> craftingMaterials; //Crafting materials are the same as normal inventory items
-    //Crafting materials are the same as normal inventory items
 
     private bool _allowClicking = true; //Prevent or allow for the player to click on the button game object this script is attached to
 
     private const bool CRAFTING_A_CLUE = false;
-
-    void OnEnable()
-    {
-    }
 
     void OnDisable()
     {

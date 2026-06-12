@@ -16,7 +16,7 @@ using UnityEngine;
 /// allow third corrioson values to be altered
 /// 
 /// See <see cref="ExplorationTimer"/> - Listening to  "ChangeCorriosonValue" event that "ExplorationTimer" publishes to
-/// allow third corrioson values to be altered
+/// allow corrioson values to be altered
 /// 
 /// See <see cref="MoonPuzzleDialogueText"/> - Listening to "NewMoonFragmentObtained" event that "MoonPuzzleDialogueText" publishes
 /// to change replace corrioson zones in the same area and/or delete the current corrioson zone in the same area

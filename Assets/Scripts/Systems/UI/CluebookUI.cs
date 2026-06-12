@@ -12,9 +12,6 @@ using UnityEngine.UI;
 /// See <see cref="ExplorationTimer"/> - Publishing "PauseExplorationTimer" to pause/unpause exploration timer countdown
 /// See <see cref="PlayerStateMachine"/> - Publishing "FreezePlayer" to freeze/unfreeze player
 /// 
-/// This script works with multiple other scripts that publish and subscribe to "ActivatePlayerInputs"
-/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
-/// 
 /// </remarks>
 
 public class CluebookUI : MonoBehaviour

@@ -199,7 +199,7 @@ public class StorytellingDialogueText : MonoBehaviour
 
         if(_index+1 == _messageLength && _beginPrayerPhase == true)
         {
-            PickPrayer();
+            PickPrayer(); //Changing corrioson values of corrioson areas
             return;
         }
 
@@ -239,7 +239,7 @@ public class StorytellingDialogueText : MonoBehaviour
         StartCoroutine(TypeMessage(_currentDialogue.Messages[_index].message));
     }
 
-    private void PickPrayer() 
+    private void PickPrayer() //Changing corrioson values of corrioson areas
     {
         _index = 0; //Reset
 

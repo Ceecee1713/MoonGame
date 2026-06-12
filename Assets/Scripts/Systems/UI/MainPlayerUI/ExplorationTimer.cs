@@ -16,9 +16,6 @@ using TMPro;
 /// See <see cref="StorytellingDialogueText"/> - Listening to "ResetExplorationTimer" event that "StorytellingDialogueText" published to reset exploration timer countdown
 /// See <see cref="DialogueCanvas"/> - Listening to "ResetExplorationTimer" event that "DialogueCanvas" published to reset exploration timer countdown
 /// 
-/// This script works with multiple other scripts that publish "PauseExplorationTimer"
-/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
-/// 
 /// </remarks>
 
 public class ExplorationTimer : MonoBehaviour
@@ -80,11 +77,16 @@ public class ExplorationTimer : MonoBehaviour
         timerText.text = string.Format("{0:00}:{1:00}", _minutes, _seconds);
     }
 
+
+    //Receives a "PauseExplorationTimer" event with parameters:
+    //(bool) AllowCountdown - (true = allow the timer to coutdown
+    //false = do NOT allow the timer to countdown)
     private void PauseTimerCountdown(PauseExplorationTimer pauseExplorationTimer) //Multiple publishers
     {
         _doNotAllowTimerToCountDown = pauseExplorationTimer.AllowCountdown;
     }
 
+    //"ResetExplorationTimer" is the name of an event. Empty event 
     private void ResetTimer(ResetExplorationTimer resetExplorationTimer) //Published by "StorytellingDialogueText" or "DialogueCanvas"
     {
         RemainingTime = maxDurationOfExplorationPhaseInSeconds;

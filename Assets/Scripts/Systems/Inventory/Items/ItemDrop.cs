@@ -7,8 +7,8 @@ using UnityEngine;
 /// <remarks>
 /// 
 /// This script works together with the "MoonPuzzleDialogueText", "StorytellingDialogueText" scripts
-/// See <see cref="MoonPuzzleDialogueText"/> - Listening to "NewExplorationPhase" event that "MoonPuzzleDialogueText" published to destroy self
-/// See <see cref="StorytellingDialogueText"/> - Listening to "NewExplorationPhase" event that "StorytellingDialogueText" published to destroy self
+/// See <see cref="MoonPuzzleDialogueText"/> - Listening to "NewExplorationPhase" event that "MoonPuzzleDialogueText" published, which destroys this game object 
+/// See <see cref="StorytellingDialogueText"/> - Listening to "NewExplorationPhase" event that "StorytellingDialogueText" published, which destroys this game object 
 /// 
 /// </remarks>
 

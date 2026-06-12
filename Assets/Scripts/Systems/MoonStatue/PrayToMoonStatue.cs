@@ -14,9 +14,6 @@ using UnityEngine;
 /// 
 /// See <see cref="StorytellingDialogueData"/> for how dialogue messages are structured.
 /// 
-/// This script works with multiple other scripts that subscribe and publish "ActivatePlayerInputs" event. 
-/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
-/// 
 /// </remarks>
 
 public class PrayToMoonStatue : MonoBehaviour

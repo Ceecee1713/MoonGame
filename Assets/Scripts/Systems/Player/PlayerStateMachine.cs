@@ -12,7 +12,7 @@ using UnityEngine;
 /// This scripts works together with "InventoryUI", "MoonPuzzleDialogueText", "StorytellingDialogueText" scripts
 /// See <see cref="InventoryUI"/> - Listening to "SpeedUpPlayer" event that "InventoryUI" publishes to speed up player or not
 /// See <see cref="MoonPuzzleDialogueText"/> -  Listening to "NewExplorationPhase" event that "MoonPuzzleDialogueText" publishes to move player back to a set position
-/// See <see cref="StorytellingDialogueText"/> - Listening to "NewExplorationPhase" event that "MoonPuzzleDialogueText" publishes to move player back to a set position
+/// See <see cref="StorytellingDialogueText"/> - Listening to "NewExplorationPhase" event that "StorytellingDialogueText" publishes to move player back to a set position
 /// 
 /// This script inherits from "BaseStateMachine" as the player uses a state machine and states
 /// See <see cref="BaseStateMachine"/> for how the state machine is structured
@@ -73,7 +73,6 @@ public class PlayerStateMachine : BaseStateMachine
 
     public PlayerState currentState { get; set; }
     public PlayerState PreviousState { get; set; }
-    //public string currentStateName;
 
     //Specific single state scripts
     public PlayerIdleState IdleState { get; private set; }
@@ -140,7 +139,7 @@ public class PlayerStateMachine : BaseStateMachine
 
     public override void Update()
     {
-        Mathf.Clamp(CurrentTimeLengthForSpeedUp, 0.0f, MaxDurationForSpeedUp);
+        CurrentTimeLengthForSpeedUp = Mathf.Clamp(CurrentTimeLengthForSpeedUp, 0.0f, MaxDurationForSpeedUp);
 
         CheckToSpeedUpPlayer();
 
@@ -195,7 +194,6 @@ public class PlayerStateMachine : BaseStateMachine
         PreviousState = currentState;
         currentState = nextState;
         ChangeState(nextState);
-        //currentStateName = currentState?.ToString();
         StartSpeedChange();
     }
 

@@ -8,7 +8,7 @@ using UnityEngine;
 /// See <see cref="InventoryItemTypes"/> for what makes up an inventory item and how inventory UI slots are made up.
 /// 
 /// This script works together with the "InventoryUISlot" and "InteractableItem" scripts
-/// See <see cref="InventoryUISlot"/> - Publihsing the "SpawnDroppedInventoryItem" event
+/// See <see cref="InventoryUISlot"/> - Publishing the "SpawnDroppedInventoryItem" event
 /// See <see cref="InteractableItem"/> - Utilizing public variables from "InteractableItem" while instantiating the dropped inventory item  
 /// 
 /// </remarks>

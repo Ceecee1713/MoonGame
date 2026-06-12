@@ -12,9 +12,6 @@ using UnityEngine;
 /// See <see cref="InventoryUI"/> - Publishing "PreventPlayerInteractingWithInventory" to prevent/allow player to interact with player inventory
 /// See <see cref="ExplorationTimer"/> - Publishing "PauseExplorationTimer" to pause exploration timer countdown
 /// 
-/// This script works with multiple other scripts that subscribe and publish "ActivatePlayerInputs" event. 
-/// Please see <see cref="AddItemToInventory"/> to get the full details as it would be too much to write in this script alone
-/// 
 ///</remarks>
 
 public class CraftingTable : MonoBehaviour
