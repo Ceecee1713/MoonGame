@@ -91,13 +91,24 @@ StartScene is a scene that ONLY contains the start menu
 
 ## Known Issues
 
-- Arragement of inventory items in the inventory display can be a little off after crafting items. For example, the crafted item does not go into the first inventory slot
-where the first inventory slot had an inventory item that was consumed as materials but are now removed
+- Sometimes, the arragement of inventory items in the inventory display can be a little off after crafting items. 
+For example, the crafted item does not go into the first inventory slot where the first inventory slot had an inventory item that was consumed as materials but are now removed
+
 - `AddItemToInventory.cs` (which contains all event definitions) should be renamed to `Events.cs` to better reflect its contents
+
 - When crafting items or deciphering clues at the crafting table, when the correct amount of materials are in inventory,
 some materials in inventory will not be consumed for the crafting but still yield a crafted item or decipered clue. This happens when inventory is full or not full
+
 - Sometimes, the dialogue in the storytelling UI doesn't fully clear upon first typing of a dialogue message. This means the first dialogue message may be the first message of the previous
 dialogue from before instead of the new, current dialogue that's meant to be set to for the textmeshprougi
+
+- Sometimes, if you proceed through the dialogue too fast, the dialogue may glitch and prompt different dialogue scenarios. 
+For example, speeding through the prayer dialogue at the moon statue MAY trigger the beginning dialogue when you first start the game 
+
+- You cannot craft items in a full inventory even if some materials in the full inventory will be consumed
+
+- Sometimes, you may be unable to craft items even if you have the correct type(s) and amount(s) of crafting material. The best option is to drop those materials from inventory
+and grab new items from around the world and craft your item with the newly aquired materials
 
 ## Notes
 
