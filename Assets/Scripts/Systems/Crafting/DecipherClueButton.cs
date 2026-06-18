@@ -116,9 +116,8 @@ public class DecipherClueButton : MonoBehaviour
 
         AudioManager.Instance.PlaySoundEffect(buttonClickSFX);
         
-        EventBus.Instance.Publish(new CheckForCompleteClues()); //Publish to "CluebookManager"
-        
         craftManager.ResetStatus();
+        EventBus.Instance.Publish(new CheckForCompleteClues()); //Publish to "CluebookManager" - must be called AFTER ResetStatus()
 
         for(int i = 0; i < craftingMaterials.Length; i++)
             craftManager.CheckInventoryForCraftingMaterials(craftingMaterials[i]);
