@@ -89,7 +89,7 @@ Do note: You cannot directly play the scene where all the gameplay takes place i
 This is because there's no AudioManager existing in the scene. AudioManager is inside StartScene and will be persistent across scenes. 
 StartScene is a scene that ONLY contains the start menu
 
-## Known Issues / Notes
+## Known Issues
 
 - Arragement of inventory items in the inventory display can be a little off after crafting items. For example, the crafted item does not go into the first inventory slot
 where the first inventory slot had an inventory item that was consumed as materials but are now removed
