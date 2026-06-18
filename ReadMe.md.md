@@ -91,8 +91,15 @@ StartScene is a scene that ONLY contains the start menu
 
 ## Known Issues / Notes
 
-- "Corrosion" is spelled "Corrioson" throughout the codebase (variable names, class names, and comments) — consistent but worth noting if extending the project
-- `AddItemToInventory.cs` (which contains all event definitions) should be renamed to `Events.cs` to better reflect its contents
 - Arragement of inventory items in the inventory display can be a little off after crafting items. For example, the crafted item does not go into the first inventory slot
 where the first inventory slot had an inventory item that was consumed as materials but are now removed
+- `AddItemToInventory.cs` (which contains all event definitions) should be renamed to `Events.cs` to better reflect its contents
+- When crafting items or deciphering clues at the crafting table, when the correct amount of materials are in inventory,
+some materials in inventory will not be consumed for the crafting but still yield a crafted item or decipered clue. This happens when inventory is full or not full
+- Sometimes, the dialogue in the storytelling UI doesn't fully clear upon first typing of a dialogue message. This means the first dialogue message may be the first message of the previous
+dialogue from before instead of the new, current dialogue that's meant to be set to for the textmeshprougi
+
+## Notes
+
 - Anything within Testing folder (Assets -> Scripts -> Testing) is not used in the actual game but were used during development in test scenes 
+- "Corrosion" is mispelled as "Corrioson" throughout the codebase (variable names, class names, and comments)
