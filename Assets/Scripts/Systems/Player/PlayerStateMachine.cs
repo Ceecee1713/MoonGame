@@ -25,6 +25,9 @@ using UnityEngine;
 
 public class PlayerStateMachine : BaseStateMachine
 {
+    [SerializeField]
+    private PlayerTilt playerTilt; //PlayerTilt script
+
     public Transform mainCamera;
     public float MovementSpeed;
     public float RotationSpeed = 10.0f;
@@ -195,6 +198,16 @@ public class PlayerStateMachine : BaseStateMachine
         currentState = nextState;
         ChangeState(nextState);
         StartSpeedChange();
+        CheckToTiltPlayer();
+    }
+
+    public void CheckToTiltPlayer()
+    {
+        if(currentState == WanderState)
+            playerTilt.BeginTiltingBody();
+
+        if(PreviousState == WanderState && (currentState == IdleState || currentState == PausedState))
+            playerTilt.ReturnToDefaultRotation();
     }
 
     public void StartSpeedChange() 
