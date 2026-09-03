@@ -81303,6 +81303,14 @@ PrefabInstance:
       propertyPath: moonPuzzleDialogueText
       value: 
       objectReference: {fileID: 1644938799}
+    - target: {fileID: 1147290344634694412, guid: 7353956821e909e42a05c33e58367b94, type: 3}
+      propertyPath: duration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1147290344634694412, guid: 7353956821e909e42a05c33e58367b94, type: 3}
+      propertyPath: resizeScale
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1190509243785820981, guid: 7353956821e909e42a05c33e58367b94, type: 3}
       propertyPath: maxDurationOfExplorationPhase
       value: 0
@@ -81900,6 +81908,30 @@ PrefabInstance:
     - target: {fileID: 7991394884454792563, guid: 7353956821e909e42a05c33e58367b94, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 119.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8108798890985018710, guid: 7353956821e909e42a05c33e58367b94, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 145
+      objectReference: {fileID: 0}
+    - target: {fileID: 8108798890985018710, guid: 7353956821e909e42a05c33e58367b94, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 130
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323725465070607029, guid: 7353956821e909e42a05c33e58367b94, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 145
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323725465070607029, guid: 7353956821e909e42a05c33e58367b94, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 139.7871
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323725465070607029, guid: 7353956821e909e42a05c33e58367b94, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1316
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323725465070607029, guid: 7353956821e909e42a05c33e58367b94, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -14.896973
       objectReference: {fileID: 0}
     - target: {fileID: 8577645514765312410, guid: 7353956821e909e42a05c33e58367b94, type: 3}
       propertyPath: m_Sprite

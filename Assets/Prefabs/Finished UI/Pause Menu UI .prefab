@@ -457,6 +457,7 @@ GameObject:
   - component: {fileID: 7402233713956816562}
   - component: {fileID: 6479947933299860140}
   - component: {fileID: 4721923715201252639}
+  - component: {fileID: 5250188155134769291}
   m_Layer: 5
   m_Name: Exit Button
   m_TagString: Untagged
@@ -602,6 +603,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: 92c90fba82368a444ab6ec5a9b704298, type: 3}
+--- !u!114 &5250188155134769291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067855257611307422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878745f0deecaf949aef148b2a32ba88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSizeScale: 1.1
 --- !u!1 &2109057132243075695
 GameObject:
   m_ObjectHideFlags: 0
@@ -1417,6 +1431,7 @@ GameObject:
   - component: {fileID: 2703703650184573053}
   - component: {fileID: 5880008285417929909}
   - component: {fileID: 5105487491029711660}
+  - component: {fileID: 8857286446609875478}
   m_Layer: 5
   m_Name: Controls Button
   m_TagString: Untagged
@@ -1562,6 +1577,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: 92c90fba82368a444ab6ec5a9b704298, type: 3}
+--- !u!114 &8857286446609875478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4025078981663239956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878745f0deecaf949aef148b2a32ba88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSizeScale: 1.1
 --- !u!1 &4412473052982807490
 GameObject:
   m_ObjectHideFlags: 0
@@ -1827,6 +1855,7 @@ GameObject:
   - component: {fileID: 3891545339748232361}
   - component: {fileID: 7396573303004635341}
   - component: {fileID: 4818741098905438185}
+  - component: {fileID: 1911091337808988832}
   m_Layer: 5
   m_Name: Exit Button
   m_TagString: Untagged
@@ -1972,6 +2001,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: 92c90fba82368a444ab6ec5a9b704298, type: 3}
+--- !u!114 &1911091337808988832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7329692159481304699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878745f0deecaf949aef148b2a32ba88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSizeScale: 1.1
 --- !u!1 &7751872092502211914
 GameObject:
   m_ObjectHideFlags: 0

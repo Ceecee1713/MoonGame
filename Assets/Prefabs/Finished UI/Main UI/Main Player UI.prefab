@@ -1650,6 +1650,7 @@ GameObject:
   - component: {fileID: 7773495617031317589}
   - component: {fileID: 4887754447683879283}
   - component: {fileID: 3681603963729911689}
+  - component: {fileID: 6949177880392745937}
   m_Layer: 5
   m_Name: Open Cluebook Button
   m_TagString: Untagged
@@ -1784,8 +1785,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonClickSFX: {fileID: 8300000, guid: 92c90fba82368a444ab6ec5a9b704298, type: 3}
   cluebookUI: {fileID: 0}
+  dialogueMainUI: {fileID: 0}
   craftingUI: {fileID: 0}
   pauseMenuUI: {fileID: 0}
+--- !u!114 &6949177880392745937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2271064756501535811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878745f0deecaf949aef148b2a32ba88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSizeScale: 1.1
 --- !u!1 &2278311184259843439
 GameObject:
   m_ObjectHideFlags: 0

@@ -712,6 +712,7 @@ GameObject:
   - component: {fileID: 1083789982023931559}
   - component: {fileID: 4700591557656576822}
   - component: {fileID: 5839594701270051986}
+  - component: {fileID: 6281200454725624511}
   m_Layer: 5
   m_Name: Left Arrow Button
   m_TagString: Untagged
@@ -869,6 +870,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: 92c90fba82368a444ab6ec5a9b704298, type: 3}
+--- !u!114 &6281200454725624511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026535084118352070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878745f0deecaf949aef148b2a32ba88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSizeScale: 1.1
 --- !u!1 &1054886389413324322
 GameObject:
   m_ObjectHideFlags: 0
@@ -2141,6 +2155,7 @@ GameObject:
   - component: {fileID: 2323539519200350271}
   - component: {fileID: 8861510081713368398}
   - component: {fileID: 519755990614041652}
+  - component: {fileID: 8935352895648611007}
   m_Layer: 5
   m_Name: Right Arrow Button
   m_TagString: Untagged
@@ -2298,6 +2313,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: 92c90fba82368a444ab6ec5a9b704298, type: 3}
+--- !u!114 &8935352895648611007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3507635737244095554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878745f0deecaf949aef148b2a32ba88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSizeScale: 1.1
 --- !u!1 &3671963105160785400
 GameObject:
   m_ObjectHideFlags: 0
@@ -2351,6 +2379,7 @@ GameObject:
   - component: {fileID: 1954345953715337194}
   - component: {fileID: 1029862952327661784}
   - component: {fileID: 8283497281539395248}
+  - component: {fileID: 4682537283394355589}
   m_Layer: 5
   m_Name: Exit Button
   m_TagString: Untagged
@@ -2485,6 +2514,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonClickSFX: {fileID: 8300000, guid: 92c90fba82368a444ab6ec5a9b704298, type: 3}
   craftingUI: {fileID: 6359731303731824301}
+--- !u!114 &4682537283394355589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3721260269218129702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878745f0deecaf949aef148b2a32ba88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSizeScale: 1.1
 --- !u!1 &3797289840801897926
 GameObject:
   m_ObjectHideFlags: 0
@@ -4915,6 +4957,7 @@ GameObject:
   - component: {fileID: 6304152483332858257}
   - component: {fileID: 3250492933226920696}
   - component: {fileID: 6208877513941158209}
+  - component: {fileID: 800026245707382913}
   m_Layer: 5
   m_Name: Left Arrow Button
   m_TagString: Untagged
@@ -5072,6 +5115,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: 92c90fba82368a444ab6ec5a9b704298, type: 3}
+--- !u!114 &800026245707382913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7039274509766206533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878745f0deecaf949aef148b2a32ba88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSizeScale: 1.1
 --- !u!1 &7040772301896442233
 GameObject:
   m_ObjectHideFlags: 0
@@ -6214,6 +6270,7 @@ GameObject:
   - component: {fileID: 6204521499905491272}
   - component: {fileID: 1756519176802302845}
   - component: {fileID: 4136637270798139102}
+  - component: {fileID: 6593113339651017514}
   m_Layer: 5
   m_Name: Right Arrow Button
   m_TagString: Untagged
@@ -6371,6 +6428,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: 92c90fba82368a444ab6ec5a9b704298, type: 3}
+--- !u!114 &6593113339651017514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8894208128763214243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878745f0deecaf949aef148b2a32ba88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSizeScale: 1.1
 --- !u!1 &8928121710653642668
 GameObject:
   m_ObjectHideFlags: 0
