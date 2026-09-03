@@ -336,6 +336,28 @@ public class PauseExplorationTimer : IEvent
         AllowCountdown = allowCountdown;
     }
 }
+
+//Subscribers: CameraManager
+//Publishers: FreezeWithActiveUI, 
+//Purpose: Freeze the camera when a specific UI is active
+public class FreezeCameraWithActiveUI : IEvent
+{
+    public GameObject CurrentUI;
+    public bool FreezeCamera;
+
+    public FreezeCameraWithActiveUI(GameObject currentUI, bool freezeCamera)
+    {
+        CurrentUI = currentUI;
+        FreezeCamera = freezeCamera;
+    }
+}
+
+//Subscribers: PlayerInputController
+//Publishers: WinGameUI,LosingUI
+//Purpose: Disable all player inputs when the player has reached the end screen and can no longer play the game anymore
+public class StopAllPlayerInputs : IEvent
+{
+}
 #endregion
 
 
@@ -433,6 +455,8 @@ public class MaintainPlayerHealth : IEvent
 public class PauseGame : IEvent
 {
 }
+
+
 #endregion
 
 

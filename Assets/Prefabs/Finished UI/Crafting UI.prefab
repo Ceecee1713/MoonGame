@@ -3986,7 +3986,9 @@ GameObject:
   - component: {fileID: 7544259054034493302}
   - component: {fileID: 4946706553381334169}
   - component: {fileID: 3933812881780221938}
+  - component: {fileID: 7983183995967933810}
   - component: {fileID: 3627044170809359171}
+  - component: {fileID: 1901020873256906406}
   m_Layer: 5
   m_Name: Crafting UI
   m_TagString: Untagged
@@ -4077,6 +4079,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &7983183995967933810
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6359731303731824301}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &3627044170809359171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4097,6 +4111,18 @@ MonoBehaviour:
   - {fileID: 6001304732140370916}
   decipherClueButton: {fileID: 8292463595728209977}
   inventoryData: {fileID: 11400000, guid: 3e223954c69a03a4ca8d8bbf172e7db9, type: 2}
+--- !u!114 &1901020873256906406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6359731303731824301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae69184ad041b4845b348d70091d2990, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6387781963427389269
 GameObject:
   m_ObjectHideFlags: 0

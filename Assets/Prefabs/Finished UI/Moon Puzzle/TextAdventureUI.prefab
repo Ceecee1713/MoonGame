@@ -734,6 +734,7 @@ GameObject:
   - component: {fileID: 2559905062814754805}
   - component: {fileID: 4762803014686476912}
   - component: {fileID: 1620548687582734023}
+  - component: {fileID: 4997703223787415868}
   m_Layer: 5
   m_Name: TextAdventureUI
   m_TagString: Untagged
@@ -836,6 +837,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &4997703223787415868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5901374791069522612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae69184ad041b4845b348d70091d2990, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6025896915974861733
 GameObject:
   m_ObjectHideFlags: 0

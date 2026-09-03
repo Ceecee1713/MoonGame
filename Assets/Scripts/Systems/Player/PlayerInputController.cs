@@ -12,6 +12,11 @@ public class PlayerInputController : MonoBehaviour
         _PlayerStateMachine = GetComponent<PlayerStateMachine>();
     }
 
+    void Start()
+    {
+        EventBus.Instance.Subscribe<StopAllPlayerInputs>(ReachedEndScreen);
+    }
+
     void OnEnable()
     {
         if(_playerInputs == null)
@@ -29,14 +34,23 @@ public class PlayerInputController : MonoBehaviour
 
     void OnDisable()
     {
+        UnsubscribeInputs();
+    }
+
+    private void UnsubscribeInputs()
+    {
         _playerInputs.PlayerActions.Movement.performed -= OnMovementPerformed;
         _playerInputs.PlayerActions.Interact.performed -= OnInteractPerformed;
         _playerInputs.PlayerActions.Use.performed -= OnUsePerformed;
         _playerInputs.PlayerActions.Drop.performed -= OnDropPerformed;
         _playerInputs.PlayerActions.Exit.performed -= OnExitPerformed;
         _playerInputs.PlayerActions.NextMessage.performed -= NextMessagePerformed;
-
         _playerInputs.Disable();
+    }
+
+    private void ReachedEndScreen(StopAllPlayerInputs stopAllPlayerInputs)
+    {
+        UnsubscribeInputs();
     }
 
     void OnMovementPerformed(InputAction.CallbackContext val)

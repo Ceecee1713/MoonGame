@@ -128,7 +128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc3c027bed9861248a3adc0820498fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moonFragmentImage: {fileID: 3512507162640194420}
 --- !u!1 &771315816681323773
 GameObject:
   m_ObjectHideFlags: 0

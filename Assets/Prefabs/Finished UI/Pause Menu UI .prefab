@@ -1130,6 +1130,7 @@ GameObject:
   - component: {fileID: 9187333256172635216}
   - component: {fileID: 8800794338555631219}
   - component: {fileID: 191649730333543275}
+  - component: {fileID: 2653499711132712461}
   - component: {fileID: 9081252054241002525}
   m_Layer: 5
   m_Name: 'Pause Menu UI '
@@ -1242,6 +1243,18 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &2653499711132712461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3054842460301751112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae69184ad041b4845b348d70091d2990, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!225 &9081252054241002525
 CanvasGroup:
   m_ObjectHideFlags: 0
