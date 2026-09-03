@@ -15,21 +15,20 @@ MonoBehaviour:
   Messages:
   - message: 'After successfully returning all the moon fragments and reforging the
       Ancient Prayer, Moonlight began to cast its light over the treetops like white
-      ocean waves. The toxic miasma began to vanish around you as it travelled deeper
-      into the shadows of the forest. '
+      ocean waves. The miasma began to vanish around you as it travelled deeper into
+      the shadows of the forest. '
     uniqueWordsToColour: []
     wordColour: {r: 1, g: 1, b: 1, a: 1}
   - message: 'Although the souls of the deceased cannot be brought back to life,
-      the Moon Statue now repaired just gives you enough peace of mind as well as
-      hope. '
+      the newly repaired Moon Full Statue gives you hope. '
     uniqueWordsToColour: []
     wordColour: {r: 1, g: 1, b: 1, a: 1}
   - message: 'Hope that it''s not too late to the save the other villages of your
       once unified civilization before impending darkness devours all. '
     uniqueWordsToColour: []
     wordColour: {r: 1, g: 1, b: 1, a: 1}
-  - message: 'It''s painfully lonely having lost all the people you knew, then needing
-      to confront them as hollow husks that speak in tongues. '
+  - message: 'It''s lonely having lost all the people you knew, then needing to confront
+      them as hollow husks that speak in tongues. '
     uniqueWordsToColour: []
     wordColour: {r: 1, g: 1, b: 1, a: 1}
   - message: There may no longer be anymore priestesses for all you know.

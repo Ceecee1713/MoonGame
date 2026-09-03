@@ -2230,10 +2230,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Search throughout the forest to find souls. Interacting with them will
-    give you a cryptic clue of an Ancient Prayer Verse. Decipher the clue to discover
-    its true meaning at the Crafting Bench. \r\n\r\nThe First Moon Fragment needs
-    the First Verse, the Second Moon Fragment needs the Second Verse, and so on\u2026\r\n"
+  m_text: "Search throughout the forest to find souls. They have RED eyes. Interacting
+    with them will give you a cryptic clue of an Ancient Prayer Verse. Decipher the
+    clue to discover its true meaning at the Crafting Bench. \r\n\r\nThe First Moon
+    Fragment needs the First Verse, the Second Moon Fragment needs the Second Verse,
+    and so on\u2026\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: af58e12efbcd61d43b98901e47d325fd, type: 2}
   m_sharedMaterial: {fileID: -2307556845382827942, guid: af58e12efbcd61d43b98901e47d325fd, type: 2}

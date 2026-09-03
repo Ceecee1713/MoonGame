@@ -13,17 +13,15 @@ MonoBehaviour:
   m_Name: StartingGameDialogue
   m_EditorClassIdentifier: 
   Messages:
-  - message: "There was a small quaint village deep in the woods. The area they called
-      home wasn\u2019t the most suitable for life."
+  - message: 'There was a small quaint village deep in the woods. '
     uniqueWordsToColour: []
     wordColour: {r: 1, g: 1, b: 1, a: 1}
-  - message: "Nature was hardly kind to these villagers. They\u2019d have to walk
-      long distances for water, and foraging for food proved even more difficult.
-      Still, they managed."
+  - message: 'Nature wasn''t kind to these villagers. They had to walk long distances
+      for water, and foraging for food proved even more difficult. '
     uniqueWordsToColour: []
     wordColour: {r: 1, g: 1, b: 1, a: 1}
-  - message: 'They had no other choice except to live here, for a miasmic fog was
-      plaguing the land and cornered all inhabitants here. '
+  - message: 'They had no choice but to live here, for a miasmic fog was plaguing
+      the land and cornered all inhabitants here. '
     uniqueWordsToColour: []
     wordColour: {r: 1, g: 1, b: 1, a: 1}
   - message: "Fear had taken hold of everyone\u2019s minds and made the people afraid
@@ -32,14 +30,12 @@ MonoBehaviour:
       instead."
     uniqueWordsToColour: []
     wordColour: {r: 1, g: 1, b: 1, a: 1}
-  - message: 'No one could explain where the fog came from or how it manifested,
-      but it spread throughout the area, killing people, wildlife and rotting plant
-      life. '
+  - message: 'No one could explain where the fog came from, but it continued killing
+      people, wildlife and rotting plant life. '
     uniqueWordsToColour: []
     wordColour: {r: 1, g: 1, b: 1, a: 1}
-  - message: 'Faced with death, the people had turned to their faith. Their faith
-      was in the Moon Goddess as she shone down through the night sky before the
-      fog shrouded it in a thick purple blanket. '
+  - message: Faced with death, the people had turned to their faith. Their faith
+      was in the Moon Goddess.
     uniqueWordsToColour: []
     wordColour: {r: 1, g: 1, b: 1, a: 1}
   - message: People knew that Moonlight could repel the fog. Her light was their
