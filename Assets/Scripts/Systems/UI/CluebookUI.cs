@@ -39,7 +39,7 @@ public class CluebookUI : MonoBehaviour
         if(warningMoonPopUpUI.activeSelf == true)
             return;
 
-        if(textAdventureUI.activeSelf == false)
+        if(textAdventureUI.activeSelf == false && EventBus.Exists) 
         {
             EventBus.Instance.Publish(new FreezePlayer(false)); //Publish to "PlayerStateMachine" 
             EventBus.Instance.Publish(new MaintainPlayerHealth(false)); //Publish to "PlayerHealth"

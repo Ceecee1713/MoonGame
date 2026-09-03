@@ -38,7 +38,7 @@ public class FreezeWithActiveUI : MonoBehaviour
 
     void OnDisable()
     {
-        if(previousAlpha == 1.0f)
+        if(previousAlpha == 1.0f && EventBus.Exists)
         {
             doNotRepeat = false;
             freezeCamera = false;

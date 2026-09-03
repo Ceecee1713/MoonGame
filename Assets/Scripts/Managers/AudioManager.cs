@@ -10,6 +10,14 @@ using UnityEngine.SceneManagement;
 /// <remarks>
 /// Singleton — access globally via <see cref="AudioManager.Instance"/>.
 /// No other script should play audio directly
+/// 
+/// 
+/// NOTE TO SELF: AudioManager.Instance can return null during Application.Quit().
+/// This is currently safe because no script calls AudioManager.Instance from OnDestroy() or OnDisable().
+/// If you ever add an audio call inside OnDestroy()/OnDisable() or anywhere that runs during Quit,
+/// Use: if (AudioManager.Exists) before referencing this script
+/// See the same fix already applied to EventBus for reference: if (EventBus.Exists)
+/// 
 ///</remarks>
 
 public class AudioManager : Singleton<AudioManager>

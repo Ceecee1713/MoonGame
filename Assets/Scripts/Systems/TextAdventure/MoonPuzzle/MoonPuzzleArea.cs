@@ -55,7 +55,7 @@ public class MoonPuzzleArea : MonoBehaviour
 
     void OnDisable()
     {
-        if (EventBus.Instance != null)
+        if (EventBus.Exists)
         {
             EventBus.Instance.Unsubscribe<Interact>(OpenTextAdventureUI);
             EventBus.Instance.Unsubscribe<ActivatePlayerInputs>(AllowPlayerInput);
@@ -65,7 +65,7 @@ public class MoonPuzzleArea : MonoBehaviour
 
     void OnDestroy()
     {
-        if (EventBus.Instance != null)
+        if (EventBus.Exists)
         {
             EventBus.Instance.Unsubscribe<Interact>(OpenTextAdventureUI);
             EventBus.Instance.Unsubscribe<ActivatePlayerInputs>(AllowPlayerInput);

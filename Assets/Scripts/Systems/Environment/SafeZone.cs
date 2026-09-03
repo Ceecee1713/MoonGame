@@ -37,7 +37,7 @@ public class SafeZone : MonoBehaviour
 
     void OnDestroy()
     {
-        if (EventBus.Instance != null)
+        if (EventBus.Exists)
             EventBus.Instance.Unsubscribe<NewMoonFragmentObtained>(SetNewSafeZoneCollision);
     }
 

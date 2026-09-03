@@ -11,6 +11,12 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     private static readonly object _lock = new object();
     private static bool _applicationIsQuitting = false;
 
+    /// <summary>
+    /// Safely checks whether an instance currently exists WITHOUT triggering auto-creation.
+    /// This is to combat any script that calls EventBus (which is a Singleton) OnDisable() or OnDestroy() or when application is quitting
+    /// </summary>
+    public static bool Exists => !_applicationIsQuitting && _instance != null;
+
     public static T Instance        
     {            
         get            
@@ -65,7 +71,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
     protected virtual void OnDestroy()
     {
-        //if (_instance == this)
-            //_applicationIsQuitting = true;
+        if (_instance == this)
+            _instance = null;
     }
 }

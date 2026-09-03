@@ -64,7 +64,7 @@ public class CorriosonZone : MonoBehaviour
 
     void OnDestroy()
     {
-        if (EventBus.Instance != null)
+        if (EventBus.Exists)
         {
             EventBus.Instance.Unsubscribe<ChangeCorriosonValue>(ChangeSpeedToLowerHealth);
             EventBus.Instance.Unsubscribe<RestoreCorriosonValue>(ReturnToDefaultSpeed);

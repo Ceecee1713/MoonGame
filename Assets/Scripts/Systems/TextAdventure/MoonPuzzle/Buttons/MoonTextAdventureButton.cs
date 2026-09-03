@@ -53,7 +53,7 @@ public class MoonTextAdventureButton : MonoBehaviour
 
     void OnDestroy()
     {
-        if (EventBus.Instance != null)
+        if (EventBus.Exists)
             EventBus.Instance.Unsubscribe<SetMoonPuzzleQuestions>(SetNextQuestionDialogue);
     }
 

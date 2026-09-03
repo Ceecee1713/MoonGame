@@ -79,7 +79,10 @@ public class CraftManager : MonoBehaviour
     void OnDisable()
     {
         _allowPlayerInputs = true;
-        EventBus.Instance.Publish(new ActivatePlayerInputs(_allowPlayerInputs)); //Multiple subscribers and publishers
+
+        if (EventBus.Exists)
+            EventBus.Instance.Publish(new ActivatePlayerInputs(_allowPlayerInputs));
+
         StopAllCoroutines();
     }
 
