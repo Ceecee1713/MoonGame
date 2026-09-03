@@ -324,7 +324,7 @@ public class OpenWarningMoonPuzzleUI : IEvent
 }
 
 //Subscribers: ExplorationTimer
-//Publishers: ChestUI, CluebookUI, PauseMenu, LosingUI, WinGameUI, MoonPuzzleArea, MoonPuzzleDialogueText, 
+//Publishers: ChestUI, CluebookUI, PauseMenu, EndScreenUI, MoonPuzzleArea, MoonPuzzleDialogueText, 
 //StorytellingDialogueText, DialogueCanvas, PlayerHealth, DeclineButton, CraftingTable
 //Purpose: Pauses or unpauses the exploration timer countdown
 public class PauseExplorationTimer : IEvent
@@ -338,7 +338,7 @@ public class PauseExplorationTimer : IEvent
 }
 
 //Subscribers: CameraManager
-//Publishers: FreezeWithActiveUI, 
+//Publishers: FreezeWithActiveUI, EndScreenUI
 //Purpose: Freeze the camera when a specific UI is active
 public class FreezeCameraWithActiveUI : IEvent
 {
@@ -353,7 +353,7 @@ public class FreezeCameraWithActiveUI : IEvent
 }
 
 //Subscribers: PlayerInputController
-//Publishers: WinGameUI,LosingUI
+//Publishers: EndScreenUI
 //Purpose: Disable all player inputs when the player has reached the end screen and can no longer play the game anymore
 public class StopAllPlayerInputs : IEvent
 {
@@ -392,7 +392,7 @@ public class AlterPlayerHealth : IEvent
 }
 
 //Subscribers: PlayerStateMachine
-//Publishers: NPC, PrayToMoonStatue, ChestUI, CluebookUI, PauseMenu, LosingUI, WinGameUI, MoonPuzzleArea, 
+//Publishers: NPC, PrayToMoonStatue, ChestUI, CluebookUI, PauseMenu, EndScreenUI, MoonPuzzleArea, 
 //FirstSafeZone, StorytellingDialogueText, DialogueCanvas, PlayerHealth, DeclineButton
 //Purpose: Freezes or unfreezes the player's movement
 public class FreezePlayer : IEvent
@@ -437,7 +437,7 @@ public class PreventPlayerInteractingWithInventory : IEvent
 }
 
 //Subscribers: PlayerHealth
-//Publishers: NPC, ChestUI, CluebookUI, PauseMenu, LosingUI, WinGameUI, MoonPuzzleArea, StorytellingDialogueText, DialogueCanvas, DeclineButton
+//Publishers: NPC, ChestUI, CluebookUI, PauseMenu, EndScreenUI, MoonPuzzleArea, StorytellingDialogueText, DialogueCanvas, DeclineButton
 //Purpose: Pauses or resumes the continuous dropping of the player's health
 public class MaintainPlayerHealth : IEvent
 {

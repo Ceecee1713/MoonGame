@@ -33,7 +33,7 @@ public class FreezeWithActiveUI : MonoBehaviour
     private void FreezeCamera()
     {
         freezeCamera = true;
-        EventBus.Instance.Publish(new FreezeCameraWithActiveUI(this.gameObject, freezeCamera)); //Publish to 'CameraCursorManager'
+        EventBus.Instance.Publish(new FreezeCameraWithActiveUI(this.gameObject, freezeCamera)); //Publish to 'CameraManager'
     }
 
     void OnDisable()
@@ -42,7 +42,7 @@ public class FreezeWithActiveUI : MonoBehaviour
         {
             doNotRepeat = false;
             freezeCamera = false;
-            EventBus.Instance.Publish(new FreezeCameraWithActiveUI(this.gameObject, freezeCamera)); //Publish to 'CameraCursorManager'
+            EventBus.Instance.Publish(new FreezeCameraWithActiveUI(this.gameObject, freezeCamera)); //Publish to 'CameraManager'
         }
     }
 }
