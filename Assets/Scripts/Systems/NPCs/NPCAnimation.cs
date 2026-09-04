@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 /// <summary>
-/// Manages functionality of an NPC's floating animation
+/// Manages functionality of a game object's floating animation, used by the NPCs and the player game object
 /// </summary>
 
 public class NPCAnimation : MonoBehaviour
@@ -38,10 +38,13 @@ public class NPCAnimation : MonoBehaviour
         while (elapsedTime < durationOfAnimationLoop)
         {
             elapsedTime += Time.deltaTime;
-            float currentValue = Mathf.SmoothStep(0f, 1f, elapsedTime / durationOfAnimationLoop);
+
+            float currentValue = Mathf.SmoothStep(0f, 1f, elapsedTime / durationOfAnimationLoop); 
             Vector3 currentPosition = transform.position;
-            currentPosition.y = Mathf.Lerp(startingValue, targetValue, currentValue);
+
+            currentPosition.y = Mathf.Lerp(startingValue, targetValue, currentValue); 
             transform.position = currentPosition;
+
             yield return null;
         }
 

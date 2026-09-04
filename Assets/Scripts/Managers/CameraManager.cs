@@ -2,6 +2,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Unity.Cinemachine;
 
+/// <summary>
+/// Handles the temporary freezing of camera movement 
+/// </summary>
+
 public class CameraManager : MonoBehaviour
 {
     [SerializeField]
@@ -17,7 +21,7 @@ public class CameraManager : MonoBehaviour
         EventBus.Instance.Subscribe<FreezeCameraWithActiveUI>(ChangeCanvases);
     }
 
-    private void ChangeCanvases(FreezeCameraWithActiveUI freezeCameraWithActiveUI) //Add comment about publishers
+    private void ChangeCanvases(FreezeCameraWithActiveUI freezeCameraWithActiveUI) //Published by "FreezeWithActiveUI", "EndScreenUI"
     {
         freezeCamera = freezeCameraWithActiveUI.FreezeCamera;
         currentUI = freezeCameraWithActiveUI.CurrentUI;
@@ -34,6 +38,6 @@ public class CameraManager : MonoBehaviour
             previousUI = null;
         }
             
-        //Mouse.current.WarpCursorPosition(new Vector2(Screen.width / 2f, Screen.height / 2f));
+        //Mouse.current.WarpCursorPosition(new Vector2(Screen.width / 2f, Screen.height / 2f)); //Re-center mouse cursor
     }
 }

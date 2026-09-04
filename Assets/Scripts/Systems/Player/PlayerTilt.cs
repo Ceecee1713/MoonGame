@@ -1,6 +1,15 @@
 using UnityEngine;
 using DG.Tweening;
 
+/// <summary>
+/// Allows the player game object to tilt along its "X" rotation
+/// </summary>
+/// 
+/// <remarks>
+/// This script is meant to be attached to the parent game object containing the player game objects' models, 
+/// NOT the ROOT PARENT in the hiearchy as it'll cause conflict with the PlayerStateMachine script when it changes state
+/// </remarks>
+
 public class PlayerTilt : MonoBehaviour
 {
     [SerializeField]

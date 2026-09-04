@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// Manages the losing menu UI functionality - only its display
+/// Manages the losing menu UI AND win game UI functionality - only its display
 /// </summary>
 /// 
 /// <remarks>
@@ -12,6 +12,7 @@ using UnityEngine;
 /// See <see cref="PlayerHealth"/> - Publishing "MaintainPlayerHealth" to maintain player's current health
 /// See <see cref="ExplorationTimer"/> - Publishing "PauseExplorationTimer" to pause exploration timer countdown
 /// See <see cref="CameraManager"/> - Publishing "FreezeCameraWithActiveUI" to temporarily freeze the camera movement
+/// See <see cref="PlayerInputController"/> - Publishing "StopAllPlayerInputs" to stop all player input
 /// </remarks>
 
 public class EndScreenUI : MonoBehaviour

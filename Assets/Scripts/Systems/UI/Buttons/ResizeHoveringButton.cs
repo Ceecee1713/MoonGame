@@ -2,6 +2,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 
+/// <summary>
+/// Increases a UI game object's scale 
+/// </summary>
+/// 
+/// <remarks>
+/// This script is to be attached to UI buttons that when hovered over, their scale increases
+/// </remarks>
+
 public class ResizeHoveringButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] 

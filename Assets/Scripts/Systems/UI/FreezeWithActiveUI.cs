@@ -1,5 +1,14 @@
 using UnityEngine;
 
+/// <summary>
+/// Attach script to pass an event to temporarily freeze the camera's movements when canvas group alpha is 1f 
+/// </summary>
+/// 
+/// <remarks>
+/// This script works together with the "CameraManager" and "InteractableItem" scripts
+/// See <see cref="CameraManager"/> - Publishing the "FreezeCameraWithActiveUI" event
+/// </remarks>
+
 public class FreezeWithActiveUI : MonoBehaviour
 {
     private bool freezeCamera;

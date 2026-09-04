@@ -48,7 +48,7 @@ public class PlayerInputController : MonoBehaviour
         _playerInputs.Disable();
     }
 
-    private void ReachedEndScreen(StopAllPlayerInputs stopAllPlayerInputs)
+    private void ReachedEndScreen(StopAllPlayerInputs stopAllPlayerInputs) //Published by "EndScreenUI"
     {
         UnsubscribeInputs();
     }

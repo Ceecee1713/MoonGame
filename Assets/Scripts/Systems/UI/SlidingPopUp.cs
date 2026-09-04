@@ -2,6 +2,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
+/// <summary>
+/// Manages the sliding up/down of a UI game object when enabled/disabled
+/// </summary>
+/// 
+/// <remarks>
+/// This script is to be attached to the UI game objects that act as dialogue text boxes
+/// </remarks>
+
 public class SlidingPopUp : MonoBehaviour
 {
     [SerializeField]
