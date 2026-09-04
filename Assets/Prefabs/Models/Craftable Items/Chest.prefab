@@ -444,6 +444,7 @@ GameObject:
   - component: {fileID: 5868570624599235081}
   - component: {fileID: 1230731728564018970}
   - component: {fileID: 6753623058604899855}
+  - component: {fileID: 4269282472870806374}
   m_Layer: 5
   m_Name: Exit Button
   m_TagString: Untagged
@@ -578,6 +579,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonClickSFX: {fileID: 8300000, guid: 92c90fba82368a444ab6ec5a9b704298, type: 3}
   chestUI: {fileID: 7793890650134421941}
+--- !u!114 &4269282472870806374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747398712136258611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878745f0deecaf949aef148b2a32ba88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSizeScale: 1.1
 --- !u!1 &755374012017340728
 GameObject:
   m_ObjectHideFlags: 0
@@ -5995,7 +6009,7 @@ GameObject:
   - component: {fileID: 8941232183964505182}
   - component: {fileID: 1373183709980625025}
   m_Layer: 5
-  m_Name: Test Chest Grid UI
+  m_Name: Chest Grid UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7144,6 +7158,14 @@ PrefabInstance:
     - target: {fileID: 7597273152441028554, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
       propertyPath: m_text
       value: Open Chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597273152441028554, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -2307556845382827942, guid: af58e12efbcd61d43b98901e47d325fd, type: 2}
+    - target: {fileID: 7597273152441028554, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4283146703
       objectReference: {fileID: 0}
     - target: {fileID: 8503675942352970339, guid: 550fb6b1162f6764dae681fe172cecd8, type: 3}
       propertyPath: m_IsActive

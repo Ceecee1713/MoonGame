@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8845150392179186380}
   - component: {fileID: 1122186236821348191}
   - component: {fileID: 3018008887517727197}
+  - component: {fileID: 7373647286453331500}
   m_Layer: 5
   m_Name: Main UI - Dialogue UI
   m_TagString: Untagged
@@ -117,6 +118,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextMessageSFX: {fileID: 8300000, guid: 1f070a9c8b76bee43997205abc4fd8e5, type: 3}
   dialogueText: {fileID: 4359805303771065113}
+--- !u!114 &7373647286453331500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893300183961849840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e95ee8e3514534e80edf273513d573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUpRectTransform: {fileID: 8547772433077516878}
+  distanceToMove: 15
+  duration: 0.15
 --- !u!1 &1207231155303043537
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,7 +168,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -1, y: 50}
+  m_AnchoredPosition: {x: -1, y: -250}
   m_SizeDelta: {x: 1755.0931, y: 302.665}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &8192934568084762794
