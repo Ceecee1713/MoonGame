@@ -13,10 +13,6 @@ MonoBehaviour:
   m_Name: CorriosonZoneTutorial
   m_EditorClassIdentifier: 
   Messages:
-  - message: 'Your people were smart enough to infuse the surrounding lamps with
-      Moonlight, but almost all have gone out with the Moon Fragments gone. '
-    uniqueWordsToColour: []
-    wordColour: {r: 1, g: 1, b: 1, a: 1}
   - message: "If you leave the Moonlight, you\u2019ll begin to accumulate Corrosion.
       Corrosion lowers your Health. Staying in the Moonlight recovers your Health."
     uniqueWordsToColour:
@@ -33,7 +29,8 @@ MonoBehaviour:
     wordColour: {r: 1, g: 1, b: 1, a: 1}
   - message: 'Some areas of the forest are more toxic than others, so beware. '
     uniqueWordsToColour:
-    - 
+    - Some areas
+    - more toxic
     wordColour: {r: 1, g: 1, b: 1, a: 1}
   - message: 'Gathering more Moon Fragments increases the range of Moonlight to traverse
       the forest safely and Corrosion will accumulate slower. '

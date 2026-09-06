@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Tutorial
   m_EditorClassIdentifier: 
   Messages:
-  - message: As one of the Moon Priestesses, you know Moonlight can fight off the
-      fog.
+  - message: Your people know that Moonlight can fight off the fog.
     uniqueWordsToColour: []
     wordColour: {r: 1, g: 1, b: 1, a: 1}
   - message: However, the Full Moon Statue has lost all but one fragment. With one
@@ -60,8 +59,7 @@ MonoBehaviour:
     - interact
     - Full Moon Statue
     wordColour: {r: 1, g: 1, b: 1, a: 1}
-  - message: "And don\u2019t forget the Crafting Bench beside the Full Moon Statue.
-      It'll help you lots."
+  - message: 'Remember to use the Crafting Bench beside the Full Moon Statue. '
     uniqueWordsToColour:
     - Crafting Bench
     wordColour: {r: 1, g: 1, b: 1, a: 1}
