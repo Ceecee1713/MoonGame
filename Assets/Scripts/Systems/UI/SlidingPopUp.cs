@@ -40,7 +40,7 @@ public class SlidingPopUp : MonoBehaviour
         if(_hasBeenDisabledOnStart == true)
         {
             tween?.Kill();
-            tween = popUpRectTransform.DOAnchorPos(_upwardTargetPosition, duration).SetEase(Ease.OutQuad).SetLink(gameObject, LinkBehaviour.KillOnDestroy);;
+            tween = popUpRectTransform.DOAnchorPos(_upwardTargetPosition, duration).SetEase(Ease.OutQuad).SetLink(gameObject, LinkBehaviour.KillOnDestroy);
             _isRaised = true;
         }
     }
@@ -52,7 +52,7 @@ public class SlidingPopUp : MonoBehaviour
         if(_isRaised == true)
         {
             tween?.Kill();
-            tween = popUpRectTransform.DOAnchorPos(_originalPosition, duration).SetEase(Ease.OutQuad).SetLink(gameObject, LinkBehaviour.KillOnDestroy);;
+            tween = popUpRectTransform.DOAnchorPos(_originalPosition, duration).SetEase(Ease.OutQuad).SetLink(gameObject, LinkBehaviour.KillOnDestroy);
             _isRaised = false;
         }
     }

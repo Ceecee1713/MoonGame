@@ -23,12 +23,12 @@ public class ResizeHoveringButton : MonoBehaviour, IPointerEnterHandler, IPointe
     public void OnPointerEnter(PointerEventData eventData) //Scale up by "hoverSizeScale" when cursor is hovering over this game object
     {
         tween?.Kill();
-        tween = transform.DOScale(hoverSizeScale, TWEEN_DURATION).SetEase(Ease.OutQuad);
+        tween = transform.DOScale(hoverSizeScale, TWEEN_DURATION).SetEase(Ease.OutQuad).SetLink(gameObject, LinkBehaviour.KillOnDestroy);;
     }
 
     public void OnPointerExit(PointerEventData eventData) //Return to normal scale size when cursor is not hovering over this game object
     {
         tween?.Kill();
-        tween = transform.DOScale(NORMAL_SIZE_SCALE, TWEEN_DURATION).SetEase(Ease.OutQuad);
+        tween = transform.DOScale(NORMAL_SIZE_SCALE, TWEEN_DURATION).SetEase(Ease.OutQuad).SetLink(gameObject, LinkBehaviour.KillOnDestroy);;
     }
 }

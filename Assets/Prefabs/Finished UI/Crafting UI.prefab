@@ -971,6 +971,7 @@ GameObject:
   - component: {fileID: 4971830925733758146}
   - component: {fileID: 8395497189491055320}
   - component: {fileID: 6001304732140370916}
+  - component: {fileID: 9105606263916687833}
   m_Layer: 5
   m_Name: Craft Button
   m_TagString: Untagged
@@ -1120,6 +1121,19 @@ MonoBehaviour:
     IsDroppedItem: 0
     Quantity: 0
     IsThisAStackableItem: 0
+--- !u!114 &9105606263916687833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674144689200130402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878745f0deecaf949aef148b2a32ba88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSizeScale: 1.1
 --- !u!1 &1730143890305593113
 GameObject:
   m_ObjectHideFlags: 0
@@ -1447,6 +1461,7 @@ GameObject:
   - component: {fileID: 603360986802733047}
   - component: {fileID: 6210826038270809036}
   - component: {fileID: 7550111806832784199}
+  - component: {fileID: 1830633528186967308}
   m_Layer: 5
   m_Name: Craft Button
   m_TagString: Untagged
@@ -1596,6 +1611,19 @@ MonoBehaviour:
     IsDroppedItem: 0
     Quantity: 0
     IsThisAStackableItem: 0
+--- !u!114 &1830633528186967308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2633064260877152829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878745f0deecaf949aef148b2a32ba88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSizeScale: 1.1
 --- !u!1 &2672710663869083117
 GameObject:
   m_ObjectHideFlags: 0
@@ -1748,6 +1776,7 @@ GameObject:
   - component: {fileID: 160155803082615587}
   - component: {fileID: 6420048669440061289}
   - component: {fileID: 8292463595728209977}
+  - component: {fileID: 1488656189787797382}
   m_Layer: 5
   m_Name: Craft Button
   m_TagString: Untagged
@@ -1924,6 +1953,19 @@ MonoBehaviour:
     IsDroppedItem: 0
     Quantity: 1
     IsThisAStackableItem: 0
+--- !u!114 &1488656189787797382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2718598760646512594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878745f0deecaf949aef148b2a32ba88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSizeScale: 1.1
 --- !u!1 &2858441675288121492
 GameObject:
   m_ObjectHideFlags: 0
@@ -2963,6 +3005,7 @@ GameObject:
   - component: {fileID: 7821070503301510150}
   - component: {fileID: 4933370059641781641}
   - component: {fileID: 7095758862472468762}
+  - component: {fileID: 1980025693037201419}
   m_Layer: 5
   m_Name: Craft Button
   m_TagString: Untagged
@@ -3112,6 +3155,19 @@ MonoBehaviour:
     IsDroppedItem: 0
     Quantity: 0
     IsThisAStackableItem: 0
+--- !u!114 &1980025693037201419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4406989065947231748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878745f0deecaf949aef148b2a32ba88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSizeScale: 1.1
 --- !u!1 &4618541384746237089
 GameObject:
   m_ObjectHideFlags: 0
@@ -3200,6 +3256,7 @@ GameObject:
   - component: {fileID: 3177057183435781647}
   - component: {fileID: 4238820562690876335}
   - component: {fileID: 7253191743824489314}
+  - component: {fileID: 9193950003822056918}
   m_Layer: 5
   m_Name: Craft Button
   m_TagString: Untagged
@@ -3349,6 +3406,19 @@ MonoBehaviour:
     IsDroppedItem: 0
     Quantity: 0
     IsThisAStackableItem: 0
+--- !u!114 &9193950003822056918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4653166282437013445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878745f0deecaf949aef148b2a32ba88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSizeScale: 1.1
 --- !u!1 &4775871751095351585
 GameObject:
   m_ObjectHideFlags: 0
@@ -4758,6 +4828,7 @@ GameObject:
   - component: {fileID: 2674517355086199705}
   - component: {fileID: 3353308257375467202}
   - component: {fileID: 2644685396598514471}
+  - component: {fileID: 7401787847155490512}
   m_Layer: 5
   m_Name: Craft Button
   m_TagString: Untagged
@@ -4907,6 +4978,19 @@ MonoBehaviour:
     IsDroppedItem: 0
     Quantity: 0
     IsThisAStackableItem: 0
+--- !u!114 &7401787847155490512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6989113711408837287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878745f0deecaf949aef148b2a32ba88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSizeScale: 1.1
 --- !u!1 &7015168738659887418
 GameObject:
   m_ObjectHideFlags: 0

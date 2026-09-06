@@ -150,6 +150,7 @@ GameObject:
   - component: {fileID: 8187875357295550234}
   - component: {fileID: 7883711786177353028}
   - component: {fileID: 8510302416632595811}
+  - component: {fileID: 8449527572415168102}
   m_Layer: 5
   m_Name: Quit Game Button
   m_TagString: Untagged
@@ -286,6 +287,21 @@ MonoBehaviour:
   buttonClickSFX: {fileID: 8300000, guid: b964cbd8b4680714284e13baf4334706, type: 3}
   currentCanvasGroup: {fileID: 4239428294172389729}
   sceneButton: {fileID: 8132610233460698632}
+--- !u!114 &8449527572415168102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042932722456269651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be7531248073a314185e5c8410301cc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonClickSFX: {fileID: 0}
+  currentCanvasGroup: {fileID: 0}
+  sceneButton: {fileID: 0}
 --- !u!1 &3661937926423208875
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,6 +315,7 @@ GameObject:
   - component: {fileID: 1075866651679139502}
   - component: {fileID: 1664597893890563350}
   - component: {fileID: 8132610233460698632}
+  - component: {fileID: 2044688505899106863}
   m_Layer: 5
   m_Name: Play Button
   m_TagString: Untagged
@@ -436,6 +453,19 @@ MonoBehaviour:
   currentCanvasGroup: {fileID: 4239428294172389729}
   quitButton: {fileID: 8510302416632595811}
   mainMenuSceneName: 
+--- !u!114 &2044688505899106863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3661937926423208875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878745f0deecaf949aef148b2a32ba88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSizeScale: 1.1
 --- !u!1 &6315723994863088466
 GameObject:
   m_ObjectHideFlags: 0
